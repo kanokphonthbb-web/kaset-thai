@@ -1,0 +1,183 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: theme("colors.paper");
+    color: theme("colors.ink");
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    letter-spacing: 0.006em;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: theme("fontFamily.display");
+    color: theme("colors.ink");
+    letter-spacing: 0;
+  }
+
+  /* Comfortable line-height for Thai reading */
+  p {
+    line-height: 1.7;
+  }
+
+  ::selection {
+    background-color: theme("colors.lime.canopy");
+    color: theme("colors.ink");
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible {
+    outline: 2px solid theme("colors.ink");
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-container px-5 sm:px-6 lg:px-8;
+  }
+
+  /* Pill CTA — the only filled chromatic button in the system */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-semibold
+      transition-colors duration-200 min-h-[48px];
+  }
+
+  .btn-primary {
+    @apply btn bg-lime-canopy text-ink hover:bg-lime-deep;
+  }
+
+  /* Outlined ghost — secondary action */
+  .btn-secondary {
+    @apply btn border border-ink bg-transparent font-medium text-ink hover:bg-linen;
+  }
+
+  /* Eyebrow label */
+  .eyebrow {
+    @apply text-eyebrow font-bold uppercase text-stone;
+  }
+
+  /* Inline chip / tag */
+  .tag-chip {
+    @apply inline-flex items-center rounded-full bg-linen px-3 py-1 text-sm font-medium text-ink;
+  }
+
+  /* Warm card surface — no shadow, depth via surface stepping */
+  .card {
+    @apply rounded-2xl bg-mist p-6;
+  }
+}
+
+/* ── Rendered CMS article HTML (compiled from blocks) ───────────── */
+.cc-article {
+  color: theme("colors.ink");
+}
+.cc-article h2 {
+  font-family: theme("fontFamily.display");
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin-top: 2.25rem;
+  scroll-margin-top: 6rem;
+}
+.cc-article h3 {
+  font-family: theme("fontFamily.display");
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-top: 1.75rem;
+}
+.cc-article p {
+  margin-top: 0.9rem;
+  font-size: 1.0625rem;
+  color: rgba(51, 51, 51, 0.9);
+}
+.cc-article ul,
+.cc-article ol {
+  margin-top: 1rem;
+  padding-left: 1.25rem;
+  list-style-position: outside;
+}
+.cc-article ul { list-style-type: disc; }
+.cc-article ol { list-style-type: decimal; }
+.cc-article li { margin-top: 0.4rem; padding-left: 0.25rem; }
+.cc-article blockquote {
+  margin-top: 1.25rem;
+  border-left: 4px solid theme("colors.lime.canopy");
+  background: theme("colors.mist");
+  padding: 1rem 1.25rem;
+  border-radius: 0 12px 12px 0;
+}
+.cc-article figure { margin-top: 1.5rem; }
+.cc-article figure img { width: 100%; border-radius: 20px; }
+.cc-article figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: theme("colors.stone");
+  text-align: center;
+}
+.cc-article hr {
+  margin: 2rem 0;
+  border: 0;
+  border-top: 1px solid theme("colors.ash");
+}
+.cc-table-wrap {
+  margin-top: 1.25rem;
+  overflow-x: auto;
+}
+.cc-table-wrap table {
+  width: 100%;
+  min-width: 480px;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+}
+.cc-table-wrap th {
+  background: theme("colors.linen");
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+}
+.cc-table-wrap td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid theme("colors.linen");
+}
+.cc-tip {
+  margin-top: 1.5rem;
+  border-left: 4px solid theme("colors.lime.canopy");
+  background: theme("colors.mist");
+  padding: 1.25rem;
+  border-radius: 16px;
+}
+.cc-tip-title {
+  font-family: theme("fontFamily.display");
+  font-weight: 700;
+  margin-top: 0 !important;
+}
+
+/* ── Print (พิมพ์/บันทึก PDF ผลเครื่องมือ) ───────────────────── */
+@media print {
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+  main {
+    padding: 0 !important;
+  }
+  .print-card {
+    break-inside: avoid;
+  }
+}

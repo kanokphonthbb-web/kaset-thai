@@ -1,0 +1,46 @@
+// CMS สำหรับเขียนบทความหลังบ้าน (โครงคล้าย linli)
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model ArticleCategory {
+  id        String    @id @default(cuid())
+  name      String
+  slug      String    @unique
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  posts     Article[]
+}
+
+model Article {
+  id              String    @id @default(cuid())
+  title           String
+  slug            String    @unique
+  excerpt         String    @default("")
+  content         String    @default("") // compiled HTML (public rendering)
+  blocksJson      String    @default("[]") // block editor source (for re-editing)
+  format          String    @default("blocks") // "blocks" | "html"
+  rawHtml         String    @default("") // ต้นฉบับ HTML เมื่อ format = html
+  articleType     String    @default("howto") // qa | general | howto | deep (ช่วงความยาว)
+  coverImage      String    @default("") // Unsplash photo id หรือ URL
+  seoTitle        String    @default("")
+  metaDescription String    @default("")
+  focusKeyword    String    @default("")
+  faqJson         String    @default("[]") // [{q,a}] -> FAQPage schema + <details>
+  categoryId      String?
+  status          String    @default("draft") // draft | published
+  publishedAt     DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  category ArticleCategory? @relation(fields: [categoryId], references: [id])
+
+  @@index([status])
+  @@index([categoryId])
+}
