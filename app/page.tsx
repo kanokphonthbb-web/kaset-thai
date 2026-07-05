@@ -4,7 +4,6 @@ import Footer from "@/components/Footer";
 import CategoryCard from "@/components/CategoryCard";
 import ToolCard from "@/components/ToolCard";
 import ArticleCard from "@/components/ArticleCard";
-import ArticleTemplatePreview from "@/components/ArticleTemplatePreview";
 import SectionHeader from "@/components/SectionHeader";
 import { CATEGORIES, TOOLS, ARTICLES } from "@/lib/data";
 import { prisma } from "@/lib/prisma";
@@ -118,20 +117,6 @@ export default async function HomePage() {
             </div>
           </section>
         )}
-
-        {/* Article template preview — warm band */}
-        <section id="template" className="scroll-mt-24 bg-paper py-20">
-          <div className="container-x">
-            <SectionHeader
-              eyebrow="ตัวอย่างบทความ"
-              title="หน้าบทความอ่านง่าย ทำตามได้จริง"
-              desc="ทุกบทความมีสารบัญ ตารางต้นทุน และกล่องคำแนะนำ เพื่อให้ลงมือทำได้ทันที"
-            />
-            <div className="mx-auto mt-12 max-w-4xl">
-              <ArticleTemplatePreview />
-            </div>
-          </div>
-        </section>
 
         {/* Closing CTA */}
         <section id="about" className="scroll-mt-24 bg-paper py-20">

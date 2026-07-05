@@ -202,6 +202,16 @@ export const ARTICLES: Article[] = [
     readMinutes: 9,
     emoji: "🚜",
   },
+  {
+    slug: "before-you-start-farming",
+    title: "เตรียมตัวก่อนเริ่มทำเกษตรครั้งแรก ต้องรู้อะไรบ้าง",
+    category: "เริ่มต้นทำเกษตร",
+    categoryHref: "/mixed-farming",
+    description:
+      "คู่มือเตรียมตัวก่อนเริ่มทำเกษตรสำหรับมือใหม่ ประเมินพื้นที่ น้ำ ทุน เวลา เลือกสิ่งที่จะปลูกหรือเลี้ยง คำนวณต้นทุน วางแผนขาย และข้อผิดพลาดที่ควรเลี่ยง",
+    readMinutes: 8,
+    emoji: "🌱",
+  },
 ];
 
 export const STATS = [
@@ -235,6 +245,7 @@ export const IMAGES: Record<string, string> = {
   "rice-cost-per-rai": "1505471768190-275e2ad7b3f9",
   "catfish-in-cement-pond": "1541441056316-443fff347c40",
   "integrated-farming-1-rai": "1677741447046-2021fb219d3e",
+  "before-you-start-farming": "1500382017468-9049fed747ef",
 };
 
 export const HERO_IMAGE = "1505471768190-275e2ad7b3f9"; // ชาวนาไทยดำนา
