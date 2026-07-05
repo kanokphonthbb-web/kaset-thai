@@ -160,10 +160,10 @@ export default async function ArticlePage({ params }: Params) {
               </span>
             </div>
 
-            <h1 className="mt-3 max-w-3xl font-display text-4xl font-bold leading-tight text-ink sm:text-5xl">
+            <h1 className="mt-3 max-w-4xl font-display text-4xl font-bold leading-tight text-ink sm:text-5xl">
               {article.title}
             </h1>
-            <p className="mt-4 max-w-2xl text-lg text-stone">{content.lead}</p>
+            <p className="mt-4 max-w-4xl text-lg text-stone">{content.lead}</p>
 
             {imageFor(article.slug, 1400) && (
               <div className="relative mt-8 aspect-[16/9] w-full overflow-hidden rounded-2xl bg-linen sm:aspect-[21/9]">
@@ -235,7 +235,7 @@ export default async function ArticlePage({ params }: Params) {
               </aside>
 
               {/* Content */}
-              <article className="min-w-0 max-w-3xl">
+              <article className="min-w-0">
                 {/* Short Answer — Direct answer for readers & AI search (AEO) */}
                 {content.shortAnswer && (
                   <section

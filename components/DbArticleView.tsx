@@ -74,11 +74,11 @@ export default function DbArticleView({ post }: { post: DbPost }) {
             <div className="mt-4 flex items-center gap-3">
               {post.category && <span className="tag-chip text-xs">{post.category.name}</span>}
             </div>
-            <h1 className="mt-3 max-w-3xl font-display text-4xl font-bold leading-tight text-ink sm:text-5xl">
+            <h1 className="mt-3 max-w-4xl font-display text-4xl font-bold leading-tight text-ink sm:text-5xl">
               {post.title}
             </h1>
             {post.metaDescription && (
-              <p className="mt-4 max-w-2xl text-lg text-stone">{post.metaDescription}</p>
+              <p className="mt-4 max-w-4xl text-lg text-stone">{post.metaDescription}</p>
             )}
             {post.coverImage && (
               // eslint-disable-next-line @next/next/no-img-element
@@ -113,7 +113,7 @@ export default function DbArticleView({ post }: { post: DbPost }) {
                 </aside>
               )}
 
-              <article className="min-w-0 max-w-3xl">
+              <article className="min-w-0">
                 <div
                   className="cc-article"
                   dangerouslySetInnerHTML={{ __html: post.content }}
