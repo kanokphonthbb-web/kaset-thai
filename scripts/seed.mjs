@@ -1,6 +1,20 @@
 import { PrismaClient } from "@prisma/client";
 import { readFileSync } from "node:fs";
-const prisma = new PrismaClient();
+
+// ใช้ Turso ถ้ามี env (สำหรับ seed production) ไม่งั้นใช้ SQLite ไฟล์ (dev)
+async function makePrisma() {
+  if (process.env.TURSO_DATABASE_URL) {
+    const { PrismaLibSQL } = await import("@prisma/adapter-libsql");
+    const { createClient } = await import("@libsql/client");
+    const libsql = createClient({
+      url: process.env.TURSO_DATABASE_URL,
+      authToken: process.env.TURSO_AUTH_TOKEN,
+    });
+    return new PrismaClient({ adapter: new PrismaLibSQL(libsql) });
+  }
+  return new PrismaClient();
+}
+const prisma = await makePrisma();
 
 const CATS = [
   ["ปลูกพืช", "plants"],
