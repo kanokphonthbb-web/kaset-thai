@@ -62,6 +62,9 @@ export const metadata: Metadata = {
     types: { "application/rss+xml": `${SITE_URL}/feed.xml` },
   },
   robots: { index: true, follow: true },
+  verification: {
+    google: "rbOtgZqWPiY6YCDipAqqrp1UW2AVFRUfDfx9nh9dYg4",
+  },
 };
 
 export const viewport: Viewport = {
@@ -109,6 +112,17 @@ export default function RootLayout({
   return (
     <html lang="th" className={`${bodyFont.variable} ${displayFont.variable}`}>
       <body className="font-sans antialiased">
+        {/* GTM noscript (ต้องอยู่ต้น body) */}
+        {process.env.NEXT_PUBLIC_GTM_ID && (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID}`}
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            />
+          </noscript>
+        )}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
