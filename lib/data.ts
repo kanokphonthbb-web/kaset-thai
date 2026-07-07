@@ -41,6 +41,8 @@ export const NAV_LINKS = [
   { label: "โรคและการดูแล", href: "/diseases" },
   { label: "ต้นทุนกำไร", href: "/cost-profit" },
   { label: "ตลาดเกษตร", href: "/market" },
+  { label: "เทคโนโลยี", href: "/agri-tech-tools" },
+  { label: "ข่าว/กฎหมาย", href: "/agri-news-law-standards" },
 ];
 
 export const CATEGORIES: Category[] = [
@@ -102,11 +104,27 @@ export const CATEGORIES: Category[] = [
   },
   {
     slug: "soil-water-fertilizer",
-    href: "/plants#soil",
+    href: "/soil-water-fertilizer",
     icon: "🧪",
     title: "ดิน น้ำ ปุ๋ย",
     description: "ปรับปรุงดิน ระบบน้ำ ปุ๋ยอินทรีย์ ปุ๋ยเคมี และสูตรอาหารสัตว์",
     tags: ["ดิน", "น้ำ", "ปุ๋ย"],
+  },
+  {
+    slug: "agri-tech-tools",
+    href: "/agri-tech-tools",
+    icon: "⚙️",
+    title: "เทคโนโลยีและเครื่องมือ",
+    description: "เครื่องมือเกษตร โดรน เซนเซอร์ ระบบน้ำอัตโนมัติ และ Smart Farm",
+    tags: ["Smart Farm", "โดรน", "IoT"],
+  },
+  {
+    slug: "agri-news-law-standards",
+    href: "/agri-news-law-standards",
+    icon: "📋",
+    title: "ข่าว กฎหมาย มาตรฐาน",
+    description: "ข่าวเกษตร กฎหมาย หน่วยงาน มาตรฐาน GAP อินทรีย์ และขั้นตอนราชการ",
+    tags: ["GAP", "กฎหมาย", "มาตรฐาน"],
   },
 ];
 
@@ -246,6 +264,8 @@ export const IMAGES: Record<string, string> = {
   "catfish-in-cement-pond": "1541441056316-443fff347c40",
   "integrated-farming-1-rai": "1677741447046-2021fb219d3e",
   "before-you-start-farming": "1500382017468-9049fed747ef",
+  "agri-tech-tools": "1500382017468-9049fed747ef",
+  "agri-news-law-standards": "1505471768190-275e2ad7b3f9",
 };
 
 export const HERO_IMAGE = "1505471768190-275e2ad7b3f9"; // ชาวนาไทยดำนา

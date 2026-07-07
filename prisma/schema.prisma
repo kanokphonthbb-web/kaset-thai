@@ -33,6 +33,10 @@ model Article {
   metaDescription String    @default("")
   focusKeyword    String    @default("")
   faqJson         String    @default("[]") // [{q,a}] -> FAQPage schema + <details>
+  phase           String    @default("") // Phase 1/2/3 (จาก content map)
+  priority        String    @default("") // P1/P2/P3
+  subcategory     String    @default("") // หมวดย่อยจาก content map
+  brief           String    @default("") // JSON brief (angle/mustInclude/sources/links/instruction)
   categoryId      String?
   status          String    @default("draft") // draft | published
   publishedAt     DateTime?
