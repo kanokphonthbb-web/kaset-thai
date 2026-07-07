@@ -32,7 +32,7 @@ export default function Hero() {
             คลังความรู้เกษตรครบวงจร
           </span>
 
-          <h1 className="mt-5 font-display text-5xl font-bold leading-[1.1] text-paper drop-shadow sm:text-6xl">
+          <h1 className="mt-5 font-display text-5xl font-bold leading-snug text-paper drop-shadow sm:text-6xl">
             เกษตรกรไทย
           </h1>
 

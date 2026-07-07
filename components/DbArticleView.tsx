@@ -74,7 +74,7 @@ export default function DbArticleView({ post }: { post: DbPost }) {
             <div className="mt-4 flex items-center gap-3">
               {post.category && <span className="tag-chip text-xs">{post.category.name}</span>}
             </div>
-            <h1 className="mt-3 max-w-4xl font-display text-4xl font-bold leading-tight text-ink sm:text-5xl">
+            <h1 className="mt-3 max-w-4xl font-display text-4xl font-bold leading-snug text-ink sm:text-5xl">
               {post.title}
             </h1>
             {post.metaDescription && (

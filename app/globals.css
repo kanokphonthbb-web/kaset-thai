@@ -15,6 +15,11 @@
     letter-spacing: 0.006em;
   }
 
+  /* Thai สระ/วรรณยุกต์ stack above/below the base character and need >=1.375
+     line-height on multi-line headings or they visually overlap between lines.
+     Never use leading-tight / leading-none / leading-[<1.3] on a heading that
+     can wrap — leading-snug (1.375) is the minimum safe value, leading-normal
+     (1.5) preferred when space allows. */
   h1,
   h2,
   h3,
@@ -22,6 +27,7 @@
     font-family: theme("fontFamily.display");
     color: theme("colors.ink");
     letter-spacing: 0;
+    line-height: 1.375;
   }
 
   /* Comfortable line-height for Thai reading */

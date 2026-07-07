@@ -32,7 +32,7 @@ export default function AboutPage() {
         <section className="bg-mist">
           <div className="container-x py-16">
             <span className="eyebrow">เกี่ยวกับเรา</span>
-            <h1 className="mt-4 max-w-3xl font-display text-4xl font-bold leading-tight text-ink sm:text-5xl">
+            <h1 className="mt-4 max-w-3xl font-display text-4xl font-bold leading-snug text-ink sm:text-5xl">
               คลังความรู้เกษตร ที่คนไทยใช้ได้จริง
             </h1>
             <p className="mt-4 max-w-2xl text-lg text-stone">

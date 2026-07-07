@@ -12,6 +12,11 @@ import DbArticleView from "@/components/DbArticleView";
 
 type Params = { params: { slug: string } };
 
+// ISR: บทความจาก DB (Turso) อัปเดตได้ — regenerate ทุก 5 นาที
+// (ก่อนหน้านี้ไม่มีค่านี้ หน้าเลยถูก cache ถาวร รูปปก/แก้ไขไม่ขึ้น)
+export const revalidate = 300;
+export const dynamicParams = true;
+
 export function generateStaticParams() {
   return ARTICLES.map((a) => ({ slug: a.slug }));
 }
@@ -160,7 +165,7 @@ export default async function ArticlePage({ params }: Params) {
               </span>
             </div>
 
-            <h1 className="mt-3 max-w-4xl font-display text-4xl font-bold leading-tight text-ink sm:text-5xl">
+            <h1 className="mt-3 max-w-4xl font-display text-4xl font-bold leading-snug text-ink sm:text-5xl">
               {article.title}
             </h1>
             <p className="mt-4 max-w-4xl text-lg text-stone">{content.lead}</p>
