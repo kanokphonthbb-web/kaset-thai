@@ -1,10 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import SearchBox from "./SearchBox";
-import { STATS, unsplashUrl, HERO_IMAGE } from "@/lib/data";
+import { statsFor, unsplashUrl, HERO_IMAGE } from "@/lib/data";
 
-export default function Hero() {
+export default function Hero({ articleCount }: { articleCount: number }) {
   const bg = unsplashUrl(HERO_IMAGE, 1920);
+  const stats = statsFor(articleCount);
 
   return (
     <section className="relative overflow-hidden">
@@ -67,7 +68,7 @@ export default function Hero() {
           {/* Floating dark translucent stats card — the one shadow-driven element */}
           <div className="mx-auto mt-12 max-w-2xl">
             <div className="grid grid-cols-1 gap-4 rounded-2xl bg-black/40 p-6 shadow-xl backdrop-blur sm:grid-cols-3">
-              {STATS.map((stat) => (
+              {stats.map((stat) => (
                 <div key={stat.label} className="text-center">
                   <p className="font-display text-3xl font-bold text-paper">
                     {stat.value}

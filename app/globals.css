@@ -170,6 +170,40 @@
   margin-top: 0 !important;
 }
 
+/* ── สรุป + แหล่งข้อมูลอ้างอิง (มาตรฐานทุกบทความ) ───────────────── */
+.cc-article ul.cc-references {
+  margin-top: 1.25rem;
+  padding-left: 0;
+  list-style: none;
+}
+.cc-article ul.cc-references li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.75rem 0;
+  margin-top: 0;
+  border-bottom: 1px solid theme("colors.linen");
+  font-size: 0.95rem;
+}
+.cc-article ul.cc-references li:last-child {
+  border-bottom: none;
+}
+.cc-ref-icon {
+  flex-shrink: 0;
+  line-height: 1.6;
+  font-size: 1.05rem;
+}
+.cc-ref-name {
+  font-weight: 700;
+  color: theme("colors.ink");
+}
+.cc-ref-disclaimer {
+  margin-top: 1.25rem;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: theme("colors.stone");
+}
+
 /* ── Print (พิมพ์/บันทึก PDF ผลเครื่องมือ) ───────────────────── */
 @media print {
   header,

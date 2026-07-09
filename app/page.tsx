@@ -25,13 +25,25 @@ async function getLatestCmsPosts() {
   }
 }
 
+async function getPublishedCount() {
+  try {
+    return await prisma.article.count({ where: { status: "published" } });
+  } catch {
+    return 0;
+  }
+}
+
 export default async function HomePage() {
-  const latest = await getLatestCmsPosts();
+  const [latest, publishedCount] = await Promise.all([
+    getLatestCmsPosts(),
+    getPublishedCount(),
+  ]);
+  const articleCount = publishedCount + ARTICLES.length;
   return (
     <>
       <Header />
       <main>
-        <Hero />
+        <Hero articleCount={articleCount} />
 
         {/* Categories — white canvas */}
         <section id="categories" className="scroll-mt-24 bg-paper py-20">

@@ -150,6 +150,17 @@ export function ensureHeadingIds(html: string): string {
   });
 }
 
+/**
+ * ตัดส่วน FAQ แบบข้อความล้วน (H2 "คำถามที่พบบ่อย" + H3/<p> ต่อคำถาม) ออกจาก body HTML
+ * เพราะ payload มี faqs ซ้ำอยู่แล้วสำหรับ render เป็น accordion — กันไม่ให้ขึ้นซ้ำสองที่บนหน้าเว็บ
+ */
+export function stripInlineFaqSection(html: string): string {
+  return html.replace(
+    /<h2[^>]*>\s*คำถามที่พบบ่อย\s*<\/h2>[\s\S]*?(?=<h2[^>]*>|$)/,
+    "",
+  );
+}
+
 /** สร้างสารบัญจาก HTML (อ่าน h2/h3 ที่มี id) */
 export function tocFromHtml(html: string): { id: string; text: string; level: 2 | 3 }[] {
   const out: { id: string; text: string; level: 2 | 3 }[] = [];

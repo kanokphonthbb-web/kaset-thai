@@ -13,7 +13,15 @@ export const metadata = pageMeta({
   path: "/blog",
 });
 
-export default async function BlogIndex() {
+const PER_PAGE = 12;
+
+export default async function BlogIndex({
+  searchParams,
+}: {
+  searchParams?: { page?: string };
+}) {
+  const currentPage = Math.max(1, Number(searchParams?.page) || 1);
+
   let posts: {
     slug: string;
     title: string;
@@ -21,21 +29,29 @@ export default async function BlogIndex() {
     coverImage: string;
     category: { name: string } | null;
   }[] = [];
+  let total = 0;
   try {
-    posts = await prisma.article.findMany({
-      where: { status: "published" },
-      orderBy: { publishedAt: "desc" },
-      select: {
-        slug: true,
-        title: true,
-        excerpt: true,
-        coverImage: true,
-        category: { select: { name: true } },
-      },
-    });
+    [total, posts] = await Promise.all([
+      prisma.article.count({ where: { status: "published" } }),
+      prisma.article.findMany({
+        where: { status: "published" },
+        orderBy: { publishedAt: "desc" },
+        skip: (currentPage - 1) * PER_PAGE,
+        take: PER_PAGE,
+        select: {
+          slug: true,
+          title: true,
+          excerpt: true,
+          coverImage: true,
+          category: { select: { name: true } },
+        },
+      }),
+    ]);
   } catch {
     posts = [];
   }
+
+  const totalPages = Math.max(1, Math.ceil(total / PER_PAGE));
 
   return (
     <>
@@ -83,6 +99,36 @@ export default async function BlogIndex() {
                   </li>
                 ))}
               </ul>
+            )}
+
+            {totalPages > 1 && (
+              <nav
+                aria-label="เปลี่ยนหน้าบทความ"
+                className="mt-12 flex items-center justify-center gap-4"
+              >
+                {currentPage > 1 ? (
+                  <Link
+                    href={currentPage - 1 === 1 ? "/blog" : `/blog?page=${currentPage - 1}`}
+                    className="btn-secondary"
+                  >
+                    ← ก่อนหน้า
+                  </Link>
+                ) : (
+                  <span className="btn-secondary pointer-events-none opacity-40">← ก่อนหน้า</span>
+                )}
+
+                <span className="text-sm text-stone">
+                  หน้า {currentPage} จาก {totalPages}
+                </span>
+
+                {currentPage < totalPages ? (
+                  <Link href={`/blog?page=${currentPage + 1}`} className="btn-secondary">
+                    ถัดไป →
+                  </Link>
+                ) : (
+                  <span className="btn-secondary pointer-events-none opacity-40">ถัดไป →</span>
+                )}
+              </nav>
             )}
           </div>
         </section>

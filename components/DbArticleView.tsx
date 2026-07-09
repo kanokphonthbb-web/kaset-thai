@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Header from "./Header";
 import Footer from "./Footer";
-import { tocFromHtml } from "@/lib/blocks";
+import { tocFromHtml, stripInlineFaqSection } from "@/lib/blocks";
 import { SITE_URL } from "@/lib/site";
 
 type DbPost = {
@@ -18,11 +18,13 @@ type DbPost = {
 };
 
 export default function DbArticleView({ post }: { post: DbPost }) {
-  const toc = tocFromHtml(post.content);
   let faqs: { q: string; a: string }[] = [];
   try {
     faqs = JSON.parse(post.faqJson) as { q: string; a: string }[];
   } catch {}
+  // ตัด FAQ แบบข้อความล้วนออกจาก body — จะ render เป็น accordion แยกด้านล่างแทน กันขึ้นซ้ำสองที่
+  const content = faqs.length > 0 ? stripInlineFaqSection(post.content) : post.content;
+  const toc = tocFromHtml(content);
 
   const url = `${SITE_URL}/articles/${post.slug}`;
   const graph: Record<string, unknown>[] = [
@@ -116,11 +118,10 @@ export default function DbArticleView({ post }: { post: DbPost }) {
               <article className="min-w-0">
                 <div
                   className="cc-article"
-                  dangerouslySetInnerHTML={{ __html: post.content }}
+                  dangerouslySetInnerHTML={{ __html: content }}
                 />
 
-                {/* FAQ อัตโนมัติ — ข้ามถ้าเป็น HTML mode (ผู้เขียนใส่ FAQ เองในเนื้อหาแล้ว) */}
-                {faqs.length > 0 && post.format !== "html" && (
+                {faqs.length > 0 && (
                   <section id="faq" className="mt-12">
                     <h2 className="font-display text-2xl font-bold text-ink">
                       คำถามที่พบบ่อย

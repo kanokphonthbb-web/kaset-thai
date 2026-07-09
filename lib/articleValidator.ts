@@ -30,6 +30,11 @@ export function validateArticle(input: ValidateInput): ValidationResult {
   const forbidden = findForbidden(`${plain} ${input.metaDescription} ${input.title}`);
 
   const type = getArticleType(input.articleType);
+  const headingTexts = input.blocks
+    .filter((b): b is Extract<Block, { type: "heading" }> => b.type === "heading")
+    .map((b) => b.text);
+  const hasSummary = headingTexts.some((t) => t.includes("สรุป"));
+  const hasReferences = headingTexts.some((t) => t.includes("แหล่ง") && t.includes("อ้างอิง"));
 
   // Gate (errors)
   if (!input.title.trim()) errors.push("ต้องมีหัวข้อบทความ (H1)");
@@ -40,6 +45,8 @@ export function validateArticle(input: ValidateInput): ValidationResult {
   if (headings < 1) errors.push("ต้องมีหัวข้อย่อย (H2) อย่างน้อย 1 จุด");
   if (forbidden.length > 0)
     errors.push(`มีคำการันตีผลลัพธ์ต้องห้าม: ${forbidden.join(", ")}`);
+  if (!hasSummary) errors.push('ต้องมีหัวข้อ "สรุป" (H2) ก่อนส่วนอ้างอิง');
+  if (!hasReferences) errors.push('ต้องมีหัวข้อ "แหล่งข้อมูลอ้างอิง" (H2)');
 
   // Warnings (ไม่บล็อก)
   if (input.title.length > 60)

@@ -36,4 +36,9 @@ next-env.d.ts
 
 # local secrets
 /.env
+.env.vercel
 .vercel
+
+# scratch / working files (not for commit)
+/scratch_*.mjs
+/scratchpad-briefs/

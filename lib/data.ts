@@ -232,11 +232,17 @@ export const ARTICLES: Article[] = [
   },
 ];
 
-export const STATS = [
-  { value: "8+", label: "หมวดหลัก", hint: "ครอบคลุมงานเกษตรทุกด้าน" },
-  { value: "100+", label: "หัวข้อความรู้เกษตร", hint: "กำลังทยอยเพิ่มต่อเนื่อง" },
-  { value: "อ่านง่าย", label: "สำหรับคนไทย", hint: "ภาษาชัด ทำตามได้จริง" },
-];
+export function statsFor(articleCount: number) {
+  return [
+    { value: "8+", label: "หมวดหลัก", hint: "ครอบคลุมงานเกษตรทุกด้าน" },
+    {
+      value: `${articleCount}+`,
+      label: "หัวข้อความรู้เกษตร",
+      hint: "กำลังทยอยเพิ่มต่อเนื่อง",
+    },
+    { value: "อ่านง่าย", label: "สำหรับคนไทย", hint: "ภาษาชัด ทำตามได้จริง" },
+  ];
+}
 
 export function getArticle(slug: string): Article | undefined {
   return ARTICLES.find((a) => a.slug === slug);
