@@ -263,22 +263,23 @@ export const IMAGES: Record<string, string> = {
   market: "1579113800032-c38bd7635818",
   "soil-water-fertilizer": "1611843467160-25afb8df1074",
   // บทความ (key = article slug)
-  "raising-laying-hens-for-beginners": "1548550023-2bdb3c5beed7",
-  "home-vegetable-garden-for-beginners": "1611843467160-25afb8df1074",
+  "raising-laying-hens-for-beginners": "https://images.pexels.com/photos/34185946/pexels-photo-34185946.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "home-vegetable-garden-for-beginners": "https://images.pexels.com/photos/14007005/pexels-photo-14007005.jpeg?auto=compress&cs=tinysrgb&w=1400",
   "beef-cattle-startup-budget": "1618080206739-14e8ac105472",
-  "rice-cost-per-rai": "1505471768190-275e2ad7b3f9",
-  "catfish-in-cement-pond": "1541441056316-443fff347c40",
-  "integrated-farming-1-rai": "1677741447046-2021fb219d3e",
-  "before-you-start-farming": "1500382017468-9049fed747ef",
-  "agri-tech-tools": "1500382017468-9049fed747ef",
-  "agri-news-law-standards": "1505471768190-275e2ad7b3f9",
+  "rice-cost-per-rai": "https://images.pexels.com/photos/32200256/pexels-photo-32200256.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "catfish-in-cement-pond": "https://images.pexels.com/photos/166633/pexels-photo-166633.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "integrated-farming-1-rai": "https://images.pexels.com/photos/2698449/pexels-photo-2698449.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "before-you-start-farming": "https://images.pexels.com/photos/26833033/pexels-photo-26833033.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "agri-tech-tools": "https://images.pexels.com/photos/9963140/pexels-photo-9963140.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "agri-news-law-standards": "https://images.pexels.com/photos/33413740/pexels-photo-33413740.jpeg?auto=compress&cs=tinysrgb&w=1400",
 };
 
 export const HERO_IMAGE = "1505471768190-275e2ad7b3f9"; // ชาวนาไทยดำนา
 
-/** ประกอบ URL รูป Unsplash จาก photo id (คืน null ถ้าไม่มี id) */
+/** ประกอบ URL รูปจาก photo id (Unsplash) หรือคืน URL เต็มตรงๆ ถ้าเป็น Pexels (คืน null ถ้าไม่มี id) */
 export function unsplashUrl(id: string | undefined, w = 800): string | null {
   if (!id) return null;
+  if (id.startsWith("http")) return id;
   return `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=70`;
 }
 
