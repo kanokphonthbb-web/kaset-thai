@@ -54,6 +54,19 @@ const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "1640531783655-95eba670fb00", // เป็ดวิ่ง
     "1593750187970-84858a2aaf5e", // ฝูงแพะ
     "1622837699015-9a4cb8b7a94b", // ฝูงแพะหญ้าเขียว
+    // Pexels — เพิ่ม pool เดือน 2026-07 (ไก่เนื้อ/ไก่ไข่ โรงเรือน)
+    "https://images.pexels.com/photos/19972937/pexels-photo-19972937.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/30248442/pexels-photo-30248442.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/17765441/pexels-photo-17765441.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7790127/pexels-photo-7790127.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/15645695/pexels-photo-15645695.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/27083552/pexels-photo-27083552.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/17064389/pexels-photo-17064389.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/26625882/pexels-photo-26625882.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/35877071/pexels-photo-35877071.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/15645680/pexels-photo-15645680.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4911711/pexels-photo-4911711.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4530409/pexels-photo-4530409.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   fishery: [
     "1541441056316-443fff347c40",
@@ -61,12 +74,40 @@ const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "1717737853712-b6c0e9be4057", // บ่อน้ำ
     "1543285129-bfdac0db10b2", // ปลาคาร์พ
     "1625241481569-65ff5465b148", // ฝูงปลาคาร์พ
+    // Pexels — เพิ่ม pool เดือน 2026-07 (บ่อปลา/บ่อกุ้ง เลี้ยงสัตว์น้ำ)
+    "https://images.pexels.com/photos/33995746/pexels-photo-33995746.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/12349154/pexels-photo-12349154.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/31636077/pexels-photo-31636077.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/29760309/pexels-photo-29760309.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/8352786/pexels-photo-8352786.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7509417/pexels-photo-7509417.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5786581/pexels-photo-5786581.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7509424/pexels-photo-7509424.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/11035625/pexels-photo-11035625.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/14024725/pexels-photo-14024725.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/15059730/pexels-photo-15059730.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5806533/pexels-photo-5806533.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/30780717/pexels-photo-30780717.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   "mixed-farming": [
     "1677741447046-2021fb219d3e",
     "1535379453347-1ffd615e2e08", // รถบรรทุกไร่
     "1533062618053-d51e617307ec", // รถแทรกเตอร์เขียว
     "1468253926858-331ac6e1e97f", // รถแทรกเตอร์แดง
+    // Pexels — เพิ่ม pool เดือน 2026-07 (แปลงเกษตรผสมผสาน/สวนหลังบ้าน)
+    "https://images.pexels.com/photos/15422584/pexels-photo-15422584.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/8148241/pexels-photo-8148241.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4894614/pexels-photo-4894614.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/37553150/pexels-photo-37553150.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34150447/pexels-photo-34150447.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/730923/pexels-photo-730923.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/27176761/pexels-photo-27176761.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/27176781/pexels-photo-27176781.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32047262/pexels-photo-32047262.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7457011/pexels-photo-7457011.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/8105623/pexels-photo-8105623.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/27742375/pexels-photo-27742375.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7299965/pexels-photo-7299965.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   diseases: [
     "1692481060581-98c224124f12",
@@ -165,12 +206,47 @@ const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "1713952160156-bb59cac789a9", // โดรนบินเหนือไร่
     "1634143174678-ecd0c3c2375b", // แทรกเตอร์ขับในไร่
     "1521405924368-64c5b84bec60", // โดรนระยะใกล้
+    // Pexels — เพิ่ม pool เดือน 2026-07 (โดรน/โรงเรือน/ระบบน้ำอัตโนมัติ)
+    "https://images.pexels.com/photos/34182412/pexels-photo-34182412.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/37288723/pexels-photo-37288723.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/1064608/pexels-photo-1064608.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34182315/pexels-photo-34182315.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6792187/pexels-photo-6792187.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/3912469/pexels-photo-3912469.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34182311/pexels-photo-34182311.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/36917505/pexels-photo-36917505.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/19581775/pexels-photo-19581775.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/28240873/pexels-photo-28240873.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/36834230/pexels-photo-36834230.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4975400/pexels-photo-4975400.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/17797257/pexels-photo-17797257.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/33881124/pexels-photo-33881124.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/21675714/pexels-photo-21675714.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   "agri-news-law-standards": [
     "1768399808130-abac2a8442e0", // อาคารหน่วยงาน
     "1778080132813-d51b1b36b08e", // เอกสารเก่า
+    // Pexels — เพิ่ม pool เดือน 2026-07 (อาคารราชการ/เอกสารกฎหมาย/มาตรฐานรับรอง)
+    "https://images.pexels.com/photos/11361969/pexels-photo-11361969.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/11105014/pexels-photo-11105014.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/9858904/pexels-photo-9858904.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/11145683/pexels-photo-11145683.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6358840/pexels-photo-6358840.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/8112105/pexels-photo-8112105.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5953737/pexels-photo-5953737.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7163986/pexels-photo-7163986.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/12324202/pexels-photo-12324202.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7771973/pexels-photo-7771973.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/48148/pexels-photo-48148.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7054502/pexels-photo-7054502.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
 };
+
+/** pool entry เป็นได้ทั้ง Unsplash bare id ("1234-abcd") หรือ full URL (เช่น Pexels) */
+function toCoverUrl(entry: string): string {
+  if (entry.startsWith("http")) return entry;
+  return `https://images.unsplash.com/photo-${entry}?auto=format&fit=crop&w=1400&q=70`;
+}
 
 /** เลือกรูปจาก pool ของหมวด โดยข้ามรูปที่ถูกใช้แล้วในหมวดเดียวกัน (กันซ้ำ) */
 async function coverFor(
@@ -187,19 +263,23 @@ async function coverFor(
           WHERE c.slug=? AND a.coverImage IS NOT NULL AND a.coverImage<>'' AND a.slug<>?`,
     args: [catSlug, slug],
   });
-  const usedIds = new Set<string>();
+  const usedUrls = new Set<string>();
   for (const r of usedRows.rows) {
-    const m = String(r.coverImage || "").match(/photo-([a-z0-9-]+)\?/);
-    if (m) usedIds.add(m[1]);
+    const u = String(r.coverImage || "");
+    if (u) usedUrls.add(u);
   }
 
-  const available = pool.filter((id) => !usedIds.has(id) && !usedThisRun.has(id));
+  const available = pool.filter((entry) => {
+    const url = toCoverUrl(entry);
+    return !usedUrls.has(url) && !usedThisRun.has(url);
+  });
   const candidates = available.length > 0 ? available : pool;
   let hash = 0;
   for (const ch of slug) hash = (hash * 31 + ch.charCodeAt(0)) >>> 0;
-  const id = candidates[hash % candidates.length];
-  usedThisRun.add(id);
-  return `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=1400&q=70`;
+  const entry = candidates[hash % candidates.length];
+  const url = toCoverUrl(entry);
+  usedThisRun.add(url);
+  return url;
 }
 
 async function main() {

@@ -29,7 +29,15 @@ export default function Hero({ articleCount }: { articleCount: number }) {
 
       <div className="container-x relative py-20 sm:py-28">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="eyebrow text-lime-canopy">
+          <Image
+            src="/logo.png"
+            alt="โลโก้ เกษตรกรไทย"
+            width={72}
+            height={72}
+            className="mx-auto drop-shadow-lg"
+          />
+
+          <span className="eyebrow mt-4 block text-lime-canopy">
             คลังความรู้เกษตรครบวงจร
           </span>
 
