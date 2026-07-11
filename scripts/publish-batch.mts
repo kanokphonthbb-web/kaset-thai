@@ -478,6 +478,15 @@ const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
   "weed-control": ["https://images.pexels.com/photos/5410777/pexels-photo-5410777.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   whitefly: ["https://images.pexels.com/photos/2974409/pexels-photo-2974409.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   "yellow-leaves": ["https://images.pexels.com/photos/5978538/pexels-photo-5978538.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  // mixed-farming model pairs (found 8 of 8 published "mixed-model-X-Y" articles mismatched on 2026-07-11)
+  "deep-litter-pig-manure": ["https://images.pexels.com/photos/16469478/pexels-photo-16469478.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "mixed-model-fish-vegetables": ["https://images.pexels.com/photos/16311186/pexels-photo-16311186.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "goat-forage": ["https://images.pexels.com/photos/36861200/pexels-photo-36861200.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "mushroom-earthworm": ["https://images.pexels.com/photos/2478421/pexels-photo-2478421.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "napier-cattle": ["https://images.pexels.com/photos/12204342/pexels-photo-12204342.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "orchard-native-chicken": ["https://images.pexels.com/photos/36215493/pexels-photo-36215493.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "rice-fish-duck": ["https://images.pexels.com/photos/36965358/pexels-photo-36965358.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "mixed-model-veg-chicken": ["https://images.pexels.com/photos/30319491/pexels-photo-30319491.jpeg?auto=compress&cs=tinysrgb&w=1400"],
 };
 
 function matchKeywordPool(slug: string): string[] | undefined {
