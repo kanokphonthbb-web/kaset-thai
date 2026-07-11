@@ -271,7 +271,7 @@ export const IMAGES: Record<string, string> = {
   "integrated-farming-1-rai": "https://images.pexels.com/photos/2698449/pexels-photo-2698449.jpeg?auto=compress&cs=tinysrgb&w=1400",
   "before-you-start-farming": "https://images.pexels.com/photos/26833033/pexels-photo-26833033.jpeg?auto=compress&cs=tinysrgb&w=1400",
   "agri-tech-tools": "https://images.pexels.com/photos/9963140/pexels-photo-9963140.jpeg?auto=compress&cs=tinysrgb&w=1400",
-  "agri-news-law-standards": "https://images.pexels.com/photos/33413740/pexels-photo-33413740.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "agri-news-law-standards": "https://images.pexels.com/photos/32834464/pexels-photo-32834464.jpeg?auto=compress&cs=tinysrgb&w=1400",
 };
 
 export const HERO_IMAGE = "1505471768190-275e2ad7b3f9"; // ชาวนาไทยดำนา
