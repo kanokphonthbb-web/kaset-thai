@@ -422,14 +422,64 @@ function toCoverUrl(entry: string): string {
   return `https://images.unsplash.com/photo-${entry}?auto=format&fit=crop&w=1400&q=70`;
 }
 
-/** เลือกรูปจาก pool ของหมวด โดยข้ามรูปที่ถูกใช้แล้วในหมวดเดียวกัน (กันซ้ำ) */
+// รูปเฉพาะพันธุ์/ชนิด — ใช้ก่อน CAT_IMAGE_POOLS เสมอเมื่อ slug มีคำเหล่านี้ (ยาวสุดที่ match ชนะ)
+// ป้องกันปัญหา "รูปไม่ตรงเรื่อง" เช่น บทความปลานิลได้รูปกุ้ง, บทความไก่เนื้อได้รูปหมู
+// (พบและแก้ครบทั้งหมวด fishery/animals/plants เมื่อ 2026-07-11 — ทุก id ตรวจ alt-text จาก Pexels API แล้วว่าตรงชนิด)
+const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
+  // fishery
+  tilapia: ["https://images.pexels.com/photos/15553656/pexels-photo-15553656.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/14924016/pexels-photo-14924016.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/8352786/pexels-photo-8352786.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  catfish: ["https://images.pexels.com/photos/19040471/pexels-photo-19040471.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/33445044/pexels-photo-33445044.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/33560903/pexels-photo-33560903.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/4619577/pexels-photo-4619577.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  seabass: ["https://images.pexels.com/photos/2042564/pexels-photo-2042564.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/26622789/pexels-photo-26622789.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "silver-barb": ["https://images.pexels.com/photos/7509417/pexels-photo-7509417.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/14024728/pexels-photo-14024728.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  snakehead: ["https://images.pexels.com/photos/14024725/pexels-photo-14024725.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/5806533/pexels-photo-5806533.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  carp: ["https://images.pexels.com/photos/33995746/pexels-photo-33995746.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/9210283/pexels-photo-9210283.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  // animals
+  broiler: ["https://images.pexels.com/photos/27083552/pexels-photo-27083552.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/35877057/pexels-photo-35877057.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/26625882/pexels-photo-26625882.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/17064389/pexels-photo-17064389.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  goose: ["https://images.pexels.com/photos/19203116/pexels-photo-19203116.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/37902824/pexels-photo-37902824.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  duck: ["https://images.pexels.com/photos/11700747/pexels-photo-11700747.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/28505058/pexels-photo-28505058.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/28505047/pexels-photo-28505047.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/12741625/pexels-photo-12741625.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  quail: ["https://images.pexels.com/photos/4530404/pexels-photo-4530404.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/4530408/pexels-photo-4530408.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "native-chicken": ["https://images.pexels.com/photos/35282555/pexels-photo-35282555.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/31099676/pexels-photo-31099676.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "fattening-pig": ["https://images.pexels.com/photos/8839927/pexels-photo-8839927.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/6791938/pexels-photo-6791938.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/2737171/pexels-photo-2737171.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "layer-chicken": ["https://images.pexels.com/photos/4911711/pexels-photo-4911711.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/35877061/pexels-photo-35877061.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/16667124/pexels-photo-16667124.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "beef-cattle": ["https://images.pexels.com/photos/7164014/pexels-photo-7164014.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  buffalo: ["https://images.pexels.com/photos/7207169/pexels-photo-7207169.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "fattening-cattle": ["https://images.pexels.com/photos/27568762/pexels-photo-27568762.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  // plants
+  "rice-jasmine": ["https://images.pexels.com/photos/35559229/pexels-photo-35559229.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/37933142/pexels-photo-37933142.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/15879425/pexels-photo-15879425.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "sticky-rice": ["https://images.pexels.com/photos/17001692/pexels-photo-17001692.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/36346840/pexels-photo-36346840.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/32200253/pexels-photo-32200253.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  riceberry: ["https://images.pexels.com/photos/30756211/pexels-photo-30756211.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  cassava: ["https://images.pexels.com/photos/28454278/pexels-photo-28454278.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/36846177/pexels-photo-36846177.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  chili: ["https://images.pexels.com/photos/13222684/pexels-photo-13222684.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/13220059/pexels-photo-13220059.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "chinese-cabbage": ["https://images.pexels.com/photos/31782675/pexels-photo-31782675.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/36282128/pexels-photo-36282128.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  cucumber: ["https://images.pexels.com/photos/31737291/pexels-photo-31737291.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/36628247/pexels-photo-36628247.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "feed-corn": ["https://images.pexels.com/photos/20234940/pexels-photo-20234940.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/1382102/pexels-photo-1382102.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "sweet-corn": ["https://images.pexels.com/photos/13566357/pexels-photo-13566357.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/13054496/pexels-photo-13054496.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  mungbean: ["https://images.pexels.com/photos/18358654/pexels-photo-18358654.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/7420815/pexels-photo-7420815.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "oil-palm": ["https://images.pexels.com/photos/3246159/pexels-photo-3246159.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/10269220/pexels-photo-10269220.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  peanut: ["https://images.pexels.com/photos/33303300/pexels-photo-33303300.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/18900465/pexels-photo-18900465.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  rubber: ["https://images.pexels.com/photos/36312566/pexels-photo-36312566.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/11425870/pexels-photo-11425870.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  sesame: ["https://images.pexels.com/photos/17362929/pexels-photo-17362929.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  soybean: ["https://images.pexels.com/photos/38328331/pexels-photo-38328331.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/36893984/pexels-photo-36893984.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  sugarcane: ["https://images.pexels.com/photos/11466855/pexels-photo-11466855.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/38302386/pexels-photo-38302386.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "sweet-potato": ["https://images.pexels.com/photos/2797398/pexels-photo-2797398.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/2889344/pexels-photo-2889344.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+};
+
+function matchKeywordPool(slug: string): string[] | undefined {
+  let bestKey: string | undefined;
+  for (const key of Object.keys(KEYWORD_IMAGE_POOLS)) {
+    if (slug.includes(key) && (!bestKey || key.length > bestKey.length)) bestKey = key;
+  }
+  return bestKey ? KEYWORD_IMAGE_POOLS[bestKey] : undefined;
+}
+
+/** เลือกรูปจาก pool เฉพาะพันธุ์ก่อน (ถ้า slug ตรง) ไม่งั้น fallback ไป pool ของหมวด โดยข้ามรูปที่ถูกใช้แล้วในหมวดเดียวกัน (กันซ้ำ) */
 async function coverFor(
   db: ReturnType<typeof createClient>,
   catSlug: string | undefined,
   slug: string,
   usedThisRun: Set<string>,
 ): Promise<string> {
-  const pool = catSlug ? CAT_IMAGE_POOLS[catSlug] : undefined;
+  const pool = matchKeywordPool(slug) || (catSlug ? CAT_IMAGE_POOLS[catSlug] : undefined);
   if (!pool || pool.length === 0) return "";
 
   const usedRows = await db.execute({
