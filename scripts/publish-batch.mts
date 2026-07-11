@@ -462,6 +462,22 @@ const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
   soybean: ["https://images.pexels.com/photos/38328331/pexels-photo-38328331.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/36893984/pexels-photo-36893984.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   sugarcane: ["https://images.pexels.com/photos/11466855/pexels-photo-11466855.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/38302386/pexels-photo-38302386.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   "sweet-potato": ["https://images.pexels.com/photos/2797398/pexels-photo-2797398.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/2889344/pexels-photo-2889344.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  // diseases/pests (found 14 of 15 published diseases articles mismatched on 2026-07-11 — same root cause)
+  "asf-pig": ["https://images.pexels.com/photos/2737171/pexels-photo-2737171.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "downy-mildew": ["https://images.pexels.com/photos/7718268/pexels-photo-7718268.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "fish-water-shock": ["https://images.pexels.com/photos/5786581/pexels-photo-5786581.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "fmd-cattle": ["https://images.pexels.com/photos/8023245/pexels-photo-8023245.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "frog-disease": ["https://images.pexels.com/photos/9124980/pexels-photo-9124980.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "golden-apple-snail": ["https://images.pexels.com/photos/37616450/pexels-photo-37616450.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "layer-chicken-diseases": ["https://images.pexels.com/photos/16667124/pexels-photo-16667124.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "leaf-blight": ["https://images.pexels.com/photos/28166522/pexels-photo-28166522.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "leaf-miner": ["https://images.pexels.com/photos/33806232/pexels-photo-33806232.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  mealybug: ["https://images.pexels.com/photos/32343531/pexels-photo-32343531.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "root-rot": ["https://images.pexels.com/photos/4751971/pexels-photo-4751971.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  thrips: ["https://images.pexels.com/photos/12016351/pexels-photo-12016351.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "weed-control": ["https://images.pexels.com/photos/5410777/pexels-photo-5410777.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  whitefly: ["https://images.pexels.com/photos/2974409/pexels-photo-2974409.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "yellow-leaves": ["https://images.pexels.com/photos/5978538/pexels-photo-5978538.jpeg?auto=compress&cs=tinysrgb&w=1400"],
 };
 
 function matchKeywordPool(slug: string): string[] | undefined {
