@@ -120,6 +120,30 @@ const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "1633945375508-035305e4275d", // ต้นข้าวโพดเหี่ยวใกล้
     "1758158476251-b1754057722e", // ข้าวโพดแห้งเก็บเกี่ยว
     "1607804384775-9a14cf1f12e5", // ทุ่งข้าวสาลีแห้ง
+    // Pexels — เพิ่ม pool เดือน 2026-07 (โรคพืช/แมลงศัตรูพืช/โรคสัตว์/โรคสัตว์น้ำ wave2)
+    "https://images.pexels.com/photos/34234358/pexels-photo-34234358.jpeg?auto=compress&cs=tinysrgb&w=1400", // ใบเน่าเป็นเชื้อรา
+    "https://images.pexels.com/photos/7718268/pexels-photo-7718268.jpeg?auto=compress&cs=tinysrgb&w=1400", // ใบราแป้ง/ราน้ำค้าง
+    "https://images.pexels.com/photos/28166522/pexels-photo-28166522.jpeg?auto=compress&cs=tinysrgb&w=1400", // ใบจุดสีน้ำตาล ใบไหม้
+    "https://images.pexels.com/photos/20223372/pexels-photo-20223372.jpeg?auto=compress&cs=tinysrgb&w=1400", // ใบติดเชื้อรา
+    "https://images.pexels.com/photos/33995964/pexels-photo-33995964.jpeg?auto=compress&cs=tinysrgb&w=1400", // ใบถูกแมลงกัดเป็นรู (หนอนชอนใบ)
+    "https://images.pexels.com/photos/11588748/pexels-photo-11588748.jpeg?auto=compress&cs=tinysrgb&w=1400", // เพลี้ยสีส้มเกาะใบ
+    "https://images.pexels.com/photos/16902610/pexels-photo-16902610.jpeg?auto=compress&cs=tinysrgb&w=1400", // เพลี้ยแดงเกาะใบ
+    "https://images.pexels.com/photos/20826372/pexels-photo-20826372.jpeg?auto=compress&cs=tinysrgb&w=1400", // เพลี้ยเกาะลำต้น
+    "https://images.pexels.com/photos/17333448/pexels-photo-17333448.jpeg?auto=compress&cs=tinysrgb&w=1400", // กลุ่มเพลี้ยแป้งสีเหลือง
+    "https://images.pexels.com/photos/3007693/pexels-photo-3007693.jpeg?auto=compress&cs=tinysrgb&w=1400", // มดกับเพลี้ยบนใบ
+    "https://images.pexels.com/photos/16667124/pexels-photo-16667124.jpeg?auto=compress&cs=tinysrgb&w=1400", // ฟาร์มไก่ไข่
+    "https://images.pexels.com/photos/12246335/pexels-photo-12246335.jpeg?auto=compress&cs=tinysrgb&w=1400", // ไก่รวมฝูงในฟาร์ม
+    "https://images.pexels.com/photos/34406262/pexels-photo-34406262.jpeg?auto=compress&cs=tinysrgb&w=1400", // ไก่ในกรงตลาด (แยกกักโรค)
+    "https://images.pexels.com/photos/6339152/pexels-photo-6339152.jpeg?auto=compress&cs=tinysrgb&w=1400", // วัวโคนม/โคเนื้อระยะใกล้
+    "https://images.pexels.com/photos/8023245/pexels-photo-8023245.jpeg?auto=compress&cs=tinysrgb&w=1400", // วัวติดป้ายหูในทุ่งหญ้า
+    "https://images.pexels.com/photos/11357088/pexels-photo-11357088.jpeg?auto=compress&cs=tinysrgb&w=1400", // วัวกินอาหารในฟาร์ม
+    "https://images.pexels.com/photos/8839927/pexels-photo-8839927.jpeg?auto=compress&cs=tinysrgb&w=1400", // หมูในโรงเรือน
+    "https://images.pexels.com/photos/6791938/pexels-photo-6791938.jpeg?auto=compress&cs=tinysrgb&w=1400", // ฟาร์มหมูภายในโรงเรือน
+    "https://images.pexels.com/photos/2737171/pexels-photo-2737171.jpeg?auto=compress&cs=tinysrgb&w=1400", // หมูรวมฝูงในคอก
+    "https://images.pexels.com/photos/7509423/pexels-photo-7509423.jpeg?auto=compress&cs=tinysrgb&w=1400", // คนงานดูแลบ่อปลา
+    "https://images.pexels.com/photos/28738435/pexels-photo-28738435.jpeg?auto=compress&cs=tinysrgb&w=1400", // บ่อปลากระชังมุมสูง
+    "https://images.pexels.com/photos/36519888/pexels-photo-36519888.jpeg?auto=compress&cs=tinysrgb&w=1400", // กบในบ่อน้ำ
+    "https://images.pexels.com/photos/35540381/pexels-photo-35540381.jpeg?auto=compress&cs=tinysrgb&w=1400", // กบบนหินริมบ่อ
   ],
   "cost-profit": [
     "1626266061368-46a8f578ddd6", // เครื่องคิดเลขโต๊ะทำงาน
@@ -173,6 +197,23 @@ const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "1714041484970-a1c03c4359e9",
     "1696698184542-78a89ba247a2",
     "1669642550102-4715072f1c84",
+    // Pexels — เพิ่ม pool เดือน 2026-07 (ปฏิทินงบประมาณ/เอกสารบัญชี/เครื่องคิดเลข) กัน pool หมด เพราะ cost-profit เผยแพร่ไปมากแล้ว
+    "https://images.pexels.com/photos/4386341/pexels-photo-4386341.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6962993/pexels-photo-6962993.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6694543/pexels-photo-6694543.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/209224/pexels-photo-209224.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/259065/pexels-photo-259065.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6694563/pexels-photo-6694563.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6956131/pexels-photo-6956131.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5466798/pexels-photo-5466798.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/38473092/pexels-photo-38473092.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7054413/pexels-photo-7054413.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5900228/pexels-photo-5900228.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5466800/pexels-photo-5466800.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7054399/pexels-photo-7054399.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/16600134/pexels-photo-16600134.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/33175651/pexels-photo-33175651.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7821914/pexels-photo-7821914.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   market: [
     "1579113800032-c38bd7635818",
@@ -200,6 +241,25 @@ const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "1693414853994-1080baaacb4d", // มือหยิบดิน
     "1708437237775-6c89e28913d4", // เศษไม้สับทำปุ๋ย
     "1523349312806-f5dde0a01c32", // ต้นไม้ใบเขียวดินดำ
+    // Pexels — เพิ่ม pool เดือน 2026-07 (ดิน/ปุ๋ย/น้ำ/ชลประทาน)
+    "https://images.pexels.com/photos/11996945/pexels-photo-11996945.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/21967623/pexels-photo-21967623.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/24260575/pexels-photo-24260575.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/18328388/pexels-photo-18328388.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7299923/pexels-photo-7299923.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5503338/pexels-photo-5503338.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/28214180/pexels-photo-28214180.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7728868/pexels-photo-7728868.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7299926/pexels-photo-7299926.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/31110992/pexels-photo-31110992.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/17765487/pexels-photo-17765487.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/11678428/pexels-photo-11678428.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34182300/pexels-photo-34182300.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/33881124/pexels-photo-33881124.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/29067120/pexels-photo-29067120.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/2684805/pexels-photo-2684805.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34344768/pexels-photo-34344768.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/20960018/pexels-photo-20960018.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   "agri-tech-tools": [
     "1500382017468-9049fed747ef",
