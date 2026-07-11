@@ -487,6 +487,15 @@ const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
   "orchard-native-chicken": ["https://images.pexels.com/photos/36215493/pexels-photo-36215493.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   "rice-fish-duck": ["https://images.pexels.com/photos/36965358/pexels-photo-36965358.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   "mixed-model-veg-chicken": ["https://images.pexels.com/photos/30319491/pexels-photo-30319491.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  // market/processing (found 8 of 16 published market articles mismatched on 2026-07-11)
+  "banana-processing": ["https://images.pexels.com/photos/37646934/pexels-photo-37646934.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "chili-processing": ["https://images.pexels.com/photos/36362789/pexels-photo-36362789.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "mango-processing": ["https://images.pexels.com/photos/37816783/pexels-photo-37816783.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "sell-eggs-community": ["https://images.pexels.com/photos/31037330/pexels-photo-31037330.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "sell-fruit-farmgate": ["https://images.pexels.com/photos/17885434/pexels-photo-17885434.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "facebook-line-farm-sales": ["https://images.pexels.com/photos/8939504/pexels-photo-8939504.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "herb-processing": ["https://images.pexels.com/photos/4834332/pexels-photo-4834332.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "ready-to-cook-vegetables": ["https://images.pexels.com/photos/16563148/pexels-photo-16563148.jpeg?auto=compress&cs=tinysrgb&w=1400"],
 };
 
 function matchKeywordPool(slug: string): string[] | undefined {
