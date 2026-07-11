@@ -42,8 +42,53 @@ const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "1762889278403-1d1a57d9a587", // เพาะเห็ดนางฟ้า
     "1533792344354-ed5e8fc12494", // กระถางสมุนไพร
     "1679321750826-34c10afa2b7d", // กรีดยางพารา
+    // Pexels — เพิ่ม pool เดือน 2026-07 (นาข้าว/แปลงผัก/ไร่ข้าวโพด/สวนผลไม้ — pool ใหญ่เพราะ backlog plants มากสุด)
+    "https://images.pexels.com/photos/35559222/pexels-photo-35559222.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/24243611/pexels-photo-24243611.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/3850176/pexels-photo-3850176.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/16592319/pexels-photo-16592319.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/35559229/pexels-photo-35559229.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/37933142/pexels-photo-37933142.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/16592316/pexels-photo-16592316.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/19371515/pexels-photo-19371515.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/27742358/pexels-photo-27742358.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/19031117/pexels-photo-19031117.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/38279065/pexels-photo-38279065.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/28102052/pexels-photo-28102052.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/16872660/pexels-photo-16872660.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/3889959/pexels-photo-3889959.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/11573790/pexels-photo-11573790.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/27176779/pexels-photo-27176779.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/28454278/pexels-photo-28454278.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34076809/pexels-photo-34076809.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7543139/pexels-photo-7543139.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34253719/pexels-photo-34253719.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/12944752/pexels-photo-12944752.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/16781275/pexels-photo-16781275.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/28264138/pexels-photo-28264138.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/3066814/pexels-photo-3066814.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/20987903/pexels-photo-20987903.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32530110/pexels-photo-32530110.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/31095026/pexels-photo-31095026.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/14704981/pexels-photo-14704981.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32530096/pexels-photo-32530096.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/28903103/pexels-photo-28903103.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/35573254/pexels-photo-35573254.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32530076/pexels-photo-32530076.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   animals: [
+    // Pexels — เพิ่ม pool เดือน 2026-07 (ขยายก่อนล็อตเขียนถัดไป)
+    "https://images.pexels.com/photos/37466235/pexels-photo-37466235.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/15645658/pexels-photo-15645658.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/15645665/pexels-photo-15645665.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4911710/pexels-photo-4911710.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/24017332/pexels-photo-24017332.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/22699847/pexels-photo-22699847.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/31548249/pexels-photo-31548249.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/20729021/pexels-photo-20729021.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/2252541/pexels-photo-2252541.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/27167732/pexels-photo-27167732.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/9768959/pexels-photo-9768959.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "1548550023-2bdb3c5beed7",
     "1538170989343-ce003278e1a3", // ฟาร์มไก่
     "1548781518-d5f5e6a5e281", // ลูกหมู
@@ -69,6 +114,14 @@ const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/4530409/pexels-photo-4530409.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   fishery: [
+    // Pexels — เพิ่ม pool เดือน 2026-07 (ขยายก่อนล็อตเขียนถัดไป)
+    "https://images.pexels.com/photos/9210283/pexels-photo-9210283.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/14024728/pexels-photo-14024728.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32230041/pexels-photo-32230041.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6872322/pexels-photo-6872322.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6416342/pexels-photo-6416342.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/23692726/pexels-photo-23692726.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/16521533/pexels-photo-16521533.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "1541441056316-443fff347c40",
     "1674962296996-b17a771d44b3", // กุ้ง
     "1717737853712-b6c0e9be4057", // บ่อน้ำ
@@ -90,6 +143,22 @@ const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/30780717/pexels-photo-30780717.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   "mixed-farming": [
+    // Pexels — เพิ่ม pool เดือน 2026-07 (ขยายก่อนล็อตเขียนถัดไป)
+    "https://images.pexels.com/photos/30255157/pexels-photo-30255157.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7765190/pexels-photo-7765190.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/1567791/pexels-photo-1567791.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/14407239/pexels-photo-14407239.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4350649/pexels-photo-4350649.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/3266776/pexels-photo-3266776.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/28144221/pexels-photo-28144221.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/12387507/pexels-photo-12387507.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/8244158/pexels-photo-8244158.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/20111927/pexels-photo-20111927.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/28506418/pexels-photo-28506418.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34438780/pexels-photo-34438780.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/9954075/pexels-photo-9954075.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/37527058/pexels-photo-37527058.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/16360837/pexels-photo-16360837.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "1677741447046-2021fb219d3e",
     "1535379453347-1ffd615e2e08", // รถบรรทุกไร่
     "1533062618053-d51e617307ec", // รถแทรกเตอร์เขียว
@@ -216,6 +285,23 @@ const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/7821914/pexels-photo-7821914.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   market: [
+    // Pexels — เพิ่ม pool เดือน 2026-07 (ขยายก่อนล็อตเขียนถัดไป)
+    "https://images.pexels.com/photos/23614249/pexels-photo-23614249.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5709282/pexels-photo-5709282.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/28654108/pexels-photo-28654108.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/1265627/pexels-photo-1265627.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/27087093/pexels-photo-27087093.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/38384704/pexels-photo-38384704.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/15484964/pexels-photo-15484964.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/30893338/pexels-photo-30893338.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/10697692/pexels-photo-10697692.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/18380292/pexels-photo-18380292.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/33554284/pexels-photo-33554284.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/35244807/pexels-photo-35244807.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/30712705/pexels-photo-30712705.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/36791058/pexels-photo-36791058.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/20267214/pexels-photo-20267214.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/12062202/pexels-photo-12062202.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "1579113800032-c38bd7635818",
     "1485637701894-09ad422f6de6", // มะเขือเทศตลาด
     "1550989460-0adf9ea622e2", // แผงผัก
@@ -255,13 +341,26 @@ const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/17765487/pexels-photo-17765487.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/11678428/pexels-photo-11678428.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/34182300/pexels-photo-34182300.jpeg?auto=compress&cs=tinysrgb&w=1400",
-    "https://images.pexels.com/photos/33881124/pexels-photo-33881124.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/29067120/pexels-photo-29067120.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/2684805/pexels-photo-2684805.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/34344768/pexels-photo-34344768.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/20960018/pexels-photo-20960018.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   "agri-tech-tools": [
+    // Pexels — เพิ่ม pool เดือน 2026-07 (ขยายก่อนล็อตเขียนถัดไป)
+    "https://images.pexels.com/photos/34182313/pexels-photo-34182313.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34182409/pexels-photo-34182409.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34182383/pexels-photo-34182383.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34182341/pexels-photo-34182341.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/37288742/pexels-photo-37288742.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/37288741/pexels-photo-37288741.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/16905006/pexels-photo-16905006.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32079709/pexels-photo-32079709.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/18471551/pexels-photo-18471551.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/18471565/pexels-photo-18471565.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/28129605/pexels-photo-28129605.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6510867/pexels-photo-6510867.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/15784822/pexels-photo-15784822.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "1500382017468-9049fed747ef",
     "1713952160156-bb59cac789a9", // โดรนบินเหนือไร่
     "1634143174678-ecd0c3c2375b", // แทรกเตอร์ขับในไร่
@@ -284,6 +383,21 @@ const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/21675714/pexels-photo-21675714.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   "agri-news-law-standards": [
+    // Pexels — เพิ่ม pool เดือน 2026-07 (ขยายก่อนล็อตเขียนถัดไป)
+    "https://images.pexels.com/photos/7601056/pexels-photo-7601056.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4468974/pexels-photo-4468974.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/357514/pexels-photo-357514.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5235171/pexels-photo-5235171.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/17564642/pexels-photo-17564642.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6950156/pexels-photo-6950156.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/27435492/pexels-photo-27435492.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/12199410/pexels-photo-12199410.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5622370/pexels-photo-5622370.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4975383/pexels-photo-4975383.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7723731/pexels-photo-7723731.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7821463/pexels-photo-7821463.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/8205115/pexels-photo-8205115.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7876043/pexels-photo-7876043.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "1768399808130-abac2a8442e0", // อาคารหน่วยงาน
     "1778080132813-d51b1b36b08e", // เอกสารเก่า
     // Pexels — เพิ่ม pool เดือน 2026-07 (อาคารราชการ/เอกสารกฎหมาย/มาตรฐานรับรอง)
