@@ -527,6 +527,41 @@ const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
   ],
   "sprinkler-fruit": ["https://images.pexels.com/photos/17765487/pexels-photo-17765487.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   "worm-compost": ["https://images.pexels.com/photos/3696170/pexels-photo-3696170.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  // agri-tech-tools (found 17 of 18 published articles mismatched on 2026-07-11 — shared generic drone/finance stock pool, zero relevance logic)
+  "agri-apps": ["https://images.pexels.com/photos/16678079/pexels-photo-16678079.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "agri-drone": [
+    "https://images.pexels.com/photos/34182370/pexels-photo-34182370.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34182367/pexels-photo-34182367.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "battery-sprayer": [
+    "https://images.pexels.com/photos/36027197/pexels-photo-36027197.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/10697911/pexels-photo-10697911.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "farm-cctv": ["https://images.pexels.com/photos/15640038/pexels-photo-15640038.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "farm-google-sheets": [
+    "https://images.pexels.com/photos/7821708/pexels-photo-7821708.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/8296981/pexels-photo-8296981.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "line-oa-farm": [
+    "https://images.pexels.com/photos/8541349/pexels-photo-8541349.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/23939071/pexels-photo-23939071.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "soil-moisture-sensor": [
+    "https://images.pexels.com/photos/16905006/pexels-photo-16905006.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/21675714/pexels-photo-21675714.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "solar-water-pump": [
+    "https://images.pexels.com/photos/9799706/pexels-photo-9799706.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/38360727/pexels-photo-38360727.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "vegetable-greenhouse": [
+    "https://images.pexels.com/photos/36917505/pexels-photo-36917505.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/19581775/pexels-photo-19581775.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "wood-chipper-farm": [
+    "https://images.pexels.com/photos/34581908/pexels-photo-34581908.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/11124086/pexels-photo-11124086.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
 };
 
 function matchKeywordPool(slug: string): string[] | undefined {
@@ -537,14 +572,52 @@ function matchKeywordPool(slug: string): string[] | undefined {
   return bestKey ? KEYWORD_IMAGE_POOLS[bestKey] : undefined;
 }
 
+// cost-profit slugs are matrix-generated (cost-profit-cost-845) and carry no crop/animal name —
+// only the title does (e.g. "ต้นทุนเลี้ยงปลานิล"). Matched separately from KEYWORD_IMAGE_POOLS,
+// gated to catSlug === "cost-profit" only, to avoid title-substring collisions bleeding into other categories.
+const COST_PROFIT_TITLE_POOLS: Record<string, string[]> = {
+  "ข้าวโพด": ["https://images.pexels.com/photos/6680152/pexels-photo-6680152.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/5454206/pexels-photo-5454206.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/6680154/pexels-photo-6680154.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/10221674/pexels-photo-10221674.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "ข้าว": ["https://images.pexels.com/photos/5214465/pexels-photo-5214465.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/36663339/pexels-photo-36663339.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/32200256/pexels-photo-32200256.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "เกษตรผสมผสาน": ["https://images.pexels.com/photos/11798036/pexels-photo-11798036.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/12464355/pexels-photo-12464355.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/19851433/pexels-photo-19851433.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "มันสำปะหลัง": ["https://images.pexels.com/photos/35109272/pexels-photo-35109272.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/36846177/pexels-photo-36846177.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/15897036/pexels-photo-15897036.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/7543161/pexels-photo-7543161.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "อ้อย": ["https://images.pexels.com/photos/9622985/pexels-photo-9622985.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/11942833/pexels-photo-11942833.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/27869189/pexels-photo-27869189.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/9622982/pexels-photo-9622982.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "ทุเรียน": ["https://images.pexels.com/photos/37385943/pexels-photo-37385943.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/17910529/pexels-photo-17910529.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/18068868/pexels-photo-18068868.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/17909867/pexels-photo-17909867.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "มะม่วง": ["https://images.pexels.com/photos/28903096/pexels-photo-28903096.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/11760088/pexels-photo-11760088.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/20987903/pexels-photo-20987903.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/36503371/pexels-photo-36503371.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "ผักสลัด": ["https://images.pexels.com/photos/37113938/pexels-photo-37113938.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/37371168/pexels-photo-37371168.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/15069693/pexels-photo-15069693.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/8018733/pexels-photo-8018733.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "พริก": ["https://images.pexels.com/photos/16532190/pexels-photo-16532190.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/10607852/pexels-photo-10607852.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "มะนาว": ["https://images.pexels.com/photos/34204205/pexels-photo-34204205.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/35445969/pexels-photo-35445969.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "เห็ดนางฟ้า": ["https://images.pexels.com/photos/31333813/pexels-photo-31333813.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/35992234/pexels-photo-35992234.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "ไก่ไข่": ["https://images.pexels.com/photos/37126259/pexels-photo-37126259.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/4911791/pexels-photo-4911791.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "ไก่บ้าน": ["https://images.pexels.com/photos/34278173/pexels-photo-34278173.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/11891477/pexels-photo-11891477.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "หมูขุน": ["https://images.pexels.com/photos/27167732/pexels-photo-27167732.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/2252541/pexels-photo-2252541.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "วัวเนื้อ": ["https://images.pexels.com/photos/10673160/pexels-photo-10673160.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/28962577/pexels-photo-28962577.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "แพะ": ["https://images.pexels.com/photos/34075170/pexels-photo-34075170.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/914300/pexels-photo-914300.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "ปลาดุก": ["https://images.pexels.com/photos/166633/pexels-photo-166633.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/19040476/pexels-photo-19040476.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "ปลานิล": ["https://images.pexels.com/photos/31636077/pexels-photo-31636077.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/8352786/pexels-photo-8352786.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "กบ": ["https://images.pexels.com/photos/12393834/pexels-photo-12393834.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/5798329/pexels-photo-5798329.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "สวนผลไม้": ["https://images.pexels.com/photos/3040712/pexels-photo-3040712.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/9891168/pexels-photo-9891168.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+};
+
+function matchTitlePool(title: string): string[] | undefined {
+  let bestKey: string | undefined;
+  for (const key of Object.keys(COST_PROFIT_TITLE_POOLS)) {
+    if (title.includes(key) && (!bestKey || key.length > bestKey.length)) bestKey = key;
+  }
+  return bestKey ? COST_PROFIT_TITLE_POOLS[bestKey] : undefined;
+}
+
 /** เลือกรูปจาก pool เฉพาะพันธุ์ก่อน (ถ้า slug ตรง) ไม่งั้น fallback ไป pool ของหมวด โดยข้ามรูปที่ถูกใช้แล้วในหมวดเดียวกัน (กันซ้ำ) */
 async function coverFor(
   db: ReturnType<typeof createClient>,
   catSlug: string | undefined,
   slug: string,
   usedThisRun: Set<string>,
+  title: string = "",
 ): Promise<string> {
-  const pool = matchKeywordPool(slug) || (catSlug ? CAT_IMAGE_POOLS[catSlug] : undefined);
+  const pool =
+    matchKeywordPool(slug) ||
+    (catSlug === "cost-profit" ? matchTitlePool(title) : undefined) ||
+    (catSlug ? CAT_IMAGE_POOLS[catSlug] : undefined);
   if (!pool || pool.length === 0) return "";
 
   const usedRows = await db.execute({
@@ -592,7 +665,7 @@ async function main() {
       const title = String(row.title);
       const articleType = a.articleType || String(row.articleType || "howto");
       const coverImage = (a.coverImage && String(a.coverImage).trim()) ||
-        (await coverFor(db, row.catSlug as string | undefined, slug, usedThisRun));
+        (await coverFor(db, row.catSlug as string | undefined, slug, usedThisRun, title));
       const html: string = a.html || "";
       const faqs = (a.faqs || []).filter((f: any) => f?.q?.trim() && f?.a?.trim());
       const analysisBlocks = htmlToAnalysisBlocks(html);
