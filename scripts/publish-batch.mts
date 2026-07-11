@@ -496,6 +496,37 @@ const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
   "facebook-line-farm-sales": ["https://images.pexels.com/photos/8939504/pexels-photo-8939504.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   "herb-processing": ["https://images.pexels.com/photos/4834332/pexels-photo-4834332.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   "ready-to-cook-vegetables": ["https://images.pexels.com/photos/16563148/pexels-photo-16563148.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  // soil-water-fertilizer (found 20 of 22 published articles mismatched on 2026-07-11 — severe cross-shuffle between irrigation/soil/manure topics)
+  "bio-fermented-liquid": ["https://images.pexels.com/photos/2786527/pexels-photo-2786527.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "clay-soil": [
+    "https://images.pexels.com/photos/12103312/pexels-photo-12103312.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5739224/pexels-photo-5739224.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  compost: [
+    "https://images.pexels.com/photos/5503336/pexels-photo-5503336.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5503338/pexels-photo-5503338.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "drip-irrigation": ["https://images.pexels.com/photos/10606633/pexels-photo-10606633.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "green-manure": ["https://images.pexels.com/photos/29925665/pexels-photo-29925665.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "manure-types": ["https://images.pexels.com/photos/31096626/pexels-photo-31096626.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  mulching: ["https://images.pexels.com/photos/28310056/pexels-photo-28310056.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "npk-fertilizer": ["https://images.pexels.com/photos/25974981/pexels-photo-25974981.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "over-fertilizing": ["https://images.pexels.com/photos/36911967/pexels-photo-36911967.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "problem-soil": [
+    "https://images.pexels.com/photos/36767372/pexels-photo-36767372.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32831482/pexels-photo-32831482.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "rainwater-harvesting": ["https://images.pexels.com/photos/13772681/pexels-photo-13772681.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "sandy-soil": [
+    "https://images.pexels.com/photos/7501533/pexels-photo-7501533.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/37710743/pexels-photo-37710743.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "soil-test-ph": [
+    "https://images.pexels.com/photos/17621449/pexels-photo-17621449.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/28965721/pexels-photo-28965721.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "sprinkler-fruit": ["https://images.pexels.com/photos/17765487/pexels-photo-17765487.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "worm-compost": ["https://images.pexels.com/photos/3696170/pexels-photo-3696170.jpeg?auto=compress&cs=tinysrgb&w=1400"],
 };
 
 function matchKeywordPool(slug: string): string[] | undefined {
