@@ -514,6 +514,8 @@ const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/37052312/pexels-photo-37052312.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/26245908/pexels-photo-26245908.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/4830329/pexels-photo-4830329.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม 2026-07-11: pool มี 8 แต่ fish-pond-mixed-farm-* มี 9 slugs รวมทั้งไฟล์ (31-39) ต้องมี 9 รูปกันซ้ำ
+    "https://images.pexels.com/photos/27155972/pexels-photo-27155972.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   "stocking-density": [
     "https://images.pexels.com/photos/8598668/pexels-photo-8598668.jpeg?auto=compress&cs=tinysrgb&w=1400",
@@ -534,6 +536,8 @@ const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/12220818/pexels-photo-12220818.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/5795822/pexels-photo-5795822.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/28542761/pexels-photo-28542761.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-11 (batch p2: water-quality-pond มี 9 slugs (50-90) pool เดิมมี 8 ไม่พอ)
+    "https://images.pexels.com/photos/3141709/pexels-photo-3141709.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   // animals
   broiler: ["https://images.pexels.com/photos/27083552/pexels-photo-27083552.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/35877057/pexels-photo-35877057.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/26625882/pexels-photo-26625882.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/17064389/pexels-photo-17064389.jpeg?auto=compress&cs=tinysrgb&w=1400"],
