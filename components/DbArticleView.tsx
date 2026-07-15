@@ -1,8 +1,16 @@
 import Link from "next/link";
 import Header from "./Header";
 import Footer from "./Footer";
+import ProductCard from "./ProductCard";
 import { tocFromHtml, stripInlineFaqSection } from "@/lib/blocks";
 import { SITE_URL } from "@/lib/site";
+import {
+  getAllProducts,
+  injectProductLinks,
+  findMatchingProducts,
+  getProductsByCategory,
+  type Product,
+} from "@/lib/products";
 
 type DbPost = {
   title: string;
@@ -14,10 +22,12 @@ type DbPost = {
   excerpt: string;
   blocksJson: string;
   faqJson: string;
-  category: { name: string } | null;
+  focusKeyword: string;
+  subcategory: string;
+  category: { name: string; slug: string } | null;
 };
 
-export default function DbArticleView({ post }: { post: DbPost }) {
+export default async function DbArticleView({ post }: { post: DbPost }) {
   let faqs: { q: string; a: string }[] = [];
   try {
     faqs = JSON.parse(post.faqJson) as { q: string; a: string }[];
@@ -25,6 +35,27 @@ export default function DbArticleView({ post }: { post: DbPost }) {
   // ตัด FAQ แบบข้อความล้วนออกจาก body — จะ render เป็น accordion แยกด้านล่างแทน กันขึ้นซ้ำสองที่
   const content = faqs.length > 0 ? stripInlineFaqSection(post.content) : post.content;
   const toc = tocFromHtml(content);
+
+  // สินค้าเพื่อการเกษตรที่อาจเกี่ยวข้องกับบทความนี้
+  const products = await getAllProducts();
+  const linkedContent = injectProductLinks(content, products, 3);
+
+  let related: Product[] = findMatchingProducts(
+    `${post.title} ${post.focusKeyword} ${post.subcategory}`,
+    products,
+    3,
+  );
+  if (related.length < 3 && post.category?.slug) {
+    const topUp = await getProductsByCategory(post.category.slug, 3);
+    const seen = new Set(related.map((p) => p.id));
+    for (const p of topUp) {
+      if (related.length >= 3) break;
+      if (!seen.has(p.id)) {
+        related.push(p);
+        seen.add(p.id);
+      }
+    }
+  }
 
   const url = `${SITE_URL}/articles/${post.slug}`;
   const graph: Record<string, unknown>[] = [
@@ -118,8 +149,24 @@ export default function DbArticleView({ post }: { post: DbPost }) {
               <article className="min-w-0">
                 <div
                   className="cc-article"
-                  dangerouslySetInnerHTML={{ __html: content }}
+                  dangerouslySetInnerHTML={{ __html: linkedContent }}
                 />
+
+                {related.length > 0 && (
+                  <div className="mt-12 rounded-2xl bg-mist p-6">
+                    <h2 className="font-display text-2xl font-bold text-ink">
+                      สินค้าที่อาจเป็นประโยชน์
+                    </h2>
+                    <p className="mt-2 text-[15px] text-stone">
+                      หากคุณยังไม่รู้จะเริ่มหาอุปกรณ์หรือปัจจัยการผลิตที่เกี่ยวข้องยังไง สินค้าด้านล่างนี้อาจช่วยให้คุณไม่ต้องเสียเวลาหาใหม่
+                    </p>
+                    <div className="mt-5 grid gap-4 sm:grid-cols-3">
+                      {related.map((p) => (
+                        <ProductCard key={p.id} product={p} compact />
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 {faqs.length > 0 && (
                   <section id="faq" className="mt-12">

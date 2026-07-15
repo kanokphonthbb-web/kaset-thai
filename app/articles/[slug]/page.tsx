@@ -9,6 +9,39 @@ import { getArticleContent } from "@/lib/articleContent";
 import { SITE_URL } from "@/lib/site";
 import { prisma } from "@/lib/prisma";
 import DbArticleView from "@/components/DbArticleView";
+import ProductCard from "@/components/ProductCard";
+import {
+  getAllProducts,
+  injectProductLinks,
+  findMatchingProducts,
+  getProductsByCategory,
+  type Product,
+} from "@/lib/products";
+
+/**
+ * บทความ seed แบบ static เก็บเนื้อหาเป็นย่อหน้าข้อความล้วน (ไม่ใช่ HTML)
+ * เลยเรียก injectProductLinks ทีละย่อหน้าแทนการเรียกครั้งเดียวกับ HTML ก้อนใหญ่
+ * — คุมงบลิงก์รวมทั้งบทความไม่ให้เกิน `max` และไม่ลิงก์สินค้าเดิมซ้ำหลายจุด
+ * โดยอ่าน href ที่ถูกแทรกกลับมาจาก HTML ผลลัพธ์เพื่อรู้ว่าใช้สินค้าตัวไหนไปแล้ว
+ */
+function linkProductsInParagraphs(paragraphs: string[], products: Product[], max: number): string[] {
+  const usedIds = new Set<string>();
+  const slugToId = new Map(products.map((p) => [p.slug, p.id]));
+  let remaining = max;
+  return paragraphs.map((p) => {
+    if (remaining <= 0) return p;
+    const candidates = products.filter((pr) => !usedIds.has(pr.id));
+    const linked = injectProductLinks(p, candidates, remaining);
+    if (linked === p) return p;
+    const matches = [...linked.matchAll(/href="\/products\/([^"]+)"/g)];
+    for (const m of matches) {
+      const id = slugToId.get(m[1]);
+      if (id) usedIds.add(id);
+    }
+    remaining -= matches.length;
+    return linked;
+  });
+}
 
 type Params = { params: { slug: string } };
 
@@ -33,7 +66,7 @@ async function getDbPost(slug: string) {
   try {
     return await prisma.article.findFirst({
       where: { slug, status: "published" },
-      include: { category: { select: { name: true } } },
+      include: { category: { select: { name: true, slug: true } } },
     });
   } catch {
     return null;
@@ -93,6 +126,30 @@ export default async function ArticlePage({ params }: Params) {
 
   const articleUrl = `${SITE_URL}/articles/${article.slug}`;
   const faqs = content.faqs ?? [];
+
+  // สินค้าเพื่อการเกษตรที่อาจเกี่ยวข้องกับบทความนี้
+  const products = await getAllProducts();
+  const allParagraphs = content.sections.flatMap((s) => s.body);
+  const linkedParagraphs = linkProductsInParagraphs(allParagraphs, products, 3);
+
+  let relatedProducts: Product[] = findMatchingProducts(
+    `${article.title} ${content.lead} ${content.shortAnswer ?? ""}`,
+    products,
+    3,
+  );
+  const categorySlug = article.categoryHref.replace(/^\//, "");
+  if (relatedProducts.length < 3 && categorySlug) {
+    const topUp = await getProductsByCategory(categorySlug, 3);
+    const seen = new Set(relatedProducts.map((p) => p.id));
+    for (const p of topUp) {
+      if (relatedProducts.length >= 3) break;
+      if (!seen.has(p.id)) {
+        relatedProducts.push(p);
+        seen.add(p.id);
+      }
+    }
+  }
+  let paraIdx = 0;
 
   // @graph: Article + BreadcrumbList (+ FAQPage — built from the SAME faqs array
   // that renders the visible FAQ, so schema always matches HTML 100%)
@@ -264,11 +321,20 @@ export default async function ArticlePage({ params }: Params) {
                       {s.heading}
                     </h2>
 
-                    {s.body.map((p, j) => (
-                      <p key={j} className="mt-3 text-[17px] text-ink/90">
-                        {p}
-                      </p>
-                    ))}
+                    {s.body.map((p, j) => {
+                      const linked = linkedParagraphs[paraIdx++];
+                      return linked !== p ? (
+                        <p
+                          key={j}
+                          className="mt-3 text-[17px] text-ink/90"
+                          dangerouslySetInnerHTML={{ __html: linked }}
+                        />
+                      ) : (
+                        <p key={j} className="mt-3 text-[17px] text-ink/90">
+                          {p}
+                        </p>
+                      );
+                    })}
 
                     {s.list && (
                       <ul className="mt-4 space-y-2">
@@ -339,6 +405,23 @@ export default async function ArticlePage({ params }: Params) {
                     )}
                   </section>
                 ))}
+
+                {/* สินค้าที่อาจเป็นประโยชน์ */}
+                {relatedProducts.length > 0 && (
+                  <div className="mt-12 rounded-2xl bg-mist p-6">
+                    <h2 className="font-display text-2xl font-bold text-ink">
+                      สินค้าที่อาจเป็นประโยชน์
+                    </h2>
+                    <p className="mt-2 text-[15px] text-stone">
+                      หากคุณยังไม่รู้จะเริ่มหาอุปกรณ์หรือปัจจัยการผลิตที่เกี่ยวข้องยังไง สินค้าด้านล่างนี้อาจช่วยให้คุณไม่ต้องเสียเวลาหาใหม่
+                    </p>
+                    <div className="mt-5 grid gap-4 sm:grid-cols-3">
+                      {relatedProducts.map((p) => (
+                        <ProductCard key={p.id} product={p} compact />
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 {/* FAQ — visible <details> built from the same faqs used for schema */}
                 {faqs.length > 0 && (

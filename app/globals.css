@@ -204,6 +204,18 @@
   color: theme("colors.stone");
 }
 
+/* ── ลิงก์สินค้าในเนื้อหาบทความ — subtle, reads as a normal internal link ── */
+.cc-product-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+}
+.cc-product-link:hover {
+  color: theme("colors.ink");
+  text-decoration-style: solid;
+}
+
 /* ── Print (พิมพ์/บันทึก PDF ผลเครื่องมือ) ───────────────────── */
 @media print {
   header,

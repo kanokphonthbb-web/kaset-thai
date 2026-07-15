@@ -435,7 +435,9 @@ const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
   // fishery
   // เพิ่ม pool 2026-07-11 (pad demand จาก draft ใหม่: tilapia+1, seabass+2, silver-barb+2, snakehead+2, carp+2)
   tilapia: ["https://images.pexels.com/photos/15553656/pexels-photo-15553656.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/14924016/pexels-photo-14924016.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/8352786/pexels-photo-8352786.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/32262908/pexels-photo-32262908.jpeg?auto=compress&cs=tinysrgb&w=1400"],
-  catfish: ["https://images.pexels.com/photos/19040471/pexels-photo-19040471.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/33445044/pexels-photo-33445044.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/33560903/pexels-photo-33560903.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/4619577/pexels-photo-4619577.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  // เพิ่ม pool 2026-07-15 (catfish 4 รายการเดิมถูกใช้หมดแล้ว causing duplicate cover ระหว่าง
+  // fishery-pond-catfish และ fishery-catfish-cost — Pexels-verified ทั้งคู่)
+  catfish: ["https://images.pexels.com/photos/19040471/pexels-photo-19040471.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/33445044/pexels-photo-33445044.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/33560903/pexels-photo-33560903.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/4619577/pexels-photo-4619577.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/4220575/pexels-photo-4220575.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/38283737/pexels-photo-38283737.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   seabass: ["https://images.pexels.com/photos/2042564/pexels-photo-2042564.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/26622789/pexels-photo-26622789.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/7509420/pexels-photo-7509420.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/37052317/pexels-photo-37052317.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   "silver-barb": ["https://images.pexels.com/photos/7509417/pexels-photo-7509417.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/14024728/pexels-photo-14024728.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/27170715/pexels-photo-27170715.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/32243189/pexels-photo-32243189.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   snakehead: ["https://images.pexels.com/photos/14024725/pexels-photo-14024725.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/5806533/pexels-photo-5806533.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/37052302/pexels-photo-37052302.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/8878987/pexels-photo-8878987.jpeg?auto=compress&cs=tinysrgb&w=1400"],
@@ -713,7 +715,9 @@ const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/6416106/pexels-photo-6416106.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   // plants
-  "rice-jasmine": ["https://images.pexels.com/photos/35559229/pexels-photo-35559229.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/37933142/pexels-photo-37933142.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/15879425/pexels-photo-15879425.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/38111089/pexels-photo-38111089.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  // เพิ่ม pool 2026-07-15 (rice-jasmine 4 รายการเดิมถูกใช้หมดแล้วสิ้นสุด causing duplicate cover
+  // ระหว่าง plants-choose-variety-rice-jasmine และ plants-rice-jasmine-cost — Pexels-verified ทั้งคู่)
+  "rice-jasmine": ["https://images.pexels.com/photos/35559229/pexels-photo-35559229.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/37933142/pexels-photo-37933142.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/15879425/pexels-photo-15879425.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/38111089/pexels-photo-38111089.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/34196061/pexels-photo-34196061.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/2804327/pexels-photo-2804327.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   "sticky-rice": ["https://images.pexels.com/photos/17001692/pexels-photo-17001692.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/36346840/pexels-photo-36346840.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/32200253/pexels-photo-32200253.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/1204228/pexels-photo-1204228.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   riceberry: ["https://images.pexels.com/photos/30756211/pexels-photo-30756211.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/34567037/pexels-photo-34567037.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/6086557/pexels-photo-6086557.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   cassava: ["https://images.pexels.com/photos/28454278/pexels-photo-28454278.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/36846177/pexels-photo-36846177.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/30893342/pexels-photo-30893342.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/7543161/pexels-photo-7543161.jpeg?auto=compress&cs=tinysrgb&w=1400"],
@@ -786,7 +790,12 @@ const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
   thrips: ["https://images.pexels.com/photos/12016351/pexels-photo-12016351.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   "weed-control": ["https://images.pexels.com/photos/5410777/pexels-photo-5410777.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   whitefly: ["https://images.pexels.com/photos/2974409/pexels-photo-2974409.jpeg?auto=compress&cs=tinysrgb&w=1400"],
-  "yellow-leaves": ["https://images.pexels.com/photos/5978538/pexels-photo-5978538.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "yellow-leaves": [
+    "https://images.pexels.com/photos/5978538/pexels-photo-5978538.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-13 (Phase 2 problem-variant draft needs headroom — old pool of 1 was already used)
+    "https://images.pexels.com/photos/5978539/pexels-photo-5978539.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5978535/pexels-photo-5978535.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
   // mixed-farming model pairs (found 8 of 8 published "mixed-model-X-Y" articles mismatched on 2026-07-11)
   "deep-litter-pig-manure": ["https://images.pexels.com/photos/16469478/pexels-photo-16469478.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   "mixed-model-fish-vegetables": ["https://images.pexels.com/photos/16311186/pexels-photo-16311186.jpeg?auto=compress&cs=tinysrgb&w=1400"],
@@ -1027,6 +1036,9 @@ const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/8939261/pexels-photo-8939261.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/16052346/pexels-photo-16052346.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/8939307/pexels-photo-8939307.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-15 (all 6 prior entries already used sitewide — Phase 2 cost-variant draft
+    // market-sell-vegetables-online-cost needs headroom; verified HTTP 200 + unused sitewide via DB query)
+    "https://images.pexels.com/photos/4451870/pexels-photo-4451870.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   // soil-water-fertilizer (found 20 of 22 published articles mismatched on 2026-07-11 — severe cross-shuffle between irrigation/soil/manure topics)
   // padded 2026-07-11: each cluster needs 6-7 unique covers to match published+draft demand (78 drafts across 15 clusters)
@@ -1301,6 +1313,9 @@ const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/34182370/pexels-photo-34182370.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/34182367/pexels-photo-34182367.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/21364323/pexels-photo-21364323.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-13 (Phase 2 problem-variant draft needs headroom — old pool of 3 was already used)
+    "https://images.pexels.com/photos/34182383/pexels-photo-34182383.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34182311/pexels-photo-34182311.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   "battery-sprayer": [
     "https://images.pexels.com/photos/36027197/pexels-photo-36027197.jpeg?auto=compress&cs=tinysrgb&w=1400",
@@ -1341,6 +1356,19 @@ const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/34581908/pexels-photo-34581908.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/11124086/pexels-photo-11124086.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/31238872/pexels-photo-31238872.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  // เพิ่ม pool 2026-07-13 (agri-news-law-standards CAT pool exhausted — all 33 entries already used sitewide,
+  // caused a duplicate cover on first publish of farmer-registration-problems; added dedicated keyword pool)
+  "farmer-registration": [
+    "https://images.pexels.com/photos/33635929/pexels-photo-33635929.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4975376/pexels-photo-4975376.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  // เพิ่ม pool 2026-07-13 (COST_PROFIT_TITLE_POOLS["ข้าว"] fully exhausted — all 4 entries already used
+  // sitewide, caused a duplicate cover between cost-profit-rice-growing-problems and cost-profit-profit;
+  // this slug literally contains "rice-growing" so matchKeywordPool() catches it before matchTitlePool())
+  "rice-growing": [
+    "https://images.pexels.com/photos/34965367/pexels-photo-34965367.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34965356/pexels-photo-34965356.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
 };
 

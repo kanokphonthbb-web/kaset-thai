@@ -4,8 +4,10 @@ import Footer from "@/components/Footer";
 import CategoryCard from "@/components/CategoryCard";
 import ToolCard from "@/components/ToolCard";
 import ArticleCard from "@/components/ArticleCard";
+import ProductCard from "@/components/ProductCard";
 import SectionHeader from "@/components/SectionHeader";
 import { CATEGORIES, TOOLS, ARTICLES } from "@/lib/data";
+import { getAllProducts } from "@/lib/products";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 
@@ -33,10 +35,41 @@ async function getPublishedCount() {
   }
 }
 
+async function getFeaturedProducts() {
+  try {
+    const products = await getAllProducts();
+    // สลับหมวดเพื่อให้ตัวอย่างสินค้าบนหน้าแรกดูหลากหลาย ไม่กระจุกอยู่หมวดเดียว
+    const byCategory = new Map<string, typeof products>();
+    for (const p of products) {
+      const key = p.category || "other";
+      if (!byCategory.has(key)) byCategory.set(key, []);
+      byCategory.get(key)!.push(p);
+    }
+    const featured: typeof products = [];
+    let round = 0;
+    while (featured.length < 8) {
+      let addedAny = false;
+      for (const list of byCategory.values()) {
+        if (list[round]) {
+          featured.push(list[round]);
+          addedAny = true;
+          if (featured.length >= 8) break;
+        }
+      }
+      if (!addedAny) break;
+      round++;
+    }
+    return { featured, total: products.length };
+  } catch {
+    return { featured: [], total: 0 };
+  }
+}
+
 export default async function HomePage() {
-  const [latest, publishedCount] = await Promise.all([
+  const [latest, publishedCount, { featured: featuredProducts, total: productCount }] = await Promise.all([
     getLatestCmsPosts(),
     getPublishedCount(),
+    getFeaturedProducts(),
   ]);
   const articleCount = publishedCount + ARTICLES.length;
   return (
@@ -60,6 +93,33 @@ export default async function HomePage() {
             </div>
           </div>
         </section>
+
+        {/* Products — soft mist band, deliberately distinct from the linen Tools band right after it */}
+        {featuredProducts.length > 0 && (
+          <section id="products" className="scroll-mt-24 bg-mist py-20">
+            <div className="container-x">
+              <SectionHeader
+                eyebrow="เลือกสรรมาให้"
+                title="สินค้าเพื่อการเกษตรแนะนำ"
+                desc={
+                  productCount > 0
+                    ? `รวบรวมไว้กว่า ${productCount.toLocaleString("th-TH")} รายการ ให้เลือกดูง่ายขึ้นตามหมวดความรู้ที่คุณสนใจ`
+                    : "อุปกรณ์และปัจจัยการผลิตที่เกี่ยวข้องกับบทความในเว็บนี้ รวบรวมไว้ให้เลือกดูง่ายขึ้น"
+                }
+              />
+              <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                {featuredProducts.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </div>
+              <div className="mt-10 text-center">
+                <Link href="/products" className="btn-secondary">
+                  ดูสินค้าทั้งหมด →
+                </Link>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Tools — warm band */}
         <section id="tools" className="scroll-mt-24 bg-linen py-20">

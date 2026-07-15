@@ -48,3 +48,17 @@ model Article {
   @@index([status])
   @@index([categoryId])
 }
+
+model Product {
+  id            String   @id @default(cuid())
+  slug          String   @unique
+  name          String
+  imageUrl      String
+  affiliateLink String
+  category      String   @default("") // ArticleCategory slug, best-guess classification
+  keywords      String   @default("[]") // JSON string[] — all source keywords mapped to this product
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([category])
+}

@@ -43,6 +43,7 @@ export const NAV_LINKS = [
   { label: "ตลาดเกษตร", href: "/market" },
   { label: "เทคโนโลยี", href: "/agri-tech-tools" },
   { label: "ข่าว/กฎหมาย", href: "/agri-news-law-standards" },
+  { label: "สินค้าเพื่อการเกษตร", href: "/products" },
 ];
 
 export const CATEGORIES: Category[] = [
