@@ -12,6 +12,9 @@ export type Product = {
   affiliateLink: string;
   category: string;
   keywords: string[];
+  whyNeeded: string;
+  benefits: string[];
+  usage: string;
 };
 
 function toProduct(row: {
@@ -22,6 +25,9 @@ function toProduct(row: {
   affiliateLink: string;
   category: string;
   keywords: string;
+  whyNeeded: string;
+  benefits: string;
+  usage: string;
 }): Product {
   let keywords: string[] = [];
   try {
@@ -29,7 +35,13 @@ function toProduct(row: {
   } catch {
     keywords = [];
   }
-  return { ...row, keywords };
+  let benefits: string[] = [];
+  try {
+    benefits = JSON.parse(row.benefits);
+  } catch {
+    benefits = [];
+  }
+  return { ...row, keywords, benefits };
 }
 
 export async function getAllProducts(): Promise<Product[]> {

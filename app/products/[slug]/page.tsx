@@ -85,6 +85,34 @@ export default async function ProductDetailPage({ params }: Params) {
                   </p>
                 )}
 
+                {product.whyNeeded && (
+                  <div className="mt-6">
+                    <h2 className="font-display text-lg font-bold text-ink">ทำไมต้องมีสินค้านี้</h2>
+                    <p className="mt-2 text-[16px] leading-relaxed text-ink/90">{product.whyNeeded}</p>
+                  </div>
+                )}
+
+                {product.benefits.length > 0 && (
+                  <div className="mt-6">
+                    <h2 className="font-display text-lg font-bold text-ink">ประโยชน์</h2>
+                    <ul className="mt-2 space-y-2">
+                      {product.benefits.map((b, i) => (
+                        <li key={i} className="flex items-start gap-2 text-[16px] text-ink/90">
+                          <span aria-hidden className="mt-1 text-lime-deep">●</span>
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {product.usage && (
+                  <div className="mt-6">
+                    <h2 className="font-display text-lg font-bold text-ink">ใช้เพื่ออะไร</h2>
+                    <p className="mt-2 text-[16px] leading-relaxed text-ink/90">{product.usage}</p>
+                  </div>
+                )}
+
                 <div className="mt-8">
                   <a
                     href={product.affiliateLink}

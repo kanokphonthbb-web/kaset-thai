@@ -57,6 +57,9 @@ model Product {
   affiliateLink String
   category      String   @default("") // ArticleCategory slug, best-guess classification
   keywords      String   @default("[]") // JSON string[] — all source keywords mapped to this product
+  whyNeeded     String   @default("") // เหตุผลที่ต้องใช้
+  benefits      String   @default("[]") // JSON string[] — ประโยชน์ (bullet points)
+  usage         String   @default("") // ใช้เพื่ออะไร / ใช้งานอย่างไร
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
