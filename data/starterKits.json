@@ -1,0 +1,1936 @@
+{
+  "KIT-PLANT-001": {
+    "kitId": "KIT-PLANT-001",
+    "name": "ชุดเริ่มปลูกผักสวนครัว",
+    "categorySlug": "plants",
+    "category": "ปลูกพืช",
+    "targetUser": "คนเริ่มปลูกผักหลังบ้าน/ขายเล็กๆ",
+    "summary": "เมล็ดพันธุ์ผักคละชนิด + ถาดเพาะเมล็ด/พีทมอส + ดินปลูก/ปุ๋ยอินทรีย์ + กระถาง/ถุงปลูก + บัวรดน้ำ/หัวพ่นน้ำ + กับดักแมลง/ตาข่ายกันแมลง",
+    "components": [
+      {
+        "order": 1,
+        "name": "เมล็ดพันธุ์ผักคละชนิด",
+        "importance": "required",
+        "quantityHint": "เลือก 3-6 ซอง",
+        "products": [
+          {
+            "slug": "product-399",
+            "name": "เมล็ดพันธุ์ฟักทองญี่ปุ่น 10แถม3 เมล็ดพันธุ์ราคาถูก เมล็ดพันธุ์ปลีกและส่ง เมล็ดพันธุ์คุณภาพ เมล็ดพันธุ์ผักสวนครัว",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-7rd3w-m7f7k9qxuynjee.webp"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "name": "ถาดเพาะเมล็ด/พีทมอส",
+        "importance": "required",
+        "quantityHint": "1-2 ชุด",
+        "products": [
+          {
+            "slug": "product-400",
+            "name": "ถาดเพาะเมล็ด ถาดไดโซะ ถาดเพาะแคคตัส พร้อมฝาครอบ ถาดเพาะกล้า ฝาครอบเพาะเมล็ด ถาดเพาะชำ",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/352da28700453a95716d079c4bcb1161.webp"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "name": "ดินปลูก/ปุ๋ยอินทรีย์",
+        "importance": "required",
+        "quantityHint": "ตามพื้นที่",
+        "products": [
+          {
+            "slug": "product-401",
+            "name": "1กิโล!! ดินพร้อมปลูก ดินปลูกต้นไม้ ดินปลูก ดินปลูกผัก ดินปลูก ดินหมัก",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r98v-lm7r8ncvptzbd1.webp"
+          }
+        ]
+      },
+      {
+        "order": 4,
+        "name": "กระถาง/ถุงปลูก",
+        "importance": "required",
+        "quantityHint": "10-30 ใบ",
+        "products": [
+          {
+            "slug": "product-402",
+            "name": "กระถางปลูกผัก กระถางผัก กระถางปลูกผักไฮโดรโปนิกซ์ ถาดเพาะ แผงผัก 10ใบ",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/b68bb8988c22e99e05b6bcf8b6472d36.webp"
+          }
+        ]
+      },
+      {
+        "order": 5,
+        "name": "บัวรดน้ำ/หัวพ่นน้ำ",
+        "importance": "required",
+        "quantityHint": "1 ชุด",
+        "products": [
+          {
+            "slug": "product-403",
+            "name": "💥จัดส่งที่รวดเร็ว💥ฝักบัวรดน้ำ 2000 รู และ 1000 รู ขนาด 4หุน,5-6หุน ฝักบัวรดน้ำแคคตัส ฝักบัวรดน้ำบอนไซ ฝักบัวรดน้ำต้นไม้",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7rask-m7t5k4d54o2f16.webp"
+          }
+        ]
+      },
+      {
+        "order": 6,
+        "name": "กับดักแมลง/ตาข่ายกันแมลง",
+        "importance": "optional",
+        "quantityHint": "ป้องกันแมลงเริ่มต้น",
+        "products": [
+          {
+            "slug": "product-555",
+            "name": "มุ้งขาวกันแมลง ตาข่ายกันแมลง มุ้งขาว32ตา ตาข่ายปลูกผัก ตาข่ายขาว มุ้งกันแมลง มุ้งไนลอนสีขาว",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7qul9-lgko41jvfua7d4.webp"
+          }
+        ]
+      }
+    ]
+  },
+  "KIT-PLANT-002": {
+    "kitId": "KIT-PLANT-002",
+    "name": "ชุดปลูกผักสลัด/ไฮโดรโปนิกส์",
+    "categorySlug": "plants",
+    "category": "ปลูกพืช",
+    "targetUser": "คนปลูกผักสลัดในบ้านหรือขายออนไลน์",
+    "summary": "เมล็ดผักสลัด + ฟองน้ำเพาะ/ถ้วยปลูก + ปุ๋ย AB + เครื่องวัด EC/pH + รางปลูก/กล่องปลูก + ปั๊มน้ำ/ปั๊มลม",
+    "components": [
+      {
+        "order": 1,
+        "name": "เมล็ดผักสลัด",
+        "importance": "required",
+        "quantityHint": "3-5 ซอง",
+        "products": [
+          {
+            "slug": "product-404",
+            "name": "*ตัวเลือกเยอะสุด* เมล็ดผักสลัด100-300เมล็ด 10 บาท งอกดีมีคู่มือ เมล็ดปี68 [12แถม2] เมล็ดพันธุ์ผักสลัด ผักสลัด ผักออแกนิค",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/681af22e4a95a8d73adf0b7242c61869.webp"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "name": "ฟองน้ำเพาะ/ถ้วยปลูก",
+        "importance": "required",
+        "quantityHint": "1 ชุด",
+        "products": [
+          {
+            "slug": "product-405",
+            "name": "ฟองน้ำเพาะกล้า เพาะเมล็ด ปลูกผักไฮโดรโปนิกส์ ปลูกผัก ไฮโดร ไฮโดรโปนิกส์ เนื้อละเอียด",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r98z-lq1scxhzz6ckad.webp"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "name": "ปุ๋ย AB",
+        "importance": "required",
+        "quantityHint": "1 ชุด",
+        "products": [
+          {
+            "slug": "product-406",
+            "name": "ปุ๋ยAB ปุ๋ยผักสลัด ปุ๋ยผักไฮโดรโปรนิกส์ เนื้อเวสโก้ ชนิดผงขนาด 10 ลิตร",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r98o-ls10uunfahda57.webp"
+          }
+        ]
+      },
+      {
+        "order": 4,
+        "name": "เครื่องวัด EC/pH",
+        "importance": "required",
+        "quantityHint": "1 เครื่อง",
+        "products": [
+          {
+            "slug": "product-407",
+            "name": "[ส่งไวส่งทุกวัน] เครื่องวัด EC / เครื่องวัด pH วัดน้ำ วัดกรด วัดปุ๋ย วัดความเค็มน้ำประปา วัดเกลือเจือจาง",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/2c286f308f5a4173cc52233f9097fe56.webp"
+          }
+        ]
+      },
+      {
+        "order": 5,
+        "name": "รางปลูก/กล่องปลูก",
+        "importance": "optional",
+        "quantityHint": "ตามพื้นที่",
+        "products": [
+          {
+            "slug": "product-556",
+            "name": "รางปลูกผักไฮโดรโปนิกส์แบบน้ำนิ่ง 43 ซม. 6 ช่องปลูก สำหรับปลูกผักไฮโดรโปนิกส์",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r98y-lvpysdx79c9p80.webp"
+          }
+        ]
+      },
+      {
+        "order": 6,
+        "name": "ปั๊มน้ำ/ปั๊มลม",
+        "importance": "optional",
+        "quantityHint": "สำหรับระบบน้ำวน",
+        "products": [
+          {
+            "slug": "product-557",
+            "name": "QQPET ปั๊มน้ำ ปั๊มตู้ปลา ปั๊มใส่ตู้กรอง ปั๊มน้ำตู้ปลา ปั๊มน้ำพุ ปั๊มจุ่มบ่อปลา กำลังไฟต่างๆ ปั๊มแช่น้ำใช้ไฟบ้านกำลังไฟ",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r98x-lzk7lyjsuox504.webp"
+          }
+        ]
+      }
+    ]
+  },
+  "KIT-PLANT-003": {
+    "kitId": "KIT-PLANT-003",
+    "name": "ชุดปลูกข้าว/นาข้าวมือใหม่",
+    "categorySlug": "plants",
+    "category": "ปลูกพืช",
+    "targetUser": "ชาวนา/คนเริ่มทำนาขนาดเล็ก",
+    "summary": "เมล็ดพันธุ์ข้าว + ชุดตรวจดิน/pH + ปุ๋ยนาข้าว + รองเท้าบูท/ถุงมือ + อุปกรณ์หอยเชอรี่ + เครื่องพ่นยา",
+    "components": [
+      {
+        "order": 1,
+        "name": "เมล็ดพันธุ์ข้าว",
+        "importance": "required",
+        "quantityHint": "ตามพื้นที่",
+        "products": [
+          {
+            "slug": "product-408",
+            "name": "เมล็ดพันธุ์ข้าวเหนียวไก่น้อยหอมมากเหนียวนุ่มหนึบ เมล็ดพันธุ์ข้าวพื้นเมือง เมล็ดพันธุ์ข้าวหายากของแท้ชุดประมาณ2000เมล็ดข้",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/420fce5be6823a2975ca78677f7165d4.webp"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "name": "ชุดตรวจดิน/pH",
+        "importance": "required",
+        "quantityHint": "1 ชุด",
+        "products": [
+          {
+            "slug": "product-409",
+            "name": "ชุดตรวจดิน หาธาตุอาหารหลักNPK และค่าความเป็นกรดด่าง pH จำนวน 1 ทดสอบครบทุกค่า",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7rasl-m2qia65u2w5oa0.webp"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "name": "ปุ๋ยนาข้าว",
+        "importance": "required",
+        "quantityHint": "ตามพื้นที่",
+        "products": [
+          {
+            "slug": "product-410",
+            "name": "🆓ส่งฟรีไม่ใช้โค๊ด ปุ๋ยน้ำ ปุ๋ยนาข้าว ข้าวแตกกอใหญ่ ข้าวรวงใหญ่ เม็ดเต็ม น้ำหนักดี เร่งรวง ปุ๋ยข้าว",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/1f082883baa7850692f0c3f93b110851.webp"
+          }
+        ]
+      },
+      {
+        "order": 4,
+        "name": "รองเท้าบูท/ถุงมือ",
+        "importance": "required",
+        "quantityHint": "1-2 ชุด",
+        "products": [
+          {
+            "slug": "product-411",
+            "name": "รองเท้าบูทยาว บูทกันน้ำ,บูทนาเกาหลี",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/e7bc97fdb3e8020c9d30a568ee04794b.webp"
+          }
+        ]
+      },
+      {
+        "order": 5,
+        "name": "อุปกรณ์หอยเชอรี่",
+        "importance": "optional",
+        "quantityHint": "พื้นที่มีปัญหา",
+        "products": [
+          {
+            "slug": "product-558",
+            "name": "ยากำจัดหอย เหยื่อกำจัดหอย เดทมีล-5 เมทัลดีไฮด์( metaldehyde ) กำจัดหอยทาก หอยเชอรี่ หอยศัตรูพืช",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r98x-llpv6gtnsr2f6d.webp"
+          }
+        ]
+      },
+      {
+        "order": 6,
+        "name": "เครื่องพ่นยา",
+        "importance": "optional",
+        "quantityHint": "ดูแลโรค/แมลง",
+        "products": [
+          {
+            "slug": "product-559",
+            "name": "ฝาปิดถังน้ำยาแบตเตอรี่ เครื่องพ่นยาแบตเตอรี่ 16ลิตร - 20 ลิตร ฝาปิดถังน้ำยาแบต ฝาครอบถังพ่นยา ฝาถังพ่นยาแบตเตอรี่ by ไร่",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81ztl-mkrkg9he2g3rec.webp"
+          }
+        ]
+      }
+    ]
+  },
+  "KIT-PLANT-004": {
+    "kitId": "KIT-PLANT-004",
+    "name": "ชุดปลูกข้าวโพด/รับมือหนอนกระทู้",
+    "categorySlug": "plants",
+    "category": "ปลูกพืช",
+    "targetUser": "ปลูกข้าวโพดหวาน/ข้าวโพดเลี้ยงสัตว์",
+    "summary": "เมล็ดพันธุ์ข้าวโพด + ปุ๋ยข้าวโพด + BT/ชีวภัณฑ์หนอน + กับดัก/ฟีโรโมน + เครื่องพ่นยา/PPE",
+    "components": [
+      {
+        "order": 1,
+        "name": "เมล็ดพันธุ์ข้าวโพด",
+        "importance": "required",
+        "quantityHint": "ตามพื้นที่",
+        "products": [
+          {
+            "slug": "product-412",
+            "name": "ข้าวโพดหวาน เจียไต๋ เมล็ดพันธุ์ข้าวโพดหวาน เมล็ดพันธุ์ ข้าวโพด",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/1de103480f0093ac7e92d2460ff612d1.webp"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "name": "ปุ๋ยข้าวโพด",
+        "importance": "required",
+        "quantityHint": "ตามพื้นที่",
+        "products": [
+          {
+            "slug": "product-413",
+            "name": "เป้หยอดปุ๋ย 30L ถังใส่ปุ๋ยข้าวโพด ไม่ต้องก้มหลัง เครื่องหว่านปุ๋ย",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-7rff7-m49tsb82p8eg45.webp"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "name": "BT/ชีวภัณฑ์หนอน",
+        "importance": "required",
+        "quantityHint": "ป้องกันหนอน",
+        "products": [
+          {
+            "slug": "product-414",
+            "name": "บูลบีที เชื้อบีที บาซิลลัส ทูริงเยนซิส 500g. - BT ชีวภัณฑ์ ป้องกัน และ กำจัด หนอนทุกชนิด 500g ปลอดสารเคมี",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/9a239c7006b280dd7cc4c10bd53aee4a.webp"
+          }
+        ]
+      },
+      {
+        "order": 4,
+        "name": "กับดัก/ฟีโรโมน",
+        "importance": "optional",
+        "quantityHint": "ตรวจระบาด",
+        "products": [
+          {
+            "slug": "product-387",
+            "name": "ION FT300 แชมพูสูตรน้อยหน่า น้ำมันสะเดา เห็บ หมัด สุนัข และแมว ขนยาว TX-Free Shampoo 300ml",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/eac8895a77a38f14af2d489ee75a3857.webp"
+          },
+          {
+            "slug": "product-388",
+            "name": "Neem Tree 3 - Pure Neem Oil น้ำมันสะเดาบริสุทธิ์ ขนาด 30 ซีซี",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81ztp-mngupl8ccb9c65.webp"
+          },
+          {
+            "slug": "product-391",
+            "name": "10ชิ้น กาวดักแมลงวันทอง แมลงวันที่แข็งแกร่งดักแมลงสองด้านสีเหลืองกับดักเหนียวเพลี้ยแมลงคณะกรรมการ",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/cn-11134207-820l4-me746gndvqbp63.webp"
+          }
+        ]
+      },
+      {
+        "order": 5,
+        "name": "เครื่องพ่นยา/PPE",
+        "importance": "required",
+        "quantityHint": "1 ชุด",
+        "products": [
+          {
+            "slug": "product-415",
+            "name": "DAISENTEC - เครื่องพ่นยาแบตเตอรี่ ถังพ่นยาแบตเตอรี่ เครื่องพ่นยาแบต ถังพ่นยาแบตลิเธี่ยม ถังแบตเตอรี่ เครื่องพ่นยา 16 20",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7ra0s-mckgf8i05y0695.webp"
+          }
+        ]
+      }
+    ]
+  },
+  "KIT-PLANT-005": {
+    "kitId": "KIT-PLANT-005",
+    "name": "ชุดปลูกพริก/มะเขือ/แตง",
+    "categorySlug": "plants",
+    "category": "ปลูกพืช",
+    "targetUser": "ผักกินผลที่มีโรคและแมลงเยอะ",
+    "summary": "เมล็ดพันธุ์ + ถาดเพาะ/ดินเพาะ + ค้าง/เชือกพยุง + แคลเซียมโบรอน/ธาตุรอง + กับดักแมลง/ชีวภัณฑ์",
+    "components": [
+      {
+        "order": 1,
+        "name": "เมล็ดพันธุ์",
+        "importance": "required",
+        "quantityHint": "เลือกตามพืช",
+        "products": [
+          {
+            "slug": "product-416",
+            "name": "เมล็ดพริกส้มสั้น Hot pepper ตราภูเขาทอง เมล็ดพันธุ์พริกส้มสั้น พริกส้มสั้น เมล็ดพริก เมล็ดพันธุ์ผัก เมล็ดพันธุ์พริก",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r990-lxpcxa6dv2kv81.webp"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "name": "ถาดเพาะ/ดินเพาะ",
+        "importance": "required",
+        "quantityHint": "1 ชุด",
+        "products": [
+          {
+            "slug": "product-417",
+            "name": "ถาดเพาะเมล็ด ใหญ่ 72 หลุม พร้อมฝาระบายอากาศ ทรงสูง ถาดเพาะกล้า เพาะเมล็ด ถาดหลุมเพาะเมล็ด ถาดเพาะชำ",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7qula-lfrs80lwpvynad.webp"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "name": "ค้าง/เชือกพยุง",
+        "importance": "required",
+        "quantityHint": "ตามแปลง",
+        "products": [
+          {
+            "slug": "product-418",
+            "name": "างปลูกผัก ค้างผัก 2*100m ตาข่ายปลูกผัก โครงไม้เลื้อย ค้างไม้เลื้อย ตะข่ายไนลอน ต้นไม้เลื้อย อวนแตง ตาข่ายปลูกแตงกวา",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-824jg-mplzcn0ladjjba.webp"
+          }
+        ]
+      },
+      {
+        "order": 4,
+        "name": "แคลเซียมโบรอน/ธาตุรอง",
+        "importance": "optional",
+        "quantityHint": "ลดผลแตก/ปลายผลเน่า",
+        "products": [
+          {
+            "slug": "product-560",
+            "name": "แคลโบ 101 แคลเซียมโบรอน ขนาด 1 ลิตร ลดการหลุดร่วงของดอก ขั้วเหนียว โบรอนพืช โบรอนละลายน้ำ โบรอนแคลเซียม",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r98w-lr141by2wce56d.webp"
+          }
+        ]
+      },
+      {
+        "order": 5,
+        "name": "กับดักแมลง/ชีวภัณฑ์",
+        "importance": "required",
+        "quantityHint": "ป้องกันแมลง",
+        "products": [
+          {
+            "slug": "product-419",
+            "name": "1.2Mแผ่นกาวดักหนู กาวดักหนู กาวดักหนูแผ่นใหญ่ กาวเหนียว ที่ดักหนู กับดักหนู อุปกรณ์ดักหนู แผ่นดักหนู",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r98v-lyqimahfn99lcf.webp"
+          }
+        ]
+      }
+    ]
+  },
+  "KIT-PLANT-006": {
+    "kitId": "KIT-PLANT-006",
+    "name": "ชุดปลูกกล้วยหอมทองเชิงพาณิชย์",
+    "categorySlug": "plants",
+    "category": "ปลูกพืช",
+    "targetUser": "คนปลูกกล้วยขายผลผลิต",
+    "summary": "หน่อ/ต้นพันธุ์กล้วย + ปุ๋ยกล้วย/อินทรีย์ + ถุงห่อเครือ + เชือก/ไม้ค้ำ + มีด/กรรไกรตัดแต่ง",
+    "components": [
+      {
+        "order": 1,
+        "name": "หน่อ/ต้นพันธุ์กล้วย",
+        "importance": "required",
+        "quantityHint": "ตามพื้นที่",
+        "products": [
+          {
+            "slug": "product-420",
+            "name": "หน่อกล้วยหอมทองแท้ 100% พันธุ์เดียวกับในเซเว่นชุด 1️⃣0️⃣หน่อ 1️⃣4️⃣0️⃣ บาทลดราคาพิเศษ จัดส่ง ขุดหน่อพันธุ์ดี พันธุ์แท้",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-22120-j7iabchkckkvea.webp"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "name": "ปุ๋ยกล้วย/อินทรีย์",
+        "importance": "required",
+        "quantityHint": "ตามพื้นที่",
+        "products": [
+          {
+            "slug": "product-421",
+            "name": "ปุ๋ยกล้วย ยาแก้กล้วยใบไหม้ ยารักษากล้วยตายพราย #ปุ๋ยกล้วย ปุ๋ย ยา สำหรับกล้วย",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/3d17ff1b077a32a299684cbe092cfa02.webp"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "name": "ถุงห่อเครือ",
+        "importance": "required",
+        "quantityHint": "ตามจำนวนเครือ",
+        "products": [
+          {
+            "slug": "product-422",
+            "name": "ถุงห่อเครือกล้วย เนื้อถุงสีฟ้า แพคละ 14 ใบ 60 บาท",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/954459fa955da4d597d9f523e105673b.webp"
+          }
+        ]
+      },
+      {
+        "order": 4,
+        "name": "เชือก/ไม้ค้ำ",
+        "importance": "optional",
+        "quantityHint": "กันล้ม",
+        "products": [
+          {
+            "slug": "product-561",
+            "name": "ไม้ค้ำต้นไม้ เสาค้ำยัน ค้างไม้เลื้อย รั้วต้นไม้ หลักล้อม ซุ้มไม้ อุโมงค์ต้นไม้ ค้ำมะเขือเทศ ไผ่เทียม กรงพืช",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7ras9-m21zn0seolw600.webp"
+          }
+        ]
+      },
+      {
+        "order": 5,
+        "name": "มีด/กรรไกรตัดแต่ง",
+        "importance": "required",
+        "quantityHint": "1 ชุด",
+        "products": [
+          {
+            "slug": "product-423",
+            "name": "มีดตัดผลไม้ มีดโค้ง มีดตัดกล้วย มีดตัดเครือกล้วย มีดปาดกล้วย มีดปลอกกล้วย สแตนเลส เกรด A มีดหัวงอ มีดกรีดผลไม้",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-7ra2m-m4r2ltcs6jcg4c.webp"
+          }
+        ]
+      }
+    ]
+  },
+  "KIT-PLANT-007": {
+    "kitId": "KIT-PLANT-007",
+    "name": "ชุดเพาะเห็ด/โรงเรือนเล็ก",
+    "categorySlug": "plants",
+    "category": "ปลูกพืช",
+    "targetUser": "คนเริ่มเพาะเห็ดในโรงเรือนเล็ก",
+    "summary": "ก้อนเชื้อเห็ด + ชั้นวาง/โรงเรือน + เครื่องวัดอุณหภูมิความชื้น + หัวพ่นหมอก/สเปรย์น้ำ + น้ำยาฆ่าเชื้อ/ปูนขาว",
+    "components": [
+      {
+        "order": 1,
+        "name": "ก้อนเชื้อเห็ด",
+        "importance": "required",
+        "quantityHint": "ตามชั้นวาง",
+        "products": [
+          {
+            "slug": "product-424",
+            "name": "ก้อนเชื้อเห็ดนางฟ้า เห็ดดกก้อนใหญ่ พร้อมส่ง",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/d1bb1869f09cfa6f26cf2923fda99d9d.webp"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "name": "ชั้นวาง/โรงเรือน",
+        "importance": "required",
+        "quantityHint": "ตามพื้นที่",
+        "products": [
+          {
+            "slug": "product-425",
+            "name": "ชั้นวางก้อนเห็ด 12 ก้อน",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81ztk-mkb5f7ocgpab44.webp"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "name": "เครื่องวัดอุณหภูมิความชื้น",
+        "importance": "required",
+        "quantityHint": "1 เครื่อง",
+        "products": [
+          {
+            "slug": "product-426",
+            "name": "HTC-1 เครื่องวัดอุณหภูมิและความชื้นในอากาศ สามารถวัดเครื่องวัดความชื้นในอากาศ ใช้วัดเครื่องวัดอุณหภูมิความชื้นในบ้าน",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r992-lqfxjh04ou0469.webp"
+          }
+        ]
+      },
+      {
+        "order": 4,
+        "name": "หัวพ่นหมอก/สเปรย์น้ำ",
+        "importance": "required",
+        "quantityHint": "1 ชุด",
+        "products": [
+          {
+            "slug": "product-427",
+            "name": "ชุดพ่นหมอก PM 2.5 สายยาง หัวพ่นน้ำ หัวพ่นละอองฝอย หัวพ่นหมอก 20 หัว ที่พ่นหมอก พ่นหมอก ป้องกันฝุ่น",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r98r-lvl91b9b8zc2f0.webp"
+          }
+        ]
+      },
+      {
+        "order": 5,
+        "name": "น้ำยาฆ่าเชื้อ/ปูนขาว",
+        "importance": "optional",
+        "quantityHint": "ก่อนเปิดดอก",
+        "products": [
+          {
+            "slug": "product-562",
+            "name": "น้ำยาฆ่าเชื้อ ทอร์นาโด 1 ลิตร ใช้ในฟาร์มเลี้ยงสัตว์ โรงเรือนสัตว์",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/44f3fb2e1ef3dfcc940adc77021bd496.webp"
+          }
+        ]
+      }
+    ]
+  },
+  "KIT-ANIMAL-001": {
+    "kitId": "KIT-ANIMAL-001",
+    "name": "ชุดเริ่มเลี้ยงไก่ไข่",
+    "categorySlug": "animals",
+    "category": "เลี้ยงสัตว์ / ปศุสัตว์",
+    "targetUser": "ครัวเรือน/ฟาร์มไก่ไข่ขนาดเล็ก",
+    "summary": "อาหารไก่ไข่ + ถังอาหาร/ถังน้ำ + แคลเซียม/เปลือกหอย + วิตามิน/อิเล็กโทรไลต์ + น้ำยาฆ่าเชื้อเล้า + ถาดไข่/แผงไข่",
+    "components": [
+      {
+        "order": 1,
+        "name": "อาหารไก่ไข่",
+        "importance": "required",
+        "quantityHint": "ตามจำนวนไก่",
+        "products": [
+          {
+            "slug": "product-428",
+            "name": "#อาหารไก่ไข่ซันฟีด30กก.#อาหารไก่ไข่สีไข่แดงวุ้น#อาหารไก่ไข่ราคาถูกสุดคุ้ม",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7ra0t-mbhilz0p18d7ec.webp"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "name": "ถังอาหาร/ถังน้ำ",
+        "importance": "required",
+        "quantityHint": "1-3 ชุด",
+        "products": [
+          {
+            "slug": "product-429",
+            "name": "TOP ถังอาหารไก่ ที่ให้อาหารไก่ ที่ใส่อาหารไก่ ถังใส่อาหารไก่ ถาดอาหารไก่ ถ้วยให้อาหารไก่ ขนาด เล็ก กลาง ใหญ่ สินค้าไทย",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7rasf-m8bji9zvtix552.webp"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "name": "แคลเซียม/เปลือกหอย",
+        "importance": "required",
+        "quantityHint": "เสริมเปลือกไข่",
+        "products": [
+          {
+            "slug": "product-430",
+            "name": "เปลือกหอยป่น อาหารเสริมเพิ่มแคลเซียม เหมาะสำหรับสัตว์ปีก บำรุงไก่ไข่ นกกระทา ลดปัญหาเปลือกไข่บาง",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/a6d338149ae690772d51fec88cd71ed0.webp"
+          }
+        ]
+      },
+      {
+        "order": 4,
+        "name": "วิตามิน/อิเล็กโทรไลต์",
+        "importance": "optional",
+        "quantityHint": "ช่วงเครียด/อากาศร้อน",
+        "products": [
+          {
+            "slug": "product-563",
+            "name": "ชุดเร่งสัตว์อ้วน **พีวีมิกซ์450กรัม+ไวตาเวท100มล** วิตามินรวมเข้มข้นขุนสัตว์ให้อ้วน วิตามินวัว วิตามินโค วิตามินไก่เป็ด",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7qul9-ljs4382ibg9yfc.webp"
+          }
+        ]
+      },
+      {
+        "order": 5,
+        "name": "น้ำยาฆ่าเชื้อเล้า",
+        "importance": "required",
+        "quantityHint": "สุขอนามัย",
+        "products": [
+          {
+            "slug": "product-431",
+            "name": "น้ำยาฆ่าเชื่อไวรัสและแบคทีเรีย ทอร์นาโด น้ำยาฆ่าเชื้อโรค น้ำยาฆ่าเชื้อเล้าไก่ น้ำยาฆ่าเชื้อเล้าหมู 1 ลิตร",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7rasb-m7z10uayisq67f.webp"
+          }
+        ]
+      },
+      {
+        "order": 6,
+        "name": "ถาดไข่/แผงไข่",
+        "importance": "optional",
+        "quantityHint": "เก็บขาย",
+        "products": [
+          {
+            "slug": "product-564",
+            "name": "กล่องเก็บไข่ ที่เก็บไข่ ถาดเก็บไข่ ที่ใส่ไข่ กล่องใส่ไข่ ถาดไข่ กล่องอเนกประสงค์ ถาดใส่ไข่ เข้าตู้เย็นได้ วางซ้อนได้ มีฝ",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-22100-tuof47t8hkiv22.webp"
+          }
+        ]
+      }
+    ]
+  },
+  "KIT-ANIMAL-002": {
+    "kitId": "KIT-ANIMAL-002",
+    "name": "ชุดเริ่มเลี้ยงไก่เนื้อ/ไก่บ้าน",
+    "categorySlug": "animals",
+    "category": "เลี้ยงสัตว์ / ปศุสัตว์",
+    "targetUser": "คนเริ่มเลี้ยงไก่ขายเนื้อ",
+    "summary": "อาหารไก่เนื้อ + หลอดไฟกก/อุปกรณ์กก + ถังอาหาร/ถังน้ำ + แกลบ/วัสดุรองพื้น + วิตามิน/โปรไบโอติก + น้ำยาฆ่าเชื้อ",
+    "components": [
+      {
+        "order": 1,
+        "name": "อาหารไก่เนื้อ",
+        "importance": "required",
+        "quantityHint": "ตามวัย",
+        "products": [
+          {
+            "slug": "product-432",
+            "name": "อาหารไก่ อาหารไก่เนื้อ เอราวัณ C5 20 กิโลกรัม อาหารไก่บ้าน อาหารไก่พื้นเมือง",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7qul6-lhrwt9vbg14390.webp"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "name": "หลอดไฟกก/อุปกรณ์กก",
+        "importance": "required",
+        "quantityHint": "ลูกไก่",
+        "products": [
+          {
+            "slug": "product-433",
+            "name": "หลอดไฟกกหมู หลอดดไฟความร้อนHD LIGHTS หลอดอินฟาเรดแท้ หลอดไฟกกลูกไก่ ไฟกกหม แบบหนาพิเศษ ไฟกกสัตว์",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7rasl-m8yfphjg4uvjea.webp"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "name": "ถังอาหาร/ถังน้ำ",
+        "importance": "required",
+        "quantityHint": "1-3 ชุด",
+        "products": [
+          {
+            "slug": "product-434",
+            "name": "ถังอาหารไก่ ถังอาหารไก่กันไก่เขี่ย ถังอาหารไก่กันเขี่ยขนาด1.5กิโลกรัม ถังอาหารไก่กันเขี่ย",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7qul0-ljn4blaar19if9.webp"
+          }
+        ]
+      },
+      {
+        "order": 4,
+        "name": "แกลบ/วัสดุรองพื้น",
+        "importance": "required",
+        "quantityHint": "รองพื้น",
+        "products": [
+          {
+            "slug": "product-435",
+            "name": "แกลบข้าว แกลบข้าวเปลือก แกลบดิบ กระสอบละ 99 บาท ขนาด 7-9 กิโล วัสดุรองพื้นในระบบการเลี้ยงหมูหลุมและไก่หลุม",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r992-lurlh88x0itx6b.webp"
+          }
+        ]
+      },
+      {
+        "order": 5,
+        "name": "วิตามิน/โปรไบโอติก",
+        "importance": "optional",
+        "quantityHint": "ลดเครียด",
+        "products": [
+          {
+            "slug": "product-565",
+            "name": "ซันวิตามิน2บำรุงสัตว์ วิตามินวัว วิตามินหมู วิตามินแพะ วิตามินไก่ วิตามินเป็ด ชุดนี้ 4กิโล",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/599aaa63de1d98370cdd14bba7481877.webp"
+          }
+        ]
+      },
+      {
+        "order": 6,
+        "name": "น้ำยาฆ่าเชื้อ",
+        "importance": "required",
+        "quantityHint": "biosecurity",
+        "products": [
+          {
+            "slug": "product-436",
+            "name": "น้ำยาฆ่าเชื้อล้างทำความสะอาดคอกสัตว์ เยอร์มไลซ์ GERMLISE เล้าไก่ เล้าหมู ฆ่าเชื้อโรงเรือน ขนาด500cc.",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81ztg-mj6nwier9q8428.webp"
+          }
+        ]
+      }
+    ]
+  },
+  "KIT-ANIMAL-003": {
+    "kitId": "KIT-ANIMAL-003",
+    "name": "ชุดเริ่มเลี้ยงเป็ดไข่",
+    "categorySlug": "animals",
+    "category": "เลี้ยงสัตว์ / ปศุสัตว์",
+    "targetUser": "คนเลี้ยงเป็ดไข่/เป็ดพื้นบ้าน",
+    "summary": "อาหารเป็ดไข่ + ถาดอาหาร/ถังน้ำ + วิตามินเป็ด + ถาดไข่เป็ด + ตาข่ายกั้นคอก + น้ำยาฆ่าเชื้อ",
+    "components": [
+      {
+        "order": 1,
+        "name": "อาหารเป็ดไข่",
+        "importance": "required",
+        "quantityHint": "ตามจำนวนเป็ด",
+        "products": [
+          {
+            "slug": "product-437",
+            "name": "ไข่ลูกตัวอ่อนระยะ 2ไข่ตัวอ่อนไข่ไก่ตัวอ่อนระยะ 2 ไข่ไก่ตัวอ่อนระยะ 3 ไข่ลูกเป็ดระยะ 2ไข่ลูกเวียดนามไข่ตัวอ่อนกำลังดี",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r98q-ly40u7k740qq45.webp"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "name": "ถาดอาหาร/ถังน้ำ",
+        "importance": "required",
+        "quantityHint": "1-3 ชุด",
+        "products": [
+          {
+            "slug": "product-438",
+            "name": "KOVAN ถาดให้อาหารไก่ เป็ด ห่าน ขนาด 40 ซม. ถาดอาหารแบบกลม พร้อมฝาครอบตะแกรงเหล็ก มีช่องให้อาหาร 17 ช่อง",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81ztk-mj84wdd7kcn40a.webp"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "name": "วิตามินเป็ด",
+        "importance": "optional",
+        "quantityHint": "ดูแลสุขภาพ",
+        "products": [
+          {
+            "slug": "product-566",
+            "name": "วิตามินเป็ดไข่ ไฮโคมิกซ์100ดี พรีมิกซ์เป็ดพันธุ์ เป็ดไข่ ล็อตใหม่ล่าสุด อาหารเสริมสัตว์ทำให้ไข่ฟองโต",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7qul1-ljmlcgtmsx7q18.webp"
+          }
+        ]
+      },
+      {
+        "order": 4,
+        "name": "ถาดไข่เป็ด",
+        "importance": "optional",
+        "quantityHint": "เก็บขาย",
+        "products": [
+          {
+            "slug": "product-567",
+            "name": "ไข่ ถาด เต็นท์ 30 - ถาดไข่พลาสติก / ถาดไข่ / ถาดไข่ไก่ / ถาดไข่เป็ด / ถาดไข่ / ลังไข่ / ตะกร้าไข่",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/id-11134207-7rasj-m63irwymq6ql40.webp"
+          }
+        ]
+      },
+      {
+        "order": 5,
+        "name": "ตาข่ายกั้นคอก",
+        "importance": "required",
+        "quantityHint": "จัดพื้นที่",
+        "products": [
+          {
+            "slug": "product-439",
+            "name": "อวนล้อมไก่ เป็ดตาข่ายไก่ไนล่อนสีเขียว ตาข่ายตาถี่พิ อเนกประสงค์ ขนาด กรงไก่ เลี้ยงไก่ กันงู กันนก อายุการใช้งานยาวนาน",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-81zum-mmsmt2g6vshs83.webp"
+          }
+        ]
+      },
+      {
+        "order": 6,
+        "name": "น้ำยาฆ่าเชื้อ",
+        "importance": "required",
+        "quantityHint": "สุขอนามัย",
+        "products": [
+          {
+            "slug": "product-440",
+            "name": "น้ำยาฆ่าเชื้อภายในฟาร์มปศุสัตว์ ฆ่าเชื้อก่อโรคได้ทุกชนิด ทั้งล้างคอก แช่เท้า พ่นล้อรถ หมู วัว เป็ด ไก่ นก ปลา กบ เต่า",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/fed2ec54a23444d5b5a0e7e622f72dfa.webp"
+          }
+        ]
+      }
+    ]
+  },
+  "KIT-ANIMAL-004": {
+    "kitId": "KIT-ANIMAL-004",
+    "name": "ชุดเริ่มเลี้ยงนกกระทาไข่",
+    "categorySlug": "animals",
+    "category": "เลี้ยงสัตว์ / ปศุสัตว์",
+    "targetUser": "คนเริ่มเลี้ยงนกกระทา",
+    "summary": "อาหารนกกระทา + กรงนกกระทา + ถาดอาหาร/น้ำ + หลอดไฟกก + ถาดไข่นกกระทา + น้ำยาฆ่าเชื้อ",
+    "components": [
+      {
+        "order": 1,
+        "name": "อาหารนกกระทา",
+        "importance": "required",
+        "quantityHint": "ตามจำนวน",
+        "products": [
+          {
+            "slug": "product-441",
+            "name": "ไฮโคมิกซ์ 100เอ วิตามินไก่ไข่ วิตามินนกกระทา ขนาด 450กรัม อาหารไก่ไข่ ไก้ไข่",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7rasi-m6z9gmelhjjj03.webp"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "name": "กรงนกกระทา",
+        "importance": "required",
+        "quantityHint": "ตามจำนวน",
+        "products": [
+          {
+            "slug": "product-442",
+            "name": "กรงกระต่ายกรงไก่นกพิราบกรงนกกระทากรงกรงกรงกรงพิเศษตะขอคงที่กรงกระต่ายกรงประตูตะขอ F2D5",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7qukx-livdk6micxyg39.webp"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "name": "ถาดอาหาร/น้ำ",
+        "importance": "required",
+        "quantityHint": "1 ชุด",
+        "products": [
+          {
+            "slug": "product-443",
+            "name": "ที่ให้อาหารไก่ ขนาด 3 ลิตร ถังให้อาหารไก่ ถังใส่อาหารไก่ ถาดอาหารนกกระทา ถ้วยให้อาหาร ถังอาหารไก่ อุปกรณ์ฟาร์มเลี้ยงไก่",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-22110-u7psbnth6akvd3.webp"
+          }
+        ]
+      },
+      {
+        "order": 4,
+        "name": "หลอดไฟกก",
+        "importance": "required",
+        "quantityHint": "ลูกนก",
+        "products": [
+          {
+            "slug": "product-444",
+            "name": "ถูก🎉ขั้วหลอดไฟเซรามิกE27 กกไฟ ไฟกกเต่า ไฟกกลูกนก ไฟกกลูกไก่ ให้ความอบอุ่นเต่าบก หลอดไฟเซรามิค 25-100w",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7rasc-m63idolmgv5id8.webp"
+          }
+        ]
+      },
+      {
+        "order": 5,
+        "name": "ถาดไข่นกกระทา",
+        "importance": "optional",
+        "quantityHint": "ขายไข่",
+        "products": [
+          {
+            "slug": "product-568",
+            "name": "🥃🥃1 ชิ้นถาดไข่สําหรับ ถาดไข่สำหรับใส่ตู้ฟักไข่ มีตั้งแต่ไข่นกกระทาไข่ไก่ไข่เป็ด เป็ดนกกระทาไข่จีน Incubadora อะไหล่สัตว์ปีกอุปกรณ์ฟาร์ม",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-825b2-mexqwvsg035y63.webp"
+          }
+        ]
+      },
+      {
+        "order": 6,
+        "name": "น้ำยาฆ่าเชื้อ",
+        "importance": "required",
+        "quantityHint": "สุขอนามัย",
+        "products": [
+          {
+            "slug": "product-445",
+            "name": "น้ํายาทําความสะอาดกรงนก อุปกรณ์ทำความสะอาดกรงนก น้ำยาดับกลิ่นนก น้ำยาฆ่าเชื้อนก แปรงทำความสะอาดกรงน",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7ra0j-mdfuwyexfo43dc.webp"
+          }
+        ]
+      }
+    ]
+  },
+  "KIT-ANIMAL-005": {
+    "kitId": "KIT-ANIMAL-005",
+    "name": "ชุดเริ่มเลี้ยงกระต่ายเนื้อ/ขายลูก",
+    "categorySlug": "animals",
+    "category": "เลี้ยงสัตว์ / ปศุสัตว์",
+    "targetUser": "คนเริ่มเลี้ยงกระต่ายเชิงพาณิชย์",
+    "summary": "กรงกระต่าย + อาหารเม็ด/หญ้าแห้ง + ขวดน้ำ/ถ้วยอาหาร + ถาดรอง/แผ่นซับ + วิตามิน/โปรไบโอติก",
+    "components": [
+      {
+        "order": 1,
+        "name": "กรงกระต่าย",
+        "importance": "required",
+        "quantityHint": "ตามจำนวน",
+        "products": [
+          {
+            "slug": "product-446",
+            "name": "Pawblic🐰🐹กรงกระต่าย กรงกระต่ายขนาดใหญ่ กรงกระรอก กรงหนูแฮมเตอร์ กรงนก กรงพับ กรงกระต่ายราคาถูก กรงสัตว์เลี้ยงอเนกประสงค์",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r98x-lwidmbkzcn9r61.webp"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "name": "อาหารเม็ด/หญ้าแห้ง",
+        "importance": "required",
+        "quantityHint": "อาหาร",
+        "products": [
+          {
+            "slug": "product-447",
+            "name": "อาหารเม็ดกระต่าย Gold Rabbit (โกลแรทบิท) [1kg.] อาหารกระต่าย ขนมกระต่าย อาหารหนูตะเภา อาหารสำหรับ กระต่าย และ หนูตะเภา",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r98r-lojj2p5dhnfj51.webp"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "name": "ขวดน้ำ/ถ้วยอาหาร",
+        "importance": "required",
+        "quantityHint": "1 ชุดต่อกรง",
+        "products": [
+          {
+            "slug": "product-448",
+            "name": "จุกป้อนน้ำกระต่าย จุกให้น้ำกระต่าย ขวดให้น้ำกระต่าย ขวดน้ำกระต่าย ขวดน้ำหนู จุกป้อนน้ำกระต่าย จุกน้ำหนู จุกน้ำกระต่าย",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/f94c634d52c0bc87c512e183beaa04d9.webp"
+          }
+        ]
+      },
+      {
+        "order": 4,
+        "name": "ถาดรอง/แผ่นซับ",
+        "importance": "required",
+        "quantityHint": "ลดกลิ่น",
+        "products": [
+          {
+            "slug": "product-449",
+            "name": "V ( แผ่นยางรองกรงฟุตพริ้นท์ ) FOOTPRINT แผ่นรองกรง รองกรง กรง ที่รองกรง กระต่าย ชูการ์ กระรอก บุชเบบี้ ลิง เม่นแคระ",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7qukw-li9xb55grmy01f.webp"
+          }
+        ]
+      },
+      {
+        "order": 5,
+        "name": "วิตามิน/โปรไบโอติก",
+        "importance": "optional",
+        "quantityHint": "ดูแลลำไส้",
+        "products": [
+          {
+            "slug": "product-569",
+            "name": "ImmuVite วิตามินสุนัข วิตามินแมว วิตามินกระต่าย 50 มล.",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7rasa-m44itw7i9teffc.webp"
+          }
+        ]
+      }
+    ]
+  },
+  "KIT-ANIMAL-006": {
+    "kitId": "KIT-ANIMAL-006",
+    "name": "ชุดเริ่มเลี้ยงแพะนม/แพะเนื้อ",
+    "categorySlug": "animals",
+    "category": "เลี้ยงสัตว์ / ปศุสัตว์",
+    "targetUser": "ฟาร์มแพะเริ่มต้น",
+    "summary": "อาหาร/แร่ธาตุแพะ + ถังอาหาร/ถังน้ำ + ขวดนมลูกแพะ + ถุงมือคลอด/ดูแลสัตว์ + น้ำยาฆ่าเชื้อคอก",
+    "components": [
+      {
+        "order": 1,
+        "name": "อาหาร/แร่ธาตุแพะ",
+        "importance": "required",
+        "quantityHint": "อาหารเสริม",
+        "products": [
+          {
+            "slug": "product-450",
+            "name": "อาหารแพะ ซีพี 991-14 ขนาดบรรจุ 30 กิโลกรัม",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81ztn-mkew7b10nrpeab.webp"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "name": "ถังอาหาร/ถังน้ำ",
+        "importance": "required",
+        "quantityHint": "1-2 ชุด",
+        "products": [
+          {
+            "slug": "product-451",
+            "name": "ลูกวัวถังให้อาหารจุกจุกนมขนาดเล็กอาหารเกรดยางนุ่มจุกนมกินจุกนมสําหรับแพะ,แกะ,กําพร้าสัตว์เล็กวัวแกะ1ชิ้น",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-23020-071b7gnin5mvf5.webp"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "name": "ขวดนมลูกแพะ",
+        "importance": "optional",
+        "quantityHint": "เลี้ยงลูก",
+        "products": [
+          {
+            "slug": "product-570",
+            "name": "พร้อมส่งจากไทย ขวดนม ขวดนมลูกวัว 1000ml/2000ml ขวดป้อนนมวัว แพะ แกะ จุกนมนิ่ม",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-7rdxy-lyllz6dq8paf84.webp"
+          }
+        ]
+      },
+      {
+        "order": 4,
+        "name": "ถุงมือคลอด/ดูแลสัตว์",
+        "importance": "optional",
+        "quantityHint": "งานสุขภาพ",
+        "products": [
+          {
+            "slug": "product-571",
+            "name": "coralcoveshop ถุงมือทำคลอดหมุ วัว 85cm ถุงมือแขนยาวแบบใช้แล้วทิ้ง ยืดหยุ่นสูง สำหรับการตรวจสัตว์",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r992-lwp93m6mzels03.webp"
+          }
+        ]
+      },
+      {
+        "order": 5,
+        "name": "น้ำยาฆ่าเชื้อคอก",
+        "importance": "required",
+        "quantityHint": "biosecurity",
+        "products": [
+          {
+            "slug": "product-452",
+            "name": "🏨Shield Solution👨‍⚕️นำ้ยาพ่นควัน 🦠น้ำยาพ่นฆ่าเชื้อโรค💯 Smokeฉีดพ่นควันฆ่าเชือ นำยาพ่นโควิ นำยาควันฉีดพ่นฆ่าเชื้อ",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/1c5f813b34e5758394846a36e92c7f57.webp"
+          }
+        ]
+      }
+    ]
+  },
+  "KIT-ANIMAL-007": {
+    "kitId": "KIT-ANIMAL-007",
+    "name": "ชุดเลี้ยงไส้เดือนทำปุ๋ย",
+    "categorySlug": "animals",
+    "category": "เลี้ยงสัตว์ / ปศุสัตว์",
+    "targetUser": "คนทำปุ๋ยมูลไส้เดือน/เกษตรอินทรีย์",
+    "summary": "ไส้เดือนพันธุ์/ภาชนะเลี้ยง + อาหาร/วัสดุรอง + เครื่องวัดความชื้น/pH + ตะแกรงร่อนปุ๋ย + ถุงแพ็คปุ๋ย",
+    "components": [
+      {
+        "order": 1,
+        "name": "ไส้เดือนพันธุ์/ภาชนะเลี้ยง",
+        "importance": "required",
+        "quantityHint": "เริ่มระบบ",
+        "products": [
+          {
+            "slug": "product-453",
+            "name": "ปุ๋ยมูลไส้เดือนแท้ 100% จากไส้เดือนพันธุ์ AF ความชื้นต่ำ ได้ปริมาณเยอะ บำรุงต้น ใบ ส่งเสริมการติดดอก",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7ras8-mar6vy5cg19w92.webp"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "name": "อาหาร/วัสดุรอง",
+        "importance": "required",
+        "quantityHint": "วัสดุเลี้ยง",
+        "products": [
+          {
+            "slug": "product-454",
+            "name": "Nisa Garden ปุ๋ยคอก 2 กก. มูลวัวแท้ 100% แห้งสนิท ไร้กลิ่น คุณภาพสูง มูลวัวแห้ง ขี้วัว",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r98p-ly90avi6pnk17f.webp"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "name": "เครื่องวัดความชื้น/pH",
+        "importance": "required",
+        "quantityHint": "คุมสภาพ",
+        "products": [
+          {
+            "slug": "product-455",
+            "name": "เครื่องวัดค่า Ph ดินเครื่องวัดความชื้นแบบพกพา มิเตอร์วัดค่าดิน เครื่องวัดค่าดิน กรดด่าง ความชื้นในดิน เซ็นเซอร์วัดดิน",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-7qvcq-lhokl1de0s1s96.webp"
+          }
+        ]
+      },
+      {
+        "order": 4,
+        "name": "ตะแกรงร่อนปุ๋ย",
+        "importance": "optional",
+        "quantityHint": "เก็บปุ๋ย",
+        "products": [
+          {
+            "slug": "product-572",
+            "name": "ฐาน+ตะแกรงร่อนปุ๋ย อะไหล่เครื่องหว่านปุ๋ย F30",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r98r-lz4bqpz8bxd5f7.webp"
+          }
+        ]
+      },
+      {
+        "order": 5,
+        "name": "ถุงแพ็คปุ๋ย",
+        "importance": "optional",
+        "quantityHint": "ขายปุ๋ย",
+        "products": [
+          {
+            "slug": "product-573",
+            "name": "[ส่งด่วน] ถุงฟอยด์สีทอง หน้าใส/หลังทอง ถุงซิปล็อค แพคละ 50ใบ ซิปทอง ถุงซิปทอง ตั้งได้ ถุงฟอยด์",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/95bfc2db33003f5bdbd23efc6787416c.webp"
+          }
+        ]
+      }
+    ]
+  },
+  "KIT-FISH-001": {
+    "kitId": "KIT-FISH-001",
+    "name": "ชุดเริ่มเลี้ยงปลาดุกบ่อปูน/บ่อผ้าใบ",
+    "categorySlug": "fishery",
+    "category": "ประมง / สัตว์น้ำ",
+    "targetUser": "คนเริ่มเลี้ยงปลาดุก",
+    "summary": "บ่อผ้าใบ/อุปกรณ์บ่อ + อาหารปลาดุก + ปั๊มลม/หัวทราย + จุลินทรีย์บ่อปลา + ชุดตรวจน้ำ + สวิง/ตาข่าย",
+    "components": [
+      {
+        "order": 1,
+        "name": "บ่อผ้าใบ/อุปกรณ์บ่อ",
+        "importance": "required",
+        "quantityHint": "ตามพื้นที่",
+        "products": [
+          {
+            "slug": "product-456",
+            "name": "**พร้อมส่ง** บ่อผ้าใบแบบกลม บ่อผ้าใบเลี้ยงปลา บ่อกักโรคปลา บ่อผ้าใบสำเร็จรูป (ไม่รวมโครง)",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/66fda12fae5449009fda499a7238829e.webp"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "name": "อาหารปลาดุก",
+        "importance": "required",
+        "quantityHint": "ตามจำนวนปลา",
+        "products": [
+          {
+            "slug": "product-457",
+            "name": "#อาหารปลาดุก #อาหารปลาดุกเล็ก อาหารปลาดุกโปรตีน32%",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/587ee8236737c02a4f98322a79fa7009.webp"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "name": "ปั๊มลม/หัวทราย",
+        "importance": "required",
+        "quantityHint": "ออกซิเจน",
+        "products": [
+          {
+            "slug": "product-458",
+            "name": "[มีประกัน] ปั้มออกซิเจนตู้ปลา เสียงเงียบ ปั๊มลมบ่อปลาประหยัดไฟ ปั๊มลมบ่อกุ้ง กำลังลมแรงแรงลมสม่ำเสมอ",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81zto-mgm3v98fo26j4a.webp"
+          }
+        ]
+      },
+      {
+        "order": 4,
+        "name": "จุลินทรีย์บ่อปลา",
+        "importance": "optional",
+        "quantityHint": "จัดน้ำ",
+        "products": [
+          {
+            "slug": "product-574",
+            "name": "🐟1วิสลายอุจจาระปลา🐠 จุลินทรีย์บ่อปลา จุลินทรีย์ตู้ปลา ไม่มีสารเคมีปลอดภัย ปรับสภาพน้ำใส ดูแลสุขภาพปลา บ่อปลา ตู้ปลา",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r98q-lu8o6o7nbb9d7b.webp"
+          }
+        ]
+      },
+      {
+        "order": 5,
+        "name": "ชุดตรวจน้ำ",
+        "importance": "required",
+        "quantityHint": "คุมน้ำ",
+        "products": [
+          {
+            "slug": "product-459",
+            "name": "ชุดแถบทดสอบค่า pH น้ําจืด/น้ําเค็ม 3/5/6/7/14/16 in 1 100 ชิ้น วัดคุณภาพน้ําบ่อปลา สระ ตู้ปลา",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/cn-11134207-7qukw-ljw88g6p7nh9b8.webp"
+          }
+        ]
+      },
+      {
+        "order": 6,
+        "name": "สวิง/ตาข่าย",
+        "importance": "optional",
+        "quantityHint": "จัดการปลา",
+        "products": [
+          {
+            "slug": "product-575",
+            "name": "สวิงช้อนปลา สวิง สหวิง หวิงหาปลา ตักปลา สวิงจับปลา สวิงขนาดใหญ่ สวิงสานด้ายขาว",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/40a08259b22ab447d7b73d068d65c34e.webp"
+          }
+        ]
+      }
+    ]
+  },
+  "KIT-FISH-002": {
+    "kitId": "KIT-FISH-002",
+    "name": "ชุดบ่อกุ้งไบโอฟล็อคเล็ก",
+    "categorySlug": "fishery",
+    "category": "ประมง / สัตว์น้ำ",
+    "targetUser": "ฟาร์มกุ้งขนาดเล็ก/ทดลอง",
+    "summary": "บ่อไบโอฟล็อค + เครื่องเติมอากาศ + จุลินทรีย์/คาร์บอน + อาหารกุ้ง + ชุดตรวจน้ำ",
+    "components": [
+      {
+        "order": 1,
+        "name": "บ่อไบโอฟล็อค",
+        "importance": "required",
+        "quantityHint": "ตามพื้นที่",
+        "products": [
+          {
+            "slug": "product-460",
+            "name": "จุลินทรีย์ ไบโอฟล็อค ปรับสภาพน้ำบ่อกุ้ง บ่อปลา พร้อมใช้ บาซิลัส พาวคัม",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r98u-lzaj0jza2yll30.webp"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "name": "เครื่องเติมอากาศ",
+        "importance": "required",
+        "quantityHint": "24 ชม.",
+        "products": [
+          {
+            "slug": "product-461",
+            "name": "SOLARBUR กรองฟองน้ําไบโอ,3in1เพิ่มออกซิเจนกุ้งบ่อปั๊มลม,สะดวกสีดําทําความสะอาดเศษใบ้ปลาและถังกุ้งเครื่องเติมอากาศตู้ปลา",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-824ii-mfe49jb28sg815.webp"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "name": "จุลินทรีย์/คาร์บอน",
+        "importance": "required",
+        "quantityHint": "ทำฟล็อค",
+        "products": [
+          {
+            "slug": "product-462",
+            "name": "ซิมไบโอ จุลินทรีย์บ่อกุ้ง จุลินทรีย์บ่อปลา จุลินทรีย์น้ำใส ลดขี้ขาว แก้น้ำเขียว ย่อยเลนพื้นบ่อ",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81zth-mqlfkurb44qq2f.webp"
+          }
+        ]
+      },
+      {
+        "order": 4,
+        "name": "อาหารกุ้ง",
+        "importance": "required",
+        "quantityHint": "ตามระยะ",
+        "products": [
+          {
+            "slug": "product-463",
+            "name": "YEE Aquarium Food Feed For Shrimp 280g. อาหารกุ้งเม็ดจม กุ้งเรดบี กุ้งแคระ เร่งสี อาหารปลา กุ้งก้ามแดง กุ้งเครฟิช กุ้งสี",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r98s-lv4c9si6dmurb8.webp"
+          }
+        ]
+      },
+      {
+        "order": 5,
+        "name": "ชุดตรวจน้ำ",
+        "importance": "required",
+        "quantityHint": "คุมน้ำ",
+        "products": [
+          {
+            "slug": "product-464",
+            "name": "ชุดตรวจน้ำรวม 3in1 ชุดตรวจหินปูน ชุดตรวจคลอรีน และชุดตรวจค่าPH จบในชุดเดียว ของแท้100 %",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r98t-lmzkcyvspvgzb3.webp"
+          }
+        ]
+      }
+    ]
+  },
+  "KIT-FISH-003": {
+    "kitId": "KIT-FISH-003",
+    "name": "ชุดเลี้ยงปลานิลกระชัง/บ่อ",
+    "categorySlug": "fishery",
+    "category": "ประมง / สัตว์น้ำ",
+    "targetUser": "ปลานิลในกระชังหรือบ่อ",
+    "summary": "กระชัง/ตาข่าย + อาหารปลานิล + ทุ่น/เชือก + เครื่องเติมอากาศ + สวิง/เครื่องชั่ง",
+    "components": [
+      {
+        "order": 1,
+        "name": "กระชัง/ตาข่าย",
+        "importance": "required",
+        "quantityHint": "ตามพื้นที่",
+        "products": [
+          {
+            "slug": "product-465",
+            "name": "กระชังเลี้ยงปลา กระชัง กระชังน้ำ กระชังปลา กระชังมุ้ง กะชังน้ำ เลี้ยงปลา กระชังสำเร็จรูป และสัตว์น้ำ",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-822x7-mo51bdt9edc284.webp"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "name": "อาหารปลานิล",
+        "importance": "required",
+        "quantityHint": "ตามจำนวน",
+        "products": [
+          {
+            "slug": "product-466",
+            "name": "อาหารเม็ด ซีพี9932 อาหารปลานิล ปลากินพืช แบบเม็ด และแบบบดละเอียด 1KG เหยื่อตกปลา (สั่งรวมกันไม่เกิน 20กิโลค่ะ)",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/7daf07a05f0c2c6514ada55738e983ac.webp"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "name": "ทุ่น/เชือก",
+        "importance": "required",
+        "quantityHint": "ติดตั้ง",
+        "products": [
+          {
+            "slug": "product-467",
+            "name": "กระชังตกปลา อุปกรณ์ตกปลา กระชังใส่กุ้งใส่ปลา กระชังปลา พับเก็บได้ มีทุ่นลอยน้ำ แข็งแรงทนทาน",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-8261l-ml7w9zy40f0hf9.webp"
+          }
+        ]
+      },
+      {
+        "order": 4,
+        "name": "เครื่องเติมอากาศ",
+        "importance": "optional",
+        "quantityHint": "บ่อปิด",
+        "products": [
+          {
+            "slug": "product-576",
+            "name": "RESUN ปั๊มตู้ปลา ปั๊มลมตู้ปลา ปั๊มออกซิเจน ปั๊มลมลูกสูบ รุ่น ACO และ MPQ สำหรับบ่อปลา บ่อกุ้ง บ่อเลี้ยงปลา (มีหลายขนาด)",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-825a3-mfw9d37c270oac.webp"
+          }
+        ]
+      },
+      {
+        "order": 5,
+        "name": "สวิง/เครื่องชั่ง",
+        "importance": "optional",
+        "quantityHint": "คัดไซซ์/ขาย",
+        "products": [
+          {
+            "slug": "product-577",
+            "name": "สวิงตักปลา สวิง ที่ตักปลา สวิงขอบเหล็ก สวิงจับปลา จับปู จับกุ้ง",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/abacde0d7d99804c29decc0fb1b8ebc6.webp"
+          }
+        ]
+      }
+    ]
+  },
+  "KIT-FISH-004": {
+    "kitId": "KIT-FISH-004",
+    "name": "ชุดเลี้ยงกบ/สัตว์น้ำพื้นบ้าน",
+    "categorySlug": "fishery",
+    "category": "ประมง / สัตว์น้ำ",
+    "targetUser": "เลี้ยงกบ หอย ปูนาแบบเล็ก",
+    "summary": "บ่อผ้าใบ/ตาข่าย + อาหารกบ/อาหารสัตว์น้ำ + จุลินทรีย์/เกลือบ่อ + ปั๊มลม/หัวทราย + ชุดตรวจน้ำ",
+    "components": [
+      {
+        "order": 1,
+        "name": "บ่อผ้าใบ/ตาข่าย",
+        "importance": "required",
+        "quantityHint": "ตามพื้นที่",
+        "products": [
+          {
+            "slug": "product-468",
+            "name": "【200 ไมครอน】(2x2m）พลาสติกปูบ่อ ผ้าใบปูบ่อ ผ้ายางบ่อสีดำ บ่อปลาผ้าใบ สำเร็จรูปบ่อปลาสำเร็จ ใช้สำหรับเลี้ยงปลากบกุ้งปู",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-22120-yyfb0e17vmkvba.webp"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "name": "อาหารกบ/อาหารสัตว์น้ำ",
+        "importance": "required",
+        "quantityHint": "ตามชนิด",
+        "products": [
+          {
+            "slug": "product-469",
+            "name": "อาหารกบ ไฮเกรด ***ส่งฟรี ติดต่อทางแชท***อาหารลูกกบ ลูกอ๊อด 2kg. 🔥🔥ของใหม่แน่นอน***ส่งฟรี185 ติดต่อทางแชท***",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/e708e58523c4f6dc32d430b02af863ab.webp"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "name": "จุลินทรีย์/เกลือบ่อ",
+        "importance": "optional",
+        "quantityHint": "ดูแลน้ำ",
+        "products": [
+          {
+            "slug": "product-578",
+            "name": "⛵️พร้อมส่ง เกลือสมุทร เกลือใส่ตู้ปลา เกลือเกล็ด เกลือบ่อปลา เกลือธรรมชาติ100% เกลือรักษาปลา เกลือฆ่าเชื้อโรค เกลือเม็ด",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7rasa-mb29trg2vqlw1d.webp"
+          }
+        ]
+      },
+      {
+        "order": 4,
+        "name": "ปั๊มลม/หัวทราย",
+        "importance": "optional",
+        "quantityHint": "บ่อหนาแน่น",
+        "products": [
+          {
+            "slug": "product-579",
+            "name": "ปั๊มลม ปั๊มออกซิเจน ปั๊มพกพา ปั๊มตู้ปลา ปั๊มบ่อปลา ใส่ถ่าน SOBO SB960 ออกซิเจนแบบพกพา พร้อมอุปกรณ์ สามารถอยู่ได้นาน5-6ชม",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r98x-lw2dooek2rao63.webp"
+          }
+        ]
+      },
+      {
+        "order": 5,
+        "name": "ชุดตรวจน้ำ",
+        "importance": "required",
+        "quantityHint": "ลดเสี่ยงป่วย",
+        "products": [
+          {
+            "slug": "product-470",
+            "name": "100PCS แผ่นทดสอบคุณภาพน้ํา 5/6/7/9/14/16/17 in 1 สําหรับตู้ปลา น้ําเค็ม น้ําจืด วัดค่า pH และตรวจคุณภาพน้ําบ่อปลา สระ",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/cn-11134207-7r98o-lzq4007glpwz38.webp"
+          }
+        ]
+      }
+    ]
+  },
+  "KIT-SOIL-001": {
+    "kitId": "KIT-SOIL-001",
+    "name": "ชุดตรวจดินก่อนเริ่มปลูก",
+    "categorySlug": "soil-water-fertilizer",
+    "category": "ดิน น้ำ ปุ๋ย",
+    "targetUser": "ทุกคนที่เริ่มทำแปลงใหม่",
+    "summary": "เครื่องวัด pH/ความชื้น + ชุดตรวจ NPK + โดโลไมท์/ปูนปรับดิน + ปุ๋ยอินทรีย์/ฮิวมิค + สมุดบันทึกแปลง",
+    "components": [
+      {
+        "order": 1,
+        "name": "เครื่องวัด pH/ความชื้น",
+        "importance": "required",
+        "quantityHint": "1 เครื่อง",
+        "products": [
+          {
+            "slug": "product-471",
+            "name": "ชุดสุดคุ้ม เครื่องวัดดิน ชุดตรวจสอบ คุณภาพดินและน้ำ 3 แบบ เครื่องวัด ph น้ำ และ tds&ec วัดค่า ph ดิน วัดค่าน้ำ วัดค่า ph",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/ce19c2dac63b55e4b55182bebf57cd79.webp"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "name": "ชุดตรวจ NPK",
+        "importance": "required",
+        "quantityHint": "1 ชุด",
+        "products": [
+          {
+            "slug": "product-472",
+            "name": "ชุดตรวจดิน หาธาตุอาหารหลักNPK และค่าความเป็นกรดด่าง PHในชุดเดียว ได้ถึง 10 ตัวอย่างดิน",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7ra0u-mbir3w4f7ds97e.webp"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "name": "โดโลไมท์/ปูนปรับดิน",
+        "importance": "optional",
+        "quantityHint": "ตามผลตรวจ",
+        "products": [
+          {
+            "slug": "product-580",
+            "name": "โดโลไมท์ (อย่างดี) 1 กิโลกรัม สารปรับปรุงดินและน้ำ ช่วยลดความเป็นกรด ดินเปรี้ยว ฆ่าเชื้อรา เชื้อโรคในดิน แก้ดินเสื่อม",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-23020-d71g1lb0p2mv86.webp"
+          }
+        ]
+      },
+      {
+        "order": 4,
+        "name": "ปุ๋ยอินทรีย์/ฮิวมิค",
+        "importance": "optional",
+        "quantityHint": "ปรับดิน",
+        "products": [
+          {
+            "slug": "product-581",
+            "name": "ปุ๋ยมือถือไม้แบ่งขาย 1,5 กิโล ปุ๋ยมือถือไม้ ปุ๋ยทุเรียน ปุ๋ยบอนสี ปุ๋ยอินทรีย์ ปุ๋ยผัก ปุ๋ยอินทรีย์คุณภาพ",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-7rene-m8g2gy8bi2iead.webp"
+          }
+        ]
+      },
+      {
+        "order": 5,
+        "name": "สมุดบันทึกแปลง",
+        "importance": "optional",
+        "quantityHint": "ติดตามผล",
+        "products": [
+          {
+            "slug": "product-582",
+            "name": "100ชิ้น ป้ายชื่อพืชสวนรูปตัวที | พลาสติกหนากันน้ำ | ใช้ติดชื่อพันธุ์ไม้ในกระถางและแปลงปลูก",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-7rdxs-mdj19wktt2z964.webp"
+          }
+        ]
+      }
+    ]
+  },
+  "KIT-WATER-001": {
+    "kitId": "KIT-WATER-001",
+    "name": "ชุดระบบน้ำหยดแปลงเล็ก",
+    "categorySlug": "soil-water-fertilizer",
+    "category": "ดิน น้ำ ปุ๋ย",
+    "targetUser": "แปลงผัก/ไม้ผลขนาดเล็ก",
+    "summary": "สาย PE/ท่อน้ำหยด + หัวน้ำหยด/มินิสปริงเกอร์ + ตัวกรองน้ำ + ตั้งเวลารดน้ำ + ปั๊มน้ำ/ปั๊มโซล่า",
+    "components": [
+      {
+        "order": 1,
+        "name": "สาย PE/ท่อน้ำหยด",
+        "importance": "required",
+        "quantityHint": "ตามพื้นที่",
+        "products": [
+          {
+            "slug": "product-473",
+            "name": "ตัวเจาะสายพีอี ขนาด 4มิล สายไมโคร สาย PE ท่อเกษตร(สีส้ม)",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-23020-mvb08yhksenv6a.webp"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "name": "หัวน้ำหยด/มินิสปริงเกอร์",
+        "importance": "required",
+        "quantityHint": "ตามแปลง",
+        "products": [
+          {
+            "slug": "product-474",
+            "name": "ไชโย หัวน้ำหยดปรับได้ หัวน้ำหยดขาปัก รุ่นประหยัด หัวน้ำหยดชดเชยแรงดัน หัวน้ำหยด 371 แพ็ค10ตัว",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-23030-rfwoq6phjvov91.webp"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "name": "ตัวกรองน้ำ",
+        "importance": "required",
+        "quantityHint": "กันตัน",
+        "products": [
+          {
+            "slug": "product-475",
+            "name": "OBUQ กรองน้ำเกษตร 2 นิ้ว ไส้กรองตะแกรง กรองเกษตร กรองเศษผง หัวกรองน้ำ ตะแกรงกรอง ตัวกรองน้ำ",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-7rdxp-mdcojgayahtj91.webp"
+          }
+        ]
+      },
+      {
+        "order": 4,
+        "name": "ตั้งเวลารดน้ำ",
+        "importance": "optional",
+        "quantityHint": "อัตโนมัติ",
+        "products": [
+          {
+            "slug": "product-583",
+            "name": "เครื่องตั้งเวลารดน้ำอัตโนมัติ อุปกรณ์ควบคุมตั้งเวลารดน้ำต้นไม้ อัตโนมัติ water timer สำหรับบ้านเรือน ชุดรดน้ำอัตโนมัติ",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-7qvdz-lhsm29ybpmew4d.webp"
+          }
+        ]
+      },
+      {
+        "order": 5,
+        "name": "ปั๊มน้ำ/ปั๊มโซล่า",
+        "importance": "optional",
+        "quantityHint": "พื้นที่ไม่มีแรงดัน",
+        "products": [
+          {
+            "slug": "product-584",
+            "name": "ปั๊มชัก MAKRO ขนาด 1 นิ้ว 6500 ลิตร/ชม.TWINS WORLD ปั๊มดูดลึก ปั๊มน้ำ ปั๊มบาดาล สูบน้ำบาดาล ปั๊มน้ำเกษตร ปั๊มเกษตร",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7ra0u-mc8pj35z88hff7.webp"
+          }
+        ]
+      }
+    ]
+  },
+  "KIT-DISEASE-001": {
+    "kitId": "KIT-DISEASE-001",
+    "name": "ชุดตรวจและรับมือโรคพืชพื้นฐาน",
+    "categorySlug": "diseases",
+    "category": "โรคและการดูแล",
+    "targetUser": "หน้า disease-check สำหรับพืช",
+    "summary": "เครื่องวัดดิน/ชุดตรวจ + ชีวภัณฑ์เชื้อรา/แมลง + กับดักแมลง + ธาตุอาหารรอง + PPE/เครื่องพ่น",
+    "components": [
+      {
+        "order": 1,
+        "name": "เครื่องวัดดิน/ชุดตรวจ",
+        "importance": "required",
+        "quantityHint": "ตรวจสาเหตุ",
+        "products": [
+          {
+            "slug": "product-476",
+            "name": "เครื่องมือวัดดิน LY101ใช้ตรวจจับดิน วัดค่าPHเครื่องวัดค่าPH+TDS&ECMETERวัดกรด-ด่างของน้ำ วัดค่า PH TDS 3 ชิ้น",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/6a553f0edda8103527040ca95314359e.webp"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "name": "ชีวภัณฑ์เชื้อรา/แมลง",
+        "importance": "required",
+        "quantityHint": "ทางเลือกชีวภาพ",
+        "products": [
+          {
+            "slug": "product-477",
+            "name": "เชื้อราไตรโคเดอร์มา 500 กรัม ราคาส่ง เชื้อจุลินทรีย์ ชีวภัณฑ์ ราคาถูกที่สุด เชื้อไตรโคเดอร์มาพลัสไมโคอินเซคติไซด์ สูตร 1",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7rasi-m4jalmadgmhg7b.webp"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "name": "กับดักแมลง",
+        "importance": "required",
+        "quantityHint": "ตรวจและลดแมลง",
+        "products": [
+          {
+            "slug": "product-391",
+            "name": "10ชิ้น กาวดักแมลงวันทอง แมลงวันที่แข็งแกร่งดักแมลงสองด้านสีเหลืองกับดักเหนียวเพลี้ยแมลงคณะกรรมการ",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/cn-11134207-820l4-me746gndvqbp63.webp"
+          },
+          {
+            "slug": "product-392",
+            "name": "นิวแลนด์ แลมบ์ดา-ไซฮาโลทริน (1L) แลมป์ดา ยาน็อคแมลง สูตรเย็น ใช้กำจัดแมลง หนอน แมลงสิง แมลงหวี่ขาว",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81ztk-mmczjr9j16v4cb.webp"
+          },
+          {
+            "slug": "product-393",
+            "name": "อะบาฉลาม 💥อะบาเมกติน 1ลิตร สูตรเย็น กำจัดหนอน เพลี้ยไฟ หนอนชอนใบ หนอนม้วนใบ หนอนใยผัก หนอนใบขาว หนอนเจาะ อะบาเม็กติน",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r98u-luk1sum8jo0lee.webp"
+          }
+        ]
+      },
+      {
+        "order": 4,
+        "name": "ธาตุอาหารรอง",
+        "importance": "optional",
+        "quantityHint": "แก้อาการขาดธาตุ",
+        "products": [
+          {
+            "slug": "product-585",
+            "name": "#ไวต้าแคลเซียมโบรอน แคลเซียม14% + โบรอน4% ธาตุอาหารรอง ธาตุอาหารเสริม ปุ๋ยเกล็ด ฮอร์โมนพืช #แคลเซียมโบรอน",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-824hq-mf108ifhsxzj32.webp"
+          }
+        ]
+      },
+      {
+        "order": 5,
+        "name": "PPE/เครื่องพ่น",
+        "importance": "required",
+        "quantityHint": "ปลอดภัย",
+        "products": [
+          {
+            "slug": "product-478",
+            "name": "ถังพ่นยาแบตเตอรี่ 16 ลิตร / 20 ลิตร เครื่องพ่นยาแบตเตอรี่ ( ชนิดแบตเตอรี่ + มือโยก ) แบบ 2 in 1 และ แบบเบตเตอรี่",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r98y-lv5u3eyt0ik304.webp"
+          }
+        ]
+      }
+    ]
+  },
+  "KIT-MARKET-001": {
+    "kitId": "KIT-MARKET-001",
+    "name": "ชุดเริ่มขายผัก/ผลผลิตออนไลน์",
+    "categorySlug": "market",
+    "category": "ตลาด แปรรูป และการขาย",
+    "targetUser": "คนขายผลผลิตเองผ่านออนไลน์",
+    "summary": "ถุงแพ็ค/กล่อง + เครื่องชั่ง + เครื่องซีล/สติ๊กเกอร์ + อุปกรณ์ถ่ายรูป/ไลฟ์ + สมุดบัญชี/เครื่องคิดเลข",
+    "components": [
+      {
+        "order": 1,
+        "name": "ถุงแพ็ค/กล่อง",
+        "importance": "required",
+        "quantityHint": "แพ็คสินค้า",
+        "products": [
+          {
+            "slug": "product-479",
+            "name": "ถุงผักPE ใส่ผัก เจาะรู ยาวพิเศษ (แพค1kg.) เนื้อ PE ใส ราคาโรงงาน นุ่ม เหนียว ราคาถูก",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7rash-m7kojveao0rbb6.webp"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "name": "เครื่องชั่ง",
+        "importance": "required",
+        "quantityHint": "คำนวณราคา",
+        "products": [
+          {
+            "slug": "product-480",
+            "name": "พร้อมส่ง เครื่องชั่งดิจิตอล ชั่งได้ 500g ทศนิยม 2 จุด ( 0.01 ) เครื่อชั่งทอง ชั่งเพชร ชั่งเครื่องประดับ ชั่งอาหาร",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7qukx-ljcln873u1756b.webp"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "name": "เครื่องซีล/สติ๊กเกอร์",
+        "importance": "required",
+        "quantityHint": "ทำแบรนด์",
+        "products": [
+          {
+            "slug": "product-481",
+            "name": "เครื่องซีลสูญญากาศ PW300 ซีลได้ทุกถุง ถุงร้อน ถุงแกง ถุงลายนูน ถุงจีบ ถุงม้วน ใช้ได้หมดเลยค่ะ ความยาวแท่งความร้อน 30 ซม",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7ras8-m31x89ztxgiqc8.webp"
+          }
+        ]
+      },
+      {
+        "order": 4,
+        "name": "อุปกรณ์ถ่ายรูป/ไลฟ์",
+        "importance": "optional",
+        "quantityHint": "ขายออนไลน์",
+        "products": [
+          {
+            "slug": "product-586",
+            "name": "ที่วางมือถือ ตั้งมือถือ ขาตั้งมือถือ แท่นวางโทรศัพท์ พกพาได้ #Z177-A",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7ra0g-mdlqlhabpt326b.webp"
+          }
+        ]
+      },
+      {
+        "order": 5,
+        "name": "สมุดบัญชี/เครื่องคิดเลข",
+        "importance": "required",
+        "quantityHint": "คุมกำไร",
+        "products": [
+          {
+            "slug": "product-482",
+            "name": "Account Book || Cash Book สมุดบัญชีรายรับรายจ่าย สมุดบันทึกรายรับรายจ่าย จดได้มากถึง 1,040 รายการ",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-23030-tcb3d03eahov73.webp"
+          }
+        ]
+      }
+    ]
+  },
+  "KIT-FARM-001": {
+    "kitId": "KIT-FARM-001",
+    "name": "ชุดจัดการฟาร์ม 1 ไร่/เกษตรผสมผสาน",
+    "categorySlug": "mixed-farming",
+    "category": "เกษตรผสมผสาน / จัดการฟาร์ม",
+    "targetUser": "คนเริ่มฟาร์มผสมผสาน",
+    "summary": "สมุดบันทึก/บัญชีฟาร์ม + ป้ายแปลง/ป้ายชื่อพืช + เครื่องมือพื้นฐาน + ระบบน้ำพื้นฐาน + ชุดตรวจดิน",
+    "components": [
+      {
+        "order": 1,
+        "name": "สมุดบันทึก/บัญชีฟาร์ม",
+        "importance": "required",
+        "quantityHint": "วางแผน",
+        "products": [
+          {
+            "slug": "product-482",
+            "name": "Account Book || Cash Book สมุดบัญชีรายรับรายจ่าย สมุดบันทึกรายรับรายจ่าย จดได้มากถึง 1,040 รายการ",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-23030-tcb3d03eahov73.webp"
+          },
+          {
+            "slug": "product-503",
+            "name": "สมุดบันทึก รายรับ-รายจ่าย / สมุดบัญชีรายรับรายจ่าย ขนาด A5",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81ztd-mhkcto56mwht40.webp"
+          },
+          {
+            "slug": "product-504",
+            "name": "สมุดบันทึกรายรับรายจ่าย Cash Book A5 สมุดบัญชีรายรับรายจ่าย บันทึกค่าใช้จ่าย วางแผนการเงิน สมุดจดบัญชี เย็บเล่มแข็งแรง",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81ztl-mqigvs31i6td7b.webp"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "name": "ป้ายแปลง/ป้ายชื่อพืช",
+        "importance": "required",
+        "quantityHint": "จัดระบบ",
+        "products": [
+          {
+            "slug": "product-483",
+            "name": "10ชิ้นพืชป้ายต้นไม้ป้ายที-รูปป้ายพลาสติกหน้าแผ่นพื้นดินนาข้าวจํานวนแผ่นต้นกล้าแผ่นกันน้ําสําหรับตกแต่งสวนต้นไม้ชื่อเขียน",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-825zr-mjta21o89x4zec.webp"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "name": "เครื่องมือพื้นฐาน",
+        "importance": "required",
+        "quantityHint": "งานประจำวัน",
+        "products": [
+          {
+            "slug": "product-484",
+            "name": "จอบ จอบขุดดิน จอบพรวนดิน จอบมือเสือ จอบถางหญ้า จอบตัด จอบหัวโค้ง จอบด้ามเหล็ก จอบพร้อมด้าม แวกถากหญ้า",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7qukw-lj75uc7l5pchb6.webp"
+          }
+        ]
+      },
+      {
+        "order": 4,
+        "name": "ระบบน้ำพื้นฐาน",
+        "importance": "required",
+        "quantityHint": "ดูแลแปลง",
+        "products": [
+          {
+            "slug": "product-485",
+            "name": "สายยางรดน้ำ ยืดหดได้ ฉีดน้ํายืดได้ สายยางรถน้ํา อัตโนมัติ สายยางถัก ต่อก๊อกน้ํา รดน้ำสวน รดน้ําต้นไม้ ล้างรถแรงดันสูง",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r98r-lnbacx47nuqvab.webp"
+          }
+        ]
+      },
+      {
+        "order": 5,
+        "name": "ชุดตรวจดิน",
+        "importance": "optional",
+        "quantityHint": "ดูดิน",
+        "products": [
+          {
+            "slug": "product-587",
+            "name": "*พร้อมส่ง*Soil Moisture PH Meter VT05 มิเตอร์วัดค่าดิน เครื่องวัดค่าดิน PH กรดด่าง ความชื้นในดิน เซ็นเซอร์วัดค่าดิน",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/868bee9cbaf12be2f56bd24e265dd816.webp"
+          }
+        ]
+      }
+    ]
+  },
+  "KIT-TECH-001": {
+    "kitId": "KIT-TECH-001",
+    "name": "ชุด Smart Farm แปลงเล็ก",
+    "categorySlug": "agri-tech-tools",
+    "category": "เทคโนโลยี อุปกรณ์ และเครื่องมือ",
+    "targetUser": "คนอยากทำแปลงอัตโนมัติ",
+    "summary": "เซ็นเซอร์ดิน + ตั้งเวลารดน้ำ/วาล์ว + ชุดน้ำหยด + ปั๊มน้ำ/โซล่า + กล้องดูแปลง",
+    "components": [
+      {
+        "order": 1,
+        "name": "เซ็นเซอร์ดิน",
+        "importance": "required",
+        "quantityHint": "ตรวจดิน",
+        "products": [
+          {
+            "slug": "product-486",
+            "name": "ดินเครื่องวัดค่า 2IN1 ที่วัดPH ดินVT-05ตัวชี้สวนดินเครื่องวัความชื้น ของดินความชื้น PH Meter Tester",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-7rdwz-mct1zuw370pada.webp"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "name": "ตั้งเวลารดน้ำ/วาล์ว",
+        "importance": "required",
+        "quantityHint": "คุมระบบ",
+        "products": [
+          {
+            "slug": "product-487",
+            "name": "เครื่องตั้งสปริงเกอร์ Water timer Digital เครื่องตั้งเวลารดน้ำอัตโนมัติ สปริงเกอร์รดน้ำต้นไม้ งเวลารดน้ำต้นไม้อัตโนมัติ",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7rasl-m8fz15hbc6pa86.webp"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "name": "ชุดน้ำหยด",
+        "importance": "required",
+        "quantityHint": "จ่ายน้ำ",
+        "products": [
+          {
+            "slug": "product-488",
+            "name": "ชุดน้ำหยด 8 ทิศทาง (ชุด 7 ถึง 100เมตร)ปรับหยดน้ำได้ หัวน้ำหยด ชุดรดน้ำต้นไม้อัตโนมัติ ระบบน้ำอัตโนมัติ",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r991-lru52x51x5ymc0.webp"
+          }
+        ]
+      },
+      {
+        "order": 4,
+        "name": "ปั๊มน้ำ/โซล่า",
+        "importance": "optional",
+        "quantityHint": "ไฟฟ้า/น้ำ",
+        "products": [
+          {
+            "slug": "product-588",
+            "name": "🍀ของแท้ ปั๊มdc ปั๊ม dc 12v ปั๊มน้ำอัตโนมัติ ปั๊มน้ำ ปั๊มแช่ ปั๊มจุ่ม ปั๊มโซล่าเซลล์ ปั๊มไดอะแฟม ปั๊มไดโว่ ปั๊มแบตเตอรี่🍀",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/ebe1df59206e9b1fb7a3c27fef2b02f5.webp"
+          }
+        ]
+      },
+      {
+        "order": 5,
+        "name": "กล้องดูแปลง",
+        "importance": "optional",
+        "quantityHint": "เฝ้าดูแปลง",
+        "products": [
+          {
+            "slug": "product-589",
+            "name": "HIKVISION แบรนด์กล้องวงจรปิดอันดับ1ของโลก กล้องวงจรปิดใส่ซิม 4g กล้องใส่ซิม 4G AIS TRUE DTAC กล้องวงจรปิด wifi",
+            "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7rasl-majnfu816jqs43.webp"
+          }
+        ]
+      }
+    ]
+  }
+}

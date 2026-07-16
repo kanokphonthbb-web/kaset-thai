@@ -2,6 +2,8 @@
 
 import { useMemo, useState } from "react";
 import { DISEASES, DISEASE_GROUPS } from "@/lib/diseaseData";
+import { getDiseaseProducts, ROLE_LABELS, type DiseaseProductRoles } from "@/lib/diseaseProducts";
+import ProductCard from "@/components/ProductCard";
 
 export default function DiseaseChecker({ initialName }: { initialName?: string }) {
   const initial = initialName
@@ -15,6 +17,8 @@ export default function DiseaseChecker({ initialName }: { initialName?: string }
     () => DISEASES.find((d) => d.group === group && d.name === name),
     [group, name],
   );
+
+  const diseaseProducts = useMemo(() => (result ? getDiseaseProducts(result) : null), [result]);
 
   function onGroupChange(g: string) {
     setGroup(g);
@@ -113,6 +117,43 @@ export default function DiseaseChecker({ initialName }: { initialName?: string }
 
           {/* วิธีป้องกัน */}
           <Section icon="🛡️" title="วิธีป้องกัน" items={result.prevent} />
+
+          {/* สินค้า/อุปกรณ์ที่เกี่ยวข้อง */}
+          {diseaseProducts && (
+            <div className="mt-5 rounded-2xl bg-paper p-5">
+              <p className="font-display font-bold text-ink">🛒 สินค้า/อุปกรณ์ที่เกี่ยวข้อง</p>
+
+              {diseaseProducts.safetyNote && (
+                <p className="mt-2 rounded-xl bg-linen px-4 py-3 text-sm text-ink/90">
+                  ⚠️ {diseaseProducts.safetyNote}
+                  {result.urgent &&
+                    " สินค้าเหล่านี้ช่วยลดความเสี่ยงและดูแลความสะอาดฟาร์มเท่านั้น ไม่ใช่การรักษาหรือรับประกันว่าจะหายจากโรค ควรติดต่อเจ้าหน้าที่ปศุสัตว์หรือสัตวแพทย์ทันทีเมื่อสงสัยโรคติดต่อ"}
+                </p>
+              )}
+
+              {(Object.keys(ROLE_LABELS) as (keyof DiseaseProductRoles)[]).map((role) => {
+                const items = diseaseProducts.roles[role].filter((p) => p.slug);
+                if (items.length === 0) return null;
+                const label = ROLE_LABELS[role];
+                return (
+                  <div key={role} className="mt-4">
+                    <p className="text-sm font-semibold text-ink">
+                      {label.icon} {label.title}
+                    </p>
+                    <div className="mt-2.5 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                      {items.slice(0, 4).map((p) => (
+                        <ProductCard
+                          key={p.slug}
+                          product={{ id: p.slug!, slug: p.slug!, name: p.name, imageUrl: p.imageUrl }}
+                          compact
+                        />
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
 
           <p className="mt-6 text-xs text-stone">
             * เป็นข้อมูลเบื้องต้นเพื่อการดูแล ไม่ใช่การวินิจฉัยทางการแพทย์ ปริมาณยา/สารและวิธีใช้อาจเปลี่ยนแปลงได้

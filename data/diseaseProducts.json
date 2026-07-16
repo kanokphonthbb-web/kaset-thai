@@ -1,0 +1,845 @@
+{
+  "group::ไก่": {
+    "safetyNote": "สินค้าเป็นกลุ่มดูแล/ป้องกัน ไม่แทนการวินิจฉัยจากสัตวแพทย์ โดยเฉพาะโรคติดต่อ",
+    "sourceKeys": [
+      "โรคไก่ไข่",
+      "โรคไก่เนื้อ",
+      "โรคไก่บ้าน"
+    ],
+    "roles": {
+      "diagnose": [],
+      "manage": [],
+      "prevent": [
+        {
+          "name": "เยอร์มไลซ์ GERMLISE น้ำยาฆ่าเชื้อล้างทำความสะอาดคอกสัตว์ เล้าไก่ เล้าหมู ฆ่าเชื้อโรงเรือน ขนาด500-1000cc.",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7qula-lg083g0br68eeb.webp",
+          "slug": "product-505",
+          "affiliateLink": null
+        },
+        {
+          "name": "ยูซีเซฟ น้ำยาพ่นคอกสัตว์ เล้าหมู เล้าไก่ น้ำยาฆ่าเชื้อโรค สำหรับโรงเรือน 1 ลิตร ฆ่าเชื้อโรค ฆ่าเชื้อแบคทีเรีย ใช้ในฟาร์",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7rasd-m2m9ytwz095843.webp",
+          "slug": "product-506",
+          "affiliateLink": null
+        },
+        {
+          "name": "เยอร์มไลซ์ GERMLISE น้ำยาฆ่าเชื้อล้างทำความสะอาดคอกสัตว์ เล้าไก่ เล้าหมู ฆ่าเชื้อโรงเรือน ขนาดใหญ่ ปริมาณ4ลิตร",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-23020-jzucoq9eqvnv18.webp",
+          "slug": "product-507",
+          "affiliateLink": null
+        },
+        {
+          "name": "เยอมไลท์ GERMLISE 500 cc นํ้ายาทําความสะอาดคอกไก่ เล้าไก่ สถานที่เลี้ยงไก่ ฆ่าเชื้อโรคในกรงสัตว์ คอก เล้าไก่ โรงเรือน",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7qul8-lh6gvjc58rhkd4.webp",
+          "slug": "product-508",
+          "affiliateLink": null
+        },
+        {
+          "name": "น้ำยาฆ่าเชื้อทอร์นาโด ใช้ฆ่าเชื้อโรค ทำความสะอาดในโรงเรือน ล้างคอกสัตว์ เล้าหมู เล้าไก่",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/98f20ca757a83d99b5d7d7140ac63e48.webp",
+          "slug": "product-509",
+          "affiliateLink": null
+        },
+        {
+          "name": "(500มิลลิลิตร) เยอร์มไลซ์ Germlise น้ำยาฆ่าเชื้อล้างทำความสะอาดคอกสัตว์ เล้าไก่ เล้าหมู โรงเรือน",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-7rent-m89xb1jpzl4925.webp",
+          "slug": "product-510",
+          "affiliateLink": null
+        },
+        {
+          "name": "เยอมไลซ์น้ำยาฆ่าเชื้อทำความสะอาดโรง ทำความสะอาดเล้าไก่โดนตัวไก่ได้ ขนาด1ลิตร ทำความสะอาด คอก กรงสัตว์เลี้ยง",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81zto-mpbsx6wwdqmm4a.webp",
+          "slug": "product-511",
+          "affiliateLink": null
+        },
+        {
+          "name": "ถูกที่สุด ฟาร์ม่าวิท 500กรัม วิตามินละลายน้ำ ไก่ไข่ ไก่เนื้อ ไก่ชน หมู ปลา นก วิตามินไก่ วิตามินเร่งไข่ เสริมภูมิคุ้มกัน",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/87bc91398a3c4a7a2712b9e38016e575.webp",
+          "slug": "product-512",
+          "affiliateLink": null
+        }
+      ],
+      "ppe": []
+    }
+  },
+  "group::เป็ด": {
+    "safetyNote": "สินค้าเป็นกลุ่มดูแล/ป้องกัน ไม่แทนการวินิจฉัยจากสัตวแพทย์ โดยเฉพาะโรคติดต่อ",
+    "sourceKeys": [
+      "โรคเป็ดไข่",
+      "โรคเป็ดเนื้อ"
+    ],
+    "roles": {
+      "diagnose": [],
+      "manage": [],
+      "prevent": [
+        {
+          "name": "เยอร์มไลซ์ GERMLISE น้ำยาฆ่าเชื้อล้างทำความสะอาดคอกสัตว์ เล้าไก่ เล้าหมู ฆ่าเชื้อโรงเรือน ขนาด500-1000cc.",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7qula-lg083g0br68eeb.webp",
+          "slug": "product-505",
+          "affiliateLink": null
+        },
+        {
+          "name": "ยูซีเซฟ น้ำยาพ่นคอกสัตว์ เล้าหมู เล้าไก่ น้ำยาฆ่าเชื้อโรค สำหรับโรงเรือน 1 ลิตร ฆ่าเชื้อโรค ฆ่าเชื้อแบคทีเรีย ใช้ในฟาร์",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7rasd-m2m9ytwz095843.webp",
+          "slug": "product-506",
+          "affiliateLink": null
+        },
+        {
+          "name": "เยอร์มไลซ์ GERMLISE น้ำยาฆ่าเชื้อล้างทำความสะอาดคอกสัตว์ เล้าไก่ เล้าหมู ฆ่าเชื้อโรงเรือน ขนาดใหญ่ ปริมาณ4ลิตร",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-23020-jzucoq9eqvnv18.webp",
+          "slug": "product-507",
+          "affiliateLink": null
+        },
+        {
+          "name": "เยอมไลท์ GERMLISE 500 cc นํ้ายาทําความสะอาดคอกไก่ เล้าไก่ สถานที่เลี้ยงไก่ ฆ่าเชื้อโรคในกรงสัตว์ คอก เล้าไก่ โรงเรือน",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7qul8-lh6gvjc58rhkd4.webp",
+          "slug": "product-508",
+          "affiliateLink": null
+        },
+        {
+          "name": "น้ำยาฆ่าเชื้อทอร์นาโด ใช้ฆ่าเชื้อโรค ทำความสะอาดในโรงเรือน ล้างคอกสัตว์ เล้าหมู เล้าไก่",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/98f20ca757a83d99b5d7d7140ac63e48.webp",
+          "slug": "product-509",
+          "affiliateLink": null
+        },
+        {
+          "name": "(500มิลลิลิตร) เยอร์มไลซ์ Germlise น้ำยาฆ่าเชื้อล้างทำความสะอาดคอกสัตว์ เล้าไก่ เล้าหมู โรงเรือน",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-7rent-m89xb1jpzl4925.webp",
+          "slug": "product-510",
+          "affiliateLink": null
+        },
+        {
+          "name": "เยอมไลซ์น้ำยาฆ่าเชื้อทำความสะอาดโรง ทำความสะอาดเล้าไก่โดนตัวไก่ได้ ขนาด1ลิตร ทำความสะอาด คอก กรงสัตว์เลี้ยง",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81zto-mpbsx6wwdqmm4a.webp",
+          "slug": "product-511",
+          "affiliateLink": null
+        },
+        {
+          "name": "ถูกที่สุด ฟาร์ม่าวิท 500กรัม วิตามินละลายน้ำ ไก่ไข่ ไก่เนื้อ ไก่ชน หมู ปลา นก วิตามินไก่ วิตามินเร่งไข่ เสริมภูมิคุ้มกัน",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/87bc91398a3c4a7a2712b9e38016e575.webp",
+          "slug": "product-512",
+          "affiliateLink": null
+        }
+      ],
+      "ppe": []
+    }
+  },
+  "group::หมู": {
+    "safetyNote": "สินค้าเป็นกลุ่มดูแล/ป้องกัน ไม่แทนการวินิจฉัยจากสัตวแพทย์ โดยเฉพาะโรคติดต่อ",
+    "sourceKeys": [
+      "โรคหมูขุน",
+      "โรคหมูหลุม",
+      "โรคแม่พันธุ์หมู"
+    ],
+    "roles": {
+      "diagnose": [],
+      "manage": [],
+      "prevent": [],
+      "ppe": [
+        {
+          "name": "Intelscore 💦รองเท้าบูทกันน้ำ รุ่นอ่อน มีพื้น บูทป่าชายเลน บูทลงนา ลุยน้ำ พ่นยา รองเท้ากันฝนทรงสูง(60CM) รองเท้าฟาร์ม",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7qul4-lishel067lygbb.webp",
+          "slug": "product-519",
+          "affiliateLink": null
+        },
+        {
+          "name": "รองเท้าบูทกันน้ำ (ข้อสูง12.6นิ้ว สีขาว) บู๊ทยางกันน้ำ รองเท้าลุยฝน ฟาร์ม สวน Waterproof BOOT BOOTS",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/9d8d1d0b3098cb1e956abb9cce826986.webp",
+          "slug": "product-520",
+          "affiliateLink": null
+        },
+        {
+          "name": "*ค่าส่งถูก* รองเท้าบูทกันน้ำ (ข้อสูง14นิ้ว สีดำ) บู๊ทยางกันน้ำ รองเท้าลุยฝน ฟาร์ม สวน Waterproof BOOT BOOTS ส่งไว",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/b85f6c16f1f7c97e10fc79acc9326e80.webp",
+          "slug": "product-521",
+          "affiliateLink": null
+        },
+        {
+          "name": "รองเท้ากันฝนกันน้ําสีเหลืองสําหรับผู้ชาย, รองเท้าเดี่ยวผ้าใบยางสําหรับฝึกซ้อมและพักผ่อนในสถานที่ก่อสร้าง",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/cn-11134211-7ras8-m2s335g7oatvf2.webp",
+          "slug": "product-522",
+          "affiliateLink": null
+        },
+        {
+          "name": "ZITY PVC กันน้ําสูงรองเท้า Wading กางเกงตกปลารองเท้าทําฟาร์ม Farmland กางเกง",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-824j0-megwmvao9ypyf0.webp",
+          "slug": "product-523",
+          "affiliateLink": null
+        },
+        {
+          "name": "Intelscore 🚛🚛กางเกงบูทกันน้ำ ยางสังเคราะห์ / PVC อย่างดี ไซส์ 39-45 กางเกงทำสวน กางเกงกันน้ำ รองเท้าฟาร์ม",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7qul8-lkhsoja9m4tl2a.webp",
+          "slug": "product-524",
+          "affiliateLink": null
+        },
+        {
+          "name": "สุภาพสตรีกลางหลอดยางรองเท้าฝนฤดูใบไม้ผลิฤดูร้อนพิมพ์แฟชั่นรองเท้าน้ําฟาร์มรองเท้าน้ํากันลื่นยางบูต",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-7rd52-lx18s6zfukzg8b.webp",
+          "slug": "product-549",
+          "affiliateLink": null
+        },
+        {
+          "name": "❤️‍🔥พร้อมส่ง❤️‍🔥 รองเท้าบูทยางO'SIDER เลี้ยงสัตว์ ฟาร์มหมู ฟาร์มไก่ ฟาร์มวัว ใส่สบาย ไม่รั่ว พื้นหนา",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81ztl-mftewc6g1xjheb.webp",
+          "slug": "product-550",
+          "affiliateLink": null
+        }
+      ]
+    }
+  },
+  "group::วัว-ควาย": {
+    "safetyNote": "สินค้าเป็นกลุ่มดูแล/ป้องกัน ไม่แทนการวินิจฉัยจากสัตวแพทย์ โดยเฉพาะโรคติดต่อ",
+    "sourceKeys": [
+      "โรควัวเนื้อ",
+      "โรคโคขุน",
+      "โรคโคนม",
+      "โรคควาย"
+    ],
+    "roles": {
+      "diagnose": [],
+      "manage": [],
+      "prevent": [
+        {
+          "name": "[1 ลิตร] น้ำยาฆ่าเชื้อ คอกสัตว์ โรงเรือน พื้นบ้าน ASF FMD ลดกลิ่น ทำความสะอาด",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-22110-sbf1gbqufckvd3.webp",
+          "slug": "product-525",
+          "affiliateLink": null
+        },
+        {
+          "name": "แอนติเทน น้ำยาฆ่าเชื้อ น้ำยาล้างคอกสัตว์ น้ำยาล้างอุปกรณ์ ฆ่าเชื้อแบคทีเรียและไวรัสดับกลิ่นได้ดี",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7qul0-ljo9equm6s7da4.webp",
+          "slug": "product-526",
+          "affiliateLink": null
+        }
+      ],
+      "ppe": [
+        {
+          "name": "Intelscore 💦รองเท้าบูทกันน้ำ รุ่นอ่อน มีพื้น บูทป่าชายเลน บูทลงนา ลุยน้ำ พ่นยา รองเท้ากันฝนทรงสูง(60CM) รองเท้าฟาร์ม",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7qul4-lishel067lygbb.webp",
+          "slug": "product-519",
+          "affiliateLink": null
+        },
+        {
+          "name": "รองเท้าบูทกันน้ำ (ข้อสูง12.6นิ้ว สีขาว) บู๊ทยางกันน้ำ รองเท้าลุยฝน ฟาร์ม สวน Waterproof BOOT BOOTS",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/9d8d1d0b3098cb1e956abb9cce826986.webp",
+          "slug": "product-520",
+          "affiliateLink": null
+        },
+        {
+          "name": "*ค่าส่งถูก* รองเท้าบูทกันน้ำ (ข้อสูง14นิ้ว สีดำ) บู๊ทยางกันน้ำ รองเท้าลุยฝน ฟาร์ม สวน Waterproof BOOT BOOTS ส่งไว",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/b85f6c16f1f7c97e10fc79acc9326e80.webp",
+          "slug": "product-521",
+          "affiliateLink": null
+        },
+        {
+          "name": "รองเท้ากันฝนกันน้ําสีเหลืองสําหรับผู้ชาย, รองเท้าเดี่ยวผ้าใบยางสําหรับฝึกซ้อมและพักผ่อนในสถานที่ก่อสร้าง",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/cn-11134211-7ras8-m2s335g7oatvf2.webp",
+          "slug": "product-522",
+          "affiliateLink": null
+        },
+        {
+          "name": "ZITY PVC กันน้ําสูงรองเท้า Wading กางเกงตกปลารองเท้าทําฟาร์ม Farmland กางเกง",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-824j0-megwmvao9ypyf0.webp",
+          "slug": "product-523",
+          "affiliateLink": null
+        },
+        {
+          "name": "Intelscore 🚛🚛กางเกงบูทกันน้ำ ยางสังเคราะห์ / PVC อย่างดี ไซส์ 39-45 กางเกงทำสวน กางเกงกันน้ำ รองเท้าฟาร์ม",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7qul8-lkhsoja9m4tl2a.webp",
+          "slug": "product-524",
+          "affiliateLink": null
+        }
+      ]
+    }
+  },
+  "group::แพะ-แกะ": {
+    "safetyNote": "สินค้าเป็นกลุ่มดูแล/ป้องกัน ไม่แทนการวินิจฉัยจากสัตวแพทย์ โดยเฉพาะโรคติดต่อ",
+    "sourceKeys": [
+      "โรคแพะเนื้อ",
+      "โรคแพะนม",
+      "โรคแกะ"
+    ],
+    "roles": {
+      "diagnose": [],
+      "manage": [],
+      "prevent": [
+        {
+          "name": "ซันวิตามิน2บำรุงสัตว์ วิตามินวัว วิตามินหมู วิตามินแพะ วิตามินไก่ วิตามินเป็ด 2กิโล เสริมวิตามินให้แก่สัตว์",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/36de7355fa702596f912103a4a49064a.webp",
+          "slug": "product-516",
+          "affiliateLink": null
+        }
+      ],
+      "ppe": [
+        {
+          "name": "Intelscore 💦รองเท้าบูทกันน้ำ รุ่นอ่อน มีพื้น บูทป่าชายเลน บูทลงนา ลุยน้ำ พ่นยา รองเท้ากันฝนทรงสูง(60CM) รองเท้าฟาร์ม",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7qul4-lishel067lygbb.webp",
+          "slug": "product-519",
+          "affiliateLink": null
+        },
+        {
+          "name": "รองเท้าบูทกันน้ำ (ข้อสูง12.6นิ้ว สีขาว) บู๊ทยางกันน้ำ รองเท้าลุยฝน ฟาร์ม สวน Waterproof BOOT BOOTS",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/9d8d1d0b3098cb1e956abb9cce826986.webp",
+          "slug": "product-520",
+          "affiliateLink": null
+        },
+        {
+          "name": "*ค่าส่งถูก* รองเท้าบูทกันน้ำ (ข้อสูง14นิ้ว สีดำ) บู๊ทยางกันน้ำ รองเท้าลุยฝน ฟาร์ม สวน Waterproof BOOT BOOTS ส่งไว",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/b85f6c16f1f7c97e10fc79acc9326e80.webp",
+          "slug": "product-521",
+          "affiliateLink": null
+        },
+        {
+          "name": "รองเท้ากันฝนกันน้ําสีเหลืองสําหรับผู้ชาย, รองเท้าเดี่ยวผ้าใบยางสําหรับฝึกซ้อมและพักผ่อนในสถานที่ก่อสร้าง",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/cn-11134211-7ras8-m2s335g7oatvf2.webp",
+          "slug": "product-522",
+          "affiliateLink": null
+        },
+        {
+          "name": "ZITY PVC กันน้ําสูงรองเท้า Wading กางเกงตกปลารองเท้าทําฟาร์ม Farmland กางเกง",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-824j0-megwmvao9ypyf0.webp",
+          "slug": "product-523",
+          "affiliateLink": null
+        },
+        {
+          "name": "Intelscore 🚛🚛กางเกงบูทกันน้ำ ยางสังเคราะห์ / PVC อย่างดี ไซส์ 39-45 กางเกงทำสวน กางเกงกันน้ำ รองเท้าฟาร์ม",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7qul8-lkhsoja9m4tl2a.webp",
+          "slug": "product-524",
+          "affiliateLink": null
+        },
+        {
+          "name": "อาหารเสริมแร่ธาตุเกลือก้อน สำหรับสัตว์ โค กระบือ แพะ แกะ AA Salt - White Plus+ ขนาดก้อนละ 5 kg",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7qul9-lfzlo4vu2uz26b.webp",
+          "slug": "product-533",
+          "affiliateLink": null
+        }
+      ]
+    }
+  },
+  "name::พืชผัก–ไม้ผล::อาการขาดธาตุอาหาร": {
+    "safetyNote": "เลือกสารให้ตรงพืชและศัตรูพืช ใช้ตามฉลาก สวม PPE และเว้นระยะเก็บเกี่ยว",
+    "sourceKeys": [
+      "ใบเหลือง"
+    ],
+    "roles": {
+      "diagnose": [
+        {
+          "name": "เครื่องวัดดิน วัดค่าดิน เครื่องวัด ph ดิน วัดแร่ธาตุในดิน วัดค่าปุ๋ย npk วัดความเป็นกรดด่าง คุณภาพดิน 2in1",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-7rdxh-lydkr8p23h8n03.webp",
+          "slug": "product-379",
+          "affiliateLink": null
+        },
+        {
+          "name": "*พร้อมส่งจากไทย*มิเตอร์วัดค่าดิน เครื่องวัดค่าดิน VT05 PH กรดด่าง ความชื้นในดิน Soil Moisture PH Meter เซ็นเซอร์วัดดิน",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-7qvdq-livisoe06dfz33.webp",
+          "slug": "product-380",
+          "affiliateLink": null
+        },
+        {
+          "name": "เครื่องมือวัดดิน LY101ใช้ตรวจจับดิน วัดค่าPHเครื่องวัดค่าPH+TDS&ECMETERวัดกรด-ด่างของน้ำ วัดค่า PH TDS 3 ชิ้น",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/6a553f0edda8103527040ca95314359e.webp",
+          "slug": "product-476",
+          "affiliateLink": null
+        }
+      ],
+      "manage": [
+        {
+          "name": "#ไวต้าแคลเซียมโบรอน แคลเซียม14% + โบรอน4% ธาตุอาหารรอง ธาตุอาหารเสริม ปุ๋ยเกล็ด ฮอร์โมนพืช #แคลเซียมโบรอน",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-824hq-mf108ifhsxzj32.webp",
+          "slug": "product-585",
+          "affiliateLink": null
+        },
+        {
+          "name": "นางฟ้า 🌱ฮอร์โมนพืช ธาตุอาหารพืช แมกนีเซียมพืชเขียวโตเร็วแตกใบอ่อน ขนาด 100 กรัม",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r98z-lw11ugcl7vzkc0.webp",
+          "slug": "product-597",
+          "affiliateLink": null
+        }
+      ],
+      "prevent": [],
+      "ppe": []
+    }
+  },
+  "name::พืชผัก–ไม้ผล::โรครากเน่าโคนเน่า": {
+    "safetyNote": "เลือกสารให้ตรงพืชและศัตรูพืช ใช้ตามฉลาก สวม PPE และเว้นระยะเก็บเกี่ยว",
+    "sourceKeys": [
+      "รากเน่าโคนเน่า"
+    ],
+    "roles": {
+      "diagnose": [],
+      "manage": [
+        {
+          "name": "ไตร-แท๊บ (ไตรโครเดอร์มา) จาก ทีเอบี ไตรโคเดอร์มา กำจัดโรครากเน่า โคนเน่า จากเชื้อราไฟทอปธอร่า ในทุเรียน ไตรแท๊บ",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81ztc-mhrc5xv86s5kae.webp",
+          "slug": "product-381",
+          "affiliateLink": null
+        },
+        {
+          "name": "🦠ไตรโคเดอร์มา ไตรโคเดอม่า ไตโคเดอร์มา ป้องกันเชื้อรา กำจัดโรคพืช เพาะเชื้ิอได้ ตรากัปตันโคโค่🦠",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r98v-lv8cvctcr8c325.webp",
+          "slug": "product-382",
+          "affiliateLink": null
+        },
+        {
+          "name": "กัปตันบีเอส สูตรเข้มข้นเชื้อ 2 เท่า อัพอาหารเชื้อ บาซิลลัส ซับทิลิส แบบผง(500กรัม) ปลอดภัย 100%",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81ztl-mji5erdyz9c7a0.webp",
+          "slug": "product-383",
+          "affiliateLink": null
+        },
+        {
+          "name": "กัปตันบีเอส สูตรเข้มข้นเชื้อ 2 เท่า อัพอาหารเชื้อ บาซิลลัส ซับทิลิส แบบผง(100กรัม) ปลอดภัย 100%",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81zth-mji5jz0i11j7c5.webp",
+          "slug": "product-384",
+          "affiliateLink": null
+        },
+        {
+          "name": "บูลบีเอส บาซิลลัส ซับทิลิส 500 กรัม ชีวภัณฑ์ ป้องกัน รักษาโรคพืช ที่เกิดจากเชื้อรา และ เชื้อแบคทีเรีย รากเน่าโคนเน่า",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/011c600ba332c10abef54893644e47d9.webp",
+          "slug": "product-385",
+          "affiliateLink": null
+        },
+        {
+          "name": "บาซิลลัส ซับทิลิส ของแท้ มีทะเบียน เจน-แบค บาซิทัส ลาร์มิน่า",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81zth-mfnoy3e4jf9q39.webp",
+          "slug": "product-386",
+          "affiliateLink": null
+        }
+      ],
+      "prevent": [],
+      "ppe": []
+    }
+  },
+  "name::พืชผัก–ไม้ผล::โรคราน้ำค้าง": {
+    "safetyNote": "เลือกสารให้ตรงพืชและศัตรูพืช ใช้ตามฉลาก สวม PPE และเว้นระยะเก็บเกี่ยว",
+    "sourceKeys": [
+      "โรคราน้ำค้าง"
+    ],
+    "roles": {
+      "diagnose": [],
+      "manage": [
+        {
+          "name": "ไตร-แท๊บ (ไตรโครเดอร์มา) จาก ทีเอบี ไตรโคเดอร์มา กำจัดโรครากเน่า โคนเน่า จากเชื้อราไฟทอปธอร่า ในทุเรียน ไตรแท๊บ",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81ztc-mhrc5xv86s5kae.webp",
+          "slug": "product-381",
+          "affiliateLink": null
+        },
+        {
+          "name": "🦠ไตรโคเดอร์มา ไตรโคเดอม่า ไตโคเดอร์มา ป้องกันเชื้อรา กำจัดโรคพืช เพาะเชื้ิอได้ ตรากัปตันโคโค่🦠",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r98v-lv8cvctcr8c325.webp",
+          "slug": "product-382",
+          "affiliateLink": null
+        },
+        {
+          "name": "กัปตันบีเอส สูตรเข้มข้นเชื้อ 2 เท่า อัพอาหารเชื้อ บาซิลลัส ซับทิลิส แบบผง(500กรัม) ปลอดภัย 100%",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81ztl-mji5erdyz9c7a0.webp",
+          "slug": "product-383",
+          "affiliateLink": null
+        },
+        {
+          "name": "กัปตันบีเอส สูตรเข้มข้นเชื้อ 2 เท่า อัพอาหารเชื้อ บาซิลลัส ซับทิลิส แบบผง(100กรัม) ปลอดภัย 100%",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81zth-mji5jz0i11j7c5.webp",
+          "slug": "product-384",
+          "affiliateLink": null
+        },
+        {
+          "name": "บูลบีเอส บาซิลลัส ซับทิลิส 500 กรัม ชีวภัณฑ์ ป้องกัน รักษาโรคพืช ที่เกิดจากเชื้อรา และ เชื้อแบคทีเรีย รากเน่าโคนเน่า",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/011c600ba332c10abef54893644e47d9.webp",
+          "slug": "product-385",
+          "affiliateLink": null
+        },
+        {
+          "name": "บาซิลลัส ซับทิลิส ของแท้ มีทะเบียน เจน-แบค บาซิทัส ลาร์มิน่า",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81zth-mfnoy3e4jf9q39.webp",
+          "slug": "product-386",
+          "affiliateLink": null
+        }
+      ],
+      "prevent": [],
+      "ppe": []
+    }
+  },
+  "name::พืชผัก–ไม้ผล::โรคใบไหม้ (เชื้อรา)": {
+    "safetyNote": "เลือกสารให้ตรงพืชและศัตรูพืช ใช้ตามฉลาก สวม PPE และเว้นระยะเก็บเกี่ยว",
+    "sourceKeys": [
+      "โรคใบไหม้"
+    ],
+    "roles": {
+      "diagnose": [],
+      "manage": [
+        {
+          "name": "ไตร-แท๊บ (ไตรโครเดอร์มา) จาก ทีเอบี ไตรโคเดอร์มา กำจัดโรครากเน่า โคนเน่า จากเชื้อราไฟทอปธอร่า ในทุเรียน ไตรแท๊บ",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81ztc-mhrc5xv86s5kae.webp",
+          "slug": "product-381",
+          "affiliateLink": null
+        },
+        {
+          "name": "🦠ไตรโคเดอร์มา ไตรโคเดอม่า ไตโคเดอร์มา ป้องกันเชื้อรา กำจัดโรคพืช เพาะเชื้ิอได้ ตรากัปตันโคโค่🦠",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r98v-lv8cvctcr8c325.webp",
+          "slug": "product-382",
+          "affiliateLink": null
+        },
+        {
+          "name": "กัปตันบีเอส สูตรเข้มข้นเชื้อ 2 เท่า อัพอาหารเชื้อ บาซิลลัส ซับทิลิส แบบผง(500กรัม) ปลอดภัย 100%",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81ztl-mji5erdyz9c7a0.webp",
+          "slug": "product-383",
+          "affiliateLink": null
+        },
+        {
+          "name": "กัปตันบีเอส สูตรเข้มข้นเชื้อ 2 เท่า อัพอาหารเชื้อ บาซิลลัส ซับทิลิส แบบผง(100กรัม) ปลอดภัย 100%",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81zth-mji5jz0i11j7c5.webp",
+          "slug": "product-384",
+          "affiliateLink": null
+        },
+        {
+          "name": "บูลบีเอส บาซิลลัส ซับทิลิส 500 กรัม ชีวภัณฑ์ ป้องกัน รักษาโรคพืช ที่เกิดจากเชื้อรา และ เชื้อแบคทีเรีย รากเน่าโคนเน่า",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/011c600ba332c10abef54893644e47d9.webp",
+          "slug": "product-385",
+          "affiliateLink": null
+        },
+        {
+          "name": "บาซิลลัส ซับทิลิส ของแท้ มีทะเบียน เจน-แบค บาซิทัส ลาร์มิน่า",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81zth-mfnoy3e4jf9q39.webp",
+          "slug": "product-386",
+          "affiliateLink": null
+        }
+      ],
+      "prevent": [],
+      "ppe": []
+    }
+  },
+  "name::พืชผัก–ไม้ผล::เพลี้ยและไรดูดน้ำเลี้ยง": {
+    "safetyNote": "เลือกสารให้ตรงพืชและศัตรูพืช ใช้ตามฉลาก สวม PPE และเว้นระยะเก็บเกี่ยว",
+    "sourceKeys": [
+      "เพลี้ยไฟ",
+      "เพลี้ยแป้ง",
+      "แมลงหวี่ขาว"
+    ],
+    "roles": {
+      "diagnose": [],
+      "manage": [
+        {
+          "name": "White Oil ไวท์ออยล์ ขนาด 1 Kg. เบบี้ออยล์สูตรสมุนไพร น้ำมันนวดสมุนไพรเย็น บอดี้ออยล์บำรุงผิว บาล์มสมุนไพร / ยาหม่องเหลว",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7ra0r-mdeiitwpg5te3f.webp",
+          "slug": "product-389",
+          "affiliateLink": null
+        },
+        {
+          "name": "White oil ไวท์ออยล์ น้ำมันขาว (ขนาด 1 กก. / 500 กรัม)",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7rasb-mahz55yjujp2b7.webp",
+          "slug": "product-390",
+          "affiliateLink": null
+        }
+      ],
+      "prevent": [
+        {
+          "name": "ION FT300 แชมพูสูตรน้อยหน่า น้ำมันสะเดา เห็บ หมัด สุนัข และแมว ขนยาว TX-Free Shampoo 300ml",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/eac8895a77a38f14af2d489ee75a3857.webp",
+          "slug": "product-387",
+          "affiliateLink": null
+        },
+        {
+          "name": "Neem Tree 3 - Pure Neem Oil น้ำมันสะเดาบริสุทธิ์ ขนาด 30 ซีซี",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81ztp-mngupl8ccb9c65.webp",
+          "slug": "product-388",
+          "affiliateLink": null
+        },
+        {
+          "name": "10ชิ้น กาวดักแมลงวันทอง แมลงวันที่แข็งแกร่งดักแมลงสองด้านสีเหลืองกับดักเหนียวเพลี้ยแมลงคณะกรรมการ",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/cn-11134207-820l4-me746gndvqbp63.webp",
+          "slug": "product-391",
+          "affiliateLink": null
+        },
+        {
+          "name": "นิวแลนด์ แลมบ์ดา-ไซฮาโลทริน (1L) แลมป์ดา ยาน็อคแมลง สูตรเย็น ใช้กำจัดแมลง หนอน แมลงสิง แมลงหวี่ขาว",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81ztk-mmczjr9j16v4cb.webp",
+          "slug": "product-392",
+          "affiliateLink": null
+        },
+        {
+          "name": "อะบาฉลาม 💥อะบาเมกติน 1ลิตร สูตรเย็น กำจัดหนอน เพลี้ยไฟ หนอนชอนใบ หนอนม้วนใบ หนอนใยผัก หนอนใบขาว หนอนเจาะ อะบาเม็กติน",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r98u-luk1sum8jo0lee.webp",
+          "slug": "product-393",
+          "affiliateLink": null
+        },
+        {
+          "name": "อีมาเม็กติน20% 100กรัม กำจัดหนอนม้วนใบ หนอนใบขาว หนอนใย หนอนชอนใบ เพลี้ยไฟ หนอนไยผัก หนอนกระทู้ ยาเย็น อย่างแรง 100กรัม",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7rasb-m4fugkshwirof3.webp",
+          "slug": "product-394",
+          "affiliateLink": null
+        }
+      ],
+      "ppe": []
+    }
+  },
+  "name::พืชผัก–ไม้ผล::หนอนกินใบและหนอนเจาะผล": {
+    "safetyNote": "เลือกสารให้ตรงพืชและศัตรูพืช ใช้ตามฉลาก สวม PPE และเว้นระยะเก็บเกี่ยว",
+    "sourceKeys": [
+      "หนอนชอนใบ"
+    ],
+    "roles": {
+      "diagnose": [],
+      "manage": [
+        {
+          "name": "White Oil ไวท์ออยล์ ขนาด 1 Kg. เบบี้ออยล์สูตรสมุนไพร น้ำมันนวดสมุนไพรเย็น บอดี้ออยล์บำรุงผิว บาล์มสมุนไพร / ยาหม่องเหลว",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7ra0r-mdeiitwpg5te3f.webp",
+          "slug": "product-389",
+          "affiliateLink": null
+        },
+        {
+          "name": "White oil ไวท์ออยล์ น้ำมันขาว (ขนาด 1 กก. / 500 กรัม)",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7rasb-mahz55yjujp2b7.webp",
+          "slug": "product-390",
+          "affiliateLink": null
+        }
+      ],
+      "prevent": [
+        {
+          "name": "ION FT300 แชมพูสูตรน้อยหน่า น้ำมันสะเดา เห็บ หมัด สุนัข และแมว ขนยาว TX-Free Shampoo 300ml",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/eac8895a77a38f14af2d489ee75a3857.webp",
+          "slug": "product-387",
+          "affiliateLink": null
+        },
+        {
+          "name": "Neem Tree 3 - Pure Neem Oil น้ำมันสะเดาบริสุทธิ์ ขนาด 30 ซีซี",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81ztp-mngupl8ccb9c65.webp",
+          "slug": "product-388",
+          "affiliateLink": null
+        },
+        {
+          "name": "10ชิ้น กาวดักแมลงวันทอง แมลงวันที่แข็งแกร่งดักแมลงสองด้านสีเหลืองกับดักเหนียวเพลี้ยแมลงคณะกรรมการ",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/cn-11134207-820l4-me746gndvqbp63.webp",
+          "slug": "product-391",
+          "affiliateLink": null
+        },
+        {
+          "name": "นิวแลนด์ แลมบ์ดา-ไซฮาโลทริน (1L) แลมป์ดา ยาน็อคแมลง สูตรเย็น ใช้กำจัดแมลง หนอน แมลงสิง แมลงหวี่ขาว",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81ztk-mmczjr9j16v4cb.webp",
+          "slug": "product-392",
+          "affiliateLink": null
+        },
+        {
+          "name": "อะบาฉลาม 💥อะบาเมกติน 1ลิตร สูตรเย็น กำจัดหนอน เพลี้ยไฟ หนอนชอนใบ หนอนม้วนใบ หนอนใยผัก หนอนใบขาว หนอนเจาะ อะบาเม็กติน",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7r98u-luk1sum8jo0lee.webp",
+          "slug": "product-393",
+          "affiliateLink": null
+        },
+        {
+          "name": "อีมาเม็กติน20% 100กรัม กำจัดหนอนม้วนใบ หนอนใบขาว หนอนใย หนอนชอนใบ เพลี้ยไฟ หนอนไยผัก หนอนกระทู้ ยาเย็น อย่างแรง 100กรัม",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7rasb-m4fugkshwirof3.webp",
+          "slug": "product-394",
+          "affiliateLink": null
+        }
+      ],
+      "ppe": []
+    }
+  },
+  "group::ข้าว": {
+    "safetyNote": "เลือกสารให้ตรงพืชและศัตรูพืช ใช้ตามฉลาก สวม PPE และเว้นระยะเก็บเกี่ยว",
+    "sourceKeys": [
+      "หอยเชอรี่ในนาข้าว"
+    ],
+    "roles": {
+      "diagnose": [],
+      "manage": [],
+      "prevent": [],
+      "ppe": [
+        {
+          "name": "อุปกรณ์ดันหอย สแตนเลส แข็งแรง ใบมีดคม ใช้งานง่าย ดันหอยเชอรี่ ดักปลา เครื่องมือหาปลา พกพาสะดวก",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134201-7ra0u-mcdiex9bay0vca.webp",
+          "slug": "product-395",
+          "affiliateLink": null
+        },
+        {
+          "name": "เดทมีล-5 (Deadmeal-5) เหยื่อมื้อสุดท้ายของหอยเชอรี่และหอยทาก",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/a78c224a2a60090da741bbf157597c53.webp",
+          "slug": "product-396",
+          "affiliateLink": null
+        },
+        {
+          "name": "Intelscore 💦รองเท้าบูทกันน้ำ รุ่นอ่อน มีพื้น บูทป่าชายเลน บูทลงนา ลุยน้ำ พ่นยา รองเท้ากันฝนทรงสูง(60CM) รองเท้าฟาร์ม",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7qul4-lishel067lygbb.webp",
+          "slug": "product-519",
+          "affiliateLink": null
+        },
+        {
+          "name": "รองเท้าบูทกันน้ำ (ข้อสูง12.6นิ้ว สีขาว) บู๊ทยางกันน้ำ รองเท้าลุยฝน ฟาร์ม สวน Waterproof BOOT BOOTS",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/9d8d1d0b3098cb1e956abb9cce826986.webp",
+          "slug": "product-520",
+          "affiliateLink": null
+        },
+        {
+          "name": "*ค่าส่งถูก* รองเท้าบูทกันน้ำ (ข้อสูง14นิ้ว สีดำ) บู๊ทยางกันน้ำ รองเท้าลุยฝน ฟาร์ม สวน Waterproof BOOT BOOTS ส่งไว",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/b85f6c16f1f7c97e10fc79acc9326e80.webp",
+          "slug": "product-521",
+          "affiliateLink": null
+        },
+        {
+          "name": "รองเท้ากันฝนกันน้ําสีเหลืองสําหรับผู้ชาย, รองเท้าเดี่ยวผ้าใบยางสําหรับฝึกซ้อมและพักผ่อนในสถานที่ก่อสร้าง",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/cn-11134211-7ras8-m2s335g7oatvf2.webp",
+          "slug": "product-522",
+          "affiliateLink": null
+        },
+        {
+          "name": "ZITY PVC กันน้ําสูงรองเท้า Wading กางเกงตกปลารองเท้าทําฟาร์ม Farmland กางเกง",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-824j0-megwmvao9ypyf0.webp",
+          "slug": "product-523",
+          "affiliateLink": null
+        },
+        {
+          "name": "Intelscore 🚛🚛กางเกงบูทกันน้ำ ยางสังเคราะห์ / PVC อย่างดี ไซส์ 39-45 กางเกงทำสวน กางเกงกันน้ำ รองเท้าฟาร์ม",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7qul8-lkhsoja9m4tl2a.webp",
+          "slug": "product-524",
+          "affiliateLink": null
+        }
+      ]
+    }
+  },
+  "name::วัว-ควาย::โรคปากและเท้าเปื่อย": {
+    "safetyNote": "สินค้าเป็นกลุ่มดูแล/ป้องกัน ไม่แทนการวินิจฉัยจากสัตวแพทย์ โดยเฉพาะโรคติดต่อ",
+    "sourceKeys": [
+      "โรคปากเท้าเปื่อย"
+    ],
+    "roles": {
+      "diagnose": [],
+      "manage": [],
+      "prevent": [
+        {
+          "name": "[1 ลิตร] น้ำยาฆ่าเชื้อ คอกสัตว์ โรงเรือน พื้นบ้าน ASF FMD ลดกลิ่น ทำความสะอาด",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-22110-sbf1gbqufckvd3.webp",
+          "slug": "product-525",
+          "affiliateLink": null
+        },
+        {
+          "name": "แอนติเทน น้ำยาฆ่าเชื้อ น้ำยาล้างคอกสัตว์ น้ำยาล้างอุปกรณ์ ฆ่าเชื้อแบคทีเรียและไวรัสดับกลิ่นได้ดี",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7qul0-ljo9equm6s7da4.webp",
+          "slug": "product-526",
+          "affiliateLink": null
+        }
+      ],
+      "ppe": [
+        {
+          "name": "Intelscore 💦รองเท้าบูทกันน้ำ รุ่นอ่อน มีพื้น บูทป่าชายเลน บูทลงนา ลุยน้ำ พ่นยา รองเท้ากันฝนทรงสูง(60CM) รองเท้าฟาร์ม",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7qul4-lishel067lygbb.webp",
+          "slug": "product-519",
+          "affiliateLink": null
+        },
+        {
+          "name": "รองเท้าบูทกันน้ำ (ข้อสูง12.6นิ้ว สีขาว) บู๊ทยางกันน้ำ รองเท้าลุยฝน ฟาร์ม สวน Waterproof BOOT BOOTS",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/9d8d1d0b3098cb1e956abb9cce826986.webp",
+          "slug": "product-520",
+          "affiliateLink": null
+        },
+        {
+          "name": "*ค่าส่งถูก* รองเท้าบูทกันน้ำ (ข้อสูง14นิ้ว สีดำ) บู๊ทยางกันน้ำ รองเท้าลุยฝน ฟาร์ม สวน Waterproof BOOT BOOTS ส่งไว",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/b85f6c16f1f7c97e10fc79acc9326e80.webp",
+          "slug": "product-521",
+          "affiliateLink": null
+        },
+        {
+          "name": "รองเท้ากันฝนกันน้ําสีเหลืองสําหรับผู้ชาย, รองเท้าเดี่ยวผ้าใบยางสําหรับฝึกซ้อมและพักผ่อนในสถานที่ก่อสร้าง",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/cn-11134211-7ras8-m2s335g7oatvf2.webp",
+          "slug": "product-522",
+          "affiliateLink": null
+        },
+        {
+          "name": "ZITY PVC กันน้ําสูงรองเท้า Wading กางเกงตกปลารองเท้าทําฟาร์ม Farmland กางเกง",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-824j0-megwmvao9ypyf0.webp",
+          "slug": "product-523",
+          "affiliateLink": null
+        },
+        {
+          "name": "Intelscore 🚛🚛กางเกงบูทกันน้ำ ยางสังเคราะห์ / PVC อย่างดี ไซส์ 39-45 กางเกงทำสวน กางเกงกันน้ำ รองเท้าฟาร์ม",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7qul8-lkhsoja9m4tl2a.webp",
+          "slug": "product-524",
+          "affiliateLink": null
+        }
+      ]
+    }
+  },
+  "name::หมู::อหิวาต์แอฟริกาในสุกร (ASF)": {
+    "safetyNote": "สินค้าเป็นกลุ่มดูแล/ป้องกัน ไม่แทนการวินิจฉัยจากสัตวแพทย์ โดยเฉพาะโรคติดต่อ",
+    "sourceKeys": [
+      "ASF หมู"
+    ],
+    "roles": {
+      "diagnose": [],
+      "manage": [],
+      "prevent": [],
+      "ppe": [
+        {
+          "name": "Intelscore 💦รองเท้าบูทกันน้ำ รุ่นอ่อน มีพื้น บูทป่าชายเลน บูทลงนา ลุยน้ำ พ่นยา รองเท้ากันฝนทรงสูง(60CM) รองเท้าฟาร์ม",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7qul4-lishel067lygbb.webp",
+          "slug": "product-519",
+          "affiliateLink": null
+        },
+        {
+          "name": "รองเท้าบูทกันน้ำ (ข้อสูง12.6นิ้ว สีขาว) บู๊ทยางกันน้ำ รองเท้าลุยฝน ฟาร์ม สวน Waterproof BOOT BOOTS",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/9d8d1d0b3098cb1e956abb9cce826986.webp",
+          "slug": "product-520",
+          "affiliateLink": null
+        },
+        {
+          "name": "*ค่าส่งถูก* รองเท้าบูทกันน้ำ (ข้อสูง14นิ้ว สีดำ) บู๊ทยางกันน้ำ รองเท้าลุยฝน ฟาร์ม สวน Waterproof BOOT BOOTS ส่งไว",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/b85f6c16f1f7c97e10fc79acc9326e80.webp",
+          "slug": "product-521",
+          "affiliateLink": null
+        },
+        {
+          "name": "รองเท้ากันฝนกันน้ําสีเหลืองสําหรับผู้ชาย, รองเท้าเดี่ยวผ้าใบยางสําหรับฝึกซ้อมและพักผ่อนในสถานที่ก่อสร้าง",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/cn-11134211-7ras8-m2s335g7oatvf2.webp",
+          "slug": "product-522",
+          "affiliateLink": null
+        },
+        {
+          "name": "ZITY PVC กันน้ําสูงรองเท้า Wading กางเกงตกปลารองเท้าทําฟาร์ม Farmland กางเกง",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-824j0-megwmvao9ypyf0.webp",
+          "slug": "product-523",
+          "affiliateLink": null
+        },
+        {
+          "name": "Intelscore 🚛🚛กางเกงบูทกันน้ำ ยางสังเคราะห์ / PVC อย่างดี ไซส์ 39-45 กางเกงทำสวน กางเกงกันน้ำ รองเท้าฟาร์ม",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-7qul8-lkhsoja9m4tl2a.webp",
+          "slug": "product-524",
+          "affiliateLink": null
+        },
+        {
+          "name": "สุภาพสตรีกลางหลอดยางรองเท้าฝนฤดูใบไม้ผลิฤดูร้อนพิมพ์แฟชั่นรองเท้าน้ําฟาร์มรองเท้าน้ํากันลื่นยางบูต",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/sg-11134201-7rd52-lx18s6zfukzg8b.webp",
+          "slug": "product-549",
+          "affiliateLink": null
+        },
+        {
+          "name": "❤️‍🔥พร้อมส่ง❤️‍🔥 รองเท้าบูทยางO'SIDER เลี้ยงสัตว์ ฟาร์มหมู ฟาร์มไก่ ฟาร์มวัว ใส่สบาย ไม่รั่ว พื้นหนา",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/th-11134207-81ztl-mftewc6g1xjheb.webp",
+          "slug": "product-550",
+          "affiliateLink": null
+        }
+      ]
+    }
+  },
+  "name::ปลา (ประมง)::น้ำเสีย/ออกซิเจนต่ำ": {
+    "safetyNote": "เริ่มจากตรวจน้ำและเพิ่มอากาศ หากตายผิดปกติควรปรึกษาประมง/ผู้เชี่ยวชาญ",
+    "sourceKeys": [
+      "ปลาน็อกน้ำ"
+    ],
+    "roles": {
+      "diagnose": [
+        {
+          "name": "สีเขียว เครื่องเติมอากาศบ่อปลา บ่อเลี้ยงปลา ระบายน้ำ เพาะเลี้ยงสัตว์น้ำ รดน้ำ , ปั้มน้ำ ปั้มน้ำลอยน้ำ เติมอากาศบ่อ ปั้มเ",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/7bb13be129baff52415ab6163ad17d67.webp",
+          "slug": "product-551",
+          "affiliateLink": null
+        },
+        {
+          "name": "เครื่องเติมอากาศบ่อปลา, เครื่องเติมอากาศขนาดใหญ่, ปั๊มลอยน้ำ, เครื่องเติมอากาศบ่อปลา, ปั๊มออกซิเจนเพาะพันธุ์ปลา, ปั๊มออก",
+          "imageUrl": "https://down-aka-th.img.susercontent.com/e27102e540c3500730e827080e77e775.webp",
+          "slug": "product-552",
+          "affiliateLink": null
+        }
+      ],
+      "manage": [],
+      "prevent": [],
+      "ppe": []
+    }
+  }
+}

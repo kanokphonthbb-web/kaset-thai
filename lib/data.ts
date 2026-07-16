@@ -158,6 +158,13 @@ export const TOOLS: Tool[] = [
     href: "/tools/disease-check",
     status: "พร้อมใช้งาน",
   },
+  {
+    icon: "🧰",
+    title: "ชุดเริ่มต้น",
+    description: "รวมของที่ต้องมี/เสริมสำหรับงานเกษตรแต่ละแบบ เลือกซื้อเป็นชิ้น ๆ ได้เอง",
+    href: "/tools/starter-kits",
+    status: "พร้อมใช้งาน",
+  },
 ];
 
 export const ARTICLES: Article[] = [
