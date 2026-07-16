@@ -68,14 +68,14 @@ function ComponentGroup({
       <h2 className="font-display text-xl font-bold text-ink">
         {icon} {title}
       </h2>
-      <div className="mt-5 space-y-8">
+      <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {components.map((c) => (
-          <div key={c.name}>
+          <div key={c.name} className="rounded-2xl bg-mist p-4">
             <div className="flex flex-wrap items-baseline gap-2">
               <h3 className="font-semibold text-ink">{c.name}</h3>
               {c.quantityHint && <span className="text-sm text-stone">({c.quantityHint})</span>}
             </div>
-            <div className="mt-3 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+            <div className="mt-3 grid grid-cols-2 gap-3">
               {c.products.map((p) => (
                 <ProductCard key={p.slug} product={{ id: p.slug, slug: p.slug, name: p.name, imageUrl: p.imageUrl }} compact />
               ))}
