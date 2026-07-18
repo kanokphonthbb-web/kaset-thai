@@ -411,7 +411,7 @@ const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/7163986/pexels-photo-7163986.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/12324202/pexels-photo-12324202.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/7771973/pexels-photo-7771973.jpeg?auto=compress&cs=tinysrgb&w=1400",
-    "https://images.pexels.com/photos/48148/pexels-photo-48148.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เอา 48148 ออก (dead — HTTP 404 confirmed 2026-07-18) แทนที่ด้วย entry ใหม่ด้านล่าง
     "https://images.pexels.com/photos/7054502/pexels-photo-7054502.jpeg?auto=compress&cs=tinysrgb&w=1400",
     // เพิ่ม pool 2026-07-11 (ขยายรองรับ batch เขียนเนื้อหาใหม่ 21 บทความ — pool เดิมไม่พอ)
     "https://images.pexels.com/photos/8441780/pexels-photo-8441780.jpeg?auto=compress&cs=tinysrgb&w=1400",
@@ -419,6 +419,10 @@ const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/6445417/pexels-photo-6445417.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/7841459/pexels-photo-7841459.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/5816300/pexels-photo-5816300.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-18 (แทนที่ dead entry 48148 — ยืนยัน HTTP 200 แล้ว)
+    "https://images.pexels.com/photos/6863526/pexels-photo-6863526.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6863508/pexels-photo-6863508.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7688995/pexels-photo-7688995.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
 };
 
@@ -785,7 +789,12 @@ const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
   "layer-chicken-diseases": ["https://images.pexels.com/photos/16667124/pexels-photo-16667124.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   "leaf-blight": ["https://images.pexels.com/photos/28166522/pexels-photo-28166522.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   "leaf-miner": ["https://images.pexels.com/photos/33806232/pexels-photo-33806232.jpeg?auto=compress&cs=tinysrgb&w=1400"],
-  mealybug: ["https://images.pexels.com/photos/32343531/pexels-photo-32343531.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  mealybug: [
+    "https://images.pexels.com/photos/32343531/pexels-photo-32343531.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-18 (ยืนยัน HTTP 200 แล้ว)
+    "https://images.pexels.com/photos/762936/pexels-photo-762936.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32681809/pexels-photo-32681809.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
   "root-rot": ["https://images.pexels.com/photos/4751971/pexels-photo-4751971.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   thrips: ["https://images.pexels.com/photos/12016351/pexels-photo-12016351.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   "weed-control": ["https://images.pexels.com/photos/5410777/pexels-photo-5410777.jpeg?auto=compress&cs=tinysrgb&w=1400"],
@@ -947,6 +956,10 @@ const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/15922880/pexels-photo-15922880.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/33329206/pexels-photo-33329206.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/11669641/pexels-photo-11669641.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-18 (ยืนยัน HTTP 200 แล้ว)
+    "https://images.pexels.com/photos/13644025/pexels-photo-13644025.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/15167296/pexels-photo-15167296.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/28699589/pexels-photo-28699589.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   "facebook-line-farm-sales": [
     "https://images.pexels.com/photos/8939504/pexels-photo-8939504.jpeg?auto=compress&cs=tinysrgb&w=1400",
@@ -1146,6 +1159,11 @@ const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/16694046/pexels-photo-16694046.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/19819163/pexels-photo-19819163.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/37168026/pexels-photo-37168026.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-18 (ยืนยัน HTTP 200 แล้ว)
+    "https://images.pexels.com/photos/7527857/pexels-photo-7527857.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/507894/pexels-photo-507894.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5908848/pexels-photo-5908848.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/12496890/pexels-photo-12496890.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   "soil-test-ph": [
     "https://images.pexels.com/photos/17621449/pexels-photo-17621449.jpeg?auto=compress&cs=tinysrgb&w=1400",
@@ -1257,6 +1275,9 @@ const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/38221168/pexels-photo-38221168.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/32961689/pexels-photo-32961689.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/13214199/pexels-photo-13214199.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-18 (ยืนยัน HTTP 200 แล้ว)
+    "https://images.pexels.com/photos/32520080/pexels-photo-32520080.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32864671/pexels-photo-32864671.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   "care-root-rot": [
     "https://images.pexels.com/photos/13405008/pexels-photo-13405008.jpeg?auto=compress&cs=tinysrgb&w=1400",
@@ -1346,6 +1367,11 @@ const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/9799706/pexels-photo-9799706.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/38360727/pexels-photo-38360727.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/33813856/pexels-photo-33813856.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-18 (ยืนยัน HTTP 200 แล้ว)
+    "https://images.pexels.com/photos/14973439/pexels-photo-14973439.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/33679995/pexels-photo-33679995.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/35093531/pexels-photo-35093531.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/37252656/pexels-photo-37252656.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   "vegetable-greenhouse": [
     "https://images.pexels.com/photos/36917505/pexels-photo-36917505.jpeg?auto=compress&cs=tinysrgb&w=1400",
@@ -1443,7 +1469,18 @@ async function coverFor(
     const url = toCoverUrl(entry);
     return !usedUrls.has(url) && !usedThisRun.has(url);
   });
-  const candidates = available.length > 0 ? available : pool;
+  const notUsedThisRun = pool.filter((entry) => !usedThisRun.has(toCoverUrl(entry)));
+  // Never fall back to an image already picked earlier in this same run — that guarantees an
+  // in-batch duplicate. Only as a last resort (pool smaller than this run's demand) do we allow
+  // reusing an older site-wide image, and we warn loudly so undersized pools get noticed.
+  const candidates = available.length > 0 ? available : notUsedThisRun.length > 0 ? notUsedThisRun : pool;
+  if (available.length === 0) {
+    console.warn(
+      `[coverFor] pool exhausted for slug="${slug}" cat="${catSlug}" (poolSize=${pool.length}) — ${
+        notUsedThisRun.length > 0 ? "reusing a site-wide-used image, no in-run dup" : "pool too small even for this run, DUPLICATE risk"
+      }`,
+    );
+  }
   let hash = 0;
   for (const ch of slug) hash = (hash * 31 + ch.charCodeAt(0)) >>> 0;
   const entry = candidates[hash % candidates.length];
