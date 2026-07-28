@@ -9,6 +9,7 @@ import {
   injectProductLinks,
   findMatchingProducts,
   getProductsByCategory,
+  getProductsByShopeeIds,
   type Product,
 } from "@/lib/products";
 
@@ -24,6 +25,7 @@ type DbPost = {
   faqJson: string;
   focusKeyword: string;
   subcategory: string;
+  productsJson: string;
   category: { name: string; slug: string } | null;
 };
 
@@ -36,23 +38,39 @@ export default async function DbArticleView({ post }: { post: DbPost }) {
   const content = faqs.length > 0 ? stripInlineFaqSection(post.content) : post.content;
   const toc = tocFromHtml(content);
 
-  // สินค้าเพื่อการเกษตรที่อาจเกี่ยวข้องกับบทความนี้
-  const products = await getAllProducts();
-  const linkedContent = injectProductLinks(content, products, 3);
+  // สินค้าเพื่อการเกษตรที่อาจเกี่ยวข้องกับบทความนี้ — ใช้ชุดที่เตรียมไว้ล่วงหน้า
+  // (Article.productsJson, join ผ่าน articleNo) ถ้ามี ไม่งั้น fallback ไปที่ระบบจับคู่คำสำคัญทั่วไป
+  let curatedShopeeIds: string[] = [];
+  try {
+    curatedShopeeIds = JSON.parse(post.productsJson || "[]");
+  } catch {
+    curatedShopeeIds = [];
+  }
 
-  let related: Product[] = findMatchingProducts(
-    `${post.title} ${post.focusKeyword} ${post.subcategory}`,
-    products,
-    3,
-  );
-  if (related.length < 3 && post.category?.slug) {
-    const topUp = await getProductsByCategory(post.category.slug, 3);
-    const seen = new Set(related.map((p) => p.id));
-    for (const p of topUp) {
-      if (related.length >= 3) break;
-      if (!seen.has(p.id)) {
-        related.push(p);
-        seen.add(p.id);
+  let related: Product[];
+  let linkedContent: string;
+
+  if (curatedShopeeIds.length > 0) {
+    related = await getProductsByShopeeIds(curatedShopeeIds);
+    linkedContent = injectProductLinks(content, related, related.length);
+  } else {
+    const products = await getAllProducts();
+    linkedContent = injectProductLinks(content, products, 3);
+
+    related = findMatchingProducts(
+      `${post.title} ${post.focusKeyword} ${post.subcategory}`,
+      products,
+      3,
+    );
+    if (related.length < 3 && post.category?.slug) {
+      const topUp = await getProductsByCategory(post.category.slug, 3);
+      const seen = new Set(related.map((p) => p.id));
+      for (const p of topUp) {
+        if (related.length >= 3) break;
+        if (!seen.has(p.id)) {
+          related.push(p);
+          seen.add(p.id);
+        }
       }
     }
   }

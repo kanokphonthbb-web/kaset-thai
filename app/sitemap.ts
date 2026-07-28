@@ -53,12 +53,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     cmsArticleRoutes = [];
   }
 
+  // สินค้าเพื่อการเกษตร (affiliate) — เฉพาะที่ status active เท่านั้น (held ไม่รวม)
+  let productRoutes: MetadataRoute.Sitemap = [];
+  try {
+    const products = await prisma.product.findMany({
+      where: { status: "active" },
+      select: { slug: true, updatedAt: true },
+    });
+    productRoutes = products.map((p) => ({
+      url: `${SITE_URL}/products/${encodeURIComponent(p.slug)}`,
+      lastModified: p.updatedAt,
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    }));
+  } catch {
+    productRoutes = [];
+  }
+
   const all = [
     ...staticRoutes,
     ...categoryRoutes,
     ...toolRoutes,
     ...staticArticleRoutes,
     ...cmsArticleRoutes,
+    ...productRoutes,
   ];
   const seen = new Set<string>();
   return all.filter((r) => (seen.has(r.url) ? false : seen.add(r.url)));

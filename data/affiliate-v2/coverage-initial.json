@@ -1,0 +1,39 @@
+{
+  "generated_at": "2026-07-28T15:56:56.248Z",
+  "source_workbook": "/Users/bob/Downloads/kasetkonthai_10000_seo_aeo_ai_search_titles (1).xlsx",
+  "extraction_mode": "openpyxl_read_only_data_only_false",
+  "source_sheets": [
+    {
+      "name": "Content Map 10000",
+      "rows": 10001,
+      "columns": 24
+    },
+    {
+      "name": "Summary",
+      "rows": 11,
+      "columns": 6
+    },
+    {
+      "name": "Title Strategy",
+      "rows": 11,
+      "columns": 6
+    },
+    {
+      "name": "Claude Prompt",
+      "rows": 1,
+      "columns": 1
+    }
+  ],
+  "source_rows": 10000,
+  "unique_content_clusters": 198,
+  "prior_catalog_rows": 378,
+  "prior_unique_products": 378,
+  "prior_content_clusters": 160,
+  "prior_search_queries": 269,
+  "status_counts": {
+    "processed_existing_catalog": 131,
+    "pending": 67
+  },
+  "pending_core_topics": 67,
+  "pending_queries": 65
+}

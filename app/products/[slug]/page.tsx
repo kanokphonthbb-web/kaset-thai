@@ -7,6 +7,8 @@ import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
 import { getProductBySlug, getProductsByCategory } from "@/lib/products";
 import { pageMeta } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
+import { prisma } from "@/lib/prisma";
 
 type Params = { params: { slug: string } };
 
@@ -39,8 +41,57 @@ export default async function ProductDetailPage({ params }: Params) {
         .slice(0, 4)
     : [];
 
+  let relatedArticles: { slug: string; title: string }[] = [];
+  if (product.relatedArticles.length > 0) {
+    try {
+      relatedArticles = await prisma.article.findMany({
+        where: { slug: { in: product.relatedArticles }, status: "published" },
+        select: { slug: true, title: true },
+        take: 6,
+      });
+    } catch {
+      relatedArticles = [];
+    }
+  }
+
+  const productUrl = `${SITE_URL}/products/${product.slug}`;
+  const graph: Record<string, unknown>[] = [
+    {
+      "@type": "Product",
+      name: product.name,
+      description: product.whyNeeded || product.name,
+      image: product.imageUrl.startsWith("http") ? product.imageUrl : `${SITE_URL}${product.imageUrl}`,
+      url: productUrl,
+      ...(product.priceLabel
+        ? {
+            offers: {
+              "@type": "Offer",
+              price: product.priceLabel,
+              priceCurrency: "THB",
+              url: product.affiliateLink,
+              availability: "https://schema.org/InStock",
+              ...(product.priceCheckedAt ? { priceValidUntil: product.priceCheckedAt.toISOString().slice(0, 10) } : {}),
+            },
+          }
+        : {}),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "หน้าแรก", item: `${SITE_URL}/` },
+        { "@type": "ListItem", position: 2, name: "สินค้าเพื่อการเกษตร", item: `${SITE_URL}/products` },
+        { "@type": "ListItem", position: 3, name: product.name, item: productUrl },
+      ],
+    },
+  ];
+  const jsonLd = { "@context": "https://schema.org", "@graph": graph };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
       <main>
         <section className="bg-mist">
@@ -113,18 +164,78 @@ export default async function ProductDetailPage({ params }: Params) {
                   </div>
                 )}
 
+                {product.howToChoose && (
+                  <div className="mt-6">
+                    <h2 className="font-display text-lg font-bold text-ink">วิธีเลือกซื้อ</h2>
+                    <p className="mt-2 text-[16px] leading-relaxed text-ink/90">{product.howToChoose}</p>
+                  </div>
+                )}
+
+                {product.useCases.length > 0 && (
+                  <div className="mt-6">
+                    <h2 className="font-display text-lg font-bold text-ink">เหมาะกับงานแบบไหน</h2>
+                    <ul className="mt-2 space-y-2">
+                      {product.useCases.map((u, i) => (
+                        <li key={i} className="flex items-start gap-2 text-[16px] text-ink/90">
+                          <span aria-hidden className="mt-1 text-lime-deep">●</span>
+                          <span>{u}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {product.safetyNote && (
+                  <div className="mt-6 rounded-xl bg-amber-50 p-4 text-[15px] text-ink/90">
+                    {product.safetyNote}
+                  </div>
+                )}
+
+                {product.priceLabel && (
+                  <p className="mt-6 text-[15px] text-stone">
+                    ราคาโดยประมาณ {product.priceLabel} บาท
+                    {product.priceCheckedAt
+                      ? ` (ตรวจสอบล่าสุด ${product.priceCheckedAt.toLocaleDateString("th-TH")})`
+                      : ""}{" "}
+                    — ราคาจริงเปลี่ยนแปลงได้ กรุณาตรวจสอบที่หน้าร้านก่อนสั่งซื้อ
+                  </p>
+                )}
+
                 <div className="mt-8">
                   <a
                     href={product.affiliateLink}
                     target="_blank"
-                    rel="nofollow sponsored noopener"
+                    rel="sponsored nofollow noopener noreferrer"
                     className="btn-primary"
                   >
                     ดูสินค้า
                   </a>
+                  <p className="mt-3 max-w-md text-xs text-stone">
+                    ลิงก์นี้เป็นลิงก์พันธมิตร (affiliate link) หากคุณสั่งซื้อผ่านลิงก์นี้ เว็บไซต์อาจได้รับค่าคอมมิชชันโดยที่คุณไม่ต้องจ่ายเพิ่ม
+                  </p>
                 </div>
               </div>
             </div>
+
+            {relatedArticles.length > 0 && (
+              <section className="mt-16">
+                <h2 className="font-display text-xl font-bold text-ink">
+                  บทความที่เกี่ยวข้อง
+                </h2>
+                <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                  {relatedArticles.map((a) => (
+                    <li key={a.slug}>
+                      <Link
+                        href={`/articles/${a.slug}`}
+                        className="block rounded-xl bg-mist p-4 text-[15px] font-medium text-ink hover:bg-linen"
+                      >
+                        {a.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
 
             {related.length > 0 && (
               <section className="mt-16">

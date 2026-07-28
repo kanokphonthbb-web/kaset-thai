@@ -43,6 +43,9 @@ model Article {
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
 
+  articleNo    Int?    @unique // เลขบทความจาก content-map-10000 (source workbook "No.") — join key สำหรับ affiliate-v2 assignment
+  productsJson String  @default("[]") // JSON string[] ของ Product.shopeeId เรียงตาม rank (สูงสุด 4) จาก affiliate-v2 mapping
+
   category ArticleCategory? @relation(fields: [categoryId], references: [id])
 
   @@index([status])
@@ -63,5 +66,15 @@ model Product {
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
+  shopeeId            String?   @unique // affiliate-v2 catalog product id — canonical stable import key
+  status              String    @default("active") // active | held (regulated/high-risk, excluded from all public surfaces)
+  howToChoose         String    @default("") // วิธีเลือก/ตรวจก่อนสั่งซื้อ
+  useCasesJson        String    @default("[]") // JSON string[] — core_topics จาก catalog
+  safetyNote          String    @default("")
+  priceLabel          String    @default("") // ราคาดิบจาก catalog ณ วันที่ตรวจสอบ (อาจว่าง/ไม่ใช่ตัวเลข)
+  priceCheckedAt      DateTime?
+  relatedArticlesJson String    @default("[]") // JSON string[] ของ Article.slug ที่ลิงก์สินค้านี้ (reverse index, สูงสุด 6)
+
   @@index([category])
+  @@index([status])
 }

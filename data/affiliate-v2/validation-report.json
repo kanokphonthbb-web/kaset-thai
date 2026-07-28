@@ -1,0 +1,370 @@
+{
+  "generated_at": "2026-07-28T17:32:13.728Z",
+  "status": "pass",
+  "checks_passed": 45,
+  "checks_failed": 0,
+  "checks": [
+    {
+      "name": "source_rows",
+      "ok": true,
+      "actual": 10000,
+      "expected": 10000
+    },
+    {
+      "name": "source_unique_article_ids",
+      "ok": true,
+      "actual": 10000,
+      "expected": 10000,
+      "details": {
+        "duplicates": []
+      }
+    },
+    {
+      "name": "source_unique_article_slugs",
+      "ok": true,
+      "actual": 8590,
+      "expected": 8590,
+      "details": {
+        "duplicate_rows": 1410,
+        "duplicate_examples": [
+          "/animals/how-to-raise-layer-chicken-guide",
+          "/animals/how-to-raise-layer-chicken-beginner",
+          "/animals/how-to-raise-layer-chicken-problems",
+          "/animals/how-to-raise-layer-chicken-cost",
+          "/animals/how-to-raise-layer-chicken-compare",
+          "/animals/how-to-raise-layer-chicken-calendar",
+          "/animals/how-to-raise-layer-chicken-mistakes",
+          "/animals/how-to-raise-layer-chicken-faq",
+          "/animals/how-to-raise-layer-chicken-decision",
+          "/animals/how-to-raise-layer-chicken-answer",
+          "/animals/housing-layer-chicken-guide",
+          "/animals/housing-layer-chicken-beginner",
+          "/animals/housing-layer-chicken-problems",
+          "/animals/housing-layer-chicken-cost",
+          "/animals/housing-layer-chicken-compare",
+          "/animals/housing-layer-chicken-calendar",
+          "/animals/housing-layer-chicken-mistakes",
+          "/animals/housing-layer-chicken-faq",
+          "/animals/housing-layer-chicken-decision",
+          "/animals/housing-layer-chicken-answer"
+        ]
+      }
+    },
+    {
+      "name": "source_duplicate_slug_rows_to_resolve",
+      "ok": true,
+      "actual": 1410,
+      "expected": 1410
+    },
+    {
+      "name": "source_content_clusters",
+      "ok": true,
+      "actual": 198,
+      "expected": 198
+    },
+    {
+      "name": "catalog_products",
+      "ok": true,
+      "actual": 1074,
+      "expected": 1074
+    },
+    {
+      "name": "catalog_eligible_products",
+      "ok": true,
+      "actual": 1037,
+      "expected": 1037
+    },
+    {
+      "name": "catalog_held_products",
+      "ok": true,
+      "actual": 37,
+      "expected": 37
+    },
+    {
+      "name": "catalog_unique_ids",
+      "ok": true,
+      "actual": 1074,
+      "expected": 1074,
+      "details": {
+        "duplicates": []
+      }
+    },
+    {
+      "name": "catalog_unique_affiliate_urls",
+      "ok": true,
+      "actual": 1074,
+      "expected": 1074,
+      "details": {
+        "duplicates": []
+      }
+    },
+    {
+      "name": "catalog_affiliate_urls_only",
+      "ok": true,
+      "actual": 0,
+      "expected": 0,
+      "details": {
+        "invalid": []
+      }
+    },
+    {
+      "name": "catalog_no_public_backstage_copy",
+      "ok": true,
+      "actual": 0,
+      "expected": 0,
+      "details": {
+        "product_ids": []
+      }
+    },
+    {
+      "name": "catalog_reports_no_ordinary_links",
+      "ok": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "catalog_pending_image_downloads",
+      "ok": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "catalog_unique_image_files",
+      "ok": true,
+      "actual": 1074,
+      "expected": 1074,
+      "details": {
+        "duplicates": []
+      }
+    },
+    {
+      "name": "images_missing",
+      "ok": true,
+      "actual": 0,
+      "expected": 0,
+      "details": {
+        "files": []
+      }
+    },
+    {
+      "name": "images_zero_bytes",
+      "ok": true,
+      "actual": 0,
+      "expected": 0,
+      "details": {
+        "files": []
+      }
+    },
+    {
+      "name": "images_invalid_headers",
+      "ok": true,
+      "actual": 0,
+      "expected": 0,
+      "details": {
+        "files": []
+      }
+    },
+    {
+      "name": "query_result_clusters",
+      "ok": true,
+      "actual": 198,
+      "expected": 198
+    },
+    {
+      "name": "query_results_with_products",
+      "ok": true,
+      "actual": 0,
+      "expected": 0,
+      "details": {
+        "queries": []
+      }
+    },
+    {
+      "name": "coverage_clusters_with_results",
+      "ok": true,
+      "actual": 198,
+      "expected": 198
+    },
+    {
+      "name": "coverage_clusters_without_results",
+      "ok": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "main_browser_queries",
+      "ok": true,
+      "actual": 65,
+      "expected": 65
+    },
+    {
+      "name": "main_browser_pending",
+      "ok": true,
+      "actual": 0,
+      "expected": 0,
+      "details": {
+        "queries": []
+      }
+    },
+    {
+      "name": "fallback_browser_queries",
+      "ok": true,
+      "actual": 12,
+      "expected": 12
+    },
+    {
+      "name": "fallback_browser_pending",
+      "ok": true,
+      "actual": 0,
+      "expected": 0,
+      "details": {
+        "queries": []
+      }
+    },
+    {
+      "name": "fallback2_browser_queries",
+      "ok": true,
+      "actual": 3,
+      "expected": 3
+    },
+    {
+      "name": "fallback2_browser_pending",
+      "ok": true,
+      "actual": 0,
+      "expected": 0,
+      "details": {
+        "queries": []
+      }
+    },
+    {
+      "name": "browser_queries_total",
+      "ok": true,
+      "actual": 80,
+      "expected": 80
+    },
+    {
+      "name": "browser_no_results_total",
+      "ok": true,
+      "actual": 28,
+      "expected": 28
+    },
+    {
+      "name": "mapped_articles",
+      "ok": true,
+      "actual": 10000,
+      "expected": 10000
+    },
+    {
+      "name": "mapped_unique_article_ids",
+      "ok": true,
+      "actual": 10000,
+      "expected": 10000,
+      "details": {
+        "duplicates": []
+      }
+    },
+    {
+      "name": "mapped_unique_article_slugs",
+      "ok": true,
+      "actual": 10000,
+      "expected": 10000,
+      "details": {
+        "duplicates": []
+      }
+    },
+    {
+      "name": "mapped_source_id_set_matches",
+      "ok": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "mapped_source_slug_set_matches",
+      "ok": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "mapped_resolved_slug_changes",
+      "ok": true,
+      "actual": 1410,
+      "expected": 1410
+    },
+    {
+      "name": "article_assignments",
+      "ok": true,
+      "actual": 40000,
+      "expected": 40000
+    },
+    {
+      "name": "articles_with_wrong_product_count",
+      "ok": true,
+      "actual": 0,
+      "expected": 0,
+      "details": {
+        "article_ids": []
+      }
+    },
+    {
+      "name": "articles_with_duplicate_products",
+      "ok": true,
+      "actual": 0,
+      "expected": 0,
+      "details": {
+        "article_ids": []
+      }
+    },
+    {
+      "name": "unknown_product_assignments",
+      "ok": true,
+      "actual": 0,
+      "expected": 0,
+      "details": {
+        "assignments": []
+      }
+    },
+    {
+      "name": "held_product_assignments",
+      "ok": true,
+      "actual": 0,
+      "expected": 0,
+      "details": {
+        "assignments": []
+      }
+    },
+    {
+      "name": "affiliate_url_mismatches",
+      "ok": true,
+      "actual": 0,
+      "expected": 0,
+      "details": {
+        "assignments": []
+      }
+    },
+    {
+      "name": "global_fallback_assignments",
+      "ok": true,
+      "actual": 0,
+      "expected": 0,
+      "details": {
+        "assignments": []
+      }
+    },
+    {
+      "name": "manual_review_file_products",
+      "ok": true,
+      "actual": 37,
+      "expected": 37
+    },
+    {
+      "name": "leftover_batch_exports",
+      "ok": true,
+      "actual": 0,
+      "expected": 0,
+      "details": {
+        "files": []
+      }
+    }
+  ],
+  "failures": []
+}

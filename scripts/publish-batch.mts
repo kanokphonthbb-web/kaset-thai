@@ -1518,7 +1518,7 @@ async function main() {
   for (const a of items) {
     const slug: string = a.slug;
     try {
-      const row = (await db.execute({ sql: "SELECT a.id,a.title,a.articleType,c.slug catSlug FROM Article a LEFT JOIN ArticleCategory c ON a.categoryId=c.id WHERE a.slug=?", args: [slug] })).rows[0];
+      const row = (await db.execute({ sql: "SELECT a.id,a.title,a.articleType,a.productsJson,c.slug catSlug FROM Article a LEFT JOIN ArticleCategory c ON a.categoryId=c.id WHERE a.slug=?", args: [slug] })).rows[0];
       if (!row) { failed.push({ slug, errors: ["slug not found in DB"] }); continue; }
       const title = String(row.title);
       const articleType = a.articleType || String(row.articleType || "howto");
@@ -1543,6 +1543,32 @@ async function main() {
                excerpt, coverImage, JSON.stringify(faqs), now, now, slug],
       });
       published.push(slug);
+
+      // Reverse index: only published articles should appear in a Product's relatedArticlesJson
+      // (mirrors scripts/backfill-article-product-assignments.mjs's own rule).
+      let curatedShopeeIds: string[] = [];
+      try {
+        curatedShopeeIds = JSON.parse(String(row.productsJson || "[]"));
+      } catch {
+        curatedShopeeIds = [];
+      }
+      for (const shopeeId of curatedShopeeIds) {
+        const prod = (await db.execute({ sql: "SELECT id, relatedArticlesJson FROM Product WHERE shopeeId=?", args: [shopeeId] })).rows[0];
+        if (!prod) continue;
+        let slugs: string[] = [];
+        try {
+          slugs = JSON.parse(String(prod.relatedArticlesJson || "[]"));
+        } catch {
+          slugs = [];
+        }
+        if (!slugs.includes(slug)) {
+          slugs = [...slugs, slug].slice(0, 6);
+          await db.execute({
+            sql: "UPDATE Product SET relatedArticlesJson=? WHERE id=?",
+            args: [JSON.stringify(slugs), String(prod.id)],
+          });
+        }
+      }
     } catch (e: any) {
       failed.push({ slug, errors: [String(e?.message || e)] });
     }

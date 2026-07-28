@@ -15,6 +15,14 @@ export type Product = {
   whyNeeded: string;
   benefits: string[];
   usage: string;
+  shopeeId: string | null;
+  status: string;
+  howToChoose: string;
+  useCases: string[];
+  safetyNote: string;
+  priceLabel: string;
+  priceCheckedAt: Date | null;
+  relatedArticles: string[];
 };
 
 function toProduct(row: {
@@ -28,6 +36,14 @@ function toProduct(row: {
   whyNeeded: string;
   benefits: string;
   usage: string;
+  shopeeId: string | null;
+  status: string;
+  howToChoose: string;
+  useCasesJson: string;
+  safetyNote: string;
+  priceLabel: string;
+  priceCheckedAt: Date | null;
+  relatedArticlesJson: string;
 }): Product {
   let keywords: string[] = [];
   try {
@@ -41,22 +57,63 @@ function toProduct(row: {
   } catch {
     benefits = [];
   }
-  return { ...row, keywords, benefits };
+  let useCases: string[] = [];
+  try {
+    useCases = JSON.parse(row.useCasesJson);
+  } catch {
+    useCases = [];
+  }
+  let relatedArticles: string[] = [];
+  try {
+    relatedArticles = JSON.parse(row.relatedArticlesJson);
+  } catch {
+    relatedArticles = [];
+  }
+  return {
+    id: row.id,
+    slug: row.slug,
+    name: row.name,
+    imageUrl: row.imageUrl,
+    affiliateLink: row.affiliateLink,
+    category: row.category,
+    keywords,
+    whyNeeded: row.whyNeeded,
+    benefits,
+    usage: row.usage,
+    shopeeId: row.shopeeId,
+    status: row.status,
+    howToChoose: row.howToChoose,
+    useCases,
+    safetyNote: row.safetyNote,
+    priceLabel: row.priceLabel,
+    priceCheckedAt: row.priceCheckedAt,
+    relatedArticles,
+  };
 }
 
 export async function getAllProducts(): Promise<Product[]> {
-  const rows = await prisma.product.findMany({ orderBy: { createdAt: "asc" } });
+  const rows = await prisma.product.findMany({ where: { status: "active" }, orderBy: { createdAt: "asc" } });
   return rows.map(toProduct);
 }
 
 export async function getProductBySlug(slug: string): Promise<Product | null> {
   const row = await prisma.product.findUnique({ where: { slug } });
-  return row ? toProduct(row) : null;
+  if (!row || row.status !== "active") return null;
+  return toProduct(row);
+}
+
+export async function getProductsByShopeeIds(shopeeIds: string[]): Promise<Product[]> {
+  if (shopeeIds.length === 0) return [];
+  const rows = await prisma.product.findMany({
+    where: { shopeeId: { in: shopeeIds }, status: "active" },
+  });
+  const bySlug = new Map(rows.map((r) => [r.shopeeId, toProduct(r)]));
+  return shopeeIds.map((id) => bySlug.get(id)).filter((p): p is Product => !!p);
 }
 
 export async function getProductsByCategory(category: string, limit?: number): Promise<Product[]> {
   const rows = await prisma.product.findMany({
-    where: { category },
+    where: { category, status: "active" },
     orderBy: { createdAt: "asc" },
     take: limit,
   });
