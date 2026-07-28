@@ -27,7 +27,7 @@ function isoTz(d = new Date()) {
 
 // รูปปกตามหมวด — pool ต่อหมวด (Unsplash photo id, WebFetch-verified CDN id) ป้องกันรูปซ้ำ
 // ทุก id ผ่านการตรวจสอบจริงจากหน้า Unsplash แล้วว่าตรงกับเนื้อหาหมวดนั้น
-const CAT_IMAGE_POOLS: Record<string, string[]> = {
+export const CAT_IMAGE_POOLS: Record<string, string[]> = {
   plants: [
     "1519082572439-7ed19908e47e", // นาข้าว มุมสูง
     "1505471768190-275e2ad7b3f9", // ปลูกข้าว
@@ -398,8 +398,8 @@ const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/7821463/pexels-photo-7821463.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/8205115/pexels-photo-8205115.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/7876043/pexels-photo-7876043.jpeg?auto=compress&cs=tinysrgb&w=1400",
-    "1768399808130-abac2a8442e0", // อาคารหน่วยงาน
-    "1778080132813-d51b1b36b08e", // เอกสารเก่า
+    "https://images.unsplash.com/photo-1768399808130-abac2a8442e0?auto=format&fit=crop&w=1400&q=70", // อาคารหน่วยงาน
+    "https://images.unsplash.com/photo-1778080132813-d51b1b36b08e?auto=format&fit=crop&w=1400&q=70", // เอกสารเก่า
     // Pexels — เพิ่ม pool เดือน 2026-07 (อาคารราชการ/เอกสารกฎหมาย/มาตรฐานรับรอง)
     "https://images.pexels.com/photos/11361969/pexels-photo-11361969.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/11105014/pexels-photo-11105014.jpeg?auto=compress&cs=tinysrgb&w=1400",
@@ -423,6 +423,13 @@ const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/6863526/pexels-photo-6863526.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/6863508/pexels-photo-6863508.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/7688995/pexels-photo-7688995.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-28 (pool เดิม 35 รูปอิ่มตัวหมดทั้งไซต์ — ยืนยัน HTTP 200 แล้วทุกรูป)
+    "https://images.pexels.com/photos/33413740/pexels-photo-33413740.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/19678251/pexels-photo-19678251.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6326287/pexels-photo-6326287.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6814526/pexels-photo-6814526.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7462692/pexels-photo-7462692.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6694481/pexels-photo-6694481.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
 };
 
@@ -1441,17 +1448,23 @@ function matchTitlePool(title: string): string[] | undefined {
 }
 
 /** เลือกรูปจาก pool เฉพาะพันธุ์ก่อน (ถ้า slug ตรง) ไม่งั้น fallback ไป pool ของหมวด โดยข้ามรูปที่ถูกใช้แล้วในหมวดเดียวกัน (กันซ้ำ) */
-async function coverFor(
+export async function coverFor(
   db: ReturnType<typeof createClient>,
   catSlug: string | undefined,
   slug: string,
   usedThisRun: Set<string>,
   title: string = "",
 ): Promise<string> {
-  const pool =
-    matchKeywordPool(slug) ||
-    (catSlug === "cost-profit" ? matchTitlePool(title) : undefined) ||
-    (catSlug ? CAT_IMAGE_POOLS[catSlug] : undefined);
+  const narrowPool = matchKeywordPool(slug) || (catSlug === "cost-profit" ? matchTitlePool(title) : undefined);
+  const catPool = catSlug ? CAT_IMAGE_POOLS[catSlug] : undefined;
+  // Narrow per-topic pools (matched by keyword/title) are often only ~4 images — a single
+  // 5-variant article cluster exhausts them immediately. Always allow falling back to the
+  // much larger category-wide pool as supplemental candidates rather than cycling the same
+  // few narrow-pool entries (which forces duplicate/reused images every time a cluster's
+  // pool is smaller than its own variant count). Narrow-pool images stay first in priority
+  // order since they're most topically relevant; category images only get picked once the
+  // narrow pool's unique images run out.
+  const pool = narrowPool ? [...narrowPool, ...(catPool || [])] : catPool;
   if (!pool || pool.length === 0) return "";
 
   const usedRows = await db.execute({
@@ -1538,4 +1551,4 @@ async function main() {
   console.log(JSON.stringify({ published: published.length, failed: failed.length, publishedSlugs: published, failures: failed }, null, 2));
 }
 
-main();
+if (import.meta.url === `file://${process.argv[1]}`) main();
