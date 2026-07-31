@@ -126,218 +126,218 @@ export default function GapReadinessCheck({
   const badgeStyle = BUCKET_BADGE_STYLE[result.bucket];
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[1fr_400px]">
-      {/* Checklist */}
-      <div>
-        {restoredNotice && (
-          <div className="card no-print mb-6">
-            <p className="text-sm text-stone">
-              📂 กู้คืนคำตอบที่บันทึกไว้ก่อนหน้านี้แล้ว — ตอบต่อหรือแก้ไขได้ตามต้องการ
+    <div>
+      <div className="grid gap-8 lg:grid-cols-[1fr_400px]">
+        {/* Checklist */}
+        <div>
+          {restoredNotice && (
+            <div className="card no-print mb-6">
+              <p className="text-sm text-stone">
+                📂 กู้คืนคำตอบที่บันทึกไว้ก่อนหน้านี้แล้ว — ตอบต่อหรือแก้ไขได้ตามต้องการ
+              </p>
+            </div>
+          )}
+
+          {CHECKLIST.map((category) => (
+            <div key={category.id} className="card mb-6">
+              <div className="flex items-center gap-2">
+                <span className="tag-chip text-xs">{category.label}</span>
+                <span className="text-xs text-stone">
+                  ตอบแล้ว {category.items.filter((i) => i.id in answers).length}/{category.items.length}
+                </span>
+              </div>
+
+              <div className="mt-4 space-y-4">
+                {category.items.map((item) => {
+                  const current = answers[item.id];
+                  return (
+                    <div key={item.id} className="rounded-xl bg-paper p-4">
+                      <p className="text-[15px] text-ink/90">{item.question}</p>
+                      <div className="mt-3 flex flex-wrap gap-2" role="group" aria-label={item.question}>
+                        {ANSWER_OPTIONS.map((opt) => {
+                          const active = current === opt.value;
+                          return (
+                            <button
+                              key={opt.key}
+                              type="button"
+                              onClick={() => handleAnswer(item.id, opt.value)}
+                              aria-pressed={active}
+                              className={`min-h-[40px] rounded-full px-4 text-sm font-medium transition-colors ${answerButtonClass(active, opt.value)}`}
+                            >
+                              {opt.label}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Live result */}
+        <aside className="lg:sticky lg:top-24 lg:self-start">
+          <div className="card">
+            <p className="eyebrow">ผลตรวจความพร้อมเบื้องต้น</p>
+            <p className="mt-1 text-xs text-stone">
+              ตอบแล้ว {answeredCount}/{ALL_ITEMS.length} ข้อ
+            </p>
+
+            <div
+              className="mt-3 inline-flex items-center rounded-full px-4 py-1.5 text-sm font-bold"
+              style={badgeStyle}
+            >
+              {result.bucket}
+            </div>
+
+            <div className="mt-3">
+              <div className="h-2.5 w-full overflow-hidden rounded-full bg-linen">
+                <div
+                  className="h-full rounded-full bg-lime-canopy"
+                  style={{ width: `${result.overallPercent}%` }}
+                />
+              </div>
+              <p className="mt-1 text-xs text-stone">
+                ผ่าน {result.totalPassed}/{result.totalItems} ข้อ ({result.overallPercent}%)
+              </p>
+            </div>
+
+            <p className="mt-4 rounded-xl bg-linen p-3 text-xs text-ink/90">
+              ⚠️ ผลนี้เป็นเพียงการประเมินตนเองเบื้องต้น ไม่ใช่การตรวจประเมินอย่างเป็นทางการ และไม่รับประกันว่าจะผ่านการรับรองมาตรฐาน
+              GAP ข้อกำหนดจริงอาจเปลี่ยนแปลงได้ โปรดตรวจสอบข้อมูลล่าสุดจากหน่วยงานที่เกี่ยวข้องด้วยตนเอง
+            </p>
+
+            <div className="no-print mt-4 flex flex-col gap-2">
+              <button type="button" onClick={handleSave} className="btn-secondary w-full">
+                💾 บันทึกไว้ในเบราว์เซอร์
+              </button>
+              {saveStatus === "saved" && (
+                <p className="text-center text-xs text-stone">บันทึกคำตอบไว้ในเบราว์เซอร์นี้แล้ว</p>
+              )}
+              {saveStatus === "unavailable" && (
+                <p className="text-center text-xs text-stone">อุปกรณ์นี้ไม่รองรับการบันทึกในเบราว์เซอร์</p>
+              )}
+              <button type="button" onClick={handlePrint} className="btn-secondary w-full">
+                🖨️ พิมพ์ / บันทึก PDF
+              </button>
+              <button type="button" onClick={handleReset} className="btn-secondary w-full">
+                ล้างคำตอบทั้งหมด
+              </button>
+            </div>
+          </div>
+
+          {/* Per-category scores */}
+          <div className="card mt-6">
+            <p className="eyebrow">คะแนนรายหมวด</p>
+            <div className="mt-4 space-y-3">
+              {result.categoryScores.map((c) => (
+                <div key={c.category}>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-ink">{c.label}</span>
+                    <span className="text-stone">
+                      {c.passed}/{c.total}
+                    </span>
+                  </div>
+                  <div className="mt-1 h-2 w-full overflow-hidden rounded-full bg-linen">
+                    <div
+                      className="h-full rounded-full bg-lime-canopy"
+                      style={{ width: `${c.total > 0 ? Math.round((c.passed / c.total) * 100) : 0}%` }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Items to fix */}
+          {result.itemsToFix.length > 0 && (
+            <div className="card mt-6">
+              <p className="eyebrow">รายการที่ต้องปรับปรุง</p>
+              <ul className="mt-3 max-h-64 space-y-2 overflow-y-auto pr-1 text-sm">
+                {result.itemsToFix.map((it) => (
+                  <li key={it.id} className="flex items-start gap-2">
+                    <span aria-hidden className="mt-0.5 text-stone">
+                      •
+                    </span>
+                    <span className="text-ink/90">
+                      {it.question}
+                      {it.status === "unsure" && <span className="text-stone"> (ไม่แน่ใจ)</span>}
+                      {it.status === "unanswered" && <span className="text-stone"> (ยังไม่ตอบ)</span>}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* Documents to prepare */}
+          {result.documentsToPrepare.length > 0 && (
+            <div className="card mt-6">
+              <p className="eyebrow">เอกสารที่ควรเตรียม</p>
+              <ul className="mt-3 space-y-1.5 text-sm text-ink/90">
+                {result.documentsToPrepare.map((doc) => (
+                  <li key={doc} className="flex items-start gap-2">
+                    <span aria-hidden className="mt-0.5 text-stone">
+                      •
+                    </span>
+                    <span>{doc}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* Official agencies */}
+          <div className="card mt-6">
+            <p className="eyebrow">ควรตรวจสอบข้อมูลล่าสุดจากหน่วยงาน</p>
+            <ul className="mt-3 space-y-1.5 text-sm text-ink/90">
+              {result.officialAgencies.map((agency) => (
+                <li key={agency} className="flex items-start gap-2">
+                  <span aria-hidden className="mt-0.5 text-stone">
+                    •
+                  </span>
+                  <span>{agency}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-3 text-xs text-stone">
+              รายชื่อหน่วยงานข้างต้นเป็นข้อมูลทั่วไปเท่านั้น กรุณาตรวจสอบข้อกำหนด ขั้นตอน และช่องทางติดต่อล่าสุดจากหน่วยงานโดยตรง
             </p>
           </div>
-        )}
 
-        {CHECKLIST.map((category) => (
-          <div key={category.id} className="card mb-6">
-            <div className="flex items-center gap-2">
-              <span className="tag-chip text-xs">{category.label}</span>
-              <span className="text-xs text-stone">
-                ตอบแล้ว {category.items.filter((i) => i.id in answers).length}/{category.items.length}
-              </span>
-            </div>
-
-            <div className="mt-4 space-y-4">
-              {category.items.map((item) => {
-                const current = answers[item.id];
-                return (
-                  <div key={item.id} className="rounded-xl bg-paper p-4">
-                    <p className="text-[15px] text-ink/90">{item.question}</p>
-                    <div className="mt-3 flex flex-wrap gap-2" role="group" aria-label={item.question}>
-                      {ANSWER_OPTIONS.map((opt) => {
-                        const active = current === opt.value;
-                        return (
-                          <button
-                            key={opt.key}
-                            type="button"
-                            onClick={() => handleAnswer(item.id, opt.value)}
-                            aria-pressed={active}
-                            className={`min-h-[40px] rounded-full px-4 text-sm font-medium transition-colors ${answerButtonClass(active, opt.value)}`}
-                          >
-                            {opt.label}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                );
-              })}
+          {/* Related content */}
+          <div className="card mt-6">
+            <p className="eyebrow">อ่านเพิ่มเติม</p>
+            <div className="mt-2 flex flex-col gap-1.5 text-sm">
+              <Link
+                href="/articles/agri-news-law-standards-gap-certification-guide"
+                className="text-ink underline decoration-lime-canopy underline-offset-2 hover:text-lime-deep"
+                onClick={() =>
+                  track(TOOL_EVENTS.related_article_click, {
+                    tool: TOOL_SLUG,
+                    target: "/articles/agri-news-law-standards-gap-certification-guide",
+                  })
+                }
+              >
+                อ่านคู่มือขอมาตรฐาน GAP แบบละเอียด
+              </Link>
+              <Link
+                href="/tools/farm-record"
+                className="text-ink underline decoration-lime-canopy underline-offset-2 hover:text-lime-deep"
+                onClick={() =>
+                  track(TOOL_EVENTS.related_tool_click, { tool: TOOL_SLUG, target: "/tools/farm-record" })
+                }
+              >
+                เตรียมบันทึกฟาร์มให้พร้อมด้วยสมุดบันทึกฟาร์ม
+              </Link>
             </div>
           </div>
-        ))}
+        </aside>
       </div>
 
-      {/* Live result */}
-      <aside className="lg:sticky lg:top-24 lg:self-start">
-        <div className="card">
-          <p className="eyebrow">ผลตรวจความพร้อมเบื้องต้น</p>
-          <p className="mt-1 text-xs text-stone">
-            ตอบแล้ว {answeredCount}/{ALL_ITEMS.length} ข้อ
-          </p>
-
-          <div
-            className="mt-3 inline-flex items-center rounded-full px-4 py-1.5 text-sm font-bold"
-            style={badgeStyle}
-          >
-            {result.bucket}
-          </div>
-
-          <div className="mt-3">
-            <div className="h-2.5 w-full overflow-hidden rounded-full bg-linen">
-              <div
-                className="h-full rounded-full bg-lime-canopy"
-                style={{ width: `${result.overallPercent}%` }}
-              />
-            </div>
-            <p className="mt-1 text-xs text-stone">
-              ผ่าน {result.totalPassed}/{result.totalItems} ข้อ ({result.overallPercent}%)
-            </p>
-          </div>
-
-          <p className="mt-4 rounded-xl bg-linen p-3 text-xs text-ink/90">
-            ⚠️ ผลนี้เป็นเพียงการประเมินตนเองเบื้องต้น ไม่ใช่การตรวจประเมินอย่างเป็นทางการ และไม่รับประกันว่าจะผ่านการรับรองมาตรฐาน
-            GAP ข้อกำหนดจริงอาจเปลี่ยนแปลงได้ โปรดตรวจสอบข้อมูลล่าสุดจากหน่วยงานที่เกี่ยวข้องด้วยตนเอง
-          </p>
-
-          <div className="no-print mt-4 flex flex-col gap-2">
-            <button type="button" onClick={handleSave} className="btn-secondary w-full">
-              💾 บันทึกไว้ในเบราว์เซอร์
-            </button>
-            {saveStatus === "saved" && (
-              <p className="text-center text-xs text-stone">บันทึกคำตอบไว้ในเบราว์เซอร์นี้แล้ว</p>
-            )}
-            {saveStatus === "unavailable" && (
-              <p className="text-center text-xs text-stone">อุปกรณ์นี้ไม่รองรับการบันทึกในเบราว์เซอร์</p>
-            )}
-            <button type="button" onClick={handlePrint} className="btn-secondary w-full">
-              🖨️ พิมพ์ / บันทึก PDF
-            </button>
-            <button type="button" onClick={handleReset} className="btn-secondary w-full">
-              ล้างคำตอบทั้งหมด
-            </button>
-          </div>
-        </div>
-
-        {/* Per-category scores */}
-        <div className="card mt-6">
-          <p className="eyebrow">คะแนนรายหมวด</p>
-          <div className="mt-4 space-y-3">
-            {result.categoryScores.map((c) => (
-              <div key={c.category}>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-ink">{c.label}</span>
-                  <span className="text-stone">
-                    {c.passed}/{c.total}
-                  </span>
-                </div>
-                <div className="mt-1 h-2 w-full overflow-hidden rounded-full bg-linen">
-                  <div
-                    className="h-full rounded-full bg-lime-canopy"
-                    style={{ width: `${c.total > 0 ? Math.round((c.passed / c.total) * 100) : 0}%` }}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Items to fix */}
-        {result.itemsToFix.length > 0 && (
-          <div className="card mt-6">
-            <p className="eyebrow">รายการที่ต้องปรับปรุง</p>
-            <ul className="mt-3 max-h-64 space-y-2 overflow-y-auto pr-1 text-sm">
-              {result.itemsToFix.map((it) => (
-                <li key={it.id} className="flex items-start gap-2">
-                  <span aria-hidden className="mt-0.5 text-stone">
-                    •
-                  </span>
-                  <span className="text-ink/90">
-                    {it.question}
-                    {it.status === "unsure" && <span className="text-stone"> (ไม่แน่ใจ)</span>}
-                    {it.status === "unanswered" && <span className="text-stone"> (ยังไม่ตอบ)</span>}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {/* Documents to prepare */}
-        {result.documentsToPrepare.length > 0 && (
-          <div className="card mt-6">
-            <p className="eyebrow">เอกสารที่ควรเตรียม</p>
-            <ul className="mt-3 space-y-1.5 text-sm text-ink/90">
-              {result.documentsToPrepare.map((doc) => (
-                <li key={doc} className="flex items-start gap-2">
-                  <span aria-hidden className="mt-0.5 text-stone">
-                    •
-                  </span>
-                  <span>{doc}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {/* Official agencies */}
-        <div className="card mt-6">
-          <p className="eyebrow">ควรตรวจสอบข้อมูลล่าสุดจากหน่วยงาน</p>
-          <ul className="mt-3 space-y-1.5 text-sm text-ink/90">
-            {result.officialAgencies.map((agency) => (
-              <li key={agency} className="flex items-start gap-2">
-                <span aria-hidden className="mt-0.5 text-stone">
-                  •
-                </span>
-                <span>{agency}</span>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-3 text-xs text-stone">
-            รายชื่อหน่วยงานข้างต้นเป็นข้อมูลทั่วไปเท่านั้น กรุณาตรวจสอบข้อกำหนด ขั้นตอน และช่องทางติดต่อล่าสุดจากหน่วยงานโดยตรง
-          </p>
-        </div>
-
-        {/* Related content */}
-        <div className="card mt-6">
-          <p className="eyebrow">อ่านเพิ่มเติม</p>
-          <div className="mt-2 flex flex-col gap-1.5 text-sm">
-            <Link
-              href="/articles/agri-news-law-standards-gap-certification-guide"
-              className="text-ink underline decoration-lime-canopy underline-offset-2 hover:text-lime-deep"
-              onClick={() =>
-                track(TOOL_EVENTS.related_article_click, {
-                  tool: TOOL_SLUG,
-                  target: "/articles/agri-news-law-standards-gap-certification-guide",
-                })
-              }
-            >
-              อ่านคู่มือขอมาตรฐาน GAP แบบละเอียด
-            </Link>
-            <Link
-              href="/tools/farm-record"
-              className="text-ink underline decoration-lime-canopy underline-offset-2 hover:text-lime-deep"
-              onClick={() =>
-                track(TOOL_EVENTS.related_tool_click, { tool: TOOL_SLUG, target: "/tools/farm-record" })
-              }
-            >
-              เตรียมบันทึกฟาร์มให้พร้อมด้วยสมุดบันทึกฟาร์ม
-            </Link>
-          </div>
-        </div>
-      </aside>
-
-      {answeredCount > 0 && affiliateRecommendations && (
-        <div className="lg:col-span-2">{affiliateRecommendations}</div>
-      )}
+      {answeredCount > 0 && affiliateRecommendations && affiliateRecommendations}
     </div>
   );
 }
