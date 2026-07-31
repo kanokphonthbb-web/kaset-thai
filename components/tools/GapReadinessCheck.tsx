@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import Link from "next/link";
 import { track, TOOL_EVENTS } from "@/lib/analytics";
 import {
   CHECKLIST,
@@ -303,6 +304,34 @@ export default function GapReadinessCheck({
           <p className="mt-3 text-xs text-stone">
             รายชื่อหน่วยงานข้างต้นเป็นข้อมูลทั่วไปเท่านั้น กรุณาตรวจสอบข้อกำหนด ขั้นตอน และช่องทางติดต่อล่าสุดจากหน่วยงานโดยตรง
           </p>
+        </div>
+
+        {/* Related content */}
+        <div className="card mt-6">
+          <p className="eyebrow">อ่านเพิ่มเติม</p>
+          <div className="mt-2 flex flex-col gap-1.5 text-sm">
+            <Link
+              href="/articles/agri-news-law-standards-gap-certification-guide"
+              className="text-ink underline decoration-lime-canopy underline-offset-2 hover:text-lime-deep"
+              onClick={() =>
+                track(TOOL_EVENTS.related_article_click, {
+                  tool: TOOL_SLUG,
+                  target: "/articles/agri-news-law-standards-gap-certification-guide",
+                })
+              }
+            >
+              อ่านคู่มือขอมาตรฐาน GAP แบบละเอียด
+            </Link>
+            <Link
+              href="/tools/farm-record"
+              className="text-ink underline decoration-lime-canopy underline-offset-2 hover:text-lime-deep"
+              onClick={() =>
+                track(TOOL_EVENTS.related_tool_click, { tool: TOOL_SLUG, target: "/tools/farm-record" })
+              }
+            >
+              เตรียมบันทึกฟาร์มให้พร้อมด้วยสมุดบันทึกฟาร์ม
+            </Link>
+          </div>
         </div>
       </aside>
 

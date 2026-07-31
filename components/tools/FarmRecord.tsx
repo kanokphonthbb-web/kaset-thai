@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
 import NumberField from "@/components/NumberField";
 import { baht } from "@/lib/format";
 import { track, TOOL_EVENTS } from "@/lib/analytics";
@@ -360,6 +361,37 @@ export default function FarmRecord() {
           >
             {baht(summary.profit)} บาท
           </p>
+        </div>
+      </div>
+
+      {/* Related content */}
+      <div className="card">
+        <p className="eyebrow">อ่านเพิ่มเติม</p>
+        <div className="mt-2 flex flex-col gap-1.5 text-sm">
+          <Link
+            href="/articles/cost-profit-farm-record-book-why-it-matters"
+            className="text-ink underline decoration-lime-canopy underline-offset-2 hover:text-lime-deep"
+            onClick={() =>
+              track(TOOL_EVENTS.related_article_click, {
+                tool: TOOL_SLUG,
+                target: "/articles/cost-profit-farm-record-book-why-it-matters",
+              })
+            }
+          >
+            อ่านเพิ่มเติม: สมุดบันทึกฟาร์มสำคัญอย่างไร
+          </Link>
+          <Link
+            href="/articles/agri-news-law-standards-gap-certification-guide"
+            className="text-ink underline decoration-lime-canopy underline-offset-2 hover:text-lime-deep"
+            onClick={() =>
+              track(TOOL_EVENTS.related_article_click, {
+                tool: TOOL_SLUG,
+                target: "/articles/agri-news-law-standards-gap-certification-guide",
+              })
+            }
+          >
+            บันทึกฟาร์มช่วยตอนขอ GAP ได้อย่างไร
+          </Link>
         </div>
       </div>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, type ReactNode } from "react";
+import Link from "next/link";
 import NumberField from "@/components/NumberField";
 import { baht, num, val } from "@/lib/format";
 import { track, TOOL_EVENTS } from "@/lib/analytics";
@@ -269,6 +270,33 @@ export default function MinimumSellingPrice({
               * ผลลัพธ์ทั้งหมดเป็นการประมาณการจากข้อมูลที่คุณป้อนเท่านั้น
               ไม่ใช่การรับประกันกำไรหรือความคุ้มทุน โปรดตรวจสอบกับต้นทุนจริงและสภาพตลาดก่อนตัดสินใจ
             </p>
+
+            <div className="mt-4">
+              <p className="eyebrow">อ่านเพิ่มเติม</p>
+              <div className="mt-2 flex flex-col gap-1.5 text-sm">
+                <Link
+                  href="/articles/cost-profit-minimum-selling-price-calculator"
+                  className="text-ink underline decoration-lime-canopy underline-offset-2 hover:text-lime-deep"
+                  onClick={() =>
+                    track(TOOL_EVENTS.related_article_click, {
+                      tool: TOOL_SLUG,
+                      target: "/articles/cost-profit-minimum-selling-price-calculator",
+                    })
+                  }
+                >
+                  อ่านเพิ่มเติม: อย่าขายขาดทุนโดยไม่รู้ตัว
+                </Link>
+                <Link
+                  href="/market"
+                  className="text-ink underline decoration-lime-canopy underline-offset-2 hover:text-lime-deep"
+                  onClick={() =>
+                    track(TOOL_EVENTS.related_article_click, { tool: TOOL_SLUG, target: "/market" })
+                  }
+                >
+                  ดูเทคนิคขายสินค้าเกษตรเพิ่มเติม
+                </Link>
+              </div>
+            </div>
 
             <div className="no-print mt-4 flex flex-col gap-2">
               <button onClick={handlePrint} className="btn-secondary w-full">

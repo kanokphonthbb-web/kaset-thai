@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { track, TOOL_EVENTS } from "@/lib/analytics";
 import { DISEASES, DISEASE_GROUPS } from "@/lib/diseaseData";
 import { getDiseaseProducts, ROLE_LABELS, type DiseaseProductRoles } from "@/lib/diseaseProducts";
 import { getSafetyContent, splitTreatByRisk } from "@/lib/diseaseSafety";
@@ -14,10 +15,19 @@ export default function DiseaseChecker({ initialName }: { initialName?: string }
   const options = useMemo(() => DISEASES.filter((d) => d.group === group), [group]);
   const [name, setName] = useState(initial?.name ?? options[0].name);
 
+  useEffect(() => {
+    track(TOOL_EVENTS.tool_view, { tool: "disease-check" });
+  }, []);
+
   const result = useMemo(
     () => DISEASES.find((d) => d.group === group && d.name === name),
     [group, name],
   );
+
+  useEffect(() => {
+    if (!result) return;
+    track(TOOL_EVENTS.tool_result, { tool: "disease-check", group: result.group });
+  }, [result?.name, result?.group]);
 
   const diseaseProducts = useMemo(() => (result ? getDiseaseProducts(result) : null), [result]);
   const safety = useMemo(() => (result ? getSafetyContent(result) : null), [result]);
