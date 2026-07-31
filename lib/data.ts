@@ -165,6 +165,34 @@ export const TOOLS: Tool[] = [
     href: "/tools/starter-kits",
     status: "พร้อมใช้งาน",
   },
+  {
+    icon: "🧭",
+    title: "วางแผนว่าควรทำเกษตรอะไรดี",
+    description: "ใส่พื้นที่ แหล่งน้ำ งบประมาณ เวลา และความสนใจ แล้วดู 3 ทางเลือกที่ควรศึกษาเพิ่มเติม",
+    href: "/tools/farm-planner",
+    status: "พร้อมใช้งาน",
+  },
+  {
+    icon: "💵",
+    title: "คำนวณราคาขายขั้นต่ำ",
+    description: "รวมต้นทุนวัตถุดิบ แรงงาน บรรจุภัณฑ์ ค่าธรรมเนียม แล้วดูราคาขายขั้นต่ำที่ไม่ขาดทุน",
+    href: "/tools/minimum-selling-price",
+    status: "พร้อมใช้งาน",
+  },
+  {
+    icon: "📒",
+    title: "สมุดบันทึกฟาร์ม",
+    description: "จดรายรับ รายจ่าย และกิจกรรมประจำวันของฟาร์มฟรี ไม่ต้องสมัครสมาชิก ส่งออกเป็น CSV ได้",
+    href: "/tools/farm-record",
+    status: "พร้อมใช้งาน",
+  },
+  {
+    icon: "✅",
+    title: "ตรวจความพร้อมก่อนขอ GAP",
+    description: "ตอบคำถามความพร้อมทีละข้อ แล้วดูรายการที่ต้องปรับปรุงและเอกสารที่ควรเตรียม",
+    href: "/tools/gap-readiness-check",
+    status: "พร้อมใช้งาน",
+  },
 ];
 
 export const ARTICLES: Article[] = [

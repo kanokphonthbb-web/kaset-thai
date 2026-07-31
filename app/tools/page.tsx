@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import ToolCard from "@/components/ToolCard";
 import { TOOLS } from "@/lib/data";
 
-export const metadata = pageMeta({ title: "เครื่องมือช่วยเกษตรกร", description: "รวมเครื่องมือช่วยเกษตรกรไทย คำนวณต้นทุนปลูกพืช คำนวณต้นทุนเลี้ยงสัตว์ ปฏิทินเพาะปลูก และเช็กโรคเบื้องต้น", path: "/tools" });
+export const metadata = pageMeta({ title: "เครื่องมือช่วยเกษตรกร", description: "รวมเครื่องมือช่วยเกษตรกรไทย คำนวณต้นทุน วางแผนการทำเกษตร คำนวณราคาขายขั้นต่ำ สมุดบันทึกฟาร์ม ตรวจความพร้อม GAP ปฏิทินเพาะปลูก และเช็กโรคเบื้องต้น", path: "/tools" });
 
 export default function ToolsIndexPage() {
   return (
@@ -25,7 +25,7 @@ export default function ToolsIndexPage() {
 
         <section className="bg-paper py-20">
           <div className="container-x">
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {TOOLS.map((tool) => (
                 <ToolCard key={tool.title} tool={tool} />
               ))}

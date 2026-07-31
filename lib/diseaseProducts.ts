@@ -5,6 +5,7 @@
 // ─────────────────────────────────────────────────────────────
 import raw from "@/data/diseaseProducts.json";
 import type { Disease } from "@/lib/diseaseData";
+import { filterDiseaseProductRoles } from "@/lib/productSafety";
 
 type Entry = { name: string; imageUrl: string; slug: string | null };
 type Roles = { diagnose: Entry[]; manage: Entry[]; prevent: Entry[]; ppe: Entry[] };
@@ -22,5 +23,7 @@ export const ROLE_LABELS: Record<keyof Roles, { icon: string; title: string }> =
 };
 
 export function getDiseaseProducts(disease: Pick<Disease, "group" | "name">): Target | null {
-  return DATA[`name::${disease.group}::${disease.name}`] ?? DATA[`group::${disease.group}`] ?? null;
+  const target = DATA[`name::${disease.group}::${disease.name}`] ?? DATA[`group::${disease.group}`] ?? null;
+  if (!target) return null;
+  return { ...target, roles: filterDiseaseProductRoles(target.roles) };
 }

@@ -14,6 +14,9 @@ export type Disease = {
   treat: string[]; // วิธีแก้ไข/รักษา
   prevent: string[]; // วิธีป้องกัน
   urgent?: boolean; // โรคติดต่อร้ายแรง/ต้องแจ้งเจ้าหน้าที่
+  lowRiskTreatIdx?: number[]; // ดัชนีใน treat[] ที่ปลอดภัยพอจะลองทำได้เองโดยไม่ต้องวินิจฉัยแน่ชัด (ไม่ระบุ = ใช้ heuristic คำสำคัญแทน)
+  similarTo?: string[]; // ชื่อโรคที่มีอาการคล้ายกัน อาจสับสนได้
+  redFlags?: string[]; // สัญญาณเฉพาะโรคนี้ที่ควรหยุดดูแลเองทันที
 };
 
 export const DISEASES: Disease[] = [
