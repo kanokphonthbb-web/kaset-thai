@@ -1,26 +1,23 @@
 import Link from "next/link";
 import Image from "next/image";
 import SearchBox from "./SearchBox";
-import { statsFor, unsplashUrl, HERO_IMAGE } from "@/lib/data";
+import { statsFor } from "@/lib/data";
 
 export default function Hero({ articleCount }: { articleCount: number }) {
-  const bg = unsplashUrl(HERO_IMAGE, 1920);
   const stats = statsFor(articleCount);
 
   return (
     <section className="relative overflow-hidden">
       {/* Full-bleed real photograph — Thai farmer in a rice paddy */}
-      {bg && (
-        <Image
-          src={bg}
-          alt="ชาวนาไทยกำลังดำนาในแปลงข้าว"
-          fill
-          priority
-          quality={65}
-          sizes="100vw"
-          className="object-cover"
-        />
-      )}
+      <Image
+        src="/images/hero-rice-farmer.webp"
+        alt="ชาวนาไทยกำลังดำนาในแปลงข้าว"
+        fill
+        priority
+        quality={65}
+        sizes="100vw"
+        className="object-cover"
+      />
       {/* Dark overlay for text legibility */}
       <div aria-hidden className="absolute inset-0 bg-black/45" />
       <div
