@@ -113,7 +113,7 @@ export default async function HomePage() {
                 ))}
               </div>
               <div className="mt-10 text-center">
-                <Link href="/products" className="btn-secondary">
+                <Link href="/products" prefetch={false} className="btn-secondary">
                   ดูสินค้าทั้งหมด →
                 </Link>
               </div>

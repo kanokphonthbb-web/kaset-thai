@@ -36,6 +36,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
+                prefetch={link.href === "/products" ? false : undefined}
                 className="rounded-full px-3 py-2 text-[15px] font-medium text-stone transition-colors hover:bg-linen hover:text-ink"
               >
                 {link.label}
@@ -73,6 +74,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
+                prefetch={link.href === "/products" ? false : undefined}
                 onClick={() => setOpen(false)}
                 className="flex min-h-[48px] items-center rounded-full px-4 text-base font-medium text-ink hover:bg-linen"
               >

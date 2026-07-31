@@ -31,7 +31,7 @@ export default function ProductCard({
           src={product.imageUrl}
           alt={product.name}
           fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1024px) 50vw, 256px"
           className="object-contain transition-transform duration-300 group-hover:scale-105"
         />
       </div>

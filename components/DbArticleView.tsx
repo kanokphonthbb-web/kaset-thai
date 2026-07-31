@@ -26,6 +26,8 @@ type DbPost = {
   focusKeyword: string;
   subcategory: string;
   productsJson: string;
+  publishedAt: Date | null;
+  updatedAt: Date;
   category: { name: string; slug: string } | null;
 };
 
@@ -79,12 +81,16 @@ export default async function DbArticleView({ post }: { post: DbPost }) {
   const graph: Record<string, unknown>[] = [
     {
       "@type": "Article",
+      "@id": `${url}#article`,
       headline: post.title,
       description: post.metaDescription || post.excerpt,
       inLanguage: "th-TH",
       mainEntityOfPage: url,
-      author: { "@type": "Organization", name: "เกษตรกรไทย" },
-      publisher: { "@type": "Organization", name: "เกษตรกรไทย" },
+      ...(post.coverImage ? { image: post.coverImage.startsWith("http") ? post.coverImage : `${SITE_URL}${post.coverImage}` } : {}),
+      ...(post.publishedAt ? { datePublished: post.publishedAt.toISOString() } : {}),
+      dateModified: post.updatedAt.toISOString(),
+      author: { "@id": `${SITE_URL}/#organization` },
+      publisher: { "@id": `${SITE_URL}/#organization` },
     },
     {
       "@type": "BreadcrumbList",

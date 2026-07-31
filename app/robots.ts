@@ -6,7 +6,9 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: "/search",
+      // /search carries a noindex meta tag, so crawlers must be allowed to
+      // fetch it and see that directive. Only private/system routes are blocked.
+      disallow: ["/admin/", "/api/"],
     },
     sitemap: `${SITE_URL}/sitemap.xml`,
   };

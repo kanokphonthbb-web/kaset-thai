@@ -2,36 +2,40 @@ import type { MetadataRoute } from "next";
 import { ARTICLES, CATEGORIES, TOOLS } from "@/lib/data";
 import { SITE_URL } from "@/lib/site";
 import { prisma } from "@/lib/prisma";
+import { getAllStarterKits } from "@/lib/starterKits";
 
-export const dynamic = "force-dynamic";
+// Cache the generated sitemap instead of querying Turso on every crawler hit.
+// CMS/product updatedAt values remain the source of truth for dynamic entries.
+export const dynamic = "force-static";
+export const revalidate = 300;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const now = new Date();
-
-  const staticRoutes = ["", "/about", "/tools", "/blog", "/search"].map((path) => ({
+  const staticRoutes = ["", "/about", "/tools", "/blog", "/products"].map((path) => ({
     url: `${SITE_URL}${path}`,
-    lastModified: now,
     changeFrequency: "weekly" as const,
     priority: path === "" ? 1 : 0.7,
   }));
 
   const categoryRoutes = CATEGORIES.filter((c) => c.href.startsWith("/")).map((c) => ({
     url: `${SITE_URL}${c.href.split("#")[0]}`,
-    lastModified: now,
     changeFrequency: "weekly" as const,
     priority: 0.8,
   }));
 
   const toolRoutes = TOOLS.map((t) => ({
     url: `${SITE_URL}${t.href}`,
-    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  const starterKitRoutes = getAllStarterKits().map((kit) => ({
+    url: `${SITE_URL}/tools/starter-kits/${encodeURIComponent(kit.kitId)}`,
     changeFrequency: "monthly" as const,
     priority: 0.6,
   }));
 
   const staticArticleRoutes = ARTICLES.map((a) => ({
     url: `${SITE_URL}/articles/${a.slug}`,
-    lastModified: now,
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));
@@ -74,6 +78,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...staticRoutes,
     ...categoryRoutes,
     ...toolRoutes,
+    ...starterKitRoutes,
     ...staticArticleRoutes,
     ...cmsArticleRoutes,
     ...productRoutes,

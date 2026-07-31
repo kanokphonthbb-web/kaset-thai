@@ -85,10 +85,12 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     return {
       title: dbPost.seoTitle || dbPost.title,
       description: dbPost.metaDescription || dbPost.excerpt,
+      alternates: { canonical: `${SITE_URL}/articles/${encodeURIComponent(dbPost.slug)}` },
       openGraph: {
         title: dbPost.title,
         description: dbPost.metaDescription,
         type: "article",
+        url: `${SITE_URL}/articles/${encodeURIComponent(dbPost.slug)}`,
         images: cover ? [cover] : undefined,
       },
     };
@@ -99,10 +101,12 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return {
     title: article.title,
     description: article.description,
+    alternates: { canonical: `${SITE_URL}/articles/${encodeURIComponent(article.slug)}` },
     openGraph: {
       title: article.title,
       description: article.description,
       type: "article",
+      url: `${SITE_URL}/articles/${encodeURIComponent(article.slug)}`,
       images: cover ? [cover] : undefined,
     },
   };
@@ -156,13 +160,15 @@ export default async function ArticlePage({ params }: Params) {
   const graph: Record<string, unknown>[] = [
     {
       "@type": "Article",
+      "@id": `${articleUrl}#article`,
       headline: article.title,
       description: article.description,
       articleSection: article.category,
       inLanguage: "th-TH",
       mainEntityOfPage: articleUrl,
-      author: { "@type": "Organization", name: "เกษตรกรไทย" },
-      publisher: { "@type": "Organization", name: "เกษตรกรไทย" },
+      ...(imageFor(article.slug, 1200) ? { image: imageFor(article.slug, 1200) } : {}),
+      author: { "@id": `${SITE_URL}/#organization` },
+      publisher: { "@id": `${SITE_URL}/#organization` },
     },
     {
       "@type": "BreadcrumbList",

@@ -15,6 +15,7 @@ type Params = { params: { slug: string } };
 // ISR: สินค้าจาก DB (Turso) อัปเดตได้ — regenerate ทุก 5 นาที
 export const revalidate = 300;
 export const dynamicParams = true;
+export const dynamic = "force-static";
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const product = await getProductBySlug(params.slug);
@@ -70,7 +71,6 @@ export default async function ProductDetailPage({ params }: Params) {
               priceCurrency: "THB",
               url: product.affiliateLink,
               availability: "https://schema.org/InStock",
-              ...(product.priceCheckedAt ? { priceValidUntil: product.priceCheckedAt.toISOString().slice(0, 10) } : {}),
             },
           }
         : {}),
@@ -103,7 +103,7 @@ export default async function ProductDetailPage({ params }: Params) {
               <span className="mx-2" aria-hidden>
                 /
               </span>
-              <Link href="/products" className="hover:text-ink">
+              <Link href="/products" prefetch={false} className="hover:text-ink">
                 สินค้าเพื่อการเกษตร
               </Link>
             </nav>

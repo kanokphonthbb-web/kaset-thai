@@ -16,6 +16,7 @@ export default function Hero({ articleCount }: { articleCount: number }) {
           alt="ชาวนาไทยกำลังดำนาในแปลงข้าว"
           fill
           priority
+          quality={65}
           sizes="100vw"
           className="object-cover"
         />
@@ -34,6 +35,7 @@ export default function Hero({ articleCount }: { articleCount: number }) {
             alt="โลโก้ เกษตรกรไทย"
             width={72}
             height={72}
+            sizes="72px"
             className="mx-auto drop-shadow-lg"
           />
 
