@@ -67,7 +67,6 @@ export const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/16781275/pexels-photo-16781275.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/28264138/pexels-photo-28264138.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/3066814/pexels-photo-3066814.jpeg?auto=compress&cs=tinysrgb&w=1400",
-    "https://images.pexels.com/photos/20987903/pexels-photo-20987903.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/32530110/pexels-photo-32530110.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/31095026/pexels-photo-31095026.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/14704981/pexels-photo-14704981.jpeg?auto=compress&cs=tinysrgb&w=1400",
@@ -75,18 +74,36 @@ export const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/28903103/pexels-photo-28903103.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/35573254/pexels-photo-35573254.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/32530076/pexels-photo-32530076.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (batch5 top-up — Pexels-verified HTTP 200, DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์,
+    // ไม่ซ้ำกับรูปอื่นในไฟล์นี้ — ข้าวไรซ์เบอร์รี่/เมล็ดข้าว)
+    "https://images.pexels.com/photos/28488757/pexels-photo-28488757.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/38473601/pexels-photo-38473601.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เอา 20987903 ออก 2026-07-29 (poisoned pool — ID นี้ถูกใช้ซ้ำกับบทความ cost-profit-profit-802
+    // (ปลูกมะม่วง, cross-category ผ่าน COST_PROFIT_TITLE_POOLS["มะม่วง"]) ทำให้ plants-care-riceberry-faq-118
+    // เกิด duplicate cover แบบไม่มี warning เพราะ coverFor() เช็คซ้ำเฉพาะในหมวดเดียวกัน)
+    // เพิ่ม pool 2026-07-29 (batch7 top-up — Pexels-verified HTTP 200, DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์,
+    // ไม่ซ้ำกับรูปอื่นในไฟล์นี้ — นาข้าว/ทุ่งข้าว)
+    "https://images.pexels.com/photos/38399970/pexels-photo-38399970.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/37320337/pexels-photo-37320337.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/35245104/pexels-photo-35245104.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/31737301/pexels-photo-31737301.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/11053137/pexels-photo-11053137.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   animals: [
     // Pexels — เพิ่ม pool เดือน 2026-07 (ขยายก่อนล็อตเขียนถัดไป)
     "https://images.pexels.com/photos/37466235/pexels-photo-37466235.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/15645658/pexels-photo-15645658.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/15645665/pexels-photo-15645665.jpeg?auto=compress&cs=tinysrgb&w=1400",
-    "https://images.pexels.com/photos/4911710/pexels-photo-4911710.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เอา 4911710 ออก 2026-07-29 (poisoned pool — ID นี้ถูกใช้ซ้ำกับบทความ cost-profit-profit-822
+    // (เลี้ยงไก่ไข่, cross-category ผ่าน COST_PROFIT_TITLE_POOLS["ไก่ไข่"]) ทำให้ animals-disease-broiler-answer-2400
+    // เกิด duplicate cover แบบไม่มี warning เพราะ coverFor() เช็คซ้ำเฉพาะในหมวดเดียวกัน)
     "https://images.pexels.com/photos/24017332/pexels-photo-24017332.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/22699847/pexels-photo-22699847.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/31548249/pexels-photo-31548249.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/20729021/pexels-photo-20729021.jpeg?auto=compress&cs=tinysrgb&w=1400",
-    "https://images.pexels.com/photos/2252541/pexels-photo-2252541.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เอา 2252541 ออก 2026-07-29 (poisoned pool — ID นี้ถูกใช้ซ้ำกับบทความ cost-profit-cost-829
+    // (ต้นทุนเลี้ยงหมูขุน, cross-category ผ่าน COST_PROFIT_TITLE_POOLS["หมูขุน"]) ทำให้ animals-disease-broiler-decision-2399
+    // เกิด duplicate cover แบบไม่มี warning เพราะ coverFor() เช็คซ้ำเฉพาะในหมวดเดียวกัน)
     "https://images.pexels.com/photos/27167732/pexels-photo-27167732.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/9768959/pexels-photo-9768959.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "1548550023-2bdb3c5beed7",
@@ -112,6 +129,19 @@ export const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/15645680/pexels-photo-15645680.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/4911711/pexels-photo-4911711.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/4530409/pexels-photo-4530409.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (แก้ duplicate cover batch5: animals-disease-broiler-beginner-2392
+    // ไปซ้ำกับ cost-profit-profit-822 — Pexels-verified HTTP 200, DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์,
+    // ไม่ซ้ำกับรูปอื่นในไฟล์นี้)
+    "https://images.pexels.com/photos/38636427/pexels-photo-38636427.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4911738/pexels-photo-4911738.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/9783726/pexels-photo-9783726.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (batch7 top-up — Pexels-verified HTTP 200, DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์,
+    // ไม่ซ้ำกับรูปอื่นในไฟล์นี้ — ไก่เนื้อ/สัตว์ปีกในฟาร์ม)
+    "https://images.pexels.com/photos/12211043/pexels-photo-12211043.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/14944651/pexels-photo-14944651.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/16733511/pexels-photo-16733511.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7269131/pexels-photo-7269131.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/38365059/pexels-photo-38365059.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   fishery: [
     // Pexels — เพิ่ม pool เดือน 2026-07 (ขยายก่อนล็อตเขียนถัดไป)
@@ -141,6 +171,39 @@ export const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/15059730/pexels-photo-15059730.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/5806533/pexels-photo-5806533.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/30780717/pexels-photo-30780717.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (แก้ duplicate cover: fishery-cost-tilapia-answer-4080 ไปซ้ำกับบทความอื่น
+    // — Pexels-verified HTTP 200 ทั้งหมด, ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์)
+    "https://images.pexels.com/photos/37939313/pexels-photo-37939313.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/11334473/pexels-photo-11334473.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/10436682/pexels-photo-10436682.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/33017787/pexels-photo-33017787.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (แก้ duplicate cover: fishery-how-to-raise-snakehead-mistakes-4087
+    // ไปซ้ำกับบทความอื่น — pool เดิม 33 รูปอิ่มตัวหมดทั้งไซต์ — Pexels-verified HTTP 200 ทั้งหมด, ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์)
+    "https://images.pexels.com/photos/18042356/pexels-photo-18042356.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32859012/pexels-photo-32859012.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/14021744/pexels-photo-14021744.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (แก้ duplicate cover batch5: fishery-pond-snakehead-beginner-4092,
+    // fishery-pond-snakehead-compare-4095 ไปซ้ำกับ fishery-cost-snakehead/fishery-feed-snakehead —
+    // Pexels-verified HTTP 200, DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์, ไม่ซ้ำกับรูปอื่นในไฟล์นี้)
+    "https://images.pexels.com/photos/32229959/pexels-photo-32229959.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/15610910/pexels-photo-15610910.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (batch6 top-up — pool เดิม 37 รูปอิ่มตัวหมดทั้งไซต์ ทำให้ fishery-pond-snakehead-answer-4100
+    // ไปซ้ำกับ fishery-cost-carp — Pexels-verified HTTP 200, DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์, ไม่ซ้ำกับรูปอื่นในไฟล์นี้ — บ่อปลา/ฟาร์มสัตว์น้ำ)
+    "https://images.pexels.com/photos/5774415/pexels-photo-5774415.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5806537/pexels-photo-5806537.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6289291/pexels-photo-6289291.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6340904/pexels-photo-6340904.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/9210281/pexels-photo-9210281.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/17065418/pexels-photo-17065418.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (batch8 top-up — pool เดิมอิ่มตัวหมดในหมวดนี้ ทำให้ 4 บทความ fishery-cost-snakehead-*/
+    // fishery-feed-snakehead-answer-4110 ไปซ้ำกับบทความอื่นข้ามหมวด (pool-exhausted warning) — Pexels-verified HTTP 200,
+    // DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์, ไม่ซ้ำกับรูปอื่นในไฟล์นี้ — บ่อปลา/ฟาร์มสัตว์น้ำ)
+    "https://images.pexels.com/photos/12167096/pexels-photo-12167096.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34019080/pexels-photo-34019080.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/10615220/pexels-photo-10615220.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/28676939/pexels-photo-28676939.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32243190/pexels-photo-32243190.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/12387388/pexels-photo-12387388.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   "mixed-farming": [
     // Pexels — เพิ่ม pool เดือน 2026-07 (ขยายก่อนล็อตเขียนถัดไป)
@@ -177,6 +240,49 @@ export const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/8105623/pexels-photo-8105623.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/27742375/pexels-photo-27742375.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/7299965/pexels-photo-7299965.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // Pexels — เพิ่ม pool 2026-07-29 (แก้ duplicate cover: pool เดิมหมดแล้ว ทำให้ mixed-farming-integrated-farm-mistakes-4917,
+    // -faq-4918, -decision-4919, -answer-4920 ไปซ้ำกับบทความอื่น — Pexels-verified HTTP 200 ทั้งหมด, ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์)
+    "https://images.pexels.com/photos/21764384/pexels-photo-21764384.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/175414/pexels-photo-175414.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4947363/pexels-photo-4947363.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/38514736/pexels-photo-38514736.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/37590052/pexels-photo-37590052.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/18710221/pexels-photo-18710221.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5174197/pexels-photo-5174197.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (แก้ duplicate cover: pool เดิมหมดแล้ว ทำให้ mixed-farming-integrated-farm-1-answer-4930,
+    // -2-compare-4935 ไปซ้ำกับบทความอื่น — Pexels-verified HTTP 200 ทั้งหมด, ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์)
+    "https://images.pexels.com/photos/11113955/pexels-photo-11113955.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/31138614/pexels-photo-31138614.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/36106131/pexels-photo-36106131.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (แก้ duplicate cover: mixed-farming-integrated-farm-2-answer-4940,
+    // -2-decision-4939 ไปซ้ำกับบทความอื่น — Pexels-verified HTTP 200 ทั้งหมด, ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์)
+    "https://images.pexels.com/photos/36249642/pexels-photo-36249642.png?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/16663953/pexels-photo-16663953.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/12460093/pexels-photo-12460093.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/30775983/pexels-photo-30775983.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (แก้ duplicate cover batch5: 5 บทความ mixed-farming-integrated-farm-3/5-*
+    // ไปซ้ำกับบทความอื่น — Pexels-verified HTTP 200, DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์,
+    // ไม่ซ้ำกับรูปอื่นในไฟล์นี้)
+    "https://images.pexels.com/photos/37765149/pexels-photo-37765149.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7457219/pexels-photo-7457219.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (batch6 top-up — pool เดิม 48 รูปอิ่มตัวหมดทั้งไซต์ ทำให้ 3 บทความ
+    // mixed-farming-integrated-farm-5-faq/answer/decision-495x ไปซ้ำกับบทความอื่น — Pexels-verified HTTP 200,
+    // DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์, ไม่ซ้ำกับรูปอื่นในไฟล์นี้ — แปลงเกษตรผสมผสาน)
+    "https://images.pexels.com/photos/33004848/pexels-photo-33004848.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/27033658/pexels-photo-27033658.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/20258695/pexels-photo-20258695.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5126445/pexels-photo-5126445.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4894634/pexels-photo-4894634.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/27176062/pexels-photo-27176062.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (batch8 top-up — pool เดิมอิ่มตัวหมดในหมวดนี้ ทำให้ 4 บทความ mixed-farming-integrated-farm-*
+    // ไปซ้ำกับบทความอื่นข้ามหมวด (pool-exhausted warning) — Pexels-verified HTTP 200, DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์,
+    // ไม่ซ้ำกับรูปอื่นในไฟล์นี้ — ฟาร์มเกษตรผสมผสาน)
+    "https://images.pexels.com/photos/30393472/pexels-photo-30393472.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/37114142/pexels-photo-37114142.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/20361934/pexels-photo-20361934.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/38220073/pexels-photo-38220073.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/35782541/pexels-photo-35782541.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/36840397/pexels-photo-36840397.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   diseases: [
     "1692481060581-98c224124f12",
@@ -191,8 +297,6 @@ export const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "1607804384775-9a14cf1f12e5", // ทุ่งข้าวสาลีแห้ง
     // Pexels — เพิ่ม pool เดือน 2026-07 (โรคพืช/แมลงศัตรูพืช/โรคสัตว์/โรคสัตว์น้ำ wave2)
     "https://images.pexels.com/photos/34234358/pexels-photo-34234358.jpeg?auto=compress&cs=tinysrgb&w=1400", // ใบเน่าเป็นเชื้อรา
-    "https://images.pexels.com/photos/7718268/pexels-photo-7718268.jpeg?auto=compress&cs=tinysrgb&w=1400", // ใบราแป้ง/ราน้ำค้าง
-    "https://images.pexels.com/photos/28166522/pexels-photo-28166522.jpeg?auto=compress&cs=tinysrgb&w=1400", // ใบจุดสีน้ำตาล ใบไหม้
     "https://images.pexels.com/photos/20223372/pexels-photo-20223372.jpeg?auto=compress&cs=tinysrgb&w=1400", // ใบติดเชื้อรา
     "https://images.pexels.com/photos/33995964/pexels-photo-33995964.jpeg?auto=compress&cs=tinysrgb&w=1400", // ใบถูกแมลงกัดเป็นรู (หนอนชอนใบ)
     "https://images.pexels.com/photos/11588748/pexels-photo-11588748.jpeg?auto=compress&cs=tinysrgb&w=1400", // เพลี้ยสีส้มเกาะใบ
@@ -200,19 +304,37 @@ export const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/20826372/pexels-photo-20826372.jpeg?auto=compress&cs=tinysrgb&w=1400", // เพลี้ยเกาะลำต้น
     "https://images.pexels.com/photos/17333448/pexels-photo-17333448.jpeg?auto=compress&cs=tinysrgb&w=1400", // กลุ่มเพลี้ยแป้งสีเหลือง
     "https://images.pexels.com/photos/3007693/pexels-photo-3007693.jpeg?auto=compress&cs=tinysrgb&w=1400", // มดกับเพลี้ยบนใบ
-    "https://images.pexels.com/photos/16667124/pexels-photo-16667124.jpeg?auto=compress&cs=tinysrgb&w=1400", // ฟาร์มไก่ไข่
     "https://images.pexels.com/photos/12246335/pexels-photo-12246335.jpeg?auto=compress&cs=tinysrgb&w=1400", // ไก่รวมฝูงในฟาร์ม
     "https://images.pexels.com/photos/34406262/pexels-photo-34406262.jpeg?auto=compress&cs=tinysrgb&w=1400", // ไก่ในกรงตลาด (แยกกักโรค)
     "https://images.pexels.com/photos/6339152/pexels-photo-6339152.jpeg?auto=compress&cs=tinysrgb&w=1400", // วัวโคนม/โคเนื้อระยะใกล้
-    "https://images.pexels.com/photos/8023245/pexels-photo-8023245.jpeg?auto=compress&cs=tinysrgb&w=1400", // วัวติดป้ายหูในทุ่งหญ้า
     "https://images.pexels.com/photos/11357088/pexels-photo-11357088.jpeg?auto=compress&cs=tinysrgb&w=1400", // วัวกินอาหารในฟาร์ม
-    "https://images.pexels.com/photos/8839927/pexels-photo-8839927.jpeg?auto=compress&cs=tinysrgb&w=1400", // หมูในโรงเรือน
-    "https://images.pexels.com/photos/6791938/pexels-photo-6791938.jpeg?auto=compress&cs=tinysrgb&w=1400", // ฟาร์มหมูภายในโรงเรือน
-    "https://images.pexels.com/photos/2737171/pexels-photo-2737171.jpeg?auto=compress&cs=tinysrgb&w=1400", // หมูรวมฝูงในคอก
     "https://images.pexels.com/photos/7509423/pexels-photo-7509423.jpeg?auto=compress&cs=tinysrgb&w=1400", // คนงานดูแลบ่อปลา
+    // เพิ่ม pool 2026-07-29 (แก้ duplicate cover: 7 รูปเดิมในพูลนี้ซ้ำกับพูลอื่น (animals/fattening-pig/layer-chicken)
+    // ทำให้ diseases-downy-mildew-682-compare-6825 ไปซ้ำกับบทความ animals — ลบรูปซ้ำออกแล้วเติมรูปใหม่ Pexels-verified HTTP 200,
+    // ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์และไม่ซ้ำกับรูปอื่นในไฟล์นี้)
+    "https://images.pexels.com/photos/10528837/pexels-photo-10528837.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/37589417/pexels-photo-37589417.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/28939999/pexels-photo-28939999.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/35171717/pexels-photo-35171717.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/20336746/pexels-photo-20336746.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/28738435/pexels-photo-28738435.jpeg?auto=compress&cs=tinysrgb&w=1400", // บ่อปลากระชังมุมสูง
     "https://images.pexels.com/photos/36519888/pexels-photo-36519888.jpeg?auto=compress&cs=tinysrgb&w=1400", // กบในบ่อน้ำ
     "https://images.pexels.com/photos/35540381/pexels-photo-35540381.jpeg?auto=compress&cs=tinysrgb&w=1400", // กบบนหินริมบ่อ
+    // เพิ่ม pool 2026-07-29 (แก้ duplicate cover batch5: diseases-thrips-684-mistakes-6847, -calendar-6846
+    // ไปซ้ำกับบทความอื่น — Pexels-verified HTTP 200, DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์,
+    // ไม่ซ้ำกับรูปอื่นในไฟล์นี้ — แมลง/เพลี้ยบนใบพืช)
+    "https://images.pexels.com/photos/34551232/pexels-photo-34551232.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/35604827/pexels-photo-35604827.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/36409233/pexels-photo-36409233.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (batch7 top-up — pool เดิมอิ่มตัวหมดในหมวดนี้ ทำให้ 5 บทความ
+    // diseases-whitefly-686-*/mealybug-685-* ไปซ้ำกับบทความอื่นในหมวดเดียวกัน (pool-exhausted warning) —
+    // Pexels-verified HTTP 200, DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์, ไม่ซ้ำกับรูปอื่นในไฟล์นี้ — แมลงศัตรูพืชระยะใกล้)
+    "https://images.pexels.com/photos/15220329/pexels-photo-15220329.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/13336179/pexels-photo-13336179.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/25961589/pexels-photo-25961589.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34784054/pexels-photo-34784054.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/12888279/pexels-photo-12888279.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/762948/pexels-photo-762948.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   "cost-profit": [
     "1626266061368-46a8f578ddd6", // เครื่องคิดเลขโต๊ะทำงาน
@@ -222,7 +344,8 @@ export const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "1544761634-dc512f2238a3", // ปากกา+เครื่องคิดเลข
     "1710625040193-79a7728d7677", // สมุดบันทึกรายรับรายจ่าย
     "1673874855449-e8620ddfa867", // เอกสารการเงินกองซ้อน
-    "1649209979970-f01d950cc5ed", // เครื่องคิดเลขบนโต๊ะไม้
+    // เอา 1649209979970-f01d950cc5ed ออก 2026-07-29 (dead weight — ID นี้ถูกใช้ซ้ำกับบทความ
+    // agri-news-law-standards-gap-certification-guide ไปแล้ว ทำให้ cost-profit-cost-decision-7889 เกิด duplicate cover)
     "1546198632-9ef6368bef12", // เอกสารบัญชีตัวเลข
     "1633158829875-e5316a358c6f", // กระปุกออมเหรียญ
     "1578091436046-ecd3f4fe6992", // กระปุกออมเงินเพื่อบ้าน
@@ -268,7 +391,9 @@ export const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "1669642550102-4715072f1c84",
     // Pexels — เพิ่ม pool เดือน 2026-07 (ปฏิทินงบประมาณ/เอกสารบัญชี/เครื่องคิดเลข) กัน pool หมด เพราะ cost-profit เผยแพร่ไปมากแล้ว
     "https://images.pexels.com/photos/4386341/pexels-photo-4386341.jpeg?auto=compress&cs=tinysrgb&w=1400",
-    "https://images.pexels.com/photos/6962993/pexels-photo-6962993.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เอา 6962993 ออก 2026-07-29 (poisoned pool — ID นี้ถูกใช้ซ้ำกับบทความ agri-tech-tools-farm-google-sheets-964
+    // (รูปนี้เป็น rightful owner ของ KEYWORD_IMAGE_POOLS["farm-google-sheets"], cross-category) ทำให้
+    // cost-profit-cost-mistakes-7927 เกิด duplicate cover แบบไม่มี warning เพราะ coverFor() เช็คซ้ำเฉพาะในหมวดเดียวกัน)
     "https://images.pexels.com/photos/6694543/pexels-photo-6694543.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/209224/pexels-photo-209224.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/259065/pexels-photo-259065.jpeg?auto=compress&cs=tinysrgb&w=1400",
@@ -283,6 +408,18 @@ export const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/16600134/pexels-photo-16600134.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/33175651/pexels-photo-33175651.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/7821914/pexels-photo-7821914.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (แก้ duplicate cover: cost-profit-cost-decision-7889 ไปซ้ำกับบทความอื่น
+    // (Unsplash 1649209979970 ที่อยู่ใน pool นี้ถูกใช้ซ้ำกับบทความ agri-news-law-standards ไปแล้ว) —
+    // Pexels-verified HTTP 200 ทั้งหมด, ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์)
+    "https://images.pexels.com/photos/5184951/pexels-photo-5184951.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/8250947/pexels-photo-8250947.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (batch7 top-up — Pexels-verified HTTP 200, DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์,
+    // ไม่ซ้ำกับรูปอื่นในไฟล์นี้ — ไร่ข้าวโพด/เอกสารบัญชี)
+    "https://images.pexels.com/photos/33786601/pexels-photo-33786601.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/15203352/pexels-photo-15203352.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/9672835/pexels-photo-9672835.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/1366083/pexels-photo-1366083.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/13168947/pexels-photo-13168947.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   market: [
     // Pexels — เพิ่ม pool เดือน 2026-07 (ขยายก่อนล็อตเขียนถัดไป)
@@ -314,6 +451,26 @@ export const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "1635774855717-0aec182f92cc", // ผักรวมในตะกร้า
     "1690934167884-08c184b6c606", // ตะกร้าสานผลไม้ผัก
     "1720798706592-c516eceaade1", // ตะกร้าใหญ่ผักหลากชนิด
+    // เพิ่ม pool 2026-07-29 (แก้ duplicate cover: market-banana-processing-863-faq-8638,
+    // -863-mistakes-8637 ไปซ้ำกับบทความอื่น — Pexels-verified HTTP 200 ทั้งหมด, ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์)
+    "https://images.pexels.com/photos/17309031/pexels-photo-17309031.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/27592995/pexels-photo-27592995.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4946998/pexels-photo-4946998.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/27173521/pexels-photo-27173521.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (แก้ duplicate cover batch5: 5 บทความ market-mango-processing-864-*
+    // ไปซ้ำกับบทความอื่น — Pexels-verified HTTP 200, DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์,
+    // ไม่ซ้ำกับรูปอื่นในไฟล์นี้ — ผลไม้แปรรูป/บรรจุภัณฑ์)
+    "https://images.pexels.com/photos/10111853/pexels-photo-10111853.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/13325953/pexels-photo-13325953.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6086004/pexels-photo-6086004.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (batch6 top-up — pool เดิม 41 รูปอิ่มตัวหมดทั้งไซต์ ทำให้ market-chili-processing-865-compare/cost
+    // ไปซ้ำกับบทความอื่น — Pexels-verified HTTP 200, DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์, ไม่ซ้ำกับรูปอื่นในไฟล์นี้)
+    "https://images.pexels.com/photos/38675684/pexels-photo-38675684.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/38293666/pexels-photo-38293666.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/31558800/pexels-photo-31558800.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32130697/pexels-photo-32130697.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/33224237/pexels-photo-33224237.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/17161099/pexels-photo-17161099.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   "soil-water-fertilizer": [
     "1611843467160-25afb8df1074",
@@ -345,6 +502,36 @@ export const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/2684805/pexels-photo-2684805.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/34344768/pexels-photo-34344768.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/20960018/pexels-photo-20960018.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (แก้ duplicate cover: soil-water-fertilizer-compost-584-compare-5845,
+    // -cost-5844 ไปซ้ำกับบทความอื่น — Pexels-verified HTTP 200 ทั้งหมด, ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์)
+    "https://images.pexels.com/photos/11678439/pexels-photo-11678439.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4207905/pexels-photo-4207905.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/20286981/pexels-photo-20286981.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/31699602/pexels-photo-31699602.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (แก้ duplicate cover batch5: soil-water-fertilizer-bio-fermented-liquid-585-compare-5855,
+    // -cost-5854 ไปซ้ำกับบทความอื่น — Pexels-verified HTTP 200, DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์,
+    // ไม่ซ้ำกับรูปอื่นในไฟล์นี้ — ปุ๋ยหมัก/น้ำหมักชีวภาพ)
+    "https://images.pexels.com/photos/33995853/pexels-photo-33995853.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4751990/pexels-photo-4751990.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7768447/pexels-photo-7768447.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (batch6 top-up — pool เดิม 42 รูปอิ่มตัวหมดทั้งไซต์ ทำให้
+    // soil-water-fertilizer-bio-fermented-liquid-585-decision-5859 ไปซ้ำกับบทความอื่น — Pexels-verified HTTP 200,
+    // DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์, ไม่ซ้ำกับรูปอื่นในไฟล์นี้)
+    "https://images.pexels.com/photos/36571568/pexels-photo-36571568.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/35090073/pexels-photo-35090073.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4207907/pexels-photo-4207907.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/11676985/pexels-photo-11676985.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/38709232/pexels-photo-38709232.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/9229422/pexels-photo-9229422.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (batch8 top-up — pool เดิมอิ่มตัวหมดในหมวดนี้ ทำให้ soil-water-fertilizer-manure-types-586-*
+    // ไปซ้ำกับบทความอื่นข้ามหมวด (pool-exhausted warning) — Pexels-verified HTTP 200, DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์,
+    // ไม่ซ้ำกับรูปอื่นในไฟล์นี้ — ปุ๋ยคอก/มูลสัตว์/รถแทรกเตอร์หว่านปุ๋ย)
+    "https://images.pexels.com/photos/11996941/pexels-photo-11996941.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/20238488/pexels-photo-20238488.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/18185333/pexels-photo-18185333.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6290217/pexels-photo-6290217.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/31374933/pexels-photo-31374933.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/14242187/pexels-photo-14242187.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   "agri-tech-tools": [
     // Pexels — เพิ่ม pool เดือน 2026-07 (ขยายก่อนล็อตเขียนถัดไป)
@@ -381,6 +568,44 @@ export const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/17797257/pexels-photo-17797257.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/33881124/pexels-photo-33881124.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/21675714/pexels-photo-21675714.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (แก้ duplicate cover: agri-tech-tools-soil-moisture-sensor-943-mistakes-9437
+    // ไปซ้ำกับบทความอื่น — Pexels-verified HTTP 200 ทั้งหมด, ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์)
+    "https://images.pexels.com/photos/34182314/pexels-photo-34182314.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/9146392/pexels-photo-9146392.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34182340/pexels-photo-34182340.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34182310/pexels-photo-34182310.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (แก้ duplicate cover: pool เดิม 39 รูปอิ่มตัวหมดทั้งไซต์ ทำให้ agri-tech-tools-farm-google-sheets-944-beginner-9442,
+    // -compare-9445, -mistakes-9447, -cost-9444, -calendar-9446 ไปซ้ำกับบทความอื่น — Pexels-verified HTTP 200 ทั้งหมด, ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์)
+    "https://images.pexels.com/photos/8296983/pexels-photo-8296983.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7654590/pexels-photo-7654590.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/8099485/pexels-photo-8099485.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5668491/pexels-photo-5668491.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5668808/pexels-photo-5668808.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6368834/pexels-photo-6368834.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (แก้ duplicate cover batch5: agri-tech-tools-line-oa-farm-945-compare-9455,
+    // -calendar-9456 ไปซ้ำกับบทความอื่น — Pexels-verified HTTP 200, DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์,
+    // ไม่ซ้ำกับรูปอื่นในไฟล์นี้ — เกษตรกรใช้มือถือ/แท็บเล็ตในไร่)
+    "https://images.pexels.com/photos/37288733/pexels-photo-37288733.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5230960/pexels-photo-5230960.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5230983/pexels-photo-5230983.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (batch6 top-up — pool เดิม 48 รูปอิ่มตัวหมดทั้งไซต์ ทำให้ 6 บทความ
+    // agri-tech-tools-wood-chipper-farm-946-*/line-oa-farm-945-answer ไปซ้ำกับบทความอื่น — Pexels-verified HTTP 200,
+    // DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์, ไม่ซ้ำกับรูปอื่นในไฟล์นี้)
+    "https://images.pexels.com/photos/34182369/pexels-photo-34182369.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34182385/pexels-photo-34182385.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34182408/pexels-photo-34182408.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34182414/pexels-photo-34182414.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/442589/pexels-photo-442589.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34182312/pexels-photo-34182312.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (batch8 top-up — pool เดิมอิ่มตัวหมดในหมวดนี้ ทำให้ 6 บทความ
+    // agri-tech-tools-battery-sprayer-947-*/farm-cctv-948-guide-9481 ไปซ้ำกับบทความอื่นข้ามหมวด (pool-exhausted warning) —
+    // Pexels-verified HTTP 200, DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์, ไม่ซ้ำกับรูปอื่นในไฟล์นี้ — เครื่องพ่นยา/กล้องวงจรปิดฟาร์ม/โดรนเกษตร)
+    "https://images.pexels.com/photos/20499915/pexels-photo-20499915.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/31492484/pexels-photo-31492484.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/37288725/pexels-photo-37288725.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/12612073/pexels-photo-12612073.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/25384403/pexels-photo-25384403.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/207574/pexels-photo-207574.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   "agri-news-law-standards": [
     // Pexels — เพิ่ม pool เดือน 2026-07 (ขยายก่อนล็อตเขียนถัดไป)
@@ -399,7 +624,8 @@ export const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/8205115/pexels-photo-8205115.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/7876043/pexels-photo-7876043.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.unsplash.com/photo-1768399808130-abac2a8442e0?auto=format&fit=crop&w=1400&q=70", // อาคารหน่วยงาน
-    "https://images.unsplash.com/photo-1778080132813-d51b1b36b08e?auto=format&fit=crop&w=1400&q=70", // เอกสารเก่า
+    // เอา https://images.unsplash.com/photo-1778080132813-d51b1b36b08e ออก 2026-07-29 (dead weight — URL นี้ถูกใช้ซ้ำกับบทความ
+    // agri-news-law-standards-organic-thailand-972 ไปแล้ว ทำให้ agri-news-law-standards-processed-food-law-974-compare-9745 เกิด duplicate cover)
     // Pexels — เพิ่ม pool เดือน 2026-07 (อาคารราชการ/เอกสารกฎหมาย/มาตรฐานรับรอง)
     "https://images.pexels.com/photos/11361969/pexels-photo-11361969.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/11105014/pexels-photo-11105014.jpeg?auto=compress&cs=tinysrgb&w=1400",
@@ -430,6 +656,58 @@ export const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/6814526/pexels-photo-6814526.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/7462692/pexels-photo-7462692.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/6694481/pexels-photo-6694481.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (แก้ duplicate cover: pool เดิมหมดแล้ว ทำให้ agri-news-law-standards-gap-standard-971-answer-9720,
+    // organic-thailand-972-cost-9724, -compare-9725, -calendar-9726 ไปซ้ำกับบทความอื่น — Pexels-verified HTTP 200 ทั้งหมด, ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์)
+    "https://images.pexels.com/photos/8815849/pexels-photo-8815849.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7054510/pexels-photo-7054510.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/8470831/pexels-photo-8470831.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (แก้ duplicate cover: agri-news-law-standards-livestock-farm-standard-973-compare-9735,
+    // -cost-9734 ไปซ้ำกับบทความอื่น — Pexels-verified HTTP 200 ทั้งหมด, ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์)
+    "https://images.pexels.com/photos/37942064/pexels-photo-37942064.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/12735904/pexels-photo-12735904.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/11105015/pexels-photo-11105015.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32694809/pexels-photo-32694809.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (แก้ duplicate cover: pool เดิม 48 รูปอิ่มตัวหมดทั้งไซต์ ทำให้ agri-news-law-standards-processed-food-law-974-cost-9744,
+    // -beginner-9742, -guide-9741, -compare-9745, -livestock-farm-standard-973-answer-9740 ไปซ้ำกับบทความอื่น —
+    // Pexels-verified HTTP 200 ทั้งหมด, ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์)
+    "https://images.pexels.com/photos/5953804/pexels-photo-5953804.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5953693/pexels-photo-5953693.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5953663/pexels-photo-5953663.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/11679687/pexels-photo-11679687.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/38336747/pexels-photo-38336747.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4975377/pexels-photo-4975377.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4975384/pexels-photo-4975384.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (แก้ duplicate cover batch5: agri-news-law-standards-agri-disaster-support-975-cost-9754
+    // ไปซ้ำกับบทความอื่น — Pexels-verified HTTP 200, DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์,
+    // ไม่ซ้ำกับรูปอื่นในไฟล์นี้ — พื้นที่เกษตรน้ำท่วม/ภัยพิบัติ)
+    "https://images.pexels.com/photos/17667013/pexels-photo-17667013.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/36210444/pexels-photo-36210444.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6225834/pexels-photo-6225834.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (batch6 top-up — pool เดิม 57 รูปอิ่มตัวหมดทั้งไซต์ ทำให้ 5 บทความ
+    // agri-news-law-standards-doae-guide-976-*/agri-disaster-support-975-* ไปซ้ำกับบทความอื่น — Pexels-verified HTTP 200,
+    // DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์, ไม่ซ้ำกับรูปอื่นในไฟล์นี้)
+    "https://images.pexels.com/photos/6015448/pexels-photo-6015448.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/22718715/pexels-photo-22718715.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/14608504/pexels-photo-14608504.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/20948982/pexels-photo-20948982.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/2901843/pexels-photo-2901843.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7054505/pexels-photo-7054505.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (batch7 top-up — pool เดิมอิ่มตัวหมดในหมวดนี้ ทำให้ agri-news-law-standards-doae-guide-976-*
+    // ไปซ้ำกับบทความอื่นในหมวดเดียวกัน (pool-exhausted warning) — Pexels-verified HTTP 200, DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์,
+    // ไม่ซ้ำกับรูปอื่นในไฟล์นี้ — อาคารราชการ/ธงชาติ)
+    "https://images.pexels.com/photos/6613502/pexels-photo-6613502.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/13175522/pexels-photo-13175522.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32151388/pexels-photo-32151388.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/795602/pexels-photo-795602.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (batch8 top-up — pool เดิมอิ่มตัวหมดในหมวดนี้ ทำให้ 3 บทความ agri-news-law-standards-dld-guide-977-*
+    // ไปซ้ำกับบทความอื่นข้ามหมวด (pool-exhausted warning) — Pexels-verified HTTP 200, DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์,
+    // ไม่ซ้ำกับรูปอื่นในไฟล์นี้ — เอกสารเกษตรกร/ลงทะเบียน/เซ็นเอกสารราชการ)
+    "https://images.pexels.com/photos/6636338/pexels-photo-6636338.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7651953/pexels-photo-7651953.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5510476/pexels-photo-5510476.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32834464/pexels-photo-32834464.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7821574/pexels-photo-7821574.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/8540259/pexels-photo-8540259.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
 };
 
@@ -445,13 +723,36 @@ function toCoverUrl(entry: string): string {
 const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
   // fishery
   // เพิ่ม pool 2026-07-11 (pad demand จาก draft ใหม่: tilapia+1, seabass+2, silver-barb+2, snakehead+2, carp+2)
-  tilapia: ["https://images.pexels.com/photos/15553656/pexels-photo-15553656.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/14924016/pexels-photo-14924016.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/8352786/pexels-photo-8352786.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/32262908/pexels-photo-32262908.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  tilapia: ["https://images.pexels.com/photos/15553656/pexels-photo-15553656.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/14924016/pexels-photo-14924016.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/8352786/pexels-photo-8352786.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/32262908/pexels-photo-32262908.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (แก้ duplicate cover: pool เดิม 4 รายการหมดแล้ว ทำให้ fishery-how-to-raise-tilapia-problems-4043,
+    // -compare-4045, -mistakes-4047 ไปซ้ำกับบทความอื่น — Pexels-verified HTTP 200 ทั้งหมด, ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์)
+    "https://images.pexels.com/photos/32262896/pexels-photo-32262896.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32262913/pexels-photo-32262913.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/36967888/pexels-photo-36967888.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/36967893/pexels-photo-36967893.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (แก้ duplicate cover: fishery-cost-tilapia-answer-4080 ไปซ้ำกับบทความอื่น
+    // — Pexels-verified HTTP 200 ทั้งหมด, ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์)
+    "https://images.pexels.com/photos/10436679/pexels-photo-10436679.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5285503/pexels-photo-5285503.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/18640095/pexels-photo-18640095.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7879363/pexels-photo-7879363.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   // เพิ่ม pool 2026-07-15 (catfish 4 รายการเดิมถูกใช้หมดแล้ว causing duplicate cover ระหว่าง
   // fishery-pond-catfish และ fishery-catfish-cost — Pexels-verified ทั้งคู่)
-  catfish: ["https://images.pexels.com/photos/19040471/pexels-photo-19040471.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/33445044/pexels-photo-33445044.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/33560903/pexels-photo-33560903.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/4619577/pexels-photo-4619577.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/4220575/pexels-photo-4220575.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/38283737/pexels-photo-38283737.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  catfish: ["https://images.pexels.com/photos/19040471/pexels-photo-19040471.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/33445044/pexels-photo-33445044.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/33560903/pexels-photo-33560903.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/4619577/pexels-photo-4619577.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/4220575/pexels-photo-4220575.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/38283737/pexels-photo-38283737.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (แก้ duplicate cover: pool เดิม 6 รายการถูกใช้หมดแล้ว ทำให้ fishery-feed-catfish-mistakes-4027
+    // และ fishery-feed-catfish-faq-4028 ไปซ้ำกับบทความอื่น — Pexels-verified HTTP 200 ทั้งหมด, ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์)
+    "https://images.pexels.com/photos/19145549/pexels-photo-19145549.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/37314878/pexels-photo-37314878.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/16296413/pexels-photo-16296413.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/13693969/pexels-photo-13693969.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
   seabass: ["https://images.pexels.com/photos/2042564/pexels-photo-2042564.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/26622789/pexels-photo-26622789.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/7509420/pexels-photo-7509420.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/37052317/pexels-photo-37052317.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   "silver-barb": ["https://images.pexels.com/photos/7509417/pexels-photo-7509417.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/14024728/pexels-photo-14024728.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/27170715/pexels-photo-27170715.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/32243189/pexels-photo-32243189.jpeg?auto=compress&cs=tinysrgb&w=1400"],
-  snakehead: ["https://images.pexels.com/photos/14024725/pexels-photo-14024725.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/5806533/pexels-photo-5806533.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/37052302/pexels-photo-37052302.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/8878987/pexels-photo-8878987.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  // เอา 14024725/5806533/37052302 ออก 2026-07-29 (poisoned pool — ทั้ง 3 ID ถูกใช้ซ้ำกับบทความ live อื่นแล้ว
+  // (fishery-cost-snakehead, fishery-pond-tilapia/cost-profit-cost-845, fishery-feed-snakehead) ทำให้
+  // fishery-pond-snakehead-beginner-4092/-compare-4095 เกิด duplicate cover batch5 — แทนที่ด้วย ID ใหม่
+  // Pexels-verified HTTP 200, DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์, ไม่ซ้ำกับรูปอื่นในไฟล์นี้)
+  snakehead: ["https://images.pexels.com/photos/8878987/pexels-photo-8878987.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/20339265/pexels-photo-20339265.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/8849694/pexels-photo-8849694.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   carp: ["https://images.pexels.com/photos/33995746/pexels-photo-33995746.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/9210283/pexels-photo-9210283.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/36707253/pexels-photo-36707253.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/32763515/pexels-photo-32763515.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   // เพิ่ม pool 2026-07-11 (wave: market/mixed-farming/fishery)
   "giant-river-prawn": [
@@ -564,6 +865,15 @@ const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/2253583/pexels-photo-2253583.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/35877058/pexels-photo-35877058.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/12995533/pexels-photo-12995533.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (แก้ duplicate cover: animals-housing-broiler-answer-2370,
+    // animals-how-to-raise-broiler-answer-2360 ไปซ้ำกับบทความอื่น — Pexels-verified HTTP 200 ทั้งหมด, ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์)
+    "https://images.pexels.com/photos/32840079/pexels-photo-32840079.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32840074/pexels-photo-32840074.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32840075/pexels-photo-32840075.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/11350102/pexels-photo-11350102.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (แก้ duplicate cover: animals-cost-raise-broiler-calendar-2386 ไปซ้ำกับบทความอื่น
+    // — pool เดิมอิ่มตัวหมดทั้งไซต์ — Pexels-verified HTTP 200 ทั้งหมด, ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์)
+    "https://images.pexels.com/photos/17765441/pexels-photo-17765441.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   goose: [
     "https://images.pexels.com/photos/19203116/pexels-photo-19203116.jpeg?auto=compress&cs=tinysrgb&w=1400",
@@ -931,14 +1241,28 @@ const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/27508849/pexels-photo-27508849.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/32280801/pexels-photo-32280801.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/9832651/pexels-photo-9832651.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (แก้ duplicate cover: market-banana-processing-863-faq-8638,
+    // -863-mistakes-8637 ไปซ้ำกับบทความอื่น — Pexels-verified HTTP 200 ทั้งหมด, ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์)
+    "https://images.pexels.com/photos/7262975/pexels-photo-7262975.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7262697/pexels-photo-7262697.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34454658/pexels-photo-34454658.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/30750551/pexels-photo-30750551.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   "chili-processing": [
     "https://images.pexels.com/photos/36362789/pexels-photo-36362789.jpeg?auto=compress&cs=tinysrgb&w=1400",
-    "https://images.pexels.com/photos/33588417/pexels-photo-33588417.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เอา 33588417 ออก 2026-07-29 (poisoned pool — ID นี้ถูกใช้ซ้ำกับบทความ market-processing-chili-processing-913
+    // ไปแล้ว ทำให้ market-chili-processing-865-compare-8655 เกิด duplicate cover)
     "https://images.pexels.com/photos/221140/pexels-photo-221140.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/36606065/pexels-photo-36606065.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/38257989/pexels-photo-38257989.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/35068971/pexels-photo-35068971.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (batch6 top-up — แก้ duplicate cover: market-chili-processing-865-compare-8655,
+    // -cost-8654 ไปซ้ำกับบทความอื่น — Pexels-verified HTTP 200, DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์,
+    // ไม่ซ้ำกับรูปอื่นในไฟล์นี้ — พริกแปรรูป/แปรรูปพืชผล)
+    "https://images.pexels.com/photos/30688211/pexels-photo-30688211.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5988100/pexels-photo-5988100.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6823272/pexels-photo-6823272.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34143550/pexels-photo-34143550.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   "mango-processing": [
     "https://images.pexels.com/photos/37816783/pexels-photo-37816783.jpeg?auto=compress&cs=tinysrgb&w=1400",
@@ -1070,6 +1394,11 @@ const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/6872104/pexels-photo-6872104.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/8257859/pexels-photo-8257859.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/8257857/pexels-photo-8257857.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (batch6 top-up — แก้ duplicate cover: soil-water-fertilizer-bio-fermented-liquid-585-decision-5859
+    // ไปซ้ำกับบทความอื่น — Pexels-verified HTTP 200, DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์, ไม่ซ้ำกับรูปอื่นในไฟล์นี้)
+    "https://images.pexels.com/photos/7728740/pexels-photo-7728740.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7728714/pexels-photo-7728714.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7114147/pexels-photo-7114147.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   "clay-soil": [
     "https://images.pexels.com/photos/12103312/pexels-photo-12103312.jpeg?auto=compress&cs=tinysrgb&w=1400",
@@ -1088,6 +1417,12 @@ const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/9861464/pexels-photo-9861464.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/7728739/pexels-photo-7728739.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/11573789/pexels-photo-11573789.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (แก้ duplicate cover: soil-water-fertilizer-compost-584-compare-5845,
+    // -584-cost-5844 ไปซ้ำกับบทความอื่น — Pexels-verified HTTP 200 ทั้งหมด, ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์)
+    "https://images.pexels.com/photos/17577525/pexels-photo-17577525.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/13048833/pexels-photo-13048833.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/9475362/pexels-photo-9475362.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7512962/pexels-photo-7512962.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   "drip-irrigation": [
     "https://images.pexels.com/photos/10606633/pexels-photo-10606633.jpeg?auto=compress&cs=tinysrgb&w=1400",
@@ -1361,9 +1696,17 @@ const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/6962993/pexels-photo-6962993.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   "line-oa-farm": [
-    "https://images.pexels.com/photos/8541349/pexels-photo-8541349.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เอา 8541349 ออก 2026-07-29 (poisoned pool — ID นี้ถูกใช้ซ้ำกับบทความ market-sell-vegetables-line-oa
+    // ไปแล้ว ทำให้ agri-tech-tools-line-oa-farm-945 เกิด duplicate cover)
     "https://images.pexels.com/photos/23939071/pexels-photo-23939071.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/7857532/pexels-photo-7857532.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (batch6 top-up — แก้ duplicate cover: agri-tech-tools-line-oa-farm-945-answer-9460
+    // ไปซ้ำกับบทความอื่น — Pexels-verified HTTP 200, DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์,
+    // ไม่ซ้ำกับรูปอื่นในไฟล์นี้ — เกษตรกรใช้มือถือ/LINE OA)
+    "https://images.pexels.com/photos/29858623/pexels-photo-29858623.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/21407937/pexels-photo-21407937.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5293197/pexels-photo-5293197.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/31397161/pexels-photo-31397161.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   "soil-moisture-sensor": [
     "https://images.pexels.com/photos/16905006/pexels-photo-16905006.jpeg?auto=compress&cs=tinysrgb&w=1400",
@@ -1389,6 +1732,17 @@ const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/34581908/pexels-photo-34581908.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/11124086/pexels-photo-11124086.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/31238872/pexels-photo-31238872.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // เพิ่ม pool 2026-07-29 (batch6 top-up — pool เดิม 3 รายการหมดแล้ว ทำให้ 4 บทความ
+    // agri-tech-tools-wood-chipper-farm-946-beginner/calendar/problems/compare ไปซ้ำกับบทความอื่น —
+    // Pexels-verified HTTP 200, DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์, ไม่ซ้ำกับรูปอื่นในไฟล์นี้ — เครื่องสับไม้/เศษวัสดุการเกษตร)
+    "https://images.pexels.com/photos/12278580/pexels-photo-12278580.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/11118633/pexels-photo-11118633.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/12278578/pexels-photo-12278578.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/33308134/pexels-photo-33308134.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/12278582/pexels-photo-12278582.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/12278577/pexels-photo-12278577.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/15407739/pexels-photo-15407739.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5851532/pexels-photo-5851532.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
   // เพิ่ม pool 2026-07-13 (agri-news-law-standards CAT pool exhausted — all 33 entries already used sitewide,
   // caused a duplicate cover on first publish of farmer-registration-problems; added dedicated keyword pool)
