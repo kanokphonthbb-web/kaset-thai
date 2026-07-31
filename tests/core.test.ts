@@ -50,6 +50,8 @@ const goodBlocks: Block[] = [
   { id: "1", type: "heading", level: 2, text: "หัวข้อหลัก" },
   { id: "2", type: "paragraph", text: "เนื้อหา ".repeat(400) },
   { id: "3", type: "list", ordered: false, items: ["a", "b"] },
+  { id: "4", type: "heading", level: 2, text: "สรุป" },
+  { id: "5", type: "heading", level: 2, text: "แหล่งข้อมูลอ้างอิง" },
 ];
 const goodFaqs = Array.from({ length: 5 }, (_, i) => ({ q: `ถาม ${i}`, a: `ตอบ ${i}` }));
 

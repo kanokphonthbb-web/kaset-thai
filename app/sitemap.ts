@@ -3,6 +3,8 @@ import { ARTICLES, CATEGORIES, TOOLS } from "@/lib/data";
 import { SITE_URL } from "@/lib/site";
 import { prisma } from "@/lib/prisma";
 import { getAllStarterKits } from "@/lib/starterKits";
+import { REDIRECTED_ARTICLE_SLUGS } from "@/lib/articleSeoRules.mjs";
+import { getAllProducts, isProductIndexable } from "@/lib/products";
 
 // Cache the generated sitemap instead of querying Turso on every crawler hit.
 // CMS/product updatedAt values remain the source of truth for dynamic entries.
@@ -44,7 +46,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let cmsArticleRoutes: MetadataRoute.Sitemap = [];
   try {
     const posts = await prisma.article.findMany({
-      where: { status: "published" },
+      where: {
+        status: "published",
+        slug: { notIn: [...REDIRECTED_ARTICLE_SLUGS] },
+      },
       select: { slug: true, updatedAt: true },
     });
     cmsArticleRoutes = posts.map((p) => ({
@@ -60,10 +65,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // สินค้าเพื่อการเกษตร (affiliate) — เฉพาะที่ status active เท่านั้น (held ไม่รวม)
   let productRoutes: MetadataRoute.Sitemap = [];
   try {
-    const products = await prisma.product.findMany({
-      where: { status: "active" },
-      select: { slug: true, updatedAt: true },
-    });
+    const products = (await getAllProducts()).filter(isProductIndexable);
     productRoutes = products.map((p) => ({
       url: `${SITE_URL}/products/${encodeURIComponent(p.slug)}`,
       lastModified: p.updatedAt,

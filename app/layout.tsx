@@ -10,7 +10,7 @@ const DEFAULT_OG = unsplashUrl(HERO_IMAGE, 1200)!;
 // Body — clean, highly legible Thai/Latin (Inter-role)
 const bodyFont = Sarabun({
   subsets: ["thai", "latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
   variable: "--font-body",
 });
@@ -18,7 +18,7 @@ const bodyFont = Sarabun({
 // Display — geometric grotesk with Thai support (Founders Grotesk-role)
 const displayFont = Prompt({
   subsets: ["thai", "latin"],
-  weight: ["500", "600", "700"],
+  weight: ["700"],
   display: "swap",
   variable: "--font-display",
 });

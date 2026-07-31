@@ -23,6 +23,7 @@ export type Product = {
   priceLabel: string;
   priceCheckedAt: Date | null;
   relatedArticles: string[];
+  updatedAt?: Date;
 };
 
 function toProduct(row: {
@@ -44,6 +45,7 @@ function toProduct(row: {
   priceLabel: string;
   priceCheckedAt: Date | null;
   relatedArticlesJson: string;
+  updatedAt: Date;
 }): Product {
   let keywords: string[] = [];
   try {
@@ -88,7 +90,82 @@ function toProduct(row: {
     priceLabel: row.priceLabel,
     priceCheckedAt: row.priceCheckedAt,
     relatedArticles,
+    updatedAt: row.updatedAt,
   };
+}
+
+// These pages already earned search visibility before the quality gate was added.
+// Preserve them while their editorial descriptions are being expanded.
+const SEARCH_PERFORMING_THIN_PRODUCTS = new Set([
+  "product-404",
+  "product-541",
+  "product-575",
+]);
+
+function hasSubstantiveText(value: string): boolean {
+  return value.trim().length >= 40;
+}
+
+export function productEditorialScore(product: Product): number {
+  return (
+    [product.whyNeeded, product.usage, product.howToChoose, product.safetyNote].filter(
+      hasSubstantiveText,
+    ).length +
+    (product.benefits.filter((item) => item.trim()).length >= 2 ? 1 : 0) +
+    (product.useCases.filter((item) => item.trim()).length >= 2 ? 1 : 0) +
+    (product.relatedArticles.filter((item) => item.trim()).length >= 1 ? 1 : 0)
+  );
+}
+
+export function isProductIndexable(product: Product): boolean {
+  return SEARCH_PERFORMING_THIN_PRODUCTS.has(product.slug) || productEditorialScore(product) >= 2;
+}
+
+function compactText(value: string): string {
+  return value
+    .replace(/[\p{Extended_Pictographic}\uFE0F]/gu, " ")
+    .replace(/[#*_]+/g, " ")
+    .replace(/^\s*[\[(][^\])]*(?:ซื้อ|แถม|ลด|ส่ง|โปรโมชั่น)[^\])]*[\])]\s*/iu, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function truncateAtWord(value: string, maxLength: number): string {
+  if (value.length <= maxLength) return value;
+  const slice = value.slice(0, maxLength - 1);
+  const lastSpace = slice.lastIndexOf(" ");
+  const trimmed = lastSpace >= Math.floor(maxLength * 0.6) ? slice.slice(0, lastSpace) : slice;
+  return `${trimmed.trimEnd()}…`;
+}
+
+export function productSeoTitle(product: Product): string {
+  const cleanedName = compactText(product.name);
+  const fallback = product.keywords.find((keyword) => keyword.trim()) ?? "สินค้าเพื่อการเกษตร";
+  // Root metadata adds " | เกษตรกรไทย"; 44 keeps the rendered title near 60 chars.
+  return truncateAtWord(cleanedName || fallback, 44);
+}
+
+export function productSeoDescription(product: Product): string {
+  const sections = [
+    product.whyNeeded && "เหตุผลที่ควรใช้",
+    product.benefits.length > 0 && "ประโยชน์",
+    product.usage && "วิธีใช้",
+    product.howToChoose && "วิธีเลือกซื้อ",
+    product.safetyNote && "ข้อควรระวัง",
+    product.relatedArticles.length > 0 && "บทความที่เกี่ยวข้อง",
+  ].filter((section): section is string => Boolean(section));
+  const details = sections.length > 0 ? sections.join(", ") : "รายละเอียดสินค้าเกษตร";
+  return truncateAtWord(
+    `ข้อมูล${productSeoTitle(product)}: ${details} พร้อมลิงก์ตรวจสอบรายละเอียดและราคาจากร้านค้า ราคาจริงอาจเปลี่ยนแปลงได้`,
+    158,
+  );
+}
+
+export function schemaPriceFromLabel(label: string): string | null {
+  const normalized = label.replace(/,/g, "").replace(/^\s*฿/, "").replace(/บาท\s*$/u, "").trim();
+  if (!/^\d+(?:\.\d{1,2})?$/.test(normalized)) return null;
+  const value = Number(normalized);
+  return Number.isFinite(value) && value > 0 ? normalized : null;
 }
 
 export async function getAllProducts(): Promise<Product[]> {

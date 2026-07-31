@@ -3,24 +3,43 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { prisma } from "@/lib/prisma";
 import { pageMeta } from "@/lib/seo";
+import { REDIRECTED_ARTICLE_SLUGS } from "@/lib/articleSeoRules.mjs";
+import { notFound } from "next/navigation";
+import type { Prisma } from "@prisma/client";
 
 export const dynamic = "force-dynamic";
 
-export const metadata = pageMeta({
-  title: "บทความ",
-  description:
-    "รวมบทความความรู้เกษตรจากเกษตรกรไทย ปลูกพืช เลี้ยงสัตว์ ประมง เกษตรผสมผสาน ต้นทุนและการขาย",
-  path: "/blog",
-});
-
 const PER_PAGE = 12;
+
+function pageNumber(value?: string): number {
+  const parsed = Number.parseInt(value ?? "", 10);
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : 1;
+}
+
+export function generateMetadata({
+  searchParams,
+}: {
+  searchParams?: { page?: string };
+}) {
+  const page = pageNumber(searchParams?.page);
+  return pageMeta({
+    title: page === 1 ? "บทความ" : `บทความ หน้า ${page}`,
+    description:
+      "รวมบทความความรู้เกษตรจากเกษตรกรไทย ปลูกพืช เลี้ยงสัตว์ ประมง เกษตรผสมผสาน ต้นทุนและการขาย",
+    path: page === 1 ? "/blog" : `/blog?page=${page}`,
+  });
+}
 
 export default async function BlogIndex({
   searchParams,
 }: {
   searchParams?: { page?: string };
 }) {
-  const currentPage = Math.max(1, Number(searchParams?.page) || 1);
+  const currentPage = pageNumber(searchParams?.page);
+  const publishedWhere = {
+    status: "published",
+    slug: { notIn: [...REDIRECTED_ARTICLE_SLUGS] },
+  } satisfies Prisma.ArticleWhereInput;
 
   let posts: {
     slug: string;
@@ -32,9 +51,9 @@ export default async function BlogIndex({
   let total = 0;
   try {
     [total, posts] = await Promise.all([
-      prisma.article.count({ where: { status: "published" } }),
+      prisma.article.count({ where: publishedWhere }),
       prisma.article.findMany({
-        where: { status: "published" },
+        where: publishedWhere,
         orderBy: { publishedAt: "desc" },
         skip: (currentPage - 1) * PER_PAGE,
         take: PER_PAGE,
@@ -52,6 +71,7 @@ export default async function BlogIndex({
   }
 
   const totalPages = Math.max(1, Math.ceil(total / PER_PAGE));
+  if (total > 0 && currentPage > totalPages) notFound();
 
   return (
     <>

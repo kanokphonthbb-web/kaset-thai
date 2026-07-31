@@ -1,3 +1,5 @@
+import { ARTICLE_REDIRECTS } from "./lib/articleSeoRules.mjs";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -20,6 +22,11 @@ const nextConfig = {
         destination: "https://kasettakonthai.com/:path*",
         permanent: true,
       },
+      ...Object.entries(ARTICLE_REDIRECTS).map(([sourceSlug, destinationSlug]) => ({
+        source: `/articles/${sourceSlug}`,
+        destination: `/articles/${destinationSlug}`,
+        permanent: true,
+      })),
     ];
   },
   async headers() {

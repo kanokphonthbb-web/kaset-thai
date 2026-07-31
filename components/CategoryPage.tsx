@@ -5,6 +5,7 @@ import Footer from "./Footer";
 import ArticleCard from "./ArticleCard";
 import { ARTICLES, CATEGORIES, imageFor } from "@/lib/data";
 import { prisma } from "@/lib/prisma";
+import { REDIRECTED_ARTICLE_SLUGS } from "@/lib/articleSeoRules.mjs";
 
 type Props = {
   slug: string;
@@ -17,7 +18,11 @@ type Props = {
 async function getCmsPosts(slug: string) {
   try {
     return await prisma.article.findMany({
-      where: { status: "published", category: { slug } },
+      where: {
+        status: "published",
+        slug: { notIn: [...REDIRECTED_ARTICLE_SLUGS] },
+        category: { slug },
+      },
       orderBy: { publishedAt: "desc" },
       take: 6,
       select: { title: true, slug: true, excerpt: true, coverImage: true },

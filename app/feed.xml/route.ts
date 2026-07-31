@@ -1,6 +1,7 @@
 import { ARTICLES } from "@/lib/data";
 import { SITE_URL } from "@/lib/site";
 import { prisma } from "@/lib/prisma";
+import { REDIRECTED_ARTICLE_SLUGS } from "@/lib/articleSeoRules.mjs";
 
 export const dynamic = "force-dynamic";
 
@@ -25,7 +26,10 @@ export async function GET() {
   let cmsItems: Item[] = [];
   try {
     const posts = await prisma.article.findMany({
-      where: { status: "published" },
+      where: {
+        status: "published",
+        slug: { notIn: [...REDIRECTED_ARTICLE_SLUGS] },
+      },
       orderBy: { publishedAt: "desc" },
       select: { title: true, slug: true, excerpt: true, publishedAt: true, updatedAt: true },
     });

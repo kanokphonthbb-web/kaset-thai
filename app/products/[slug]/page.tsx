@@ -5,10 +5,18 @@ import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
-import { getProductBySlug, getProductsByCategory } from "@/lib/products";
+import {
+  getProductBySlug,
+  getProductsByCategory,
+  isProductIndexable,
+  productSeoDescription,
+  productSeoTitle,
+  schemaPriceFromLabel,
+} from "@/lib/products";
 import { pageMeta } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 import { prisma } from "@/lib/prisma";
+import { canonicalArticleSlug } from "@/lib/articleSeoRules.mjs";
 
 type Params = { params: { slug: string } };
 
@@ -20,15 +28,12 @@ export const dynamic = "force-static";
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const product = await getProductBySlug(params.slug);
   if (!product) return { title: "ไม่พบสินค้า" };
-  const desc =
-    product.keywords.length > 0
-      ? `${product.name} เกี่ยวข้องกับ ${product.keywords.slice(0, 5).join(", ")} รวบรวมไว้ให้เลือกดูง่ายขึ้น`
-      : `${product.name} — สินค้าเพื่อการเกษตรที่รวบรวมไว้ให้เลือกดูง่ายขึ้น`;
   return pageMeta({
-    title: product.name,
-    description: desc,
+    title: productSeoTitle(product),
+    description: productSeoDescription(product),
     image: product.imageUrl,
     path: `/products/${product.slug}`,
+    noindex: !isProductIndexable(product),
   });
 }
 
@@ -45,8 +50,11 @@ export default async function ProductDetailPage({ params }: Params) {
   let relatedArticles: { slug: string; title: string }[] = [];
   if (product.relatedArticles.length > 0) {
     try {
+      const canonicalRelatedSlugs = [
+        ...new Set(product.relatedArticles.map(canonicalArticleSlug)),
+      ];
       relatedArticles = await prisma.article.findMany({
-        where: { slug: { in: product.relatedArticles }, status: "published" },
+        where: { slug: { in: canonicalRelatedSlugs }, status: "published" },
         select: { slug: true, title: true },
         take: 6,
       });
@@ -56,6 +64,7 @@ export default async function ProductDetailPage({ params }: Params) {
   }
 
   const productUrl = `${SITE_URL}/products/${product.slug}`;
+  const schemaPrice = schemaPriceFromLabel(product.priceLabel);
   const graph: Record<string, unknown>[] = [
     {
       "@type": "Product",
@@ -63,11 +72,11 @@ export default async function ProductDetailPage({ params }: Params) {
       description: product.whyNeeded || product.name,
       image: product.imageUrl.startsWith("http") ? product.imageUrl : `${SITE_URL}${product.imageUrl}`,
       url: productUrl,
-      ...(product.priceLabel
+      ...(schemaPrice
         ? {
             offers: {
               "@type": "Offer",
-              price: product.priceLabel,
+              price: schemaPrice,
               priceCurrency: "THB",
               url: product.affiliateLink,
               availability: "https://schema.org/InStock",

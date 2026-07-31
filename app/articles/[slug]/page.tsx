@@ -17,6 +17,7 @@ import {
   getProductsByCategory,
   type Product,
 } from "@/lib/products";
+import { articleSeoTitle } from "@/lib/articleSeoRules.mjs";
 
 /**
  * บทความ seed แบบ static เก็บเนื้อหาเป็นย่อหน้าข้อความล้วน (ไม่ใช่ HTML)
@@ -83,11 +84,11 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
         : `${SITE_URL}${dbPost.coverImage}`
       : undefined;
     return {
-      title: dbPost.seoTitle || dbPost.title,
+      title: articleSeoTitle(dbPost.slug, dbPost.seoTitle || dbPost.title),
       description: dbPost.metaDescription || dbPost.excerpt,
       alternates: { canonical: `${SITE_URL}/articles/${encodeURIComponent(dbPost.slug)}` },
       openGraph: {
-        title: dbPost.title,
+        title: articleSeoTitle(dbPost.slug, dbPost.title),
         description: dbPost.metaDescription,
         type: "article",
         url: `${SITE_URL}/articles/${encodeURIComponent(dbPost.slug)}`,

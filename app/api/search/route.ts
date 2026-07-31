@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { searchContent, type SearchResult } from "@/lib/data";
 import { prisma } from "@/lib/prisma";
+import { REDIRECTED_ARTICLE_SLUGS } from "@/lib/articleSeoRules.mjs";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -18,6 +19,7 @@ export async function GET(req: Request) {
     const posts = await prisma.article.findMany({
       where: {
         status: "published",
+        slug: { notIn: [...REDIRECTED_ARTICLE_SLUGS] },
         OR: [
           { title: { contains: q } },
           { excerpt: { contains: q } },

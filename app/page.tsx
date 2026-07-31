@@ -10,6 +10,7 @@ import { CATEGORIES, TOOLS, ARTICLES } from "@/lib/data";
 import { getAllProducts } from "@/lib/products";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
+import { REDIRECTED_ARTICLE_SLUGS } from "@/lib/articleSeoRules.mjs";
 
 // ISR: หน้าแรก static แต่ทยอยดึงบทความ CMS ล่าสุดทุก 5 นาที
 export const revalidate = 300;
@@ -17,7 +18,10 @@ export const revalidate = 300;
 async function getLatestCmsPosts() {
   try {
     return await prisma.article.findMany({
-      where: { status: "published" },
+      where: {
+        status: "published",
+        slug: { notIn: [...REDIRECTED_ARTICLE_SLUGS] },
+      },
       orderBy: { publishedAt: "desc" },
       take: 3,
       select: { title: true, slug: true, excerpt: true, coverImage: true, category: { select: { name: true } } },
@@ -29,7 +33,12 @@ async function getLatestCmsPosts() {
 
 async function getPublishedCount() {
   try {
-    return await prisma.article.count({ where: { status: "published" } });
+    return await prisma.article.count({
+      where: {
+        status: "published",
+        slug: { notIn: [...REDIRECTED_ARTICLE_SLUGS] },
+      },
+    });
   } catch {
     return 0;
   }
