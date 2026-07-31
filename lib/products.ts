@@ -74,7 +74,7 @@ function toProduct(row: {
   return {
     id: row.id,
     slug: row.slug,
-    name: row.name,
+    name: compactText(row.name) || keywords.find((keyword) => keyword.trim()) || "สินค้าเพื่อการเกษตร",
     imageUrl: row.imageUrl,
     affiliateLink: row.affiliateLink,
     category: row.category,
@@ -126,6 +126,7 @@ function compactText(value: string): string {
     .replace(/[\p{Extended_Pictographic}\uFE0F]/gu, " ")
     .replace(/[#*_]+/g, " ")
     .replace(/^\s*[\[(][^\])]*(?:ซื้อ|แถม|ลด|ส่ง|โปรโมชั่น)[^\])]*[\])]\s*/iu, "")
+    .replace(/(?:ปลอดภัย\s*100%|รับประกัน(?:ผล)?|ดีที่สุด|ของแท้)/giu, " ")
     .replace(/\s+/g, " ")
     .trim();
 }
@@ -138,11 +139,15 @@ function truncateAtWord(value: string, maxLength: number): string {
   return `${trimmed.trimEnd()}…`;
 }
 
-export function productSeoTitle(product: Product): string {
+export function productDisplayName(product: Product): string {
   const cleanedName = compactText(product.name);
   const fallback = product.keywords.find((keyword) => keyword.trim()) ?? "สินค้าเพื่อการเกษตร";
+  return truncateAtWord(cleanedName || fallback, 96);
+}
+
+export function productSeoTitle(product: Product): string {
   // Root metadata adds " | เกษตรกรไทย"; 44 keeps the rendered title near 60 chars.
-  return truncateAtWord(cleanedName || fallback, 44);
+  return truncateAtWord(productDisplayName(product), 44);
 }
 
 export function productSeoDescription(product: Product): string {
@@ -166,6 +171,69 @@ export function schemaPriceFromLabel(label: string): string | null {
   if (!/^\d+(?:\.\d{1,2})?$/.test(normalized)) return null;
   const value = Number(normalized);
   return Number.isFinite(value) && value > 0 ? normalized : null;
+}
+
+export function freshSchemaPrice(
+  product: Product,
+  now = new Date(),
+  maxAgeDays = 30,
+): string | null {
+  const price = schemaPriceFromLabel(product.priceLabel);
+  if (!price || !product.priceCheckedAt) return null;
+  const ageMs = now.getTime() - product.priceCheckedAt.getTime();
+  const maxAgeMs = maxAgeDays * 86_400_000;
+  return ageMs >= 0 && ageMs <= maxAgeMs ? price : null;
+}
+
+export function productPriceDisplay(label: string): string {
+  const trimmed = label.trim();
+  if (!trimmed) return "";
+  return /(?:฿|บาท)/u.test(trimmed) ? trimmed : `${trimmed} บาท`;
+}
+
+export function productStructuredData(
+  product: Product,
+  siteUrl: string,
+  now = new Date(),
+): { "@context": "https://schema.org"; "@graph": Record<string, unknown>[] } {
+  const productUrl = `${siteUrl}/products/${product.slug}`;
+  const displayName = productDisplayName(product);
+  const schemaPrice = freshSchemaPrice(product, now);
+  const graph: Record<string, unknown>[] = [];
+
+  // Google product snippets require an Offer, review, or aggregate rating. This
+  // affiliate catalog owns no ratings, so emit Product only with a recently
+  // checked exact price. Availability is intentionally omitted because stock is
+  // controlled by the external shop and is not verified by this site.
+  if (isProductIndexable(product) && schemaPrice) {
+    graph.push({
+      "@type": "Product",
+      "@id": `${productUrl}#product`,
+      name: displayName,
+      description: product.whyNeeded || productSeoDescription(product),
+      image: product.imageUrl.startsWith("http")
+        ? product.imageUrl
+        : `${siteUrl}${product.imageUrl.startsWith("/") ? "" : "/"}${product.imageUrl}`,
+      url: productUrl,
+      offers: {
+        "@type": "Offer",
+        price: schemaPrice,
+        priceCurrency: "THB",
+        url: product.affiliateLink,
+      },
+    });
+  }
+
+  graph.push({
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "หน้าแรก", item: `${siteUrl}/` },
+      { "@type": "ListItem", position: 2, name: "สินค้าเพื่อการเกษตร", item: `${siteUrl}/products` },
+      { "@type": "ListItem", position: 3, name: displayName, item: productUrl },
+    ],
+  });
+
+  return { "@context": "https://schema.org", "@graph": graph };
 }
 
 export async function getAllProducts(): Promise<Product[]> {

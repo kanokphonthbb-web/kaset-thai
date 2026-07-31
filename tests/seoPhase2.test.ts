@@ -9,10 +9,14 @@ import {
   canonicalArticleSlug,
 } from "../lib/articleSeoRules.mjs";
 import {
+  freshSchemaPrice,
   isProductIndexable,
+  productDisplayName,
   productEditorialScore,
+  productPriceDisplay,
   productSeoDescription,
   productSeoTitle,
+  productStructuredData,
   schemaPriceFromLabel,
   type Product,
 } from "../lib/products";
@@ -80,9 +84,36 @@ test("product metadata is compact and schema price accepts only one exact amount
     whyNeeded: "เหตุผลประกอบที่อธิบายประโยชน์และบริบทการใช้งานจริงให้ผู้อ่านเข้าใจได้ชัดเจน",
     benefits: ["ช่วยตรวจข้อมูล", "ช่วยเปรียบเทียบก่อนเลือก"],
   });
+  assert.ok(productDisplayName(sample).length <= 96);
+  assert.doesNotMatch(productDisplayName(sample), /[#*]/);
   assert.ok(productSeoTitle(sample).length <= 44);
   assert.ok(productSeoDescription(sample).length <= 158);
   assert.equal(schemaPriceFromLabel("฿1,250.50 บาท"), "1250.50");
   assert.equal(schemaPriceFromLabel("100-200"), null);
   assert.equal(schemaPriceFromLabel("สอบถามราคา"), null);
+  assert.equal(productPriceDisplay("1,250"), "1,250 บาท");
+  assert.equal(productPriceDisplay("฿1,250"), "฿1,250");
+});
+
+test("Product schema is emitted only for an indexable product with a fresh exact price", () => {
+  const useful = product({
+    whyNeeded: "เหตุผลประกอบที่อธิบายประโยชน์และบริบทการใช้งานจริงให้ผู้อ่านเข้าใจได้ชัดเจน",
+    benefits: ["ช่วยตรวจข้อมูล", "ช่วยเปรียบเทียบก่อนเลือก"],
+    priceLabel: "1,250",
+    priceCheckedAt: new Date("2026-07-20T00:00:00Z"),
+  });
+  const now = new Date("2026-07-31T00:00:00Z");
+  assert.equal(freshSchemaPrice(useful, now), "1250");
+  const fresh = productStructuredData(useful, "https://kasettakonthai.com", now);
+  assert.deepEqual(fresh["@graph"].map((node) => node["@type"]), ["Product", "BreadcrumbList"]);
+  const offer = fresh["@graph"][0].offers as Record<string, unknown>;
+  assert.equal(offer.price, "1250");
+  assert.equal(offer.availability, undefined);
+
+  const stale = productStructuredData(
+    { ...useful, priceCheckedAt: new Date("2026-05-01T00:00:00Z") },
+    "https://kasettakonthai.com",
+    now,
+  );
+  assert.deepEqual(stale["@graph"].map((node) => node["@type"]), ["BreadcrumbList"]);
 });

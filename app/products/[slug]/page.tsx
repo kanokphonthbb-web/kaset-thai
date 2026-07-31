@@ -9,9 +9,11 @@ import {
   getProductBySlug,
   getProductsByCategory,
   isProductIndexable,
+  productDisplayName,
+  productPriceDisplay,
   productSeoDescription,
   productSeoTitle,
-  schemaPriceFromLabel,
+  productStructuredData,
 } from "@/lib/products";
 import { pageMeta } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
@@ -40,9 +42,11 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 export default async function ProductDetailPage({ params }: Params) {
   const product = await getProductBySlug(params.slug);
   if (!product) notFound();
+  const displayName = productDisplayName(product);
 
   const related = product.category
-    ? (await getProductsByCategory(product.category, 5))
+    ? (await getProductsByCategory(product.category, 30))
+        .filter(isProductIndexable)
         .filter((p) => p.id !== product.id)
         .slice(0, 4)
     : [];
@@ -63,37 +67,7 @@ export default async function ProductDetailPage({ params }: Params) {
     }
   }
 
-  const productUrl = `${SITE_URL}/products/${product.slug}`;
-  const schemaPrice = schemaPriceFromLabel(product.priceLabel);
-  const graph: Record<string, unknown>[] = [
-    {
-      "@type": "Product",
-      name: product.name,
-      description: product.whyNeeded || product.name,
-      image: product.imageUrl.startsWith("http") ? product.imageUrl : `${SITE_URL}${product.imageUrl}`,
-      url: productUrl,
-      ...(schemaPrice
-        ? {
-            offers: {
-              "@type": "Offer",
-              price: schemaPrice,
-              priceCurrency: "THB",
-              url: product.affiliateLink,
-              availability: "https://schema.org/InStock",
-            },
-          }
-        : {}),
-    },
-    {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "หน้าแรก", item: `${SITE_URL}/` },
-        { "@type": "ListItem", position: 2, name: "สินค้าเพื่อการเกษตร", item: `${SITE_URL}/products` },
-        { "@type": "ListItem", position: 3, name: product.name, item: productUrl },
-      ],
-    },
-  ];
-  const jsonLd = { "@context": "https://schema.org", "@graph": graph };
+  const jsonLd = productStructuredData(product, SITE_URL);
 
   return (
     <>
@@ -125,7 +99,7 @@ export default async function ProductDetailPage({ params }: Params) {
               <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-mist">
                 <Image
                   src={product.imageUrl}
-                  alt={product.name}
+                  alt={displayName}
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 440px"
@@ -135,7 +109,7 @@ export default async function ProductDetailPage({ params }: Params) {
 
               <div className="flex flex-col">
                 <h1 className="font-display text-3xl font-bold leading-snug text-ink sm:text-4xl">
-                  {product.name}
+                  {displayName}
                 </h1>
 
                 {product.keywords.length > 0 && (
@@ -202,7 +176,7 @@ export default async function ProductDetailPage({ params }: Params) {
 
                 {product.priceLabel && (
                   <p className="mt-6 text-[15px] text-stone">
-                    ราคาโดยประมาณ {product.priceLabel} บาท
+                    ราคาโดยประมาณ {productPriceDisplay(product.priceLabel)}
                     {product.priceCheckedAt
                       ? ` (ตรวจสอบล่าสุด ${product.priceCheckedAt.toLocaleDateString("th-TH")})`
                       : ""}{" "}

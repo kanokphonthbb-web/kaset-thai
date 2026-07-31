@@ -21,11 +21,14 @@ const GROUPS = [
   ...CATEGORIES.map((c) => ({ slug: c.slug, icon: c.icon, title: c.title })),
   OTHER_GROUP,
 ];
+const INITIAL_ITEMS_PER_GROUP = 12;
+const LOAD_MORE_STEP = 12;
 
 export default function ProductsBrowser({ products }: { products: BrowsableProduct[] }) {
   // null = "ทั้งหมด" — ต่างจาก "" ซึ่งหมายถึงหมวด "อื่นๆ" (สินค้าที่ยังไม่ได้จัดหมวด)
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [query, setQuery] = useState("");
+  const [itemsPerGroup, setItemsPerGroup] = useState(INITIAL_ITEMS_PER_GROUP);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -43,6 +46,19 @@ export default function ProductsBrowser({ products }: { products: BrowsableProdu
       items: filtered.filter((p) => p.category === g.slug),
     })).filter((g) => g.items.length > 0);
   }, [filtered]);
+
+  const visibleGroups = useMemo(
+    () => groups.map((group) => ({
+      ...group,
+      total: group.items.length,
+      items: group.items.slice(0, itemsPerGroup),
+    })),
+    [groups, itemsPerGroup],
+  );
+  const hiddenCount = groups.reduce(
+    (total, group) => total + Math.max(0, group.items.length - itemsPerGroup),
+    0,
+  );
 
   const categoryCounts = useMemo(() => {
     const counts = new Map<string, number>();
@@ -67,7 +83,10 @@ export default function ProductsBrowser({ products }: { products: BrowsableProdu
             id="product-search"
             type="search"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setItemsPerGroup(INITIAL_ITEMS_PER_GROUP);
+            }}
             placeholder="ค้นหาสินค้า เช่น ปุ๋ย, สปริงเกลอร์, กรงไก่"
             className="min-h-[44px] w-full bg-transparent px-1 text-base text-ink placeholder:text-stone focus:outline-none"
             autoComplete="off"
@@ -78,7 +97,10 @@ export default function ProductsBrowser({ products }: { products: BrowsableProdu
         <div className="mt-4 flex flex-wrap gap-2" role="group" aria-label="กรองตามหมวด">
           <button
             type="button"
-            onClick={() => setActiveCategory(null)}
+            onClick={() => {
+              setActiveCategory(null);
+              setItemsPerGroup(INITIAL_ITEMS_PER_GROUP);
+            }}
             aria-pressed={activeCategory === null}
             className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
               activeCategory === null
@@ -96,7 +118,10 @@ export default function ProductsBrowser({ products }: { products: BrowsableProdu
               <button
                 key={g.slug || "other"}
                 type="button"
-                onClick={() => setActiveCategory(g.slug)}
+                onClick={() => {
+                  setActiveCategory(g.slug);
+                  setItemsPerGroup(INITIAL_ITEMS_PER_GROUP);
+                }}
                 aria-pressed={activeCategory === g.slug}
                 className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                   activeCategory === g.slug
@@ -120,12 +145,12 @@ export default function ProductsBrowser({ products }: { products: BrowsableProdu
         {groups.length === 0 && (
           <p className="text-stone">ไม่พบสินค้าที่ตรงกับคำค้นหา ลองเปลี่ยนคำค้นหรือเลือกหมวดอื่น</p>
         )}
-        {groups.map((g) => (
+        {visibleGroups.map((g) => (
           <section key={g.slug || "other"}>
             <h2 className="flex items-center gap-2 font-display text-xl font-bold text-ink">
               <span aria-hidden>{g.icon}</span>
               {g.title}
-              <span className="text-sm font-normal text-stone">({g.items.length})</span>
+              <span className="text-sm font-normal text-stone">({g.total})</span>
             </h2>
             <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {g.items.map((p) => (
@@ -134,6 +159,17 @@ export default function ProductsBrowser({ products }: { products: BrowsableProdu
             </div>
           </section>
         ))}
+        {hiddenCount > 0 && (
+          <div className="text-center">
+            <button
+              type="button"
+              onClick={() => setItemsPerGroup((count) => count + LOAD_MORE_STEP)}
+              className="btn-secondary"
+            >
+              แสดงสินค้าเพิ่ม ({hiddenCount.toLocaleString("th-TH")} รายการ)
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

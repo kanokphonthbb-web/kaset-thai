@@ -15,6 +15,7 @@ import {
   injectProductLinks,
   findMatchingProducts,
   getProductsByCategory,
+  isProductIndexable,
   type Product,
 } from "@/lib/products";
 import { articleSeoTitle } from "@/lib/articleSeoRules.mjs";
@@ -133,7 +134,7 @@ export default async function ArticlePage({ params }: Params) {
   const faqs = content.faqs ?? [];
 
   // สินค้าเพื่อการเกษตรที่อาจเกี่ยวข้องกับบทความนี้
-  const products = await getAllProducts();
+  const products = (await getAllProducts()).filter(isProductIndexable);
   const allParagraphs = content.sections.flatMap((s) => s.body);
   const linkedParagraphs = linkProductsInParagraphs(allParagraphs, products, 3);
 

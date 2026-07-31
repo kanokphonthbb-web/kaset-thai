@@ -2,13 +2,13 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SectionHeader from "@/components/SectionHeader";
 import ProductsBrowser from "@/components/ProductsBrowser";
-import { getAllProducts } from "@/lib/products";
+import { getAllProducts, isProductIndexable, productDisplayName } from "@/lib/products";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
-  title: "สินค้าเพื่อการเกษตรแนะนำ",
+  title: "สินค้าและอุปกรณ์การเกษตร",
   description:
-    "อุปกรณ์และปัจจัยการผลิตที่เกี่ยวข้องกับบทความในเว็บนี้ รวบรวมไว้ให้เลือกดูง่ายขึ้น ค้นหาและกรองตามหมวดความรู้ได้",
+    "รวมสินค้าและอุปกรณ์การเกษตร พร้อมข้อมูลประโยชน์ วิธีใช้ วิธีเลือก และข้อควรระวัง ค้นหาและกรองตามหมวดความรู้ได้",
   path: "/products",
 });
 
@@ -16,17 +16,19 @@ export const metadata = pageMeta({
 export const revalidate = 300;
 
 export default async function ProductsPage() {
-  const allProducts = await getAllProducts();
+  const allProducts = (await getAllProducts()).sort(
+    (left, right) => Number(isProductIndexable(right)) - Number(isProductIndexable(left)),
+  );
   // Strip affiliateLink before handing data to the client component — it hydrates
   // with the full catalog for search/filter, and the outbound link must never be
   // serialized into that payload (would leak into page source as plain text).
-  const products = allProducts.map(({ id, slug, name, imageUrl, category, keywords }) => ({
-    id,
-    slug,
-    name,
-    imageUrl,
-    category,
-    keywords,
+  const products = allProducts.map((product) => ({
+    id: product.id,
+    slug: product.slug,
+    name: productDisplayName(product),
+    imageUrl: product.imageUrl,
+    category: product.category,
+    keywords: product.keywords,
   }));
 
   return (
@@ -37,8 +39,8 @@ export default async function ProductsPage() {
           <div className="container-x">
             <SectionHeader
               eyebrow="เลือกสรรมาให้"
-              title="สินค้าเพื่อการเกษตรแนะนำ"
-              desc="อุปกรณ์และปัจจัยการผลิตที่เกี่ยวข้องกับบทความในเว็บนี้ รวบรวมไว้ให้เลือกดูง่ายขึ้น"
+              title="สินค้าและอุปกรณ์การเกษตร"
+              desc="ค้นหาตามงานที่ต้องทำ พร้อมอ่านประโยชน์ วิธีใช้ วิธีเลือก และข้อควรระวังก่อนออกไปตรวจสอบรายละเอียดกับร้านค้า"
             />
             <div className="mt-12">
               <ProductsBrowser products={products} />

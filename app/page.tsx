@@ -7,7 +7,7 @@ import ArticleCard from "@/components/ArticleCard";
 import ProductCard from "@/components/ProductCard";
 import SectionHeader from "@/components/SectionHeader";
 import { CATEGORIES, TOOLS, ARTICLES } from "@/lib/data";
-import { getAllProducts } from "@/lib/products";
+import { getAllProducts, isProductIndexable } from "@/lib/products";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import { REDIRECTED_ARTICLE_SLUGS } from "@/lib/articleSeoRules.mjs";
@@ -46,7 +46,7 @@ async function getPublishedCount() {
 
 async function getFeaturedProducts() {
   try {
-    const products = await getAllProducts();
+    const products = (await getAllProducts()).filter(isProductIndexable);
     // สลับหมวดเพื่อให้ตัวอย่างสินค้าบนหน้าแรกดูหลากหลาย ไม่กระจุกอยู่หมวดเดียว
     const byCategory = new Map<string, typeof products>();
     for (const p of products) {
