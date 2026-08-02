@@ -13,6 +13,18 @@ import {
 import { prisma } from "../lib/prisma";
 
 const APPLY = process.argv.includes("--apply");
+const REFRESH_FAMILIES = new Set(
+  process.argv
+    .filter((argument) => argument.startsWith("--refresh-family="))
+    .map((argument) => argument.slice("--refresh-family=".length))
+    .filter(Boolean),
+);
+const ONLY_SLUGS = new Set(
+  process.argv
+    .filter((argument) => argument.startsWith("--only-slug="))
+    .map((argument) => argument.slice("--only-slug=".length))
+    .filter(Boolean),
+);
 const BACKUP_PATH =
   process.argv.find((argument) => argument.startsWith("--backup="))?.slice(9) ||
   path.join(
@@ -24,12 +36,15 @@ const BACKUP_PATH =
 const normalizedName = (name: string) =>
   name.toLocaleLowerCase("th-TH").replace(/[^\p{L}\p{N}]+/gu, " ").trim();
 
-const products = await getAllProducts();
+const allProducts = await getAllProducts();
 const nameCounts = new Map<string, number>();
-for (const product of products) {
+for (const product of allProducts) {
   const key = normalizedName(productDisplayName(product));
   nameCounts.set(key, (nameCounts.get(key) ?? 0) + 1);
 }
+const products = allProducts.filter(
+  (product) => ONLY_SLUGS.size === 0 || ONLY_SLUGS.has(product.slug),
+);
 
 type PreparedUpdate = {
   id: string;
@@ -74,18 +89,19 @@ for (const product of products) {
   }
 
   const data: PreparedUpdate["data"] = {};
-  if (!product.whyNeeded.trim() || product.whyNeeded.startsWith("สินค้าเกษตรที่เกี่ยวข้องกับ")) {
+  const refreshFamily = REFRESH_FAMILIES.has(editorial.family);
+  if (refreshFamily || !product.whyNeeded.trim() || product.whyNeeded.startsWith("สินค้าเกษตรที่เกี่ยวข้องกับ")) {
     data.whyNeeded = editorial.whyNeeded;
   }
-  if (product.benefits.filter(Boolean).length < 2) {
+  if (refreshFamily || product.benefits.filter(Boolean).length < 2) {
     data.benefits = JSON.stringify(editorial.benefits);
   }
-  if (product.usage.trim().length < 40) data.usage = editorial.usage;
-  if (product.howToChoose.trim().length < 40) data.howToChoose = editorial.howToChoose;
-  if (product.useCases.filter(Boolean).length < 2) {
+  if (refreshFamily || product.usage.trim().length < 40) data.usage = editorial.usage;
+  if (refreshFamily || product.howToChoose.trim().length < 40) data.howToChoose = editorial.howToChoose;
+  if (refreshFamily || product.useCases.filter(Boolean).length < 2) {
     data.useCasesJson = JSON.stringify(editorial.useCases);
   }
-  if (product.safetyNote.trim().length < 40) data.safetyNote = editorial.safetyNote;
+  if (refreshFamily || product.safetyNote.trim().length < 40) data.safetyNote = editorial.safetyNote;
 
   if (Object.keys(data).length === 0) {
     skipped.alreadyComplete++;
@@ -115,6 +131,8 @@ const summary = {
   updates: updates.length,
   newlyIndexable,
   familyCounts,
+  refreshFamilies: [...REFRESH_FAMILIES],
+  targetSlugs: [...ONLY_SLUGS],
   skipped,
   samples: [...updates]
     .sort((left, right) => Number(left.indexableBefore) - Number(right.indexableBefore))

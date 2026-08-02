@@ -67,6 +67,22 @@ test("does not mistake seed trays or soil meters for seeds and water tests", () 
     buildProductEditorialContent("หินลับจอบและลับเคียว", "plants")?.family,
     "sharpening-tool",
   );
+  assert.equal(
+    buildProductEditorialContent("บ่อผ้าใบเลี้ยงปลา ทรงกลม พร้อมโครง", "fishery")?.family,
+    "aquaculture-pond",
+  );
+  assert.equal(
+    buildProductEditorialContent("ชุดปลูกผักไฮโดรโปนิกส์ กล่องโฟม", "plants")?.family,
+    "hydroponic-kit",
+  );
+  assert.equal(
+    buildProductEditorialContent("อวนคลุมบ่อกันนก อวนปิดปากบ่อ บ่อผ้าใบ", "fishery")?.family,
+    "net-cage",
+  );
+  assert.notEqual(
+    buildProductEditorialContent("ฟองน้ำเพาะผักไฮโดรโปนิกส์ 96 ช่อง", "plants")?.family,
+    "hydroponic-kit",
+  );
 });
 
 test("keeps high-risk substances blocked while allowing clearly named equipment", () => {

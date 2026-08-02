@@ -2,6 +2,7 @@
 // สินค้าเพื่อการเกษตร (affiliate) — data access + safe in-article keyword linking
 // ─────────────────────────────────────────────────────────────
 import { parse, HTMLElement } from "node-html-parser";
+import productCategoryOverridesRaw from "@/data/productCategoryOverrides.json";
 import { prisma } from "@/lib/prisma";
 import { buildProductEditorialContent } from "@/lib/productEditorial";
 import {
@@ -33,6 +34,8 @@ export type Product = {
   relatedArticles: string[];
   updatedAt?: Date;
 };
+
+const PRODUCT_CATEGORY_OVERRIDES = productCategoryOverridesRaw as Record<string, string>;
 
 type ProductEditorialOverride = Partial<
   Pick<
@@ -168,7 +171,7 @@ function toProduct(row: {
     name: compactText(row.name) || keywords.find((keyword) => keyword.trim()) || "สินค้าเพื่อการเกษตร",
     imageUrl: row.imageUrl,
     affiliateLink: row.affiliateLink,
-    category: row.category,
+    category: PRODUCT_CATEGORY_OVERRIDES[row.slug] ?? row.category,
     keywords,
     whyNeeded: row.whyNeeded,
     benefits,
