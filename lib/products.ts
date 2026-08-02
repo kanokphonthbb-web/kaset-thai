@@ -200,9 +200,13 @@ export function isProductIndexable(product: Product): boolean {
 function compactText(value: string): string {
   return value
     .replace(/[\p{Extended_Pictographic}\uFE0F]/gu, " ")
+    .replace(/^[♛❀☽☾☆★♚♔♕♣♦♥♡◆◇※•·\-\s]+/gu, "")
     .replace(/[#*_]+/g, " ")
-    .replace(/^\s*[\[(][^\])]*(?:ซื้อ|แถม|ลด|ส่ง|โปรโมชั่น)[^\])]*[\])]\s*/iu, "")
-    .replace(/(?:ปลอดภัย\s*100%|รับประกัน(?:ผล)?|ดีที่สุด|ของแท้)/giu, " ")
+    .replace(/^\s*[\[(][^\])]*(?:ซื้อ|แถม|เเถม|ลด|ส่ง|โปรโมชั่น)[^\])]*[\])]\s*/iu, "")
+    .replace(
+      /(?:(?:ปลอดภัย|(?:ของ)?แท้)\s*100\s*%|รับประกัน(?:ผล)?|ดีที่สุด|ของแท้|พร้อมส่ง|ส่งฟรี|\d+\s*ครั้ง\s*เห็นผล|เห็นผล(?:ไว|ทันที)|งอกดี|โตไว|อ[ัต]?ตราการงอกสูง|เน้นไข่ดก(?:\s*ไข่ใบใหญ่)?|เพิ่มผลผลิต)/giu,
+      " ",
+    )
     .replace(/\s+/g, " ")
     .trim();
 }
@@ -428,6 +432,12 @@ export async function getAllProducts(): Promise<Product[]> {
 export async function getProductBySlug(slug: string): Promise<Product | null> {
   const row = await prisma.product.findUnique({ where: { slug } });
   if (!row || row.status !== "active") return null;
+  return toProduct(row);
+}
+
+export async function getProductById(id: string): Promise<Product | null> {
+  const row = await prisma.product.findUnique({ where: { id } });
+  if (!row) return null;
   return toProduct(row);
 }
 

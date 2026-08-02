@@ -1,15 +1,19 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { createDraftAction } from "@/lib/blogActions";
+import { getAllProducts, isProductIndexable } from "@/lib/products";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminDashboard() {
-  const [total, published, drafts] = await Promise.all([
+  const [total, published, drafts, products] = await Promise.all([
     prisma.article.count(),
     prisma.article.count({ where: { status: "published" } }),
     prisma.article.count({ where: { status: "draft" } }),
+    getAllProducts(),
   ]);
+
+  const indexableProducts = products.filter(isProductIndexable).length;
 
   const stats = [
     { label: "บทความทั้งหมด", value: total },
@@ -31,13 +35,17 @@ export default async function AdminDashboard() {
         </form>
       </div>
 
-      <div className="mt-6 grid gap-4 sm:grid-cols-3">
+      <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {stats.map((s) => (
           <div key={s.label} className="rounded-2xl bg-paper p-6">
             <p className="font-display text-3xl font-bold text-ink">{s.value}</p>
             <p className="mt-1 text-sm text-stone">{s.label}</p>
           </div>
         ))}
+        <Link href="/admin/products" className="rounded-2xl bg-paper p-6 hover:bg-linen">
+          <p className="font-display text-3xl font-bold text-ink">{products.length - indexableProducts}</p>
+          <p className="mt-1 text-sm text-stone">สินค้าที่ต้องเติมเนื้อหา →</p>
+        </Link>
       </div>
 
       <div className="mt-8 rounded-2xl bg-paper p-6">

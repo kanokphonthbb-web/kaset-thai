@@ -14,9 +14,11 @@ type CardProduct = {
 export default function ProductCard({
   product,
   compact = false,
+  priority = false,
 }: {
   product: CardProduct;
   compact?: boolean;
+  priority?: boolean;
 }) {
   return (
     <Link
@@ -31,8 +33,9 @@ export default function ProductCard({
           src={product.imageUrl}
           alt={product.name}
           fill
-          sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1024px) 50vw, 256px"
-          quality={65}
+          sizes="(max-width: 640px) 85vw, (max-width: 1024px) 46vw, 270px"
+          quality={55}
+          priority={priority}
           className="object-contain transition-transform duration-300 group-hover:scale-105"
         />
       </div>

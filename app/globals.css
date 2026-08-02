@@ -51,6 +51,14 @@
 }
 
 @layer components {
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
   .container-x {
     @apply mx-auto w-full max-w-container px-5 sm:px-6 lg:px-8;
   }
@@ -83,6 +91,11 @@
   /* Warm card surface — no shadow, depth via surface stepping */
   .card {
     @apply rounded-2xl bg-mist p-6;
+  }
+
+  .input-admin {
+    @apply min-h-[44px] w-full rounded-xl border border-ash bg-paper px-4 py-3 text-base text-ink
+      placeholder:text-stone focus:border-ink focus:outline-none;
   }
 }
 

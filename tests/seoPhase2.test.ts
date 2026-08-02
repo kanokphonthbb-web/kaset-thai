@@ -24,6 +24,12 @@ import {
   schemaPriceFromLabel,
   type Product,
 } from "../lib/products";
+import {
+  normalizeCatalogQuery,
+  productCatalogCategory,
+  productCatalogPage,
+  productMatchesCatalogQuery,
+} from "../lib/productCatalog";
 
 function product(overrides: Partial<Product> = {}): Product {
   return {
@@ -106,6 +112,15 @@ test("public product keywords hide internal workflow labels", () => {
   assert.deepEqual(productPublicKeywords(sample), ["สวิงจับปลา"]);
 });
 
+test("public product names remove promotional claims but retain product identity", () => {
+  const sample = product({
+    name: "[10 เเถม 2] เมล็ดพันธุ์ข้าวแท้ 100% งอกดี โตไว พร้อมส่ง",
+  });
+  const name = productDisplayName(sample);
+  assert.match(name, /เมล็ดพันธุ์ข้าว/u);
+  assert.doesNotMatch(name, /เเถม|100\s*%|งอกดี|โตไว/u);
+});
+
 test("buyer checklist stays useful and category-aware without changing indexability", () => {
   const thin = product({ category: "agri-tech-tools", keywords: ["เครื่องวัดดิน"] });
   const checklist = productBuyerChecklist(thin);
@@ -136,6 +151,25 @@ test("related product scoring rejects same-category products with a different in
   });
   assert.ok(productRelevanceScore(disinfectant, related) > 0);
   assert.equal(productRelevanceScore(disinfectant, unrelated), 0);
+});
+
+test("product catalog search and pagination keep the full catalog off the client", () => {
+  const sample = product({
+    name: "เครื่องวัดค่าดินแบบพกพา",
+    keywords: ["เครื่องวัดดิน", "ตรวจค่า pH"],
+    category: "agri-tech-tools",
+  });
+  assert.equal(productMatchesCatalogQuery(sample, "วัดดิน"), true);
+  assert.equal(productMatchesCatalogQuery(sample, "กรงไก่"), false);
+  assert.equal(normalizeCatalogQuery("  วัด   ดิน  "), "วัด ดิน");
+  assert.equal(productCatalogCategory(sample), "agri-tech-tools");
+  assert.equal(productCatalogCategory({ ...sample, category: "" }), "other");
+  assert.deepEqual(productCatalogPage("99", 49, 24), {
+    page: 3,
+    totalPages: 3,
+    start: 48,
+    end: 49,
+  });
 });
 
 test("product metadata is compact and schema price accepts only one exact amount", () => {

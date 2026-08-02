@@ -12,7 +12,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   return (
     <div className="min-h-screen bg-mist">
       <header className="border-b border-ash/50 bg-paper">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2 px-5 py-3">
           <Link href="/admin" className="flex items-center gap-2">
             <span className="text-xl" aria-hidden>
               🌾
@@ -21,14 +21,17 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               เกษตรกรไทย · หลังบ้าน
             </span>
           </Link>
-          <nav className="flex items-center gap-1 text-sm">
-            <Link href="/admin" className="rounded-full px-3 py-2 font-medium text-stone hover:bg-mist hover:text-ink">
+          <nav className="scrollbar-none flex w-full items-center gap-1 overflow-x-auto text-sm sm:w-auto">
+            <Link href="/admin" className="shrink-0 rounded-full px-3 py-2 font-medium text-stone hover:bg-mist hover:text-ink">
               แดชบอร์ด
             </Link>
-            <Link href="/admin/articles" className="rounded-full px-3 py-2 font-medium text-stone hover:bg-mist hover:text-ink">
+            <Link href="/admin/articles" className="shrink-0 rounded-full px-3 py-2 font-medium text-stone hover:bg-mist hover:text-ink">
               บทความ
             </Link>
-            <Link href="/blog" className="rounded-full px-3 py-2 font-medium text-stone hover:bg-mist hover:text-ink" target="_blank">
+            <Link href="/admin/products" className="shrink-0 rounded-full px-3 py-2 font-medium text-stone hover:bg-mist hover:text-ink">
+              สินค้า
+            </Link>
+            <Link href="/blog" className="shrink-0 rounded-full px-3 py-2 font-medium text-stone hover:bg-mist hover:text-ink" target="_blank">
               ดูเว็บ ↗
             </Link>
             {isAuthConfigured() && (
