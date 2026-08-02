@@ -157,7 +157,7 @@ export default async function ProductDetailPage({ params }: Params) {
 
                 {product.usage && (
                   <div className="mt-6">
-                    <h2 className="font-display text-lg font-bold text-ink">ใช้เพื่ออะไร</h2>
+                    <h2 className="font-display text-lg font-bold text-ink">วิธีใช้และการดูแล</h2>
                     <p className="mt-2 text-[16px] leading-relaxed text-ink/90">{product.usage}</p>
                   </div>
                 )}
