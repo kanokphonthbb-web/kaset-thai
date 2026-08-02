@@ -26,6 +26,89 @@ export type Product = {
   updatedAt?: Date;
 };
 
+type ProductEditorialOverride = Partial<
+  Pick<
+    Product,
+    | "name"
+    | "whyNeeded"
+    | "benefits"
+    | "usage"
+    | "howToChoose"
+    | "useCases"
+    | "safetyNote"
+  >
+>;
+
+// These products already receive impressions in Search Console. Their database
+// rows predate the editorial fields, so keep the reviewed copy in source control
+// until the product CMS supports equivalent reviewed content. Wording is limited
+// to selection/use guidance that is supported by the visible product identity;
+// it deliberately makes no performance, efficacy, stock, or price claims.
+export const PRODUCT_EDITORIAL_OVERRIDES: Readonly<
+  Record<string, ProductEditorialOverride>
+> = Object.freeze({
+  "product-404": {
+    name: "เมล็ดผักสลัด 100–300 เมล็ด พร้อมคู่มือเพาะกล้า",
+    whyNeeded:
+      "เมล็ดผักสลัดขนาดบรรจุไม่มากเหมาะสำหรับผู้ที่ต้องการเริ่มเพาะกล้า ทดลองปลูกหลายสายพันธุ์ หรือวางแผนแปลงผักขนาดเล็กโดยไม่ต้องซื้อเมล็ดจำนวนมากเกินความจำเป็น",
+    benefits: [
+      "ใช้ทดลองเปรียบเทียบสายพันธุ์ผักสลัดกับสภาพอากาศและพื้นที่ปลูกของตนเอง",
+      "ขนาดบรรจุเหมาะกับการวางแผนเพาะกล้าทีละรอบและบันทึกผลการงอกของแต่ละล็อต",
+      "คู่มือจากผู้ขายใช้เป็นข้อมูลตั้งต้นร่วมกับคำแนะนำบนซองเมล็ดพันธุ์ได้",
+    ],
+    usage:
+      "ตรวจชื่อสายพันธุ์และคำแนะนำบนซองก่อนเพาะ ใช้วัสดุเพาะที่สะอาด ควบคุมความชื้นไม่ให้แฉะ และจดวันที่เพาะเพื่อประเมินการงอกของเมล็ดในล็อตนั้นตามสภาพปลูกจริง",
+    howToChoose:
+      "ตรวจชื่อสายพันธุ์ จำนวนเมล็ด ปีผลิตหรือวันบรรจุ อัตราการงอกที่ผู้ขายระบุ และช่วงอุณหภูมิที่เหมาะกับสายพันธุ์นั้น พร้อมเทียบจำนวนเมล็ดกับพื้นที่และจำนวนรอบที่ตั้งใจปลูก",
+    useCases: [
+      "เพาะกล้าผักสลัดในถาดเพาะก่อนย้ายลงแปลงหรือภาชนะ",
+      "ทดลองปลูกผักสลัดหลายสายพันธุ์ในสวนครัวหรือพื้นที่ขนาดเล็ก",
+    ],
+    safetyNote:
+      "อัตราการงอกขึ้นอยู่กับสายพันธุ์ อายุเมล็ด การเก็บรักษา ความชื้น และอุณหภูมิ ควรยึดข้อมูลบนซองของล็อตที่ได้รับจริง และเก็บเมล็ดที่เหลือให้แห้งพ้นแสงแดด",
+  },
+  "product-541": {
+    name: "เบต้า มีเดียม (เบทาโกร) น้ำยาฆ่าเชื้อโรงเรือน 1 ลิตร",
+    whyNeeded:
+      "ผลิตภัณฑ์ฆ่าเชื้อสำหรับโรงเรือนอาจใช้เป็นส่วนหนึ่งของแผนสุขาภิบาลหลังเก็บมูล เศษอาหาร และสิ่งสกปรกออกแล้ว แต่ต้องเลือกให้ตรงกับพื้นผิว ชนิดสัตว์ และวิธีใช้ที่ฉลากอนุญาต",
+    benefits: [
+      "ใช้ประกอบขั้นตอนสุขาภิบาลโรงเรือนตามขอบเขตและอัตราผสมที่ระบุบนฉลาก",
+      "ช่วยให้ผู้ดูแลกำหนดขั้นตอนทำความสะอาด อัตราผสม และเวลาสัมผัสได้เป็นระบบเมื่อมีข้อมูลฉลากครบ",
+      "บรรจุภัณฑ์ระบุชื่อผลิตภัณฑ์ชัดเจน จึงควรตรวจเลขทะเบียน สารสำคัญ และวันหมดอายุก่อนซื้อทุกครั้ง",
+    ],
+    usage:
+      "นำสัตว์ อาหาร และภาชนะน้ำออกจากพื้นที่ตามคำแนะนำบนฉลาก ทำความสะอาดคราบอินทรีย์ก่อน แล้วผสมและใช้เฉพาะอัตราที่ผู้ผลิตระบุ เว็บไซต์นี้ไม่กำหนดอัตราผสมแทนฉลากผลิตภัณฑ์",
+    howToChoose:
+      "ตรวจสารสำคัญ เลขทะเบียนหรือข้อมูลกำกับผลิตภัณฑ์ พื้นผิวและเชื้อเป้าหมายที่ฉลากระบุ อัตราเจือจาง เวลาสัมผัส วันหมดอายุ รวมถึงข้อกำหนดก่อนนำสัตว์กลับเข้าโรงเรือน",
+    useCases: [
+      "ใช้ในแผนทำความสะอาดโรงเรือนว่างตามข้อกำหนดบนฉลาก",
+      "ทำความสะอาดอุปกรณ์หรือพื้นผิวที่ฉลากของผลิตภัณฑ์ระบุว่าใช้ได้",
+    ],
+    safetyNote:
+      "เป็นผลิตภัณฑ์ที่ต้องอ่านฉลากและเอกสารกำกับก่อนใช้ สวมอุปกรณ์ป้องกันตามที่กำหนด ห้ามผสมกับสารอื่นโดยไม่มีคำแนะนำ เก็บให้พ้นเด็ก สัตว์ อาหาร และแหล่งน้ำ หากไม่แน่ใจให้ปรึกษาสัตวแพทย์หรือเจ้าหน้าที่ปศุสัตว์",
+  },
+  "product-575": {
+    name: "สวิงช้อนปลา ด้ายขาวขนาดใหญ่ สำหรับตักและย้ายปลา",
+    whyNeeded:
+      "สวิงช่วยตักหรือย้ายปลาในบ่อและภาชนะโดยลดการใช้มือจับโดยตรง การเลือกขนาดวงสวิง ความลึกตาข่าย และความถี่ของช่องตาข่ายให้เหมาะกับขนาดปลาจะช่วยให้ทำงานได้คล่องขึ้น",
+    benefits: [
+      "ใช้ตักหรือย้ายปลาในงานดูแลบ่อ คัดขนาด หรือย้ายระหว่างภาชนะ",
+      "ด้ามและวงสวิงช่วยให้เข้าถึงปลาได้สะดวกกว่าการใช้มือจับโดยตรง",
+      "สามารถเลือกขนาดตาข่ายให้สัมพันธ์กับขนาดปลาและปริมาณที่ย้ายต่อครั้ง",
+    ],
+    usage:
+      "ตรวจรอยขาดและความแน่นของด้ามก่อนใช้ เคลื่อนสวิงช้า ๆ ในน้ำ ตักปลาในปริมาณที่รับน้ำหนักได้ และรองรับสวิงขณะยกเพื่อลดแรงกระชาก จากนั้นล้างและผึ่งให้แห้ง",
+    howToChoose:
+      "เทียบเส้นผ่านศูนย์กลางวงสวิง ความลึกและขนาดช่องตาข่าย ความยาวด้าม วัสดุขอบ และน้ำหนักที่รับได้กับชนิดปลา ขนาดปลา ความลึกของบ่อ และระยะที่ต้องเอื้อม",
+    useCases: [
+      "ตักปลาเพื่อคัดขนาด ตรวจสุขภาพ หรือย้ายภายในฟาร์ม",
+      "ช้อนปลาออกจากบ่อ ภาชนะพัก หรือถังขนย้ายในปริมาณที่เหมาะกับสวิง",
+    ],
+    safetyNote:
+      "ไม่ควรยกปลาเกินน้ำหนักที่สวิงและด้ามรับได้ หลีกเลี่ยงตาข่ายที่มีรอยขาดหรือขอบคม และทำความสะอาดอุปกรณ์ก่อนย้ายไปใช้ต่างบ่อเพื่อลดการพาสิ่งสกปรกข้ามพื้นที่",
+  },
+});
+
 function toProduct(row: {
   id: string;
   slug: string;
@@ -71,7 +154,7 @@ function toProduct(row: {
   } catch {
     relatedArticles = [];
   }
-  return {
+  const product: Product = {
     id: row.id,
     slug: row.slug,
     name: compactText(row.name) || keywords.find((keyword) => keyword.trim()) || "สินค้าเพื่อการเกษตร",
@@ -92,15 +175,8 @@ function toProduct(row: {
     relatedArticles,
     updatedAt: row.updatedAt,
   };
+  return { ...product, ...PRODUCT_EDITORIAL_OVERRIDES[row.slug] };
 }
-
-// These pages already earned search visibility before the quality gate was added.
-// Preserve them while their editorial descriptions are being expanded.
-const SEARCH_PERFORMING_THIN_PRODUCTS = new Set([
-  "product-404",
-  "product-541",
-  "product-575",
-]);
 
 function hasSubstantiveText(value: string): boolean {
   return value.trim().length >= 40;
@@ -118,7 +194,7 @@ export function productEditorialScore(product: Product): number {
 }
 
 export function isProductIndexable(product: Product): boolean {
-  return SEARCH_PERFORMING_THIN_PRODUCTS.has(product.slug) || productEditorialScore(product) >= 2;
+  return productEditorialScore(product) >= 2;
 }
 
 function compactText(value: string): string {
@@ -143,6 +219,93 @@ export function productDisplayName(product: Product): string {
   const cleanedName = compactText(product.name);
   const fallback = product.keywords.find((keyword) => keyword.trim()) ?? "สินค้าเพื่อการเกษตร";
   return truncateAtWord(cleanedName || fallback, 96);
+}
+
+export function productPublicKeywords(product: Product, max = 5): string[] {
+  const result: string[] = [];
+  const seen = new Set<string>();
+  for (const rawKeyword of product.keywords) {
+    const keyword = compactText(rawKeyword);
+    const normalized = keyword.toLocaleLowerCase("th-TH");
+    if (
+      keyword.length < 2 ||
+      keyword.length > 50 ||
+      /[_]|(?:^|\s)(?:page|component)(?:\s|$)/iu.test(keyword) ||
+      /^\d+(?:\.\d+)?$/u.test(keyword) ||
+      seen.has(normalized)
+    ) {
+      continue;
+    }
+    seen.add(normalized);
+    result.push(keyword);
+    if (result.length >= Math.max(1, max)) break;
+  }
+  return result;
+}
+
+const CATEGORY_LABELS: Record<string, string> = {
+  plants: "งานปลูกพืช",
+  animals: "งานเลี้ยงสัตว์",
+  fishery: "งานประมงและดูแลสัตว์น้ำ",
+  "mixed-farming": "งานจัดการฟาร์มผสมผสาน",
+  diseases: "งานป้องกันโรคและดูแลสุขอนามัย",
+  "cost-profit": "งานบันทึกต้นทุนและวางแผนฟาร์ม",
+  market: "งานแปรรูป บรรจุ และจำหน่ายผลผลิต",
+  "soil-water-fertilizer": "งานจัดการดิน น้ำ และปุ๋ย",
+  "agri-tech-tools": "งานใช้เครื่องมือและเทคโนโลยีเกษตร",
+  "agri-news-law-standards": "งานด้านมาตรฐานและเอกสารเกษตร",
+};
+
+export function productBuyerChecklist(product: Product): string[] {
+  const topic = productPublicKeywords(product, 1)[0] || CATEGORY_LABELS[product.category] || "งานที่ต้องการ";
+  const common = [
+    `ตรวจชื่อ รุ่น ขนาด และจำนวนของสินค้าให้ตรงกับ ${topic} ก่อนชำระเงิน`,
+    "เปรียบเทียบราคาต่อหน่วย ค่าจัดส่ง ระยะเวลาจัดส่ง และเงื่อนไขคืนสินค้าจากหน้าร้านล่าสุด",
+    "อ่านรายละเอียด วิธีใช้ ข้อจำกัด และคำเตือนจากฉลากหรือคู่มือของสินค้าที่ได้รับจริง",
+    "ตรวจคะแนนร้านค้า รีวิวที่มีรูปจริง การรับประกัน และช่องทางติดต่อเมื่อสินค้าไม่ตรงรายละเอียด",
+  ];
+
+  if (product.category === "plants") {
+    return [
+      `ตรวจชนิดและสายพันธุ์ให้ตรงกับ ${topic} รวมถึงฤดูและสภาพพื้นที่ที่จะปลูก`,
+      "ตรวจล็อต วันบรรจุหรือวันหมดอายุ ปริมาณ และคำแนะนำการเก็บรักษาบนฉลาก",
+      "คำนวณจำนวนที่ต้องใช้ตามพื้นที่หรือจำนวนรอบปลูกก่อนเปรียบเทียบราคาต่อหน่วย",
+      common[3],
+    ];
+  }
+  if (product.category === "animals" || product.category === "fishery") {
+    return [
+      `ตรวจว่าสินค้าเหมาะกับชนิด ขนาด หรือช่วงวัยของสัตว์ในงาน ${topic}`,
+      "ตรวจสูตร ขนาดบรรจุ ล็อต วันผลิต วันหมดอายุ และวิธีเก็บรักษาจากฉลาก",
+      "อ่านอัตราใช้และข้อจำกัดจากผู้ผลิต ไม่เปลี่ยนสูตรอาหารหรือการดูแลอย่างฉับพลันโดยไม่มีข้อมูลรองรับ",
+      common[3],
+    ];
+  }
+  if (product.category === "diseases") {
+    return [
+      `ตรวจว่าสินค้าใช้กับ ${topic} ได้ตามฉลาก และตรงกับชนิดพืช สัตว์ หรือพื้นที่เป้าหมาย`,
+      "ตรวจสารสำคัญ เลขทะเบียน อัตราใช้ อุปกรณ์ป้องกัน ระยะปลอดภัย และวันหมดอายุ",
+      "หลีกเลี่ยงการวินิจฉัยโรคหรือผสมสารจากชื่อสินค้าเพียงอย่างเดียว หากไม่แน่ใจให้ปรึกษาผู้เชี่ยวชาญ",
+      common[3],
+    ];
+  }
+  if (product.category === "soil-water-fertilizer") {
+    return [
+      `ตรวจสูตรหรือคุณสมบัติให้ตรงกับ ${topic} ผลตรวจดิน ชนิดพืช และระบบน้ำที่ใช้อยู่`,
+      "อ่านอัตราใช้ วิธีผสม ข้อจำกัด เลขทะเบียน และคำเตือนจากฉลากก่อนใช้งาน",
+      "คำนวณปริมาณตามพื้นที่จริงและเปรียบเทียบราคาต่อหน่วย ไม่ตัดสินใจจากขนาดบรรจุเพียงอย่างเดียว",
+      common[3],
+    ];
+  }
+  if (product.category === "agri-tech-tools") {
+    return [
+      `ตรวจขนาด กำลัง วัสดุ และรูปแบบการเชื่อมต่อให้ตรงกับ ${topic} และอุปกรณ์เดิมในฟาร์ม`,
+      "ตรวจแหล่งพลังงาน อะไหล่ อุปกรณ์ที่ให้มา คู่มือภาษาไทย และวิธีบำรุงรักษา",
+      "เปรียบเทียบการรับประกัน ศูนย์บริการ และค่าอะไหล่สิ้นเปลืองตลอดอายุการใช้งาน",
+      common[3],
+    ];
+  }
+  return common;
 }
 
 export function productSeoTitle(product: Product): string {

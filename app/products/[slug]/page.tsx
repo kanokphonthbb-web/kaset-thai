@@ -10,7 +10,9 @@ import {
   getProductsByCategory,
   isProductIndexable,
   productDisplayName,
+  productBuyerChecklist,
   productPriceDisplay,
+  productPublicKeywords,
   productSeoDescription,
   productSeoTitle,
   productStructuredData,
@@ -43,6 +45,8 @@ export default async function ProductDetailPage({ params }: Params) {
   const product = await getProductBySlug(params.slug);
   if (!product) notFound();
   const displayName = productDisplayName(product);
+  const publicKeywords = productPublicKeywords(product);
+  const buyerChecklist = productBuyerChecklist(product);
 
   const related = product.category
     ? (await getProductsByCategory(product.category, 30))
@@ -112,9 +116,9 @@ export default async function ProductDetailPage({ params }: Params) {
                   {displayName}
                 </h1>
 
-                {product.keywords.length > 0 && (
+                {publicKeywords.length > 0 && (
                   <p className="mt-4 max-w-2xl text-[17px] text-ink/90">
-                    สินค้านี้เกี่ยวข้องกับ: {product.keywords.join(", ")} หากคุณกำลังมองหาอุปกรณ์หรือปัจจัยการผลิตสำหรับเรื่องนี้
+                    สินค้านี้เกี่ยวข้องกับ: {publicKeywords.join(", ")} หากคุณกำลังมองหาอุปกรณ์หรือปัจจัยการผลิตสำหรับเรื่องนี้
                     สินค้านี้อาจช่วยให้คุณไม่ต้องเสียเวลาหาใหม่
                   </p>
                 )}
@@ -167,6 +171,18 @@ export default async function ProductDetailPage({ params }: Params) {
                     </ul>
                   </div>
                 )}
+
+                <div className="mt-6">
+                  <h2 className="font-display text-lg font-bold text-ink">เช็กก่อนสั่งซื้อ</h2>
+                  <ul className="mt-2 space-y-2">
+                    {buyerChecklist.map((item) => (
+                      <li key={item} className="flex items-start gap-2 text-[16px] text-ink/90">
+                        <span aria-hidden className="mt-1 text-lime-deep">●</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
                 {product.safetyNote && (
                   <div className="mt-6 rounded-xl bg-amber-50 p-4 text-[15px] text-ink/90">

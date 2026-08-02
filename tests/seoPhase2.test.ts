@@ -11,8 +11,11 @@ import {
 import {
   freshSchemaPrice,
   isProductIndexable,
+  PRODUCT_EDITORIAL_OVERRIDES,
+  productBuyerChecklist,
   productDisplayName,
   productEditorialScore,
+  productPublicKeywords,
   productPriceDisplay,
   productSeoDescription,
   productSeoTitle,
@@ -75,8 +78,40 @@ test("thin products need two editorial signals before indexation", () => {
   assert.equal(isProductIndexable(useful), true);
 });
 
-test("known thin product with Search Console visibility remains indexable", () => {
-  assert.equal(isProductIndexable(product({ slug: "product-541" })), true);
+test("Search Console priority products now have substantive reviewed editorial copy", () => {
+  assert.deepEqual(Object.keys(PRODUCT_EDITORIAL_OVERRIDES).sort(), [
+    "product-404",
+    "product-541",
+    "product-575",
+  ]);
+  for (const [slug, override] of Object.entries(PRODUCT_EDITORIAL_OVERRIDES)) {
+    const enriched = product({ slug, ...override });
+    assert.ok(productEditorialScore(enriched) >= 5, slug);
+    assert.equal(isProductIndexable(enriched), true, slug);
+  }
+});
+
+test("public product keywords hide internal workflow labels", () => {
+  const sample = product({
+    keywords: [
+      "starter_kit_component",
+      "disease_check_page",
+      "น้ำยาฆ่าเชื้อโรงเรือน / ตาข่ายกันแมลง / ถาดเลี้ยงยาวเกินกว่าที่ควรแสดงบนหน้าเว็บสาธารณะ",
+      "สวิงจับปลา",
+      "สวิงจับปลา",
+      "123",
+    ],
+  });
+  assert.deepEqual(productPublicKeywords(sample), ["สวิงจับปลา"]);
+});
+
+test("buyer checklist stays useful and category-aware without changing indexability", () => {
+  const thin = product({ category: "agri-tech-tools", keywords: ["เครื่องวัดดิน"] });
+  const checklist = productBuyerChecklist(thin);
+  assert.equal(checklist.length, 4);
+  assert.ok(checklist.every((item) => item.length >= 40));
+  assert.match(checklist.join(" "), /กำลัง|วัสดุ|อะไหล่|รับประกัน/u);
+  assert.equal(isProductIndexable(thin), false);
 });
 
 test("product metadata is compact and schema price accepts only one exact amount", () => {
