@@ -38,6 +38,14 @@ test("does not generate copy for regulated or unrelated products", () => {
     buildProductEditorialContent("เสื้อยืดลายฟาร์ม S-5XL", "agri-tech-tools"),
     null,
   );
+  assert.equal(
+    buildProductEditorialContent("แผงโฟมกันเสียงติดผนัง", "market"),
+    null,
+  );
+  assert.equal(
+    buildProductEditorialContent("หนังสือคู่มือการเลี้ยงปลาในกระชัง", "fishery"),
+    null,
+  );
 });
 
 test("does not mistake seed trays or soil meters for seeds and water tests", () => {

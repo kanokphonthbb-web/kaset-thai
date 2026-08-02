@@ -42,3 +42,4 @@ next-env.d.ts
 # scratch / working files (not for commit)
 /scratch_*.mjs
 /scratchpad-briefs/
+/.backups/

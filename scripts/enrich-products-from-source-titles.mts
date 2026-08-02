@@ -1,4 +1,5 @@
-import { writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
+import path from "node:path";
 import {
   buildProductEditorialContent,
   type ProductEditorialContent,
@@ -14,7 +15,11 @@ import { prisma } from "../lib/prisma";
 const APPLY = process.argv.includes("--apply");
 const BACKUP_PATH =
   process.argv.find((argument) => argument.startsWith("--backup="))?.slice(9) ||
-  "/private/tmp/kaset-products-editorial-before-2026-08-02.json";
+  path.join(
+    process.cwd(),
+    ".backups",
+    `products-editorial-before-${new Date().toISOString().replace(/[:.]/g, "-")}.json`,
+  );
 
 const normalizedName = (name: string) =>
   name.toLocaleLowerCase("th-TH").replace(/[^\p{L}\p{N}]+/gu, " ").trim();
@@ -120,6 +125,7 @@ const summary = {
 console.log(JSON.stringify(summary, null, 2));
 
 if (APPLY) {
+  mkdirSync(path.dirname(BACKUP_PATH), { recursive: true });
   const backup = await prisma.product.findMany({
     where: { id: { in: updates.map((update) => update.id) } },
     select: {

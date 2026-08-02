@@ -187,7 +187,11 @@ export default async function ProductsPage({ searchParams }: PageProps) {
                     return (
                       <Link
                         key={group.slug}
-                        href={catalogUrl({ query, category: group.slug })}
+                        href={
+                          !query && group.slug !== PRODUCT_OTHER_CATEGORY
+                            ? `/products/category/${group.slug}`
+                            : catalogUrl({ query, category: group.slug })
+                        }
                         aria-current={isActive ? "page" : undefined}
                         className={`shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                           isActive

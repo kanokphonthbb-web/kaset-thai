@@ -1,3 +1,8 @@
+import {
+  CLEARLY_UNRELATED_PRODUCT_RE,
+  PRODUCT_REVIEW_REQUIRED_RE,
+} from "@/lib/productSafety";
+
 export type ProductEditorialContent = {
   family: string;
   whyNeeded: string;
@@ -13,12 +18,6 @@ type EditorialTemplate = Omit<ProductEditorialContent, "sourceFacts" | "howToCho
   matches: (name: string, category: string) => boolean;
   choose: string;
 };
-
-const unrelatedProduct =
-  /(เสื้อ|กางเกง|ชุดเดรส|รองเท้า|กระเป๋าแฟชั่น|เครื่องประดับ|ตุ๊กตา|เคสโทรศัพท์|นิยาย|โปสเตอร์|ของเล่น)/iu;
-
-const regulatedOrHighRisk =
-  /(ยา(?:ฆ่า|กำจัด|รักษา|ปฏิชีวนะ)|สารกำจัด|สารฆ่าเชื้อ|วัคซีน|ฮอร์โมน|ปุ๋ย|จุลินทรีย์|บิวเวอเรีย|เมธาไรเซียม|ยาปฏิชีวนะ|อาหารทดแทนนม|อาหาร(?:ปลา|กุ้ง|ไก่|เป็ด|หมู|วัว|โค|แพะ|แกะ|สัตว์))/iu;
 
 const templates: EditorialTemplate[] = [
   {
@@ -520,7 +519,10 @@ export function buildProductEditorialContent(
   category: string,
 ): ProductEditorialContent | null {
   const normalizedSourceName = name.normalize("NFC").replace(/ํา/gu, "ำ");
-  if (unrelatedProduct.test(normalizedSourceName)) return null;
+  if (CLEARLY_UNRELATED_PRODUCT_RE.test(normalizedSourceName)) return null;
+  if (/^\s*(?:หนังสือ|book\b)|คู่มือการ(?:ปลูก|เลี้ยง|ทำนา|เพาะ)/iu.test(normalizedSourceName)) {
+    return null;
+  }
   const template = templates.find((candidate) =>
     candidate.matches(normalizedSourceName, category),
   );
@@ -533,9 +535,10 @@ export function buildProductEditorialContent(
     "farm-measurement",
     "irrigation",
     "farm-hand-tool",
+    "farm-machine",
   ]);
   if (
-    regulatedOrHighRisk.test(normalizedSourceName) &&
+    PRODUCT_REVIEW_REQUIRED_RE.test(normalizedSourceName) &&
     !safeEquipmentFamilies.has(template.family)
   ) {
     return null;

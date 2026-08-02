@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
 import {
   getProductBySlug,
+  getCanonicalProductAlternatives,
   getProductsByCategory,
   isProductIndexable,
   productDisplayName,
@@ -18,6 +19,8 @@ import {
   productSeoTitle,
   productStructuredData,
 } from "@/lib/products";
+import { canonicalProductSlug } from "@/lib/productCanonical.mjs";
+import { getProductCategoryInfo } from "@/lib/productCategories";
 import { pageMeta } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 import { prisma } from "@/lib/prisma";
@@ -43,11 +46,15 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 }
 
 export default async function ProductDetailPage({ params }: Params) {
+  const canonicalSlug = canonicalProductSlug(params.slug);
+  if (canonicalSlug !== params.slug) permanentRedirect(`/products/${canonicalSlug}`);
   const product = await getProductBySlug(params.slug);
   if (!product) notFound();
   const displayName = productDisplayName(product);
+  const categoryInfo = getProductCategoryInfo(product.category);
   const publicKeywords = productPublicKeywords(product);
   const buyerChecklist = productBuyerChecklist(product);
+  const merchantAlternatives = await getCanonicalProductAlternatives(product.slug);
 
   const related = product.category
     ? (await getProductsByCategory(product.category, 30))
@@ -104,6 +111,19 @@ export default async function ProductDetailPage({ params }: Params) {
               <Link href="/products" prefetch={false} className="hover:text-ink">
                 สินค้าเพื่อการเกษตร
               </Link>
+              {categoryInfo && (
+                <>
+                  <span className="mx-2" aria-hidden>
+                    /
+                  </span>
+                  <Link
+                    href={`/products/category/${categoryInfo.slug}`}
+                    className="hover:text-ink"
+                  >
+                    {categoryInfo.name}
+                  </Link>
+                </>
+              )}
             </nav>
           </div>
         </section>
@@ -212,16 +232,28 @@ export default async function ProductDetailPage({ params }: Params) {
                 )}
 
                 <div className="mt-8">
-                  <a
-                    href={product.affiliateLink}
-                    target="_blank"
-                    rel="sponsored nofollow noopener noreferrer"
-                    className="btn-primary"
-                  >
-                    ดูสินค้า
-                  </a>
+                  {merchantAlternatives.length > 1 && (
+                    <h2 className="mb-3 font-display text-lg font-bold text-ink">
+                      ตรวจสอบตัวเลือกจากร้านค้า
+                    </h2>
+                  )}
+                  <div className="flex flex-wrap gap-3">
+                    {merchantAlternatives.map((alternative, index) => (
+                      <a
+                        key={alternative.slug}
+                        href={alternative.affiliateLink}
+                        target="_blank"
+                        rel="sponsored nofollow noopener noreferrer"
+                        className={index === 0 ? "btn-primary" : "btn-secondary"}
+                      >
+                        {merchantAlternatives.length > 1
+                          ? `ดูตัวเลือกที่ ${index + 1}${alternative.priceLabel ? ` · ${productPriceDisplay(alternative.priceLabel)}` : ""}`
+                          : "ดูสินค้า"}
+                      </a>
+                    ))}
+                  </div>
                   <p className="mt-3 max-w-md text-xs text-stone">
-                    ลิงก์นี้เป็นลิงก์พันธมิตร (affiliate link) หากคุณสั่งซื้อผ่านลิงก์นี้ เว็บไซต์อาจได้รับค่าคอมมิชชันโดยที่คุณไม่ต้องจ่ายเพิ่ม
+                    ลิงก์เหล่านี้เป็นลิงก์พันธมิตร (affiliate link) หากคุณสั่งซื้อผ่านลิงก์ เว็บไซต์อาจได้รับค่าคอมมิชชันโดยที่คุณไม่ต้องจ่ายเพิ่ม ราคาและรายละเอียดจริงอาจต่างกันในแต่ละร้าน กรุณาตรวจสอบก่อนสั่งซื้อ
                   </p>
                 </div>
               </div>
@@ -249,9 +281,19 @@ export default async function ProductDetailPage({ params }: Params) {
 
             {related.length > 0 && (
               <section className="mt-16">
-                <h2 className="font-display text-xl font-bold text-ink">
-                  สินค้าอื่นในหมวดนี้
-                </h2>
+                <div className="flex flex-wrap items-end justify-between gap-3">
+                  <h2 className="font-display text-xl font-bold text-ink">
+                    สินค้าอื่นในหมวดนี้
+                  </h2>
+                  {categoryInfo && (
+                    <Link
+                      href={`/products/category/${categoryInfo.slug}`}
+                      className="text-sm font-medium text-ink underline underline-offset-4"
+                    >
+                      ดู{categoryInfo.name}ทั้งหมด
+                    </Link>
+                  )}
+                </div>
                 <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                   {related.map((p) => (
                     <ProductCard key={p.id} product={p} compact />

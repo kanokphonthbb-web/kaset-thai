@@ -5,6 +5,7 @@ import { prisma } from "@/lib/prisma";
 import { getAllStarterKits } from "@/lib/starterKits";
 import { REDIRECTED_ARTICLE_SLUGS } from "@/lib/articleSeoRules.mjs";
 import { getAllProducts, isProductIndexable } from "@/lib/products";
+import { PRODUCT_CATEGORIES } from "@/lib/productCategories";
 
 // Cache the generated sitemap instead of querying Turso on every crawler hit.
 // CMS/product updatedAt values remain the source of truth for dynamic entries.
@@ -28,6 +29,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${SITE_URL}${t.href}`,
     changeFrequency: "monthly" as const,
     priority: 0.6,
+  }));
+
+  const productCategoryRoutes = PRODUCT_CATEGORIES.map((category) => ({
+    url: `${SITE_URL}/products/category/${category.slug}`,
+    changeFrequency: "weekly" as const,
+    priority: 0.7,
   }));
 
   const starterKitRoutes = getAllStarterKits().map((kit) => ({
@@ -80,6 +87,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...staticRoutes,
     ...categoryRoutes,
     ...toolRoutes,
+    ...productCategoryRoutes,
     ...starterKitRoutes,
     ...staticArticleRoutes,
     ...cmsArticleRoutes,

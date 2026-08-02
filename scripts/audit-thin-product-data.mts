@@ -55,6 +55,25 @@ const sourceTestCandidates = thin
       productEditorialScore(right) - productEditorialScore(left) ||
       productDisplayName(left).localeCompare(productDisplayName(right), "th"),
   );
+
+if (process.argv.includes("--policy-blocked")) {
+  console.log(
+    JSON.stringify(
+      thin
+        .filter((product) => productEditorialScore(product) >= 2)
+        .map((product) => ({
+          slug: product.slug,
+          name: productDisplayName(product),
+          category: product.category,
+          score: productEditorialScore(product),
+        }))
+        .sort((left, right) => left.name.localeCompare(right.name, "th")),
+      null,
+      2,
+    ),
+  );
+  process.exit(0);
+}
 const familyPatterns = [
   ["seed", /เมล็ด|พันธุ์/iu],
   ["fertilizer", /ปุ๋ย|ธาตุอาหาร|ฮอร์โมนพืช/iu],
@@ -83,6 +102,8 @@ const summary = {
   total: products.length,
   indexable: indexable.length,
   thin: thin.length,
+  editoriallyThin: thin.filter((product) => productEditorialScore(product) < 2).length,
+  policyBlocked: thin.filter((product) => productEditorialScore(product) >= 2).length,
   indexableWithCatalogBoilerplate: indexable.filter((product) =>
     product.whyNeeded.startsWith("สินค้าเกษตรที่เกี่ยวข้องกับ"),
   ).length,
@@ -104,6 +125,9 @@ const summary = {
   highConfidenceByCategory: counts(highConfidence.map((product) => product.category)),
   scoreCounts: counts(thin.map(productEditorialScore)),
   categoryCounts: counts(thin.map((product) => product.category || "other")),
+  indexableCategoryCounts: counts(
+    indexable.map((product) => product.category || "other"),
+  ),
   fieldCounts: {
     whyNeeded: thin.filter((product) => product.whyNeeded.trim().length >= 40).length,
     benefits2: thin.filter((product) => product.benefits.filter(Boolean).length >= 2).length,

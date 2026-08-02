@@ -8,6 +8,10 @@ import { PrismaClient } from "@prisma/client";
 import { readFileSync, existsSync, mkdirSync, copyFileSync, statSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  canonicalProductGroup,
+  canonicalProductSlug,
+} from "../lib/productCanonical.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -83,8 +87,8 @@ for (const p of catalog.products) {
     continue;
   }
 
-  const status = p.needs_manual_review ? "held" : "active";
-  if (status === "held") heldCount++;
+  const catalogStatus = p.needs_manual_review ? "held" : "active";
+  if (catalogStatus === "held") heldCount++;
 
   const srcImage = p.image_file;
   const destImage = path.join(IMAGE_DEST_DIR, `${p.id}.webp`);
@@ -94,7 +98,7 @@ for (const p of catalog.products) {
     continue;
   }
 
-  const category = CATEGORY_MAP[p.category] || "";
+  const importedCategory = CATEGORY_MAP[p.category] || "";
   const keywords = dedupe([...(p.primary_keywords || []), ...(p.keywords || []), ...(p.core_topics || [])]);
   const useCases = dedupe(p.core_topics || []);
   const priceLabel = extractNumericPrice(p.price_label);
@@ -105,6 +109,11 @@ for (const p of catalog.products) {
   const localImageUrl = `/images/products/${p.id}.webp`;
 
   const existing = existingByShopeeId.get(p.id) || existingByAffiliateLink.get(p.affiliate_url);
+  const targetSlug = existing?.slug || `product-${p.id}`;
+  const canonicalGroup = canonicalProductGroup(targetSlug);
+  const category = canonicalGroup?.category || importedCategory;
+  const status =
+    canonicalProductSlug(targetSlug) !== targetSlug ? "merged" : catalogStatus;
 
   if (!existing) {
     if (!DRY) {

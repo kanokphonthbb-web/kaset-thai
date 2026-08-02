@@ -119,6 +119,21 @@ test("getProductSafetyStatus: unlisted + non-regulated name returns verified", (
   );
 });
 
+test("product safety does not mistake wording or equipment for a regulated substance", () => {
+  assert.equal(
+    getProductSafetyStatus({ slug: "seeder", name: "เครื่องหยอดเมล็ดสารพัดประโยชน์" }),
+    "verified",
+  );
+  assert.equal(
+    getProductSafetyStatus({ slug: "basket", name: "ตะกร้าใส่ปุ๋ยสำหรับกระถาง" }),
+    "verified",
+  );
+  assert.equal(
+    getProductSafetyStatus({ slug: "fertilizer", name: "ปุ๋ยน้ำสำหรับผัก" }),
+    "needs-registration-check",
+  );
+});
+
 // ── filterDiseaseProductRoles ─────────────────────────────
 test("filterDiseaseProductRoles drops non-verified entries and keeps verified ones across all 4 role arrays", () => {
   const roles = {

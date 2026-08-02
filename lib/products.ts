@@ -3,6 +3,14 @@
 // ─────────────────────────────────────────────────────────────
 import { parse, HTMLElement } from "node-html-parser";
 import { prisma } from "@/lib/prisma";
+import { buildProductEditorialContent } from "@/lib/productEditorial";
+import {
+  canonicalProductGroup,
+  canonicalProductSlug,
+  isCanonicalProductSlug,
+} from "@/lib/productCanonical.mjs";
+import { getProductCategoryInfo } from "@/lib/productCategories";
+import { getProductSafetyStatus } from "@/lib/productSafety";
 
 export type Product = {
   id: string;
@@ -194,7 +202,15 @@ export function productEditorialScore(product: Product): number {
 }
 
 export function isProductIndexable(product: Product): boolean {
-  return productEditorialScore(product) >= 2;
+  if (product.status !== "active" || productEditorialScore(product) < 2) return false;
+  const safetyStatus = getProductSafetyStatus({ slug: product.slug, name: product.name });
+  if (safetyStatus === "verified") return true;
+  if (safetyStatus === "do-not-show") return false;
+
+  // Some equipment names contain regulated terms because they are used around
+  // feed, fertiliser, or spraying. A reviewed safe-equipment editorial template
+  // keeps those tools eligible without allowing the substance itself through.
+  return Boolean(buildProductEditorialContent(product.name, product.category));
 }
 
 function compactText(value: string): string {
@@ -387,6 +403,7 @@ export function productStructuredData(
   const productUrl = `${siteUrl}/products/${product.slug}`;
   const displayName = productDisplayName(product);
   const schemaPrice = freshSchemaPrice(product, now);
+  const category = getProductCategoryInfo(product.category);
   const graph: Record<string, unknown>[] = [];
 
   // Google product snippets require an Offer, review, or aggregate rating. This
@@ -412,13 +429,28 @@ export function productStructuredData(
     });
   }
 
+  const breadcrumbItems: Record<string, unknown>[] = [
+    { "@type": "ListItem", position: 1, name: "หน้าแรก", item: `${siteUrl}/` },
+    { "@type": "ListItem", position: 2, name: "สินค้าเพื่อการเกษตร", item: `${siteUrl}/products` },
+  ];
+  if (category) {
+    breadcrumbItems.push({
+      "@type": "ListItem",
+      position: 3,
+      name: category.name,
+      item: `${siteUrl}/products/category/${category.slug}`,
+    });
+  }
+  breadcrumbItems.push({
+    "@type": "ListItem",
+    position: breadcrumbItems.length + 1,
+    name: displayName,
+    item: productUrl,
+  });
+
   graph.push({
     "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "หน้าแรก", item: `${siteUrl}/` },
-      { "@type": "ListItem", position: 2, name: "สินค้าเพื่อการเกษตร", item: `${siteUrl}/products` },
-      { "@type": "ListItem", position: 3, name: displayName, item: productUrl },
-    ],
+    itemListElement: breadcrumbItems,
   });
 
   return { "@context": "https://schema.org", "@graph": graph };
@@ -426,11 +458,11 @@ export function productStructuredData(
 
 export async function getAllProducts(): Promise<Product[]> {
   const rows = await prisma.product.findMany({ where: { status: "active" }, orderBy: { createdAt: "asc" } });
-  return rows.map(toProduct);
+  return rows.map(toProduct).filter((product) => isCanonicalProductSlug(product.slug));
 }
 
 export async function getProductBySlug(slug: string): Promise<Product | null> {
-  const row = await prisma.product.findUnique({ where: { slug } });
+  const row = await prisma.product.findUnique({ where: { slug: canonicalProductSlug(slug) } });
   if (!row || row.status !== "active") return null;
   return toProduct(row);
 }
@@ -438,25 +470,67 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
 export async function getProductById(id: string): Promise<Product | null> {
   const row = await prisma.product.findUnique({ where: { id } });
   if (!row) return null;
-  return toProduct(row);
+  const canonicalSlug = canonicalProductSlug(row.slug);
+  if (canonicalSlug === row.slug) return row.status === "active" ? toProduct(row) : null;
+  return getProductBySlug(canonicalSlug);
 }
 
 export async function getProductsByShopeeIds(shopeeIds: string[]): Promise<Product[]> {
   if (shopeeIds.length === 0) return [];
   const rows = await prisma.product.findMany({
-    where: { shopeeId: { in: shopeeIds }, status: "active" },
+    where: { shopeeId: { in: shopeeIds }, status: { in: ["active", "merged"] } },
   });
-  const bySlug = new Map(rows.map((r) => [r.shopeeId, toProduct(r)]));
-  return shopeeIds.map((id) => bySlug.get(id)).filter((p): p is Product => !!p);
+  const canonicalSlugs = [...new Set(rows.map((row) => canonicalProductSlug(row.slug)))];
+  const canonicalRows = await prisma.product.findMany({
+    where: { slug: { in: canonicalSlugs }, status: "active" },
+  });
+  const productBySlug = new Map(
+    canonicalRows.map((row) => [row.slug, toProduct(row)]),
+  );
+  const canonicalSlugByShopeeId = new Map(
+    rows
+      .filter((row): row is typeof row & { shopeeId: string } => Boolean(row.shopeeId))
+      .map((row) => [row.shopeeId, canonicalProductSlug(row.slug)]),
+  );
+  const seen = new Set<string>();
+  const result: Product[] = [];
+  for (const shopeeId of shopeeIds) {
+    const slug = canonicalSlugByShopeeId.get(shopeeId);
+    const product = slug ? productBySlug.get(slug) : undefined;
+    if (!product || seen.has(product.slug)) continue;
+    seen.add(product.slug);
+    result.push(product);
+  }
+  return result;
 }
 
 export async function getProductsByCategory(category: string, limit?: number): Promise<Product[]> {
   const rows = await prisma.product.findMany({
     where: { category, status: "active" },
     orderBy: { createdAt: "asc" },
-    take: limit,
   });
-  return rows.map(toProduct);
+  const products = rows.map(toProduct).filter((product) => isCanonicalProductSlug(product.slug));
+  return typeof limit === "number" ? products.slice(0, limit) : products;
+}
+
+export async function getCanonicalProductAlternatives(slug: string): Promise<Product[]> {
+  const group = canonicalProductGroup(slug);
+  if (!group) {
+    const product = await getProductBySlug(slug);
+    return product ? [product] : [];
+  }
+  const rows = await prisma.product.findMany({
+    where: {
+      slug: { in: [group.canonical, ...group.duplicates] },
+      status: { in: ["active", "merged"] },
+    },
+  });
+  return rows
+    .map(toProduct)
+    .sort(
+      (left, right) =>
+        Number(right.slug === group.canonical) - Number(left.slug === group.canonical),
+    );
 }
 
 /**

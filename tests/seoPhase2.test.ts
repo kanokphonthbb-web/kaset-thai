@@ -85,6 +85,27 @@ test("thin products need two editorial signals before indexation", () => {
   assert.equal(isProductIndexable(useful), true);
 });
 
+test("regulated and unrelated products stay noindex until reviewed", () => {
+  const editorialSignals = {
+    whyNeeded: "รายละเอียดประกอบที่อธิบายบริบทและสิ่งที่ผู้ซื้อจำเป็นต้องตรวจสอบก่อนใช้งานจริง",
+    benefits: ["ข้อมูลประกอบข้อแรก", "ข้อมูลประกอบข้อที่สอง"],
+  };
+  assert.equal(
+    isProductIndexable(product({
+      ...editorialSignals,
+      name: "สารคุมหญ้าสำหรับแปลงเกษตร",
+    })),
+    false,
+  );
+  assert.equal(
+    isProductIndexable(product({
+      ...editorialSignals,
+      name: "เสื้อยืดลายฟาร์ม",
+    })),
+    false,
+  );
+});
+
 test("Search Console priority products now have substantive reviewed editorial copy", () => {
   assert.deepEqual(Object.keys(PRODUCT_EDITORIAL_OVERRIDES).sort(), [
     "product-404",
@@ -202,6 +223,12 @@ test("Product schema is emitted only for an indexable product with a fresh exact
   const offer = fresh["@graph"][0].offers as Record<string, unknown>;
   assert.equal(offer.price, "1250");
   assert.equal(offer.availability, undefined);
+  const breadcrumbs = fresh["@graph"][1].itemListElement as Record<string, unknown>[];
+  assert.equal(breadcrumbs.length, 4);
+  assert.equal(
+    breadcrumbs[2].item,
+    "https://kasettakonthai.com/products/category/plants",
+  );
 
   const stale = productStructuredData(
     { ...useful, priceCheckedAt: new Date("2026-05-01T00:00:00Z") },

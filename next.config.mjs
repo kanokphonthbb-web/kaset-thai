@@ -1,4 +1,5 @@
 import { ARTICLE_REDIRECTS } from "./lib/articleSeoRules.mjs";
+import { PRODUCT_REDIRECTS } from "./lib/productCanonical.mjs";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -25,6 +26,11 @@ const nextConfig = {
       ...Object.entries(ARTICLE_REDIRECTS).map(([sourceSlug, destinationSlug]) => ({
         source: `/articles/${sourceSlug}`,
         destination: `/articles/${destinationSlug}`,
+        permanent: true,
+      })),
+      ...Object.entries(PRODUCT_REDIRECTS).map(([sourceSlug, destinationSlug]) => ({
+        source: `/products/${sourceSlug}`,
+        destination: `/products/${destinationSlug}`,
         permanent: true,
       })),
     ];
