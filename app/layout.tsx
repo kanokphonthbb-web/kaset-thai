@@ -110,14 +110,18 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const gtm = process.env.NEXT_PUBLIC_GA_ID
+    ? undefined
+    : process.env.NEXT_PUBLIC_GTM_ID;
+
   return (
     <html lang="th" className={`${bodyFont.variable} ${displayFont.variable}`}>
       <body className="font-sans antialiased">
         {/* GTM noscript (ต้องอยู่ต้น body) */}
-        {process.env.NEXT_PUBLIC_GTM_ID && (
+        {gtm && (
           <noscript>
             <iframe
-              src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID}`}
+              src={`https://www.googletagmanager.com/ns.html?id=${gtm}`}
               height="0"
               width="0"
               style={{ display: "none", visibility: "hidden" }}

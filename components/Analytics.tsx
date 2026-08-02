@@ -5,8 +5,11 @@ import Script from "next/script";
 //   NEXT_PUBLIC_GA_ID           = G-XXXXXXX (Google Analytics 4)
 //   NEXT_PUBLIC_PLAUSIBLE_DOMAIN = kaset-thai.com (Plausible)
 export default function Analytics() {
-  const gtm = process.env.NEXT_PUBLIC_GTM_ID;
   const ga = process.env.NEXT_PUBLIC_GA_ID;
+  // Load only one Google analytics bootstrap. When both variables are present,
+  // GA4 wins so an empty or overlapping GTM container cannot add duplicate JS,
+  // page views, or main-thread work.
+  const gtm = ga ? undefined : process.env.NEXT_PUBLIC_GTM_ID;
   const plausible = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
 
   return (
