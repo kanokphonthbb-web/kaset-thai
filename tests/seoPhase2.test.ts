@@ -204,6 +204,7 @@ test("product metadata is compact and schema price accepts only one exact amount
   assert.ok(productSeoDescription(sample).length <= 158);
   assert.equal(schemaPriceFromLabel("฿1,250.50 บาท"), "1250.50");
   assert.equal(schemaPriceFromLabel("100-200"), null);
+  assert.equal(schemaPriceFromLabel("1.8พัน"), null);
   assert.equal(schemaPriceFromLabel("สอบถามราคา"), null);
   assert.equal(productPriceDisplay("1,250"), "1,250 บาท");
   assert.equal(productPriceDisplay("฿1,250"), "฿1,250");
@@ -229,6 +230,17 @@ test("Product schema is emitted only for an indexable product with a fresh exact
     breadcrumbs[2].item,
     "https://kasettakonthai.com/products/category/plants",
   );
+
+  const abbreviated = productStructuredData(
+    {
+      ...useful,
+      shopeeId: "6709159815",
+      priceLabel: "1.8",
+    },
+    "https://kasettakonthai.com",
+    now,
+  );
+  assert.deepEqual(abbreviated["@graph"].map((node) => node["@type"]), ["BreadcrumbList"]);
 
   const stale = productStructuredData(
     { ...useful, priceCheckedAt: new Date("2026-05-01T00:00:00Z") },

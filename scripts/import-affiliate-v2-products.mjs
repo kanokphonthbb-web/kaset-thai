@@ -49,10 +49,8 @@ function dedupe(arr) {
   return [...new Set(arr.filter(Boolean).map((s) => String(s).trim()).filter(Boolean))];
 }
 
-function extractNumericPrice(label) {
-  if (!label) return "";
-  const m = String(label).replace(/,/g, "").match(/[\d.]+/);
-  return m ? m[0] : "";
+function normalizePriceLabel(label) {
+  return label ? String(label).trim().slice(0, 80) : "";
 }
 
 const prisma = await makePrisma();
@@ -101,7 +99,7 @@ for (const p of catalog.products) {
   const importedCategory = CATEGORY_MAP[p.category] || "";
   const keywords = dedupe([...(p.primary_keywords || []), ...(p.keywords || []), ...(p.core_topics || [])]);
   const useCases = dedupe(p.core_topics || []);
-  const priceLabel = extractNumericPrice(p.price_label);
+  const priceLabel = normalizePriceLabel(p.price_label);
   const priceCheckedAt = p.checked_at ? new Date(p.checked_at) : null;
   const safetyNote = p.regulated_or_high_risk
     ? "สินค้านี้อยู่ในกลุ่มที่ควรตรวจสอบข้อกำหนดด้านความปลอดภัย/กฎหมายก่อนใช้งาน"

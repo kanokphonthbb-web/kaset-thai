@@ -3,6 +3,7 @@
 // ─────────────────────────────────────────────────────────────
 import { parse, HTMLElement } from "node-html-parser";
 import productCategoryOverridesRaw from "@/data/productCategoryOverrides.json";
+import productPriceLabelOverridesRaw from "@/data/productPriceLabelOverrides.json";
 import { prisma } from "@/lib/prisma";
 import { buildProductEditorialContent } from "@/lib/productEditorial";
 import {
@@ -36,6 +37,7 @@ export type Product = {
 };
 
 const PRODUCT_CATEGORY_OVERRIDES = productCategoryOverridesRaw as Record<string, string>;
+const PRODUCT_PRICE_LABEL_OVERRIDES = productPriceLabelOverridesRaw as Record<string, string>;
 
 type ProductEditorialOverride = Partial<
   Pick<
@@ -181,7 +183,8 @@ function toProduct(row: {
     howToChoose: row.howToChoose,
     useCases,
     safetyNote: row.safetyNote,
-    priceLabel: row.priceLabel,
+    priceLabel:
+      (row.shopeeId && PRODUCT_PRICE_LABEL_OVERRIDES[row.shopeeId]) || row.priceLabel,
     priceCheckedAt: row.priceCheckedAt,
     relatedArticles,
     updatedAt: row.updatedAt,
@@ -385,7 +388,10 @@ export function freshSchemaPrice(
   now = new Date(),
   maxAgeDays = 30,
 ): string | null {
-  const price = schemaPriceFromLabel(product.priceLabel);
+  const effectiveLabel =
+    (product.shopeeId && PRODUCT_PRICE_LABEL_OVERRIDES[product.shopeeId]) ||
+    product.priceLabel;
+  const price = schemaPriceFromLabel(effectiveLabel);
   if (!price || !product.priceCheckedAt) return null;
   const ageMs = now.getTime() - product.priceCheckedAt.getTime();
   const maxAgeMs = maxAgeDays * 86_400_000;
