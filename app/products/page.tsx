@@ -41,6 +41,7 @@ export default async function ProductsPage() {
               eyebrow="เลือกสรรมาให้"
               title="สินค้าและอุปกรณ์การเกษตร"
               desc="ค้นหาตามงานที่ต้องทำ พร้อมอ่านประโยชน์ วิธีใช้ วิธีเลือก และข้อควรระวังก่อนออกไปตรวจสอบรายละเอียดกับร้านค้า"
+              headingLevel={1}
             />
             <div className="mt-12">
               <ProductsBrowser products={products} />
