@@ -243,6 +243,27 @@ export function productPublicKeywords(product: Product, max = 5): string[] {
   return result;
 }
 
+export function productRelevanceScore(source: Product, candidate: Product): number {
+  const sourceTerms = productPublicKeywords(source, 10)
+    .map((term) => term.toLocaleLowerCase("th-TH"))
+    .filter((term) => term.length >= 4);
+  const candidateTerms = [
+    ...productPublicKeywords(candidate, 10),
+    productDisplayName(candidate),
+  ]
+    .map((term) => term.toLocaleLowerCase("th-TH"))
+    .filter((term) => term.length >= 4);
+
+  let score = 0;
+  for (const sourceTerm of sourceTerms) {
+    for (const candidateTerm of candidateTerms) {
+      if (sourceTerm === candidateTerm) score += 3;
+      else if (sourceTerm.includes(candidateTerm) || candidateTerm.includes(sourceTerm)) score += 1;
+    }
+  }
+  return score;
+}
+
 const CATEGORY_LABELS: Record<string, string> = {
   plants: "งานปลูกพืช",
   animals: "งานเลี้ยงสัตว์",

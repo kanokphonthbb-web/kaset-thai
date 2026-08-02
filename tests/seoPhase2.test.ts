@@ -17,6 +17,7 @@ import {
   productEditorialScore,
   productPublicKeywords,
   productPriceDisplay,
+  productRelevanceScore,
   productSeoDescription,
   productSeoTitle,
   productStructuredData,
@@ -112,6 +113,29 @@ test("buyer checklist stays useful and category-aware without changing indexabil
   assert.ok(checklist.every((item) => item.length >= 40));
   assert.match(checklist.join(" "), /กำลัง|วัสดุ|อะไหล่|รับประกัน/u);
   assert.equal(isProductIndexable(thin), false);
+});
+
+test("related product scoring rejects same-category products with a different intent", () => {
+  const disinfectant = product({
+    slug: "disinfectant",
+    name: "น้ำยาฆ่าเชื้อโรงเรือน",
+    category: "diseases",
+    keywords: ["น้ำยาฆ่าเชื้อโรงเรือน"],
+  });
+  const related = product({
+    slug: "related",
+    name: "น้ำยาฆ่าเชื้อสำหรับอุปกรณ์ในโรงเรือน",
+    category: "diseases",
+    keywords: ["น้ำยาฆ่าเชื้อ"],
+  });
+  const unrelated = product({
+    slug: "unrelated",
+    name: "ปุ๋ยน้ำสำหรับผักกาดขาว",
+    category: "diseases",
+    keywords: ["ปุ๋ยน้ำผักกาดขาว"],
+  });
+  assert.ok(productRelevanceScore(disinfectant, related) > 0);
+  assert.equal(productRelevanceScore(disinfectant, unrelated), 0);
 });
 
 test("product metadata is compact and schema price accepts only one exact amount", () => {

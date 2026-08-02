@@ -13,6 +13,7 @@ import {
   productBuyerChecklist,
   productPriceDisplay,
   productPublicKeywords,
+  productRelevanceScore,
   productSeoDescription,
   productSeoTitle,
   productStructuredData,
@@ -52,7 +53,17 @@ export default async function ProductDetailPage({ params }: Params) {
     ? (await getProductsByCategory(product.category, 30))
         .filter(isProductIndexable)
         .filter((p) => p.id !== product.id)
+        .map((candidate) => ({
+          candidate,
+          relevance: productRelevanceScore(product, candidate),
+        }))
+        .filter(({ relevance }) => relevance > 0)
+        .sort((left, right) => right.relevance - left.relevance)
         .slice(0, 4)
+        .map(({ candidate }) => ({
+          ...candidate,
+          name: productDisplayName(candidate),
+        }))
     : [];
 
   let relatedArticles: { slug: string; title: string }[] = [];
