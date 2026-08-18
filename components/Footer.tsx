@@ -12,6 +12,10 @@ const ABOUT_LINKS = [
   { label: "เกี่ยวกับเว็บ", href: "/about" },
   { label: "บทความ", href: "/blog" },
   { label: "เครื่องมือช่วยเกษตรกร", href: "/tools" },
+  { label: "อากาศเพื่อการเกษตร", href: "/weather" },
+  { label: "ราคาสินค้าเกษตร", href: "/prices" },
+  { label: "แดชบอร์ดเกษตรกร", href: "/farm-dashboard" },
+  { label: "แหล่งข้อมูลของเรา", href: "/data-sources" },
   { label: "ค้นหาความรู้", href: "/search" },
 ];
 

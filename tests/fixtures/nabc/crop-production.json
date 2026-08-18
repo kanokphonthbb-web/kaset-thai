@@ -1,0 +1,29 @@
+{
+  "_note": "FIXTURE — synthetic, not real production data. Used for validator unit tests only.",
+  "rows": [
+    {
+      "crop_id": "rice-2026",
+      "crop_name": "ข้าว",
+      "year": 2026,
+      "province_id": "th-10",
+      "province_name": "กรุงเทพมหานคร",
+      "planted_area_rai": 120000,
+      "harvested_area_rai": 115000,
+      "production_ton": 55000,
+      "yield_per_rai_kg": 478,
+      "source_date": "2026-06-01T00:00:00.000Z"
+    },
+    {
+      "crop_id": "rice-2026",
+      "crop_name": "ข้าว",
+      "year": 2026,
+      "province_id": "th-30",
+      "province_name": "นครราชสีมา",
+      "planted_area_rai": -500,
+      "harvested_area_rai": 300000,
+      "production_ton": 140000,
+      "yield_per_rai_kg": 466,
+      "source_date": "2026-06-01T00:00:00.000Z"
+    }
+  ]
+}

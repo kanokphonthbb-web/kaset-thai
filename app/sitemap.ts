@@ -6,6 +6,7 @@ import { getAllStarterKits } from "@/lib/starterKits";
 import { REDIRECTED_ARTICLE_SLUGS } from "@/lib/articleSeoRules.mjs";
 import { getAllProducts, isProductIndexable } from "@/lib/products";
 import { PRODUCT_CATEGORIES } from "@/lib/productCategories";
+import { PROVINCES } from "@/lib/weather/locations";
 
 // Cache the generated sitemap instead of querying Turso on every crawler hit.
 // CMS/product updatedAt values remain the source of truth for dynamic entries.
@@ -13,10 +14,28 @@ export const dynamic = "force-static";
 export const revalidate = 300;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const staticRoutes = ["", "/about", "/tools", "/blog", "/products"].map((path) => ({
+  const staticRoutes = [
+    "",
+    "/about",
+    "/tools",
+    "/blog",
+    "/products",
+    "/prices",
+    "/weather",
+    "/farm-dashboard",
+    "/data-sources",
+    "/data-methodology",
+  ].map((path) => ({
     url: `${SITE_URL}${path}`,
     changeFrequency: "weekly" as const,
-    priority: path === "" ? 1 : 0.7,
+    priority: path === "" ? 1 : path === "/weather" || path === "/prices" ? 0.8 : 0.7,
+  }));
+
+  // หน้าอากาศรายจังหวัด — พยากรณ์สด + บริบทเกษตร (unique value ต่อจังหวัด)
+  const weatherProvinceRoutes = PROVINCES.map((p) => ({
+    url: `${SITE_URL}/weather/${p.slug}`,
+    changeFrequency: "daily" as const,
+    priority: 0.6,
   }));
 
   const categoryRoutes = CATEGORIES.filter((c) => c.href.startsWith("/")).map((c) => ({
@@ -85,6 +104,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const all = [
     ...staticRoutes,
+    ...weatherProvinceRoutes,
     ...categoryRoutes,
     ...toolRoutes,
     ...productCategoryRoutes,

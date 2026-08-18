@@ -8,11 +8,18 @@ import { SITE_URL } from "@/lib/site";
 // Consumers embed the result via <script type="application/ld+json">.
 // ─────────────────────────────────────────────────────────────
 
+export interface ToolFaq {
+  q: string;
+  a: string;
+}
+
 export function buildToolJsonLd(opts: {
   name: string;
   description: string;
   path: string; // canonical path เช่น "/tools/xxx"
   breadcrumbLabel: string;
+  /** FAQ ที่แสดงจริงบนหน้า (visible content เท่านั้น — ห้ามใส่ FAQ ที่ไม่ได้ render) */
+  faqs?: ToolFaq[];
 }): object {
   const url = `${SITE_URL}${opts.path}`;
 
@@ -48,6 +55,18 @@ export function buildToolJsonLd(opts: {
       offers: { "@type": "Offer", price: "0", priceCurrency: "THB" },
     },
   ];
+
+  if (opts.faqs && opts.faqs.length > 0) {
+    graph.push({
+      "@type": "FAQPage",
+      "@id": `${url}#faq`,
+      mainEntity: opts.faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    });
+  }
 
   return { "@context": "https://schema.org", "@graph": graph };
 }

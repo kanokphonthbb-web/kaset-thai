@@ -78,3 +78,106 @@ model Product {
   @@index([category])
   @@index([status])
 }
+
+// ─────────────────────────────────────────────────────────────
+// NABC Agricultural Data Engine — cache tables for prices / production / livestock
+// จาก NABC API (https://api.nabc.oae.go.th) ปัจจุบัน API ยังเข้าถึงไม่ได้ (DNS ไม่ resolve)
+// ดู docs/api-notes/NABC_API_NOTES.md — ห้าม fabricate ข้อมูลราคา, ตารางเหล่านี้จะว่างจนกว่าจะ sync ได้จริง
+// ─────────────────────────────────────────────────────────────
+
+model AgriProduct {
+  id             String    @id @default(cuid())
+  sourceProductId String   @unique
+  source         String    @default("nabc")
+  nameTh         String
+  category       String
+  unit           String?
+  slug           String?   @unique
+  active         Boolean   @default(true)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  priceSnapshots AgriPriceSnapshot[]
+
+  @@index([category])
+}
+
+model AgriMarket {
+  id             String   @id @default(cuid())
+  sourceMarketId String   @unique
+  name           String
+  province       String?
+  marketType     String?
+  createdAt      DateTime @default(now())
+
+  priceSnapshots AgriPriceSnapshot[]
+}
+
+model AgriPriceSnapshot {
+  id         String    @id @default(cuid())
+  productId  String
+  marketId   String?
+  priceType  String // "farm-gate" | "wholesale" | "retail"
+  priceMin   Float?
+  priceMax   Float?
+  priceAvg   Float?
+  unit       String?
+  sourceDate DateTime
+  fetchedAt  DateTime
+  source     String    @default("nabc")
+
+  product AgriProduct @relation(fields: [productId], references: [id])
+  market  AgriMarket? @relation(fields: [marketId], references: [id])
+
+  @@unique([productId, marketId, priceType, sourceDate])
+  @@index([productId, sourceDate])
+}
+
+model CropProduction {
+  id                String    @id @default(cuid())
+  cropSourceId      String
+  cropName          String
+  year              Int
+  provinceId        String
+  provinceName      String
+  plantedAreaRai    Float?
+  harvestedAreaRai  Float?
+  productionTon     Float?
+  yieldPerRaiKg     Float?
+  source            String    @default("nabc")
+  sourceDate        DateTime?
+  fetchedAt         DateTime
+
+  @@unique([cropSourceId, year, provinceId])
+  @@index([cropName, year])
+}
+
+model LivestockCensus {
+  id            String    @id @default(cuid())
+  year          Int
+  provinceId    String
+  provinceName  String
+  districtName  String?
+  livestockType String
+  farmerCount   Int?
+  animalCount   Int?
+  source        String    @default("nabc")
+  sourceDate    DateTime?
+  fetchedAt     DateTime
+
+  @@unique([year, provinceId, districtName, livestockType])
+  @@index([livestockType, year])
+}
+
+model DataSyncRun {
+  id            String    @id @default(cuid())
+  source        String
+  endpoint      String
+  startedAt     DateTime
+  completedAt   DateTime?
+  status        String // "running" | "success" | "error"
+  rowsReceived  Int       @default(0)
+  rowsInserted  Int       @default(0)
+  rowsUpdated   Int       @default(0)
+  error         String?
+}

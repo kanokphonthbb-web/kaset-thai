@@ -1,0 +1,31 @@
+{
+  "_note": "FIXTURE — synthetic, not real prices. Used for validator unit tests only.",
+  "rows": [
+    {
+      "product_id": "rice-jasmine-01",
+      "product_name": "ข้าวหอมมะลิ",
+      "category": "ข้าว",
+      "market_id": "market-bangkok-01",
+      "market_name": "ตลาดกลางกรุงเทพ",
+      "province": "กรุงเทพมหานคร",
+      "market_type": "wholesale",
+      "price_type": "wholesale",
+      "price_min": 14.5,
+      "price_max": 16.2,
+      "price_avg": 15.35,
+      "unit": "บาท/กก.",
+      "source_date": "2026-08-10T00:00:00.000Z"
+    },
+    {
+      "product_id": "durian-monthong-01",
+      "product_name": "ทุเรียนหมอนทอง",
+      "category": "ผลไม้",
+      "price_type": "farm-gate",
+      "price_min": 80,
+      "price_max": 110,
+      "price_avg": 95,
+      "unit": "บาท/กก.",
+      "source_date": "2026-08-11T00:00:00.000Z"
+    }
+  ]
+}

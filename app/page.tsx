@@ -15,6 +15,18 @@ import { REDIRECTED_ARTICLE_SLUGS } from "@/lib/articleSeoRules.mjs";
 // ISR: หน้าแรก static แต่ทยอยดึงบทความ CMS ล่าสุดทุก 5 นาที
 export const revalidate = 300;
 
+// หน้าแรกแสดงเครื่องมือชุดคัดสรร 8 ตัว (เดิม+ใหม่) — ทั้งหมดดูได้ที่ /tools
+const FEATURED_TOOL_HREFS = [
+  "/tools/plant-cost",
+  "/tools/animal-cost",
+  "/tools/calendar",
+  "/tools/farm-planner",
+  "/tools/land-area-converter",
+  "/tools/fertilizer-calculator",
+  "/tools/farm-income-calculator",
+  "/tools/rain-window-planner",
+];
+
 async function getLatestCmsPosts() {
   try {
     return await prisma.article.findMany({
@@ -87,6 +99,55 @@ export default async function HomePage() {
       <main>
         <Hero articleCount={articleCount} />
 
+        {/* Daily farm utility — อากาศ / ราคา / แดชบอร์ด (mist band before the white categories canvas) */}
+        <section id="daily" className="scroll-mt-24 bg-mist py-20">
+          <div className="container-x">
+            <SectionHeader
+              eyebrow="ใช้ได้ทุกวัน"
+              title="วางแผนงานฟาร์มวันนี้"
+              desc="เช็กอากาศเพื่อการเกษตร ติดตามราคา และเปิดแดชบอร์ดฟาร์มของคุณ ก่อนเริ่มงานทุกเช้า"
+            />
+            <div className="mt-12 grid gap-6 sm:grid-cols-3">
+              <div className="rounded-2xl bg-paper p-6">
+                <span className="text-3xl" aria-hidden>
+                  🌤️
+                </span>
+                <h3 className="mt-4 font-display text-lg font-bold text-ink">อากาศเพื่อการเกษตร</h3>
+                <p className="mt-2 text-sm text-stone">
+                  พยากรณ์รายชั่วโมงและราย 7 วัน จากกรมอุตุนิยมวิทยา พร้อมช่วงฝนน้อยสำหรับวางแผนงาน
+                </p>
+                <Link href="/weather" className="btn-secondary mt-4">
+                  เช็กอากาศจังหวัดคุณ →
+                </Link>
+              </div>
+              <div className="rounded-2xl bg-paper p-6">
+                <span className="text-3xl" aria-hidden>
+                  📊
+                </span>
+                <h3 className="mt-4 font-display text-lg font-bold text-ink">ราคาสินค้าเกษตร</h3>
+                <p className="mt-2 text-sm text-stone">
+                  ระบบติดตามราคาจากแหล่งทางการ แยกประเภทราคาชัดเจน พร้อมเครื่องมือคำนวณรายได้ต่อ
+                </p>
+                <Link href="/prices" className="btn-secondary mt-4">
+                  ดูหน้าราคา →
+                </Link>
+              </div>
+              <div className="rounded-2xl bg-paper p-6">
+                <span className="text-3xl" aria-hidden>
+                  🧑‍🌾
+                </span>
+                <h3 className="mt-4 font-display text-lg font-bold text-ink">แดชบอร์ดเกษตรกร</h3>
+                <p className="mt-2 text-sm text-stone">
+                  ตั้งค่าจังหวัดและพืชครั้งเดียว ดูอากาศ ปฏิทิน และเครื่องมือที่ใช้บ่อยในหน้าเดียว
+                </p>
+                <Link href="/farm-dashboard" className="btn-secondary mt-4">
+                  เปิดแดชบอร์ด →
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Categories — white canvas */}
         <section id="categories" className="scroll-mt-24 bg-paper py-20">
           <div className="container-x">
@@ -139,9 +200,15 @@ export default async function HomePage() {
               desc="ไม่ใช่แค่อ่าน แต่ช่วยคิดต้นทุนและวางแผนก่อนลงมือทำจริง"
             />
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {TOOLS.map((tool) => (
-                <ToolCard key={tool.title} tool={tool} />
-              ))}
+              {FEATURED_TOOL_HREFS.map((href) => {
+                const tool = TOOLS.find((t) => t.href === href);
+                return tool ? <ToolCard key={tool.title} tool={tool} /> : null;
+              })}
+            </div>
+            <div className="mt-10 text-center">
+              <Link href="/tools" className="btn-secondary">
+                ดูเครื่องมือทั้งหมด →
+              </Link>
             </div>
           </div>
         </section>

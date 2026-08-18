@@ -1,0 +1,24 @@
+{
+  "_note": "FIXTURE — synthetic, not real census data. Used for validator unit tests only.",
+  "rows": [
+    {
+      "year": 2026,
+      "province_id": "th-40",
+      "province_name": "ขอนแก่น",
+      "district_name": "เมืองขอนแก่น",
+      "livestock_type": "โคเนื้อ",
+      "farmer_count": 1200,
+      "animal_count": 8500,
+      "source_date": "2026-05-01T00:00:00.000Z"
+    },
+    {
+      "year": 2026,
+      "province_id": "th-50",
+      "province_name": "เชียงใหม่",
+      "livestock_type": "สุกร",
+      "farmer_count": -10,
+      "animal_count": 4000,
+      "source_date": "2026-05-01T00:00:00.000Z"
+    }
+  ]
+}
