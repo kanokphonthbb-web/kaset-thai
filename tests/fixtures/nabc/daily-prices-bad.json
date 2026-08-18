@@ -1,64 +1,41 @@
 {
-  "_note": "FIXTURE — synthetic, not real prices. Deliberately invalid rows for quarantine tests.",
+  "_note": "FIXTURE — synthetic invalid rows for quarantine tests. Real schema of agriapi.nabc.go.th.",
   "rows": [
     {
       "_case": "negative price",
-      "product_id": "rice-jasmine-01",
-      "product_name": "ข้าวหอมมะลิ",
-      "category": "ข้าว",
-      "price_type": "wholesale",
-      "price_min": -5,
-      "price_max": 16.2,
-      "price_avg": 10,
-      "unit": "บาท/กก.",
-      "source_date": "2026-08-10T00:00:00.000Z"
-    },
-    {
-      "_case": "min greater than max",
-      "product_id": "durian-monthong-01",
-      "product_name": "ทุเรียนหมอนทอง",
-      "category": "ผลไม้",
-      "price_type": "farm-gate",
-      "price_min": 120,
-      "price_max": 90,
-      "price_avg": 100,
-      "unit": "บาท/กก.",
-      "source_date": "2026-08-11T00:00:00.000Z"
-    },
-    {
-      "_case": "missing source_date",
-      "product_id": "corn-01",
-      "product_name": "ข้าวโพดเลี้ยงสัตว์",
-      "category": "พืชไร่",
-      "price_type": "farm-gate",
-      "price_min": 8,
-      "price_max": 10,
-      "price_avg": 9,
+      "data_date": "2026-08-10",
+      "product_category": "สุกร",
+      "product_name": "สุกรขุน",
+      "day_price": -10,
       "unit": "บาท/กก."
     },
     {
-      "_case": "future source_date",
-      "product_id": "corn-01",
-      "product_name": "ข้าวโพดเลี้ยงสัตว์",
-      "category": "พืชไร่",
-      "price_type": "farm-gate",
-      "price_min": 8,
-      "price_max": 10,
-      "price_avg": 9,
-      "unit": "บาท/กก.",
-      "source_date": "2099-01-01T00:00:00.000Z"
+      "_case": "zero price",
+      "data_date": "2026-08-10",
+      "product_category": "สุกร",
+      "product_name": "สุกรขุน",
+      "day_price": 0,
+      "unit": "บาท/กก."
     },
     {
-      "_case": "empty product_id",
-      "product_id": "",
-      "product_name": "ไม่ทราบสินค้า",
-      "category": "อื่นๆ",
-      "price_type": "farm-gate",
-      "price_min": 5,
-      "price_max": 8,
-      "price_avg": 6.5,
-      "unit": "บาท/กก.",
-      "source_date": "2026-08-10T00:00:00.000Z"
+      "_case": "missing data_date",
+      "product_category": "ไก่",
+      "product_name": "ไก่รุ่นพันธุ์เนื้อ",
+      "day_price": 45
+    },
+    {
+      "_case": "future data_date",
+      "data_date": "2099-01-01",
+      "product_category": "ไก่",
+      "product_name": "ไก่รุ่นพันธุ์เนื้อ",
+      "day_price": 45
+    },
+    {
+      "_case": "empty product_name",
+      "data_date": "2026-08-10",
+      "product_category": "ไข่ไก่",
+      "product_name": "",
+      "day_price": 4
     }
   ]
 }

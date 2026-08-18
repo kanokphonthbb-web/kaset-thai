@@ -33,9 +33,10 @@ export async function getLatestPrices(limit = 20): Promise<LatestPriceRow[]> {
     const products = await prisma.agriProduct.findMany({
       where: { active: true },
       include: {
+        // ดึงหลาย snapshot ล่าสุดมา แล้วรวมเฉพาะของวันล่าสุด (สินค้าเดียวมีหลายตลาด/วัน)
         priceSnapshots: {
           orderBy: { sourceDate: "desc" },
-          take: 1,
+          take: 30,
         },
       },
       take: limit,
@@ -44,20 +45,31 @@ export async function getLatestPrices(limit = 20): Promise<LatestPriceRow[]> {
     return products
       .filter((p) => p.priceSnapshots.length > 0)
       .map((p) => {
-        const snap = p.priceSnapshots[0];
+        const latestDate = p.priceSnapshots[0].sourceDate;
+        const latest = p.priceSnapshots.filter(
+          (s) => s.sourceDate.getTime() === latestDate.getTime(),
+        );
+        // รวมราคาข้ามตลาดของวันล่าสุด: min/max = ช่วงราคาระหว่างตลาด, avg = ค่าเฉลี่ย
+        const prices = latest
+          .map((s) => s.priceAvg)
+          .filter((v): v is number => v != null && Number.isFinite(v));
+        const min = prices.length ? Math.min(...prices) : null;
+        const max = prices.length ? Math.max(...prices) : null;
+        const avg = prices.length ? prices.reduce((a, b) => a + b, 0) / prices.length : null;
         return {
           productId: p.id,
           productSlug: p.slug,
           productName: p.nameTh,
           category: p.category,
-          unit: p.unit,
-          priceType: snap.priceType,
-          priceMin: snap.priceMin,
-          priceMax: snap.priceMax,
-          priceAvg: snap.priceAvg,
-          sourceDate: snap.sourceDate,
+          unit: p.unit ?? latest[0].unit,
+          priceType: latest[0].priceType,
+          priceMin: prices.length > 1 ? min : null,
+          priceMax: prices.length > 1 ? max : null,
+          priceAvg: avg,
+          sourceDate: latestDate,
         };
-      });
+      })
+      .sort((a, b) => b.sourceDate.getTime() - a.sourceDate.getTime());
   } catch {
     return [];
   }

@@ -11,20 +11,18 @@ import {
   normalizeLivestockCensus,
 } from "../lib/agri-data/schema";
 
+// รูปจริงจาก agriapi.nabc.go.th (verified 2026-08-18) — หนึ่งแถว = ราคาหนึ่งสินค้า ณ หนึ่งตลาด
 const GOOD_PRICE_ROW = {
-  product_id: "rice-jasmine-01",
-  product_name: "ข้าวหอมมะลิ",
-  category: "ข้าว",
-  market_id: "market-bangkok-01",
-  market_name: "ตลาดกลางกรุงเทพ",
-  province: "กรุงเทพมหานคร",
-  market_type: "wholesale",
-  price_type: "wholesale",
-  price_min: 14.5,
-  price_max: 16.2,
-  price_avg: 15.35,
-  unit: "บาท/กก.",
-  source_date: "2026-08-10T00:00:00.000Z",
+  data_date: "2026-08-10",
+  day: "10",
+  month: "8",
+  year_th: "2569",
+  product_category: "ข้าวหอมมะลิ",
+  product_name: "ข้าวเปลือกเจ้าหอมมะลิ 105",
+  market_name: "ท่าข้าว ธ.ก.ส.",
+  province: "ขอนแก่น",
+  day_price: 18600,
+  unit: "บาท/ตัน",
 };
 
 test("validateDailyPrice accepts a well-formed row", () => {
@@ -32,35 +30,33 @@ test("validateDailyPrice accepts a well-formed row", () => {
   assert.equal(result.ok, true);
 });
 
-test("validateDailyPrice quarantines negative prices", () => {
-  const result = validateDailyPrice({ ...GOOD_PRICE_ROW, price_min: -5 });
-  assert.equal(result.ok, false);
-  if (!result.ok) assert.ok(result.errors.some((e) => e.includes("negative")));
+test("validateDailyPrice quarantines non-positive prices", () => {
+  const neg = validateDailyPrice({ ...GOOD_PRICE_ROW, day_price: -5 });
+  assert.equal(neg.ok, false);
+  if (!neg.ok) assert.ok(neg.errors.some((e) => e.includes("not positive")));
+  const zero = validateDailyPrice({ ...GOOD_PRICE_ROW, day_price: 0 });
+  assert.equal(zero.ok, false);
 });
 
-test("validateDailyPrice quarantines priceMin > priceMax", () => {
-  const result = validateDailyPrice({ ...GOOD_PRICE_ROW, price_min: 120, price_max: 90 });
-  assert.equal(result.ok, false);
-  if (!result.ok) assert.ok(result.errors.some((e) => e.includes("price_min is greater than price_max")));
-});
-
-test("validateDailyPrice quarantines missing sourceDate", () => {
-  const { source_date, ...rest } = GOOD_PRICE_ROW;
+test("validateDailyPrice quarantines missing data_date", () => {
+  const { data_date, ...rest } = GOOD_PRICE_ROW;
   const result = validateDailyPrice(rest);
   assert.equal(result.ok, false);
-  if (!result.ok) assert.ok(result.errors.some((e) => e.includes("source_date")));
+  if (!result.ok) assert.ok(result.errors.some((e) => e.includes("data_date")));
 });
 
-test("validateDailyPrice quarantines a future sourceDate", () => {
-  const result = validateDailyPrice({ ...GOOD_PRICE_ROW, source_date: "2099-01-01T00:00:00.000Z" });
+test("validateDailyPrice quarantines a future data_date", () => {
+  const result = validateDailyPrice({ ...GOOD_PRICE_ROW, data_date: "2099-01-01" });
   assert.equal(result.ok, false);
   if (!result.ok) assert.ok(result.errors.some((e) => e.includes("future")));
 });
 
-test("validateDailyPrice quarantines an unknown/empty product id", () => {
-  const result = validateDailyPrice({ ...GOOD_PRICE_ROW, product_id: "" });
-  assert.equal(result.ok, false);
-  if (!result.ok) assert.ok(result.errors.some((e) => e.includes("product_id")));
+test("validateDailyPrice quarantines an empty product name/category", () => {
+  const noName = validateDailyPrice({ ...GOOD_PRICE_ROW, product_name: "" });
+  assert.equal(noName.ok, false);
+  if (!noName.ok) assert.ok(noName.errors.some((e) => e.includes("product_name")));
+  const noCat = validateDailyPrice({ ...GOOD_PRICE_ROW, product_category: "" });
+  assert.equal(noCat.ok, false);
 });
 
 test("validateDailyPrice rejects non-object rows", () => {
@@ -71,7 +67,7 @@ test("validateDailyPrice rejects non-object rows", () => {
 test("validateDailyPriceBatch partitions valid vs quarantined rows", () => {
   const { valid, quarantined } = validateDailyPriceBatch([
     GOOD_PRICE_ROW,
-    { ...GOOD_PRICE_ROW, price_min: -1 },
+    { ...GOOD_PRICE_ROW, day_price: -1 },
   ]);
   assert.equal(valid.length, 1);
   assert.equal(quarantined.length, 1);
@@ -81,29 +77,28 @@ test("normalizeDailyPrice maps raw payload to product/market/snapshot shape", ()
   const { product, market, snapshot } = normalizeDailyPrice(GOOD_PRICE_ROW);
 
   assert.deepEqual(product, {
-    sourceProductId: "rice-jasmine-01",
-    nameTh: "ข้าวหอมมะลิ",
-    category: "ข้าว",
-    unit: "บาท/กก.",
+    sourceProductId: "ข้าวเปลือกเจ้าหอมมะลิ 105",
+    nameTh: "ข้าวเปลือกเจ้าหอมมะลิ 105",
+    category: "ข้าวหอมมะลิ",
+    unit: "บาท/ตัน",
   });
 
   assert.deepEqual(market, {
-    sourceMarketId: "market-bangkok-01",
-    name: "ตลาดกลางกรุงเทพ",
-    province: "กรุงเทพมหานคร",
-    marketType: "wholesale",
+    sourceMarketId: "ท่าข้าว ธ.ก.ส.|ขอนแก่น",
+    name: "ท่าข้าว ธ.ก.ส.",
+    province: "ขอนแก่น",
+    marketType: null,
   });
 
-  assert.equal(snapshot.priceType, "wholesale");
-  assert.equal(snapshot.priceMin, 14.5);
-  assert.equal(snapshot.priceMax, 16.2);
-  assert.equal(snapshot.priceAvg, 15.35);
+  assert.equal(snapshot.priceType, "market");
+  assert.equal(snapshot.priceMin, null);
+  assert.equal(snapshot.priceMax, null);
+  assert.equal(snapshot.priceAvg, 18600);
   assert.ok(snapshot.sourceDate instanceof Date);
-  assert.equal(snapshot.sourceDate.toISOString(), "2026-08-10T00:00:00.000Z");
 });
 
-test("normalizeDailyPrice returns null market when no market_id present", () => {
-  const { market_id, market_name, ...rest } = GOOD_PRICE_ROW;
+test("normalizeDailyPrice returns null market when no market_name present", () => {
+  const { market_name, ...rest } = GOOD_PRICE_ROW;
   const { market } = normalizeDailyPrice(rest as typeof GOOD_PRICE_ROW);
   assert.equal(market, null);
 });

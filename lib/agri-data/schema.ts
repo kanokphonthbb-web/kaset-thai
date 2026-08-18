@@ -1,24 +1,23 @@
 // ─────────────────────────────────────────────────────────────
-// โครงจาก spec — ต้องปรับตาม response จริงเมื่อ API เข้าถึงได้
+// Schema ตาม response จริงของ NABC Agricultural Data Service API (agriapi.nabc.go.th)
+// ตรวจกับ API จริง 2026-08-18 — ดู docs/api-notes/NABC_API_NOTES.md
 // Zod ยังไม่ได้ติดตั้งในโปรเจกต์นี้ จึงเขียน validator มือ (typeof checks) ตามสไตล์เดิมของโปรเจกต์
-// เมื่อ NABC API เข้าถึงได้จริง: ต้องตรวจ response จริงแล้วปรับ type/validator เหล่านี้ทั้งหมด
 // ห้าม fabricate ข้อมูล — validator เหล่านี้กัน (quarantine) แถวที่ผิดปกติ ไม่ throw ทิ้งทั้ง batch
 // ─────────────────────────────────────────────────────────────
 
+// รูปจริงจาก GET /api/daily-prices/date?date=YYYY-MM-DD
+// หนึ่งแถว = ราคาหนึ่งสินค้า(เกรด) ณ หนึ่งตลาด/จังหวัด ในหนึ่งวัน — มีราคาเดียว (day_price)
 export type DailyPriceRaw = {
-  product_id: string;
-  product_name: string;
-  category?: string;
-  market_id?: string;
-  market_name?: string;
-  province?: string;
-  market_type?: string;
-  price_type: string; // "farm-gate" | "wholesale" | "retail"
-  price_min?: number | null;
-  price_max?: number | null;
-  price_avg?: number | null;
-  unit?: string;
-  source_date: string; // ISO date string
+  data_date: string; // "2026-08-17"
+  day?: string;
+  month?: string;
+  year_th?: string; // พ.ศ.
+  product_category: string; // เช่น "สุกร"
+  product_name: string; // เช่น "สุกรขุนพันธุ์ผสม นน. 100 กก. ขึ้นไป"
+  market_name?: string | null;
+  province?: string | null;
+  day_price: number;
+  unit?: string | null; // เช่น "บาท/กก."
 };
 
 export type CropProductionRaw = {
@@ -82,29 +81,21 @@ export function validateDailyPrice(row: unknown): ValidationResult<DailyPriceRaw
   }
   const r = row as Record<string, unknown>;
 
-  if (!isNonEmptyString(r.product_id)) errors.push("missing/empty product_id");
+  if (!isNonEmptyString(r.product_category)) errors.push("missing/empty product_category");
   if (!isNonEmptyString(r.product_name)) errors.push("missing/empty product_name");
-  if (!isNonEmptyString(r.price_type)) errors.push("missing/empty price_type");
-  if (!isValidIsoDateString(r.source_date)) errors.push("missing/invalid source_date");
-  if (!isFiniteNumberOrNil(r.price_min)) errors.push("price_min is not a valid number");
-  if (!isFiniteNumberOrNil(r.price_max)) errors.push("price_max is not a valid number");
-  if (!isFiniteNumberOrNil(r.price_avg)) errors.push("price_avg is not a valid number");
+  if (!isValidIsoDateString(r.data_date)) errors.push("missing/invalid data_date");
 
-  // Data-QA: reject negative prices
-  for (const key of ["price_min", "price_max", "price_avg"] as const) {
-    const v = r[key];
-    if (typeof v === "number" && v < 0) errors.push(`${key} is negative`);
+  // Data-QA: ราคาต้องเป็นตัวเลขบวก (ราคา 0/ติดลบ = ข้อมูลเสีย ห้ามแสดง)
+  if (typeof r.day_price !== "number" || !Number.isFinite(r.day_price)) {
+    errors.push("day_price is not a valid number");
+  } else if (r.day_price <= 0) {
+    errors.push("day_price is not positive");
   }
 
-  // Data-QA: priceMin > priceMax
-  if (typeof r.price_min === "number" && typeof r.price_max === "number" && r.price_min > r.price_max) {
-    errors.push("price_min is greater than price_max");
-  }
-
-  // Data-QA: future sourceDate (> now + 1 day)
-  if (isValidIsoDateString(r.source_date)) {
-    const t = Date.parse(r.source_date as string);
-    if (t > Date.now() + ONE_DAY_MS) errors.push("source_date is in the future");
+  // Data-QA: future data_date (> now + 1 day)
+  if (isValidIsoDateString(r.data_date)) {
+    const t = Date.parse(r.data_date as string);
+    if (t > Date.now() + ONE_DAY_MS) errors.push("data_date is in the future");
   }
 
   if (errors.length > 0) return { ok: false, errors };
@@ -123,29 +114,34 @@ export function validateDailyPriceBatch(rows: unknown[]): BatchValidationResult<
 }
 
 // normalize: DailyPriceRaw -> DB model shapes (AgriProduct / AgriMarket / AgriPriceSnapshot)
+// NABC ไม่มี id ตัวเลขให้ — ใช้ natural key: product_name เป็น sourceProductId,
+// "market_name|province" เป็น sourceMarketId (คงที่ข้ามวัน ทำให้ upsert idempotent)
 export function normalizeDailyPrice(raw: DailyPriceRaw) {
+  const marketName = raw.market_name?.trim() || null;
+  const province = raw.province?.trim() || null;
   return {
     product: {
-      sourceProductId: raw.product_id,
-      nameTh: raw.product_name,
-      category: raw.category || "อื่นๆ",
+      sourceProductId: raw.product_name.trim(),
+      nameTh: raw.product_name.trim(),
+      category: raw.product_category.trim() || "อื่นๆ",
       unit: raw.unit ?? null,
     },
-    market: raw.market_id
+    market: marketName
       ? {
-          sourceMarketId: raw.market_id,
-          name: raw.market_name || raw.market_id,
-          province: raw.province ?? null,
-          marketType: raw.market_type ?? null,
+          sourceMarketId: `${marketName}|${province ?? ""}`,
+          name: marketName,
+          province,
+          marketType: null as string | null,
         }
       : null,
     snapshot: {
-      priceType: raw.price_type,
-      priceMin: raw.price_min ?? null,
-      priceMax: raw.price_max ?? null,
-      priceAvg: raw.price_avg ?? null,
+      // NABC daily prices เป็นราคาตลาดรายวันค่าเดียว — เก็บใน priceAvg, ไม่มี min/max
+      priceType: "market",
+      priceMin: null as number | null,
+      priceMax: null as number | null,
+      priceAvg: raw.day_price,
       unit: raw.unit ?? null,
-      sourceDate: new Date(raw.source_date),
+      sourceDate: new Date(raw.data_date),
     },
   };
 }

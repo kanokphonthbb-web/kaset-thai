@@ -37,11 +37,11 @@ test("daily-prices-bad.json fixture rows quarantine for the expected reasons", (
   const rows = fixture.rows as Array<Record<string, unknown>>;
   const byCase = new Map(quarantined.map((q, i) => [rows[i]._case as string, q.errors]));
 
-  assert.ok(byCase.get("negative price")?.some((e) => e.includes("negative")));
-  assert.ok(byCase.get("min greater than max")?.some((e) => e.includes("price_min is greater than price_max")));
-  assert.ok(byCase.get("missing source_date")?.some((e) => e.includes("source_date")));
-  assert.ok(byCase.get("future source_date")?.some((e) => e.includes("future")));
-  assert.ok(byCase.get("empty product_id")?.some((e) => e.includes("product_id")));
+  assert.ok(byCase.get("negative price")?.some((e) => e.includes("not positive")));
+  assert.ok(byCase.get("zero price")?.some((e) => e.includes("not positive")));
+  assert.ok(byCase.get("missing data_date")?.some((e) => e.includes("data_date")));
+  assert.ok(byCase.get("future data_date")?.some((e) => e.includes("future")));
+  assert.ok(byCase.get("empty product_name")?.some((e) => e.includes("product_name")));
 });
 
 test("crop-production.json fixture: valid row passes, negative-area row is quarantined", () => {

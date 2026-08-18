@@ -15,6 +15,7 @@ const DESCRIPTION =
 export const metadata = pageMeta({ title: TITLE, description: DESCRIPTION, path: "/prices" });
 
 const PRICE_TYPE_LABEL: Record<string, string> = {
+  market: "ราคาตลาดรายวัน",
   "farm-gate": "ราคาหน้าฟาร์ม",
   wholesale: "ราคาขายส่ง",
   retail: "ราคาขายปลีก",
@@ -123,7 +124,7 @@ export default async function PricesPage() {
                       </p>
                       {row.priceMin != null && row.priceMax != null ? (
                         <p className="mt-1 text-xs text-stone">
-                          ช่วง {baht(row.priceMin)} – {baht(row.priceMax)}
+                          ช่วงราคาระหว่างตลาด {baht(row.priceMin)} – {baht(row.priceMax)}
                         </p>
                       ) : null}
                       <p className="mt-2 text-xs text-stone">ข้อมูลวันที่ {dateTh.format(row.sourceDate)}</p>
@@ -165,12 +166,12 @@ export default async function PricesPage() {
             </div>
 
             <p className="mt-8 text-xs text-stone">
-              แหล่งข้อมูล: ฐานข้อมูลราคาสินค้าเกษตรทางการ (ดู{" "}
+              แหล่งข้อมูล: NABC Agricultural Data Service — สำนักงานเศรษฐกิจการเกษตร (ดู{" "}
               <Link href="/data-sources" className="underline">
                 แหล่งข้อมูลของเรา
               </Link>
               ) · ราคาเป็นข้อมูลรายวันตามแหล่งข้อมูล ไม่ใช่ราคาซื้อขายแบบเรียลไทม์ ·
-              ราคาแต่ละประเภท (หน้าฟาร์ม/ขายส่ง/ขายปลีก) แสดงแยกกันเสมอ
+              ราคาที่แสดงเป็นราคาตลาดรายวัน — ช่วงราคาสะท้อนความต่างระหว่างตลาด/จังหวัด
             </p>
           </div>
         </section>
