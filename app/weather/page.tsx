@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import SectionHeader from "@/components/SectionHeader";
 import { pageMeta } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
-import { provincesByRegion } from "@/lib/weather/locations";
+import ProvinceSearch from "@/components/ProvinceSearch";
 
 const TITLE = "พยากรณ์อากาศเพื่อการเกษตร เช็กฝน อุณหภูมิ ลม รายจังหวัด";
 const DESCRIPTION =
@@ -94,7 +94,6 @@ export default function WeatherHubPage() {
     ],
   };
 
-  const regions = provincesByRegion();
 
   return (
     <>
@@ -169,21 +168,8 @@ export default function WeatherHubPage() {
               title="พยากรณ์อากาศรายจังหวัด"
               desc="ครบทั้ง 77 จังหวัด แบ่งตามภูมิภาค"
             />
-            <div className="mt-10 space-y-10">
-              {regions.map((r) => (
-                <div key={r.region}>
-                  <h2 className="font-display text-xl font-bold leading-snug text-ink">
-                    {r.labelTh}
-                  </h2>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {r.provinces.map((p) => (
-                      <Link key={p.slug} href={`/weather/${p.slug}`} className="tag-chip hover:bg-paper">
-                        {p.nameTh}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              ))}
+            <div className="mt-10">
+              <ProvinceSearch />
             </div>
           </div>
         </section>

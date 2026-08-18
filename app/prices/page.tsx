@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import { pageMeta } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 import { getLatestPrices, getPriceDataStatus } from "@/lib/agri-data/service";
-import { baht } from "@/lib/format";
+import PriceList from "@/components/PriceList";
 
 export const revalidate = 300;
 
@@ -29,7 +29,7 @@ const dateTh = new Intl.DateTimeFormat("th-TH", {
 });
 
 export default async function PricesPage() {
-  const [status, latest] = await Promise.all([getPriceDataStatus(), getLatestPrices(30)]);
+  const [status, latest] = await Promise.all([getPriceDataStatus(), getLatestPrices(60)]);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -111,25 +111,20 @@ export default async function PricesPage() {
                   </strong>{" "}
                   · {status.productCount} รายการสินค้า
                 </p>
-                <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {latest.map((row) => (
-                    <div key={`${row.productId}-${row.priceType}`} className="rounded-2xl bg-mist p-6">
-                      <h2 className="font-display text-lg font-bold text-ink">{row.productName}</h2>
-                      <p className="mt-1 text-xs text-stone">
-                        {PRICE_TYPE_LABEL[row.priceType] ?? row.priceType}
-                      </p>
-                      <p className="mt-3 font-display text-2xl font-bold text-ink">
-                        {row.priceAvg != null ? baht(row.priceAvg) : "-"}
-                        {row.unit ? <span className="text-sm font-normal text-stone"> /{row.unit}</span> : null}
-                      </p>
-                      {row.priceMin != null && row.priceMax != null ? (
-                        <p className="mt-1 text-xs text-stone">
-                          ช่วงราคาระหว่างตลาด {baht(row.priceMin)} – {baht(row.priceMax)}
-                        </p>
-                      ) : null}
-                      <p className="mt-2 text-xs text-stone">ข้อมูลวันที่ {dateTh.format(row.sourceDate)}</p>
-                    </div>
-                  ))}
+                <div className="mt-6">
+                  <PriceList
+                    rows={latest.map((row) => ({
+                      key: `${row.productId}-${row.priceType}`,
+                      productName: row.productName,
+                      category: row.category,
+                      priceTypeLabel: PRICE_TYPE_LABEL[row.priceType] ?? row.priceType,
+                      priceAvg: row.priceAvg,
+                      priceMin: row.priceMin,
+                      priceMax: row.priceMax,
+                      unit: row.unit,
+                      sourceDateTh: dateTh.format(row.sourceDate),
+                    }))}
+                  />
                 </div>
               </>
             )}
