@@ -11,6 +11,9 @@ import { getAllProducts, isProductIndexable } from "@/lib/products";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import { REDIRECTED_ARTICLE_SLUGS } from "@/lib/articleSeoRules.mjs";
+import HomeWeatherNow from "@/components/HomeWeatherNow";
+import HomePriceBoard, { type HomePriceRow } from "@/components/HomePriceBoard";
+import { getLatestPrices } from "@/lib/agri-data/service";
 
 // ISR: หน้าแรก static แต่ทยอยดึงบทความ CMS ล่าสุดทุก 5 นาที
 export const revalidate = 300;
@@ -87,63 +90,61 @@ async function getFeaturedProducts() {
 }
 
 export default async function HomePage() {
-  const [latest, publishedCount, { featured: featuredProducts, total: productCount }] = await Promise.all([
+  const [latest, publishedCount, { featured: featuredProducts, total: productCount }, allPrices] = await Promise.all([
     getLatestCmsPosts(),
     getPublishedCount(),
     getFeaturedProducts(),
+    getLatestPrices(60),
   ]);
   const articleCount = publishedCount + ARTICLES.length;
+  // สินค้าหลักที่เกษตรกรส่วนใหญ่ติดตาม — เลือกจากชื่อสินค้าจริงในข้อมูล เรียงตามความสนใจ
+  const HEADLINE_KEYWORDS = [
+    "ข้าวเปลือกเจ้าหอมมะลิ",
+    "สุกร",
+    "ไข่ไก่สด",
+    "ไก่รุ่นพันธุ์เนื้อ",
+    "น้ำยางพาราสด",
+    "ผลปาล์มน้ำมัน",
+    "หัวมันสำปะหลังสด คละ",
+    "ข้าวโพดเลี้ยงสัตว์",
+  ];
+  const headlinePrices: HomePriceRow[] = HEADLINE_KEYWORDS.map((kw) =>
+    allPrices.find((r) => r.productName.includes(kw) && r.priceAvg != null),
+  )
+    .filter((r): r is NonNullable<typeof r> => Boolean(r))
+    .map((r) => ({ name: r.productName, priceAvg: r.priceAvg as number, unit: r.unit }));
+  const priceDateTh = allPrices[0]
+    ? new Intl.DateTimeFormat("th-TH", { timeZone: "Asia/Bangkok", day: "numeric", month: "short", year: "numeric" }).format(allPrices[0].sourceDate)
+    : null;
+
   return (
     <>
       <Header />
       <main>
         <Hero articleCount={articleCount} />
 
-        {/* Daily farm utility — อากาศ / ราคา / แดชบอร์ด (mist band before the white categories canvas) */}
+        {/* Daily farm utility — อากาศ+ราคา แสดงค่าจริงทันที (mist band before the white categories canvas) */}
         <section id="daily" className="scroll-mt-24 bg-mist py-20">
           <div className="container-x">
             <SectionHeader
               eyebrow="ใช้ได้ทุกวัน"
               title="วางแผนงานฟาร์มวันนี้"
-              desc="เช็กอากาศเพื่อการเกษตร ติดตามราคา และเปิดแดชบอร์ดฟาร์มของคุณ ก่อนเริ่มงานทุกเช้า"
+              desc="อากาศและราคาวันนี้ เห็นได้ทันทีตรงนี้ — อยากดูละเอียดค่อยกดเข้าไปต่อ"
             />
-            <div className="mt-12 grid gap-6 sm:grid-cols-3">
-              <div className="rounded-2xl bg-paper p-6">
-                <span className="text-3xl" aria-hidden>
-                  🌤️
-                </span>
-                <h3 className="mt-4 font-display text-lg font-bold text-ink">อากาศเพื่อการเกษตร</h3>
-                <p className="mt-2 text-sm text-stone">
-                  พยากรณ์รายชั่วโมงและราย 7 วัน จากกรมอุตุนิยมวิทยา พร้อมช่วงฝนน้อยสำหรับวางแผนงาน
+            <div className="mt-12 grid gap-6 lg:grid-cols-2">
+              <HomeWeatherNow />
+              <HomePriceBoard rows={headlinePrices} sourceDateTh={priceDateTh} />
+            </div>
+            <div className="mt-6 flex flex-col items-start justify-between gap-4 rounded-2xl bg-paper p-6 sm:flex-row sm:items-center">
+              <div>
+                <h3 className="font-display text-lg font-bold text-ink">🧑‍🌾 แดชบอร์ดเกษตรกร</h3>
+                <p className="mt-1 text-sm text-stone">
+                  ตั้งค่าจังหวัดและพืชครั้งเดียว ดูอากาศ ปฏิทิน และเครื่องมือที่ใช้บ่อยครบในหน้าเดียว
                 </p>
-                <Link href="/weather" className="btn-secondary mt-4">
-                  เช็กอากาศจังหวัดคุณ →
-                </Link>
               </div>
-              <div className="rounded-2xl bg-paper p-6">
-                <span className="text-3xl" aria-hidden>
-                  📊
-                </span>
-                <h3 className="mt-4 font-display text-lg font-bold text-ink">ราคาสินค้าเกษตร</h3>
-                <p className="mt-2 text-sm text-stone">
-                  ระบบติดตามราคาจากแหล่งทางการ แยกประเภทราคาชัดเจน พร้อมเครื่องมือคำนวณรายได้ต่อ
-                </p>
-                <Link href="/prices" className="btn-secondary mt-4">
-                  ดูหน้าราคา →
-                </Link>
-              </div>
-              <div className="rounded-2xl bg-paper p-6">
-                <span className="text-3xl" aria-hidden>
-                  🧑‍🌾
-                </span>
-                <h3 className="mt-4 font-display text-lg font-bold text-ink">แดชบอร์ดเกษตรกร</h3>
-                <p className="mt-2 text-sm text-stone">
-                  ตั้งค่าจังหวัดและพืชครั้งเดียว ดูอากาศ ปฏิทิน และเครื่องมือที่ใช้บ่อยในหน้าเดียว
-                </p>
-                <Link href="/farm-dashboard" className="btn-secondary mt-4">
-                  เปิดแดชบอร์ด →
-                </Link>
-              </div>
+              <Link href="/farm-dashboard" className="btn-secondary shrink-0">
+                เปิดแดชบอร์ด →
+              </Link>
             </div>
           </div>
         </section>
