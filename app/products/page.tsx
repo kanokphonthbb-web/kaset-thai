@@ -90,9 +90,8 @@ export default async function ProductsPage({ searchParams }: PageProps) {
 
   // Keep the full catalog on the server. Only the current 24 results become HTML;
   // no 1,000+ product array is serialized into the browser hydration payload.
-  const allProducts = (await getAllProducts()).sort(
+  const allProducts = (await getAllProducts()).filter(isProductIndexable).sort(
     (left, right) =>
-      Number(isProductIndexable(right)) - Number(isProductIndexable(left)) ||
       productEditorialScore(right) - productEditorialScore(left) ||
       productDisplayName(left).localeCompare(productDisplayName(right), "th"),
   );

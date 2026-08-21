@@ -99,7 +99,10 @@ for (const f of files) {
     failed++;
     continue;
   }
-  const existing = await prisma.article.findUnique({ where: { slug: a.slug }, select: { id: true, title: true } });
+  const existing = await prisma.article.findUnique({
+    where: { slug: a.slug },
+    select: { id: true, title: true, publishedAt: true },
+  });
   if (!existing) {
     console.warn(`- ${a.slug}: ไม่พบใน backlog (ข้าม — slug ต้องมาจาก content-map)`);
     skipped++;
@@ -110,6 +113,7 @@ for (const f of files) {
     published++;
     continue;
   }
+  const changedAt = new Date();
   const data = {
     content: a.content,
     format: "html",
@@ -121,7 +125,11 @@ for (const f of files) {
     ...(a.coverImage ? { coverImage: a.coverImage } : {}),
     ...(AS_DRAFT
       ? { status: "draft" }
-      : { status: "published", publishedAt: new Date() }),
+      : {
+          status: "published",
+          publishedAt: existing.publishedAt ?? changedAt,
+          contentUpdatedAt: changedAt,
+        }),
   };
   try {
     await prisma.article.update({ where: { slug: a.slug }, data });

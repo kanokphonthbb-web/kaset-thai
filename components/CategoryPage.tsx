@@ -6,6 +6,7 @@ import ArticleCard from "./ArticleCard";
 import { ARTICLES, CATEGORIES, imageFor } from "@/lib/data";
 import { prisma } from "@/lib/prisma";
 import { REDIRECTED_ARTICLE_SLUGS } from "@/lib/articleSeoRules.mjs";
+import { categoryArchiveHref } from "@/lib/articleDiscovery";
 
 type Props = {
   slug: string;
@@ -138,6 +139,13 @@ export default async function CategoryPage({ slug, icon, title, intro, topics }:
                   </Link>
                 ))}
               </div>
+              {cmsPosts.length > 0 && (
+                <div className="mt-10 text-center">
+                  <Link href={categoryArchiveHref(slug)} className="btn-primary">
+                    ดูบทความทั้งหมดในหมวดนี้ →
+                  </Link>
+                </div>
+              )}
             </div>
           </section>
         )}

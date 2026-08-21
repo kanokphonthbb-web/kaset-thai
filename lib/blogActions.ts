@@ -86,8 +86,10 @@ export async function savePostAction(
 
   const existing = await prisma.article.findUnique({
     where: { id },
-    select: { publishedAt: true, status: true },
+    select: { publishedAt: true, contentUpdatedAt: true, status: true },
   });
+
+  const savedAt = new Date();
 
   await prisma.article.update({
     where: { id },
@@ -108,8 +110,11 @@ export async function savePostAction(
       categoryId: payload.categoryId || null,
       status: payload.publish ? "published" : "draft",
       publishedAt: payload.publish
-        ? (existing?.publishedAt ?? new Date())
+        ? (existing?.publishedAt ?? savedAt)
         : existing?.publishedAt ?? null,
+      contentUpdatedAt: payload.publish
+        ? savedAt
+        : existing?.contentUpdatedAt ?? null,
     },
   });
 

@@ -20,9 +20,10 @@ let ok = 0;
 const failed = [];
 for (const row of plan) {
   if (!row.proposedCoverImage) { failed.push({ slug: row.slug, reason: "no proposed image" }); continue; }
+  const changedAt = new Date().toISOString().replace("Z", "+00:00");
   const res = await db.execute({
-    sql: `UPDATE Article SET coverImage=?, updatedAt=? WHERE slug=?`,
-    args: [row.proposedCoverImage, new Date().toISOString().replace("Z", "+00:00"), row.slug],
+    sql: `UPDATE Article SET coverImage=?, contentUpdatedAt=?, updatedAt=? WHERE slug=?`,
+    args: [row.proposedCoverImage, changedAt, changedAt, row.slug],
   });
   if (res.rowsAffected === 1) ok++;
   else failed.push({ slug: row.slug, reason: `rowsAffected=${res.rowsAffected}` });

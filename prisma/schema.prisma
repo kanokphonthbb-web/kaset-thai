@@ -19,32 +19,33 @@ model ArticleCategory {
 }
 
 model Article {
-  id              String    @id @default(cuid())
-  title           String
-  slug            String    @unique
-  excerpt         String    @default("")
-  content         String    @default("") // compiled HTML (public rendering)
-  blocksJson      String    @default("[]") // block editor source (for re-editing)
-  format          String    @default("blocks") // "blocks" | "html"
-  rawHtml         String    @default("") // ต้นฉบับ HTML เมื่อ format = html
-  articleType     String    @default("howto") // qa | general | howto | deep (ช่วงความยาว)
-  coverImage      String    @default("") // Unsplash photo id หรือ URL
-  seoTitle        String    @default("")
-  metaDescription String    @default("")
-  focusKeyword    String    @default("")
-  faqJson         String    @default("[]") // [{q,a}] -> FAQPage schema + <details>
-  phase           String    @default("") // Phase 1/2/3 (จาก content map)
-  priority        String    @default("") // P1/P2/P3
-  subcategory     String    @default("") // หมวดย่อยจาก content map
-  brief           String    @default("") // JSON brief (angle/mustInclude/sources/links/instruction)
-  categoryId      String?
-  status          String    @default("draft") // draft | published
-  publishedAt     DateTime?
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
+  id               String    @id @default(cuid())
+  title            String
+  slug             String    @unique
+  excerpt          String    @default("")
+  content          String    @default("") // compiled HTML (public rendering)
+  blocksJson       String    @default("[]") // block editor source (for re-editing)
+  format           String    @default("blocks") // "blocks" | "html"
+  rawHtml          String    @default("") // ต้นฉบับ HTML เมื่อ format = html
+  articleType      String    @default("howto") // qa | general | howto | deep (ช่วงความยาว)
+  coverImage       String    @default("") // Unsplash photo id หรือ URL
+  seoTitle         String    @default("")
+  metaDescription  String    @default("")
+  focusKeyword     String    @default("")
+  faqJson          String    @default("[]") // [{q,a}] -> FAQPage schema + <details>
+  phase            String    @default("") // Phase 1/2/3 (จาก content map)
+  priority         String    @default("") // P1/P2/P3
+  subcategory      String    @default("") // หมวดย่อยจาก content map
+  brief            String    @default("") // JSON brief (angle/mustInclude/sources/links/instruction)
+  categoryId       String?
+  status           String    @default("draft") // draft | published
+  publishedAt      DateTime?
+  contentUpdatedAt DateTime? // เวลาที่เนื้อหา/SEO สาธารณะเปลี่ยนจริง (ไม่รวม backfill ข้อมูลระบบ)
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
 
-  articleNo    Int?    @unique // เลขบทความจาก content-map-10000 (source workbook "No.") — join key สำหรับ affiliate-v2 assignment
-  productsJson String  @default("[]") // JSON string[] ของ Product.shopeeId เรียงตาม rank (สูงสุด 4) จาก affiliate-v2 mapping
+  articleNo    Int?   @unique // เลขบทความจาก content-map-10000 (source workbook "No.") — join key สำหรับ affiliate-v2 assignment
+  productsJson String @default("[]") // JSON string[] ของ Product.shopeeId เรียงตาม rank (สูงสุด 4) จาก affiliate-v2 mapping
 
   category ArticleCategory? @relation(fields: [categoryId], references: [id])
 
@@ -86,16 +87,16 @@ model Product {
 // ─────────────────────────────────────────────────────────────
 
 model AgriProduct {
-  id             String    @id @default(cuid())
+  id              String   @id @default(cuid())
   sourceProductId String   @unique
-  source         String    @default("nabc")
-  nameTh         String
-  category       String
-  unit           String?
-  slug           String?   @unique
-  active         Boolean   @default(true)
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
+  source          String   @default("nabc")
+  nameTh          String
+  category        String
+  unit            String?
+  slug            String?  @unique
+  active          Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 
   priceSnapshots AgriPriceSnapshot[]
 
@@ -114,7 +115,7 @@ model AgriMarket {
 }
 
 model AgriPriceSnapshot {
-  id         String    @id @default(cuid())
+  id         String   @id @default(cuid())
   productId  String
   marketId   String?
   priceType  String // "farm-gate" | "wholesale" | "retail"
@@ -124,7 +125,7 @@ model AgriPriceSnapshot {
   unit       String?
   sourceDate DateTime
   fetchedAt  DateTime
-  source     String    @default("nabc")
+  source     String   @default("nabc")
 
   product AgriProduct @relation(fields: [productId], references: [id])
   market  AgriMarket? @relation(fields: [marketId], references: [id])
@@ -134,19 +135,19 @@ model AgriPriceSnapshot {
 }
 
 model CropProduction {
-  id                String    @id @default(cuid())
-  cropSourceId      String
-  cropName          String
-  year              Int
-  provinceId        String
-  provinceName      String
-  plantedAreaRai    Float?
-  harvestedAreaRai  Float?
-  productionTon     Float?
-  yieldPerRaiKg     Float?
-  source            String    @default("nabc")
-  sourceDate        DateTime?
-  fetchedAt         DateTime
+  id               String    @id @default(cuid())
+  cropSourceId     String
+  cropName         String
+  year             Int
+  provinceId       String
+  provinceName     String
+  plantedAreaRai   Float?
+  harvestedAreaRai Float?
+  productionTon    Float?
+  yieldPerRaiKg    Float?
+  source           String    @default("nabc")
+  sourceDate       DateTime?
+  fetchedAt        DateTime
 
   @@unique([cropSourceId, year, provinceId])
   @@index([cropName, year])
@@ -170,14 +171,14 @@ model LivestockCensus {
 }
 
 model DataSyncRun {
-  id            String    @id @default(cuid())
-  source        String
-  endpoint      String
-  startedAt     DateTime
-  completedAt   DateTime?
-  status        String // "running" | "success" | "error"
-  rowsReceived  Int       @default(0)
-  rowsInserted  Int       @default(0)
-  rowsUpdated   Int       @default(0)
-  error         String?
+  id           String    @id @default(cuid())
+  source       String
+  endpoint     String
+  startedAt    DateTime
+  completedAt  DateTime?
+  status       String // "running" | "success" | "error"
+  rowsReceived Int       @default(0)
+  rowsInserted Int       @default(0)
+  rowsUpdated  Int       @default(0)
+  error        String?
 }

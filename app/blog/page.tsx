@@ -6,6 +6,8 @@ import { pageMeta } from "@/lib/seo";
 import { REDIRECTED_ARTICLE_SLUGS } from "@/lib/articleSeoRules.mjs";
 import { notFound } from "next/navigation";
 import type { Prisma } from "@prisma/client";
+import { CATEGORIES } from "@/lib/data";
+import { categoryArchiveHref } from "@/lib/articleDiscovery";
 
 export const dynamic = "force-dynamic";
 
@@ -86,6 +88,18 @@ export default async function BlogIndex({
             <p className="mt-3 max-w-2xl text-stone">
               อ่านเรื่องที่อยากเริ่ม แล้วลงมือทำตามได้จริง
             </p>
+            <nav aria-label="หมวดบทความ" className="mt-7 flex flex-wrap gap-2">
+              {CATEGORIES.map((category) => (
+                <Link
+                  key={category.slug}
+                  href={categoryArchiveHref(category.slug)}
+                  className="inline-flex items-center gap-2 rounded-full bg-paper px-4 py-2 text-sm font-medium text-ink transition-colors hover:bg-linen"
+                >
+                  <span aria-hidden>{category.icon}</span>
+                  {category.title}
+                </Link>
+              ))}
+            </nav>
           </div>
         </section>
 

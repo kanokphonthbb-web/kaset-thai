@@ -1892,9 +1892,9 @@ async function main() {
       await db.execute({
         sql: `UPDATE Article SET content=?, rawHtml=?, format='html', articleType=?, blocksJson='[]',
               seoTitle=?, metaDescription=?, focusKeyword=?, excerpt=?, coverImage=?, faqJson=?,
-              status='published', publishedAt=COALESCE(publishedAt, ?), updatedAt=? WHERE slug=?`,
+              status='published', publishedAt=COALESCE(publishedAt, ?), contentUpdatedAt=?, updatedAt=? WHERE slug=?`,
         args: [content, html, articleType, a.seoTitle || title, a.metaDescription, a.focusKeyword || "",
-               excerpt, coverImage, JSON.stringify(faqs), now, now, slug],
+               excerpt, coverImage, JSON.stringify(faqs), now, now, now, slug],
       });
       published.push(slug);
 

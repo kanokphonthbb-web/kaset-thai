@@ -1,15 +1,24 @@
 import Link from "next/link";
+import type { Prisma } from "@prisma/client";
 import Header from "./Header";
 import Footer from "./Footer";
 import ProductCard from "./ProductCard";
 import { tocFromHtml, stripInlineFaqSection } from "@/lib/blocks";
 import { SITE_URL } from "@/lib/site";
+import { prisma } from "@/lib/prisma";
+import { REDIRECTED_ARTICLE_SLUGS } from "@/lib/articleSeoRules.mjs";
+import {
+  articleClusterRange,
+  articleContentModifiedAt,
+  categoryArchiveHref,
+} from "@/lib/articleDiscovery";
 import {
   getAllProducts,
   injectProductLinks,
   findMatchingProducts,
   getProductsByCategory,
   getProductsByShopeeIds,
+  isProductIndexable,
   type Product,
 } from "@/lib/products";
 
@@ -26,10 +35,67 @@ type DbPost = {
   focusKeyword: string;
   subcategory: string;
   productsJson: string;
+  articleNo: number | null;
   publishedAt: Date | null;
+  contentUpdatedAt: Date | null;
+  createdAt: Date;
   updatedAt: Date;
   category: { name: string; slug: string } | null;
 };
+
+type RelatedArticle = {
+  title: string;
+  slug: string;
+  excerpt: string;
+  articleNo: number | null;
+};
+
+async function getRelatedArticles(post: DbPost): Promise<RelatedArticle[]> {
+  const cluster = articleClusterRange(post.articleNo);
+  const commonWhere = {
+    status: "published",
+    slug: { notIn: [post.slug, ...REDIRECTED_ARTICLE_SLUGS] },
+  } satisfies Prisma.ArticleWhereInput;
+  const select = { title: true, slug: true, excerpt: true, articleNo: true } as const;
+
+  try {
+    const [clusterPosts, topicalPosts] = await Promise.all([
+      cluster
+        ? prisma.article.findMany({
+            where: {
+              ...commonWhere,
+              articleNo: { gte: cluster.start, lte: cluster.end },
+            },
+            orderBy: { articleNo: "asc" },
+            take: 8,
+            select,
+          })
+        : Promise.resolve([]),
+      prisma.article.findMany({
+        where: {
+          ...commonWhere,
+          ...(post.subcategory
+            ? { subcategory: post.subcategory }
+            : post.category?.slug
+              ? { category: { slug: post.category.slug } }
+              : {}),
+        },
+        orderBy: { publishedAt: "desc" },
+        take: 8,
+        select,
+      }),
+    ]);
+
+    const unique = new Map<string, RelatedArticle>();
+    for (const article of [...clusterPosts, ...topicalPosts]) {
+      if (unique.size >= 6) break;
+      unique.set(article.slug, article);
+    }
+    return [...unique.values()];
+  } catch {
+    return [];
+  }
+}
 
 export default async function DbArticleView({ post }: { post: DbPost }) {
   let faqs: { q: string; a: string }[] = [];
@@ -39,6 +105,7 @@ export default async function DbArticleView({ post }: { post: DbPost }) {
   // ตัด FAQ แบบข้อความล้วนออกจาก body — จะ render เป็น accordion แยกด้านล่างแทน กันขึ้นซ้ำสองที่
   const content = faqs.length > 0 ? stripInlineFaqSection(post.content) : post.content;
   const toc = tocFromHtml(content);
+  const relatedArticlesPromise = getRelatedArticles(post);
 
   // สินค้าเพื่อการเกษตรที่อาจเกี่ยวข้องกับบทความนี้ — ใช้ชุดที่เตรียมไว้ล่วงหน้า
   // (Article.productsJson, join ผ่าน articleNo) ถ้ามี ไม่งั้น fallback ไปที่ระบบจับคู่คำสำคัญทั่วไป
@@ -53,10 +120,10 @@ export default async function DbArticleView({ post }: { post: DbPost }) {
   let linkedContent: string;
 
   if (curatedShopeeIds.length > 0) {
-    related = await getProductsByShopeeIds(curatedShopeeIds);
+    related = (await getProductsByShopeeIds(curatedShopeeIds)).filter(isProductIndexable);
     linkedContent = injectProductLinks(content, related, related.length);
   } else {
-    const products = await getAllProducts();
+    const products = (await getAllProducts()).filter(isProductIndexable);
     linkedContent = injectProductLinks(content, products, 3);
 
     related = findMatchingProducts(
@@ -65,7 +132,9 @@ export default async function DbArticleView({ post }: { post: DbPost }) {
       3,
     );
     if (related.length < 3 && post.category?.slug) {
-      const topUp = await getProductsByCategory(post.category.slug, 3);
+      const topUp = (await getProductsByCategory(post.category.slug, 3)).filter(
+        isProductIndexable,
+      );
       const seen = new Set(related.map((p) => p.id));
       for (const p of topUp) {
         if (related.length >= 3) break;
@@ -77,7 +146,13 @@ export default async function DbArticleView({ post }: { post: DbPost }) {
     }
   }
 
+  const relatedArticles = await relatedArticlesPromise;
+
   const url = `${SITE_URL}/articles/${post.slug}`;
+  const categoryUrl = post.category
+    ? `${SITE_URL}${categoryArchiveHref(post.category.slug)}`
+    : `${SITE_URL}/blog`;
+  const categoryName = post.category?.name ?? "บทความ";
   const graph: Record<string, unknown>[] = [
     {
       "@type": "Article",
@@ -88,7 +163,7 @@ export default async function DbArticleView({ post }: { post: DbPost }) {
       mainEntityOfPage: url,
       ...(post.coverImage ? { image: post.coverImage.startsWith("http") ? post.coverImage : `${SITE_URL}${post.coverImage}` } : {}),
       ...(post.publishedAt ? { datePublished: post.publishedAt.toISOString() } : {}),
-      dateModified: post.updatedAt.toISOString(),
+      dateModified: articleContentModifiedAt(post).toISOString(),
       author: { "@id": `${SITE_URL}/#organization` },
       publisher: { "@id": `${SITE_URL}/#organization` },
     },
@@ -96,7 +171,7 @@ export default async function DbArticleView({ post }: { post: DbPost }) {
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "หน้าแรก", item: `${SITE_URL}/` },
-        { "@type": "ListItem", position: 2, name: "บทความ", item: `${SITE_URL}/blog` },
+        { "@type": "ListItem", position: 2, name: categoryName, item: categoryUrl },
         { "@type": "ListItem", position: 3, name: post.title, item: url },
       ],
     },
@@ -126,7 +201,12 @@ export default async function DbArticleView({ post }: { post: DbPost }) {
             <nav aria-label="เส้นทาง" className="text-sm text-stone">
               <Link href="/" className="hover:text-ink">หน้าแรก</Link>
               <span className="mx-2" aria-hidden>/</span>
-              <Link href="/blog" className="hover:text-ink">บทความ</Link>
+              <Link
+                href={post.category ? categoryArchiveHref(post.category.slug) : "/blog"}
+                className="hover:text-ink"
+              >
+                {categoryName}
+              </Link>
             </nav>
             <div className="mt-4 flex items-center gap-3">
               {post.category && <span className="tag-chip text-xs">{post.category.name}</span>}
@@ -176,6 +256,32 @@ export default async function DbArticleView({ post }: { post: DbPost }) {
                   dangerouslySetInnerHTML={{ __html: linkedContent }}
                 />
 
+                {relatedArticles.length > 0 && (
+                  <section aria-labelledby="related-articles-heading" className="mt-12 rounded-2xl border border-linen p-6">
+                    <h2 id="related-articles-heading" className="font-display text-2xl font-bold text-ink">
+                      อ่านต่อในหัวข้อใกล้เคียง
+                    </h2>
+                    <p className="mt-2 text-[15px] text-stone">
+                      บทความชุดเดียวกันและเรื่องต่อยอดที่ช่วยให้เห็นภาพครบขึ้น
+                    </p>
+                    <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+                      {relatedArticles.map((article) => (
+                        <li key={article.slug}>
+                          <Link
+                            href={`/articles/${article.slug}`}
+                            className="block h-full rounded-xl bg-mist p-4 transition-colors hover:bg-linen"
+                          >
+                            <h3 className="font-display font-bold text-ink">{article.title}</h3>
+                            {article.excerpt && (
+                              <p className="mt-2 line-clamp-2 text-sm text-stone">{article.excerpt}</p>
+                            )}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                )}
+
                 {related.length > 0 && (
                   <div className="mt-12 rounded-2xl bg-mist p-6">
                     <h2 className="font-display text-2xl font-bold text-ink">
@@ -212,7 +318,12 @@ export default async function DbArticleView({ post }: { post: DbPost }) {
                 )}
 
                 <div className="mt-10">
-                  <Link href="/blog" className="btn-secondary">← ดูบทความอื่น</Link>
+                  <Link
+                    href={post.category ? categoryArchiveHref(post.category.slug) : "/blog"}
+                    className="btn-secondary"
+                  >
+                    ← ดูบทความในหมวดนี้
+                  </Link>
                 </div>
               </article>
             </div>

@@ -7,9 +7,13 @@ import { REDIRECTED_ARTICLE_SLUGS } from "@/lib/articleSeoRules.mjs";
 import { getAllProducts, isProductIndexable } from "@/lib/products";
 import { PRODUCT_CATEGORIES } from "@/lib/productCategories";
 import { PROVINCES } from "@/lib/weather/locations";
+import {
+  articleContentModifiedAt,
+  categoryArchiveHref,
+} from "@/lib/articleDiscovery";
 
 // Cache the generated sitemap instead of querying Turso on every crawler hit.
-// CMS/product updatedAt values remain the source of truth for dynamic entries.
+// Article lastmod uses contentUpdatedAt so unrelated DB backfills do not emit false freshness.
 export const dynamic = "force-static";
 export const revalidate = 300;
 
@@ -44,6 +48,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
+  const categoryArchiveRoutes = CATEGORIES.map((category) => ({
+    url: `${SITE_URL}${categoryArchiveHref(category.slug)}`,
+    changeFrequency: "weekly" as const,
+    priority: 0.7,
+  }));
+
   const toolRoutes = TOOLS.map((t) => ({
     url: `${SITE_URL}${t.href}`,
     changeFrequency: "monthly" as const,
@@ -68,44 +78,49 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  // บทความจากระบบหลังบ้าน (CMS) ที่เผยแพร่แล้ว
-  let cmsArticleRoutes: MetadataRoute.Sitemap = [];
-  try {
-    const posts = await prisma.article.findMany({
+  const [postsResult, productsResult] = await Promise.allSettled([
+    prisma.article.findMany({
       where: {
         status: "published",
         slug: { notIn: [...REDIRECTED_ARTICLE_SLUGS] },
       },
-      select: { slug: true, updatedAt: true },
-    });
-    cmsArticleRoutes = posts.map((p) => ({
+      select: {
+        slug: true,
+        contentUpdatedAt: true,
+        publishedAt: true,
+        createdAt: true,
+      },
+    }),
+    getAllProducts(),
+  ]);
+
+  // บทความจากระบบหลังบ้าน (CMS) ที่เผยแพร่แล้ว
+  const cmsArticleRoutes: MetadataRoute.Sitemap =
+    postsResult.status === "fulfilled"
+      ? postsResult.value.map((p) => ({
       url: `${SITE_URL}/articles/${encodeURIComponent(p.slug)}`,
-      lastModified: p.updatedAt,
+      lastModified: articleContentModifiedAt(p),
       changeFrequency: "monthly" as const,
       priority: 0.7,
-    }));
-  } catch {
-    cmsArticleRoutes = [];
-  }
+        }))
+      : [];
 
   // สินค้าเพื่อการเกษตร (affiliate) — เฉพาะที่ status active เท่านั้น (held ไม่รวม)
-  let productRoutes: MetadataRoute.Sitemap = [];
-  try {
-    const products = (await getAllProducts()).filter(isProductIndexable);
-    productRoutes = products.map((p) => ({
+  const productRoutes: MetadataRoute.Sitemap =
+    productsResult.status === "fulfilled"
+      ? productsResult.value.filter(isProductIndexable).map((p) => ({
       url: `${SITE_URL}/products/${encodeURIComponent(p.slug)}`,
       lastModified: p.updatedAt,
       changeFrequency: "monthly" as const,
       priority: 0.6,
-    }));
-  } catch {
-    productRoutes = [];
-  }
+        }))
+      : [];
 
   const all = [
     ...staticRoutes,
     ...weatherProvinceRoutes,
     ...categoryRoutes,
+    ...categoryArchiveRoutes,
     ...toolRoutes,
     ...productCategoryRoutes,
     ...starterKitRoutes,
