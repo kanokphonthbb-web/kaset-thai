@@ -1105,6 +1105,13 @@ const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
   watermelon: ["https://images.pexels.com/photos/12746876/pexels-photo-12746876.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/25489216/pexels-photo-25489216.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/17745168/pexels-photo-17745168.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/32694669/pexels-photo-32694669.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   // diseases/pests (found 14 of 15 published diseases articles mismatched on 2026-07-11 — same root cause)
   "asf-pig": ["https://images.pexels.com/photos/2737171/pexels-photo-2737171.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  // เพิ่ม pool 2026-08-30 (wave6 chunk10 — diagnostic Q&A batch, topic-specific covers, Pexels-verified HTTP 200,
+  // DB-checked ไม่ซ้ำกับรูปที่ใช้ทั้งไซต์ 2,699 บทความ/1,518 unique photo id ณ ตอนเพิ่ม)
+  "shrimp-wssv": ["https://images.pexels.com/photos/5273798/pexels-photo-5273798.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "dairy-mastitis": ["https://images.pexels.com/photos/8064100/pexels-photo-8064100.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "corn-downy-mildew": ["https://images.pexels.com/photos/12276256/pexels-photo-12276256.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "oilpalm-ganoderma": ["https://images.pexels.com/photos/2950868/pexels-photo-2950868.jpeg?auto=compress&cs=tinysrgb&w=1400"],
+  "pink-disease-durian-rubber": ["https://images.pexels.com/photos/12996935/pexels-photo-12996935.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   "downy-mildew": ["https://images.pexels.com/photos/7718268/pexels-photo-7718268.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   "fish-water-shock": ["https://images.pexels.com/photos/5786581/pexels-photo-5786581.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   "fmd-cattle": ["https://images.pexels.com/photos/8023245/pexels-photo-8023245.jpeg?auto=compress&cs=tinysrgb&w=1400"],
