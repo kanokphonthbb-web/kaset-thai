@@ -717,6 +717,13 @@ function toCoverUrl(entry: string): string {
   return `https://images.unsplash.com/photo-${entry}?auto=format&fit=crop&w=1400&q=70`;
 }
 
+/** hash แบบ deterministic จาก slug (เหมือน coverFor()) — ใช้เลือกรูปได้ผลเดิมทุกครั้ง ไม่ใช่ Math.random() */
+function hashSlug(slug: string): number {
+  let hash = 0;
+  for (const ch of slug) hash = (hash * 31 + ch.charCodeAt(0)) >>> 0;
+  return hash;
+}
+
 // รูปเฉพาะพันธุ์/ชนิด — ใช้ก่อน CAT_IMAGE_POOLS เสมอเมื่อ slug มีคำเหล่านี้ (ยาวสุดที่ match ชนะ)
 // ป้องกันปัญหา "รูปไม่ตรงเรื่อง" เช่น บทความปลานิลได้รูปกุ้ง, บทความไก่เนื้อได้รูปหมู
 // (พบและแก้ครบทั้งหมวด fishery/animals/plants เมื่อ 2026-07-11 — ทุก id ตรวจ alt-text จาก Pexels API แล้วว่าตรงชนิด)
@@ -1856,6 +1863,92 @@ export async function coverFor(
   return url;
 }
 
+/**
+ * เหมือน coverFor() (narrow keyword/title pool ก่อน แล้ว fallback ไป pool ของหมวด) แต่คืนรูปได้หลายรูป
+ * สำหรับแทรกในเนื้อหาบทความ — ไม่กันซ้ำข้ามบทความทั้งไซต์เหมือน coverFor() (cover ถูกวางเรียงกันบนหน้า
+ * listing grid ทำให้ต้องกันซ้ำเข้ม แต่รูปในเนื้อหาถูกเห็นทีละรูปลึกในบทความ ยอมรับการใช้รูปซ้ำข้ามบทความได้
+ * โดยไม่ต้อง query DB เพิ่ม) กันซ้ำเฉพาะภายในผลลัพธ์ของบทความเดียวกันเอง และไม่คืน coverUrl ของบทความนั้น
+ */
+export function contentImagesFor(
+  catSlug: string | undefined,
+  slug: string,
+  title: string,
+  coverUrl: string,
+  count: number,
+): string[] {
+  const narrowPool = matchKeywordPool(slug) || (catSlug === "cost-profit" ? matchTitlePool(title) : undefined);
+  const catPool = catSlug ? CAT_IMAGE_POOLS[catSlug] : undefined;
+  const pool = narrowPool ? [...narrowPool, ...(catPool || [])] : catPool;
+  if (!pool || pool.length === 0 || count <= 0) return [];
+
+  const seen = new Set<string>();
+  const uniqueUrls: string[] = [];
+  for (const entry of pool) {
+    const url = toCoverUrl(entry);
+    if (url === coverUrl || seen.has(url)) continue;
+    seen.add(url);
+    uniqueUrls.push(url);
+  }
+  if (uniqueUrls.length === 0) return [];
+
+  const start = hashSlug(slug) % uniqueUrls.length;
+  const picked: string[] = [];
+  for (let i = 0; i < uniqueUrls.length && picked.length < count; i++) {
+    picked.push(uniqueUrls[(start + i) % uniqueUrls.length]);
+  }
+  return picked;
+}
+
+function escapeHtmlAttr(s: string): string {
+  return s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function contentImgAltText(headingText: string): string {
+  const clean = headingText.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+  return clean ? `ภาพประกอบ ${clean}` : "ภาพประกอบบทความ";
+}
+
+function contentImgTag(url: string, headingText: string): string {
+  const alt = escapeHtmlAttr(contentImgAltText(headingText));
+  return `<img src="${url}" alt="${alt}" loading="lazy" class="my-8 aspect-[16/9] w-full rounded-2xl object-cover" />`;
+}
+
+/**
+ * แทรกรูปประกอบไว้หลัง </h2> ปิดของหัวข้อย่อยต้น ๆ ของบทความ กระจายให้ห่างกันเท่า ๆ กัน
+ * ตาม WRITING_GUIDE.md โครงสร้าง body จบด้วย <h2>สรุป</h2> แล้ว <h2>แหล่งข้อมูลอ้างอิง</h2> เสมอ —
+ * 2 หัวข้อท้ายสุดนี้ห้ามแทรกรูปที่/หลังจุดนี้เด็ดขาด ถ้าหัวข้อย่อยต้น ๆ (ไม่นับ 2 หัวข้อท้าย) มีน้อยกว่าจำนวน
+ * รูปที่ขอ ให้แทรกเท่าที่มีที่ (ลงได้ถึง 0) แทนที่จะกองรูปซ้อนกันที่จุดเดียว
+ */
+export function insertContentImages(html: string, images: string[]): string {
+  if (!images || images.length === 0) return html;
+
+  const h2Regex = /<h2[^>]*>([\s\S]*?)<\/h2>/gi;
+  const sections: { headingText: string; closeEnd: number }[] = [];
+  let m: RegExpExecArray | null;
+  while ((m = h2Regex.exec(html))) {
+    sections.push({ headingText: m[1], closeEnd: m.index + m[0].length });
+  }
+
+  // 2 หัวข้อท้ายสุดคือ "สรุป" และ "แหล่งข้อมูลอ้างอิง" เสมอ — ห้ามแทรกที่/หลังจุดนี้
+  const eligible = sections.slice(0, Math.max(0, sections.length - 2));
+  if (eligible.length === 0) return html;
+
+  const n = Math.min(images.length, eligible.length);
+  if (n === 0) return html;
+
+  const inserts: { closeEnd: number; tag: string }[] = [];
+  for (let i = 0; i < n; i++) {
+    const idx = Math.floor((i * eligible.length) / n);
+    inserts.push({ closeEnd: eligible[idx].closeEnd, tag: contentImgTag(images[i], eligible[idx].headingText) });
+  }
+
+  let out = html;
+  for (let i = inserts.length - 1; i >= 0; i--) {
+    out = out.slice(0, inserts[i].closeEnd) + inserts[i].tag + out.slice(inserts[i].closeEnd);
+  }
+  return out;
+}
+
 async function main() {
   const file = process.argv[2];
   if (!file) throw new Error("usage: publish-batch.mts <payload.json>");
@@ -1878,7 +1971,12 @@ async function main() {
       const articleType = a.articleType || String(row.articleType || "howto");
       const coverImage = (a.coverImage && String(a.coverImage).trim()) ||
         (await coverFor(db, row.catSlug as string | undefined, slug, usedThisRun, title));
-      const html: string = a.html || "";
+      const rawHtml: string = a.html || "";
+      // แทรกรูปประกอบเนื้อหา 3-6 รูป (deterministic ตาม slug) — เฉพาะบทความใหม่ที่ publish จากนี้ไป
+      // ไม่แตะบทความเก่าที่ publish ไปแล้ว (ไม่มี backfill)
+      const contentImageCount = 3 + (hashSlug(slug) % 4);
+      const contentImages = contentImagesFor(row.catSlug as string | undefined, slug, title, coverImage, contentImageCount);
+      const html = insertContentImages(rawHtml, contentImages);
       const faqs = (a.faqs || []).filter((f: any) => f?.q?.trim() && f?.a?.trim());
       const analysisBlocks = htmlToAnalysisBlocks(html);
 
