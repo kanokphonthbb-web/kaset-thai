@@ -727,7 +727,7 @@ function hashSlug(slug: string): number {
 // รูปเฉพาะพันธุ์/ชนิด — ใช้ก่อน CAT_IMAGE_POOLS เสมอเมื่อ slug มีคำเหล่านี้ (ยาวสุดที่ match ชนะ)
 // ป้องกันปัญหา "รูปไม่ตรงเรื่อง" เช่น บทความปลานิลได้รูปกุ้ง, บทความไก่เนื้อได้รูปหมู
 // (พบและแก้ครบทั้งหมวด fishery/animals/plants เมื่อ 2026-07-11 — ทุก id ตรวจ alt-text จาก Pexels API แล้วว่าตรงชนิด)
-const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
+export const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
   // fishery
   // เพิ่ม pool 2026-07-11 (pad demand จาก draft ใหม่: tilapia+1, seabass+2, silver-barb+2, snakehead+2, carp+2)
   tilapia: ["https://images.pexels.com/photos/15553656/pexels-photo-15553656.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/14924016/pexels-photo-14924016.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/8352786/pexels-photo-8352786.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/32262908/pexels-photo-32262908.jpeg?auto=compress&cs=tinysrgb&w=1400",
@@ -1771,12 +1771,596 @@ const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/34965367/pexels-photo-34965367.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/34965356/pexels-photo-34965356.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
+  // เพิ่ม 2026-09-01 รอบ 3 (owner สั่ง "เช็ครูปทั้งหมดเลย และปรับให้เกี่ยวข้อง" — หารูปใหม่ครบทุกสปีชีส์ที่ยังไม่มี
+  // pool เจาะจง แต่ละ URL ผ่านการดาวน์โหลด+ดูภาพจริงยืนยันตรงสปีชีส์/หัวข้อก่อนใส่ ไม่เดา ไม่ยัดรูปใกล้เคียงผิดชนิด)
+  "abalone": [
+    "https://images.pexels.com/photos/8352355/pexels-photo-8352355.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/8112386/pexels-photo-8112386.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "angelfish": [
+    "https://images.pexels.com/photos/8807499/pexels-photo-8807499.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/37537340/pexels-photo-37537340.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32850608/pexels-photo-32850608.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "angled-luffa": [
+    "https://images.pexels.com/photos/35072410/pexels-photo-35072410.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/33778443/pexels-photo-33778443.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/33211277/pexels-photo-33211277.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "arowana": [
+    "https://images.pexels.com/photos/38448775/pexels-photo-38448775.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/36982252/pexels-photo-36982252.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/35368078/pexels-photo-35368078.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "asparagus": [
+    "https://images.pexels.com/photos/545028/pexels-photo-545028.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/351679/pexels-photo-351679.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7195357/pexels-photo-7195357.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "bee-italian-native": [
+    "https://images.pexels.com/photos/29562511/pexels-photo-29562511.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/36195873/pexels-photo-36195873.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "betel-leaf": [
+    "https://images.pexels.com/photos/39045466/pexels-photo-39045466.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/36866578/pexels-photo-36866578.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32788640/pexels-photo-32788640.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "betta": [
+    "https://images.pexels.com/photos/325045/pexels-photo-325045.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/1335971/pexels-photo-1335971.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/12660120/pexels-photo-12660120.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4090856/pexels-photo-4090856.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "bilimbi": [
+    "https://images.pexels.com/photos/34372248/pexels-photo-34372248.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "bitter-gourd": [
+    "https://images.pexels.com/photos/28909474/pexels-photo-28909474.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/36361608/pexels-photo-36361608.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/12942531/pexels-photo-12942531.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4590490/pexels-photo-4590490.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "brown-planthopper": [
+    "https://images.pexels.com/photos/34058007/pexels-photo-34058007.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "bsf-larvae": [
+    "https://images.pexels.com/photos/39154794/pexels-photo-39154794.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/39154796/pexels-photo-39154796.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/39154799/pexels-photo-39154799.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/39154802/pexels-photo-39154802.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "cashew-apple": [
+    "https://images.pexels.com/photos/10615955/pexels-photo-10615955.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "celery": [
+    "https://images.pexels.com/photos/13044694/pexels-photo-13044694.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7129172/pexels-photo-7129172.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5984753/pexels-photo-5984753.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/29152230/pexels-photo-29152230.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "choy-sum": [
+    "https://images.pexels.com/photos/3941718/pexels-photo-3941718.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "cichlid": [
+    "https://images.pexels.com/photos/18256861/pexels-photo-18256861.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/2109800/pexels-photo-2109800.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "climbing-perch": [
+    "https://images.pexels.com/photos/32262734/pexels-photo-32262734.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32262737/pexels-photo-32262737.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32262740/pexels-photo-32262740.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32262736/pexels-photo-32262736.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "clownfish": [
+    "https://images.pexels.com/photos/128756/pexels-photo-128756.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4781926/pexels-photo-4781926.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/1125979/pexels-photo-1125979.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "cockle": [
+    "https://images.pexels.com/photos/7469559/pexels-photo-7469559.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/36296428/pexels-photo-36296428.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/18502881/pexels-photo-18502881.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "crayfish": [
+    "https://images.pexels.com/photos/18704360/pexels-photo-18704360.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/20679001/pexels-photo-20679001.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34486954/pexels-photo-34486954.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "crocodile": [
+    "https://images.pexels.com/photos/6477294/pexels-photo-6477294.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/26673799/pexels-photo-26673799.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6407978/pexels-photo-6407978.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "custard-apple": [
+    "https://images.pexels.com/photos/15506342/pexels-photo-15506342.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/38739334/pexels-photo-38739334.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/37958202/pexels-photo-37958202.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5454243/pexels-photo-5454243.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "cuttlefish": [
+    "https://images.pexels.com/photos/35658810/pexels-photo-35658810.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4702377/pexels-photo-4702377.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "dendrobium-orchid": [
+    "https://images.pexels.com/photos/33734514/pexels-photo-33734514.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/11686598/pexels-photo-11686598.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34782677/pexels-photo-34782677.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "dragon-fruit": [
+    "https://images.pexels.com/photos/39210529/pexels-photo-39210529.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/18916473/pexels-photo-18916473.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/38080046/pexels-photo-38080046.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/31558794/pexels-photo-31558794.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "edamame": [
+    "https://images.pexels.com/photos/18363407/pexels-photo-18363407.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/28460870/pexels-photo-28460870.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/3297805/pexels-photo-3297805.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "emu": [
+    "https://images.pexels.com/photos/13974468/pexels-photo-13974468.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6477245/pexels-photo-6477245.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/19287794/pexels-photo-19287794.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "field-rat": [
+    "https://images.pexels.com/photos/7212697/pexels-photo-7212697.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34285353/pexels-photo-34285353.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/12964769/pexels-photo-12964769.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "flowerhorn": [
+    "https://images.pexels.com/photos/33632875/pexels-photo-33632875.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/38448779/pexels-photo-38448779.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/18256861/pexels-photo-18256861.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "fruit-fly": [
+    "https://images.pexels.com/photos/38853679/pexels-photo-38853679.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7996161/pexels-photo-7996161.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "giant-gourami": [
+    "https://images.pexels.com/photos/10952816/pexels-photo-10952816.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/30663636/pexels-photo-30663636.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "giant-honey-bee": [
+    "https://images.pexels.com/photos/33047585/pexels-photo-33047585.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/27414330/pexels-photo-27414330.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "golden-tamarind": [
+    "https://images.pexels.com/photos/5009731/pexels-photo-5009731.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "goldfish": [
+    "https://images.pexels.com/photos/19680232/pexels-photo-19680232.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/37431486/pexels-photo-37431486.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7254919/pexels-photo-7254919.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "green-mussel": [
+    "https://images.pexels.com/photos/38958753/pexels-photo-38958753.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/38697030/pexels-photo-38697030.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/33653255/pexels-photo-33653255.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "grouper": [
+    "https://images.pexels.com/photos/7227932/pexels-photo-7227932.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/27402084/pexels-photo-27402084.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "guppy": [
+    "https://images.pexels.com/photos/36426327/pexels-photo-36426327.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/18435511/pexels-photo-18435511.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/36426326/pexels-photo-36426326.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "hard-clam": [
+    "https://images.pexels.com/photos/8352783/pexels-photo-8352783.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34556497/pexels-photo-34556497.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "highland-sturgeon": [
+    "https://images.pexels.com/photos/29452932/pexels-photo-29452932.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7987543/pexels-photo-7987543.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/33598176/pexels-photo-33598176.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "hybrid-wild-boar": [
+    "https://images.pexels.com/photos/28699897/pexels-photo-28699897.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/17011891/pexels-photo-17011891.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/30076998/pexels-photo-30076998.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "indian-gooseberry": [
+    "https://images.pexels.com/photos/32112805/pexels-photo-32112805.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34928280/pexels-photo-34928280.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32112814/pexels-photo-32112814.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "jackfruit": [
+    "https://images.pexels.com/photos/6871015/pexels-photo-6871015.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/11669555/pexels-photo-11669555.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/38601692/pexels-photo-38601692.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/19229291/pexels-photo-19229291.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "java-plum": [
+    "https://images.pexels.com/photos/8703806/pexels-photo-8703806.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/37043794/pexels-photo-37043794.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "jersey-holstein": [
+    "https://images.pexels.com/photos/19958300/pexels-photo-19958300.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/29184440/pexels-photo-29184440.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34164400/pexels-photo-34164400.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/8637756/pexels-photo-8637756.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "jicama": [
+    "https://images.pexels.com/photos/35614101/pexels-photo-35614101.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/17429175/pexels-photo-17429175.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "koi": [
+    "https://images.pexels.com/photos/28536474/pexels-photo-28536474.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/31793357/pexels-photo-31793357.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/31563640/pexels-photo-31563640.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "kratom": [
+    "https://images.pexels.com/photos/4439071/pexels-photo-4439071.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4439055/pexels-photo-4439055.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "leghorn-vs-hyline": [
+    "https://images.pexels.com/photos/35057569/pexels-photo-35057569.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/37033383/pexels-photo-37033383.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/195226/pexels-photo-195226.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "litchi": [
+    "https://images.pexels.com/photos/30540388/pexels-photo-30540388.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/38519290/pexels-photo-38519290.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6870823/pexels-photo-6870823.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "lobster": [
+    "https://images.pexels.com/photos/13446484/pexels-photo-13446484.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5147257/pexels-photo-5147257.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4990589/pexels-photo-4990589.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "longkong": [
+    "https://images.pexels.com/photos/5945935/pexels-photo-5945935.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "lotus": [
+    "https://images.pexels.com/photos/8264702/pexels-photo-8264702.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/37066401/pexels-photo-37066401.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/14582450/pexels-photo-14582450.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "marian-plum": [
+    "https://images.pexels.com/photos/25315413/pexels-photo-25315413.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "marigold": [
+    "https://images.pexels.com/photos/1031628/pexels-photo-1031628.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6447351/pexels-photo-6447351.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/20061656/pexels-photo-20061656.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "mayongchid-maprang": [
+    "https://images.pexels.com/photos/25315413/pexels-photo-25315413.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "meat-pigeon": [
+    "https://images.pexels.com/photos/39077092/pexels-photo-39077092.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6438048/pexels-photo-6438048.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "moringa": [
+    "https://images.pexels.com/photos/4884811/pexels-photo-4884811.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4884823/pexels-photo-4884823.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4884808/pexels-photo-4884808.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/37911594/pexels-photo-37911594.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "mussel": [
+    "https://images.pexels.com/photos/33653255/pexels-photo-33653255.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/30910212/pexels-photo-30910212.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/8352388/pexels-photo-8352388.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "noni-fruit": [
+    "https://images.pexels.com/photos/36846777/pexels-photo-36846777.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/35354513/pexels-photo-35354513.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5406812/pexels-photo-5406812.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5406813/pexels-photo-5406813.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "okra": [
+    "https://images.pexels.com/photos/28577186/pexels-photo-28577186.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/38272573/pexels-photo-38272573.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/36791064/pexels-photo-36791064.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/2583187/pexels-photo-2583187.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "orchid": [
+    "https://images.pexels.com/photos/16638209/pexels-photo-16638209.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/30755508/pexels-photo-30755508.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4090814/pexels-photo-4090814.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/12701202/pexels-photo-12701202.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "ornate-spiny-lobster": [
+    "https://images.pexels.com/photos/4610209/pexels-photo-4610209.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4606069/pexels-photo-4606069.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "ostrich": [
+    "https://images.pexels.com/photos/29878992/pexels-photo-29878992.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32154053/pexels-photo-32154053.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/33315721/pexels-photo-33315721.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "oyster": [
+    "https://images.pexels.com/photos/36029499/pexels-photo-36029499.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/33733334/pexels-photo-33733334.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/2819899/pexels-photo-2819899.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "pandan": [
+    "https://images.pexels.com/photos/5857658/pexels-photo-5857658.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5857656/pexels-photo-5857656.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "pangasius": [
+    "https://images.pexels.com/photos/35621424/pexels-photo-35621424.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/35621426/pexels-photo-35621426.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/31479648/pexels-photo-31479648.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "passion-fruit": [
+    "https://images.pexels.com/photos/35748903/pexels-photo-35748903.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32419594/pexels-photo-32419594.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5945951/pexels-photo-5945951.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "perilla-herb": [
+    "https://images.pexels.com/photos/35663682/pexels-photo-35663682.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/13686900/pexels-photo-13686900.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "pomegranate": [
+    "https://images.pexels.com/photos/12148143/pexels-photo-12148143.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6956386/pexels-photo-6956386.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "potato": [
+    "https://images.pexels.com/photos/31908568/pexels-photo-31908568.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/8369485/pexels-photo-8369485.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/17617617/pexels-photo-17617617.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "powdery-mildew": [
+    "https://images.pexels.com/photos/7718268/pexels-photo-7718268.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "rainbow-lobster": [
+    "https://images.pexels.com/photos/18704360/pexels-photo-18704360.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34486954/pexels-photo-34486954.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "rakam-sala": [
+    "https://images.pexels.com/photos/38953036/pexels-photo-38953036.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4025632/pexels-photo-4025632.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4025634/pexels-photo-4025634.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "red-amaranth": [
+    "https://images.pexels.com/photos/8243930/pexels-photo-8243930.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/38948398/pexels-photo-38948398.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32858377/pexels-photo-32858377.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "red-dragon-fruit": [
+    "https://images.pexels.com/photos/33656107/pexels-photo-33656107.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/8813523/pexels-photo-8813523.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/36935129/pexels-photo-36935129.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/30850863/pexels-photo-30850863.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "red-spider-mite": [
+    "https://images.pexels.com/photos/760223/pexels-photo-760223.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "rhode-island-red": [
+    "https://images.pexels.com/photos/18474426/pexels-photo-18474426.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/18474455/pexels-photo-18474455.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/38725446/pexels-photo-38725446.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "rose": [
+    "https://images.pexels.com/photos/32356065/pexels-photo-32356065.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4135654/pexels-photo-4135654.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/35678148/pexels-photo-35678148.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "rose-apple": [
+    "https://images.pexels.com/photos/446459/pexels-photo-446459.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/35228889/pexels-photo-35228889.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/37634274/pexels-photo-37634274.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/19995301/pexels-photo-19995301.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "roselle": [
+    "https://images.pexels.com/photos/38956796/pexels-photo-38956796.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/38956797/pexels-photo-38956797.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/10597645/pexels-photo-10597645.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/37931503/pexels-photo-37931503.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "rusa-deer": [
+    "https://images.pexels.com/photos/36700141/pexels-photo-36700141.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "saffron": [
+    "https://images.pexels.com/photos/14262714/pexels-photo-14262714.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34060195/pexels-photo-34060195.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/16510847/pexels-photo-16510847.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "sago-grub": [
+    "https://images.pexels.com/photos/38935146/pexels-photo-38935146.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "sapodilla": [
+    "https://images.pexels.com/photos/3942502/pexels-photo-3942502.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34690044/pexels-photo-34690044.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/28625600/pexels-photo-28625600.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "sator": [
+    "https://images.pexels.com/photos/33428390/pexels-photo-33428390.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "scorpion": [
+    "https://images.pexels.com/photos/3696179/pexels-photo-3696179.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/14625314/pexels-photo-14625314.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/17671574/pexels-photo-17671574.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "sea-grape": [
+    "https://images.pexels.com/photos/33719950/pexels-photo-33719950.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "seaweed": [
+    "https://images.pexels.com/photos/35534343/pexels-photo-35534343.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/37908655/pexels-photo-37908655.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/38330391/pexels-photo-38330391.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "shama-songbird": [
+    "https://images.pexels.com/photos/31539851/pexels-photo-31539851.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6714549/pexels-photo-6714549.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/31539839/pexels-photo-31539839.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "siamese-betta": [
+    "https://images.pexels.com/photos/1335971/pexels-photo-1335971.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/325045/pexels-photo-325045.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/26627586/pexels-photo-26627586.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "soft-coral": [
+    "https://images.pexels.com/photos/35050316/pexels-photo-35050316.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34632401/pexels-photo-34632401.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34903267/pexels-photo-34903267.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "softshell-turtle": [
+    "https://images.pexels.com/photos/18022341/pexels-photo-18022341.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7081474/pexels-photo-7081474.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/13561547/pexels-photo-13561547.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "spotted-babylon": [
+    "https://images.pexels.com/photos/38436124/pexels-photo-38436124.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "star-gooseberry": [
+    "https://images.pexels.com/photos/38934058/pexels-photo-38934058.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/38934063/pexels-photo-38934063.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5500454/pexels-photo-5500454.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "starfruit": [
+    "https://images.pexels.com/photos/14776788/pexels-photo-14776788.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/13524365/pexels-photo-13524365.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/36506739/pexels-photo-36506739.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/36506734/pexels-photo-36506734.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "stingless-bee": [
+    "https://images.pexels.com/photos/18478467/pexels-photo-18478467.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/18478468/pexels-photo-18478468.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6471290/pexels-photo-6471290.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "super-jumbo-jujube": [
+    "https://images.pexels.com/photos/18465069/pexels-photo-18465069.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/36007953/pexels-photo-36007953.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "sweet-passion-fruit-taiwan": [
+    "https://images.pexels.com/photos/6332803/pexels-photo-6332803.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/5945945/pexels-photo-5945945.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34845574/pexels-photo-34845574.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/35748903/pexels-photo-35748903.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "sweet-tamarind": [
+    "https://images.pexels.com/photos/11536825/pexels-photo-11536825.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/18495829/pexels-photo-18495829.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/2348740/pexels-photo-2348740.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "taiwan-softshell-turtle": [
+    "https://images.pexels.com/photos/13561547/pexels-photo-13561547.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "tea": [
+    "https://images.pexels.com/photos/5707071/pexels-photo-5707071.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32262521/pexels-photo-32262521.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "tea-chrysanthemum": [
+    "https://images.pexels.com/photos/8459518/pexels-photo-8459518.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6913383/pexels-photo-6913383.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6913396/pexels-photo-6913396.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "thai-eggplant": [
+    "https://images.pexels.com/photos/4590483/pexels-photo-4590483.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/35542721/pexels-photo-35542721.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "thai-gamecock": [
+    "https://images.pexels.com/photos/38977519/pexels-photo-38977519.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/36005402/pexels-photo-36005402.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/37349053/pexels-photo-37349053.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "thai-golden-pheasant": [
+    "https://images.pexels.com/photos/8450483/pexels-photo-8450483.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/31715526/pexels-photo-31715526.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/31733929/pexels-photo-31733929.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "thai-hive-bee": [
+    "https://images.pexels.com/photos/17915456/pexels-photo-17915456.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/35375188/pexels-photo-35375188.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/6561763/pexels-photo-6561763.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "thai-peafowl": [
+    "https://images.pexels.com/photos/34373191/pexels-photo-34373191.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/34826732/pexels-photo-34826732.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/36977596/pexels-photo-36977596.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "thai-pony": [
+    "https://images.pexels.com/photos/5459810/pexels-photo-5459810.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/9368011/pexels-photo-9368011.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "thai-ridgeback": [
+    "https://images.pexels.com/photos/39045490/pexels-photo-39045490.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/31888571/pexels-photo-31888571.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "turkey": [
+    "https://images.pexels.com/photos/13051235/pexels-photo-13051235.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/18243057/pexels-photo-18243057.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/20282027/pexels-photo-20282027.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "wax-gourd": [
+    "https://images.pexels.com/photos/12459898/pexels-photo-12459898.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "welsh-onion": [
+    "https://images.pexels.com/photos/6102654/pexels-photo-6102654.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/8599718/pexels-photo-8599718.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/8599717/pexels-photo-8599717.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "yardlong-bean": [
+    "https://images.pexels.com/photos/17975550/pexels-photo-17975550.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/12942532/pexels-photo-12942532.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/12602995/pexels-photo-12602995.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "yisok-thet": [
+    "https://images.pexels.com/photos/32263255/pexels-photo-32263255.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32262909/pexels-photo-32262909.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/14673874/pexels-photo-14673874.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
 };
 
-function matchKeywordPool(slug: string): string[] | undefined {
+// เพิ่ม 2026-09-01 (แก้ "รูปไม่ตรงเนื้อหา" — agri-news/market articles ที่พูดถึงสัตว์/พืชเดียวกับหมวด
+// plants/animals/fishery แต่ slug ไม่ตรง narrow key เจาะจงสักตัว เช่น "agri-news-faq-shrimp-broodstock-import-license"
+// ไม่ตรง "white-shrimp"/"shrimp-wssv" เลย → fallback ไป category pool (รูป generic เซ็นเอกสาร ไม่เกี่ยวกุ้ง)
+// แก้ด้วยการเพิ่ม key ทั่วไปที่ alias กลับไปยัง pool ที่ curate ไว้แล้วจริง (ไม่ใช้ URL ใหม่ที่ไม่ผ่านการตรวจสอบ)
+// ตัวยาวกว่าชนะเสมออยู่แล้ว (matchKeywordPool เลือก key.length มากสุด) จึง key สั้นพวกนี้ไม่ทับ narrow pool เดิม
+KEYWORD_IMAGE_POOLS["shrimp"] = [...KEYWORD_IMAGE_POOLS["white-shrimp"]];
+KEYWORD_IMAGE_POOLS["corn"] = [...KEYWORD_IMAGE_POOLS["feed-corn"], ...KEYWORD_IMAGE_POOLS["sweet-corn"]];
+KEYWORD_IMAGE_POOLS["chicken"] = [...KEYWORD_IMAGE_POOLS["native-chicken"], ...KEYWORD_IMAGE_POOLS["layer-chicken"]];
+KEYWORD_IMAGE_POOLS["rice"] = [...KEYWORD_IMAGE_POOLS["rice-jasmine"], ...KEYWORD_IMAGE_POOLS["sticky-rice"]];
+KEYWORD_IMAGE_POOLS["egg"] = [...KEYWORD_IMAGE_POOLS["sell-eggs-community"]];
+KEYWORD_IMAGE_POOLS["cattle"] = [...KEYWORD_IMAGE_POOLS["beef-cattle"], ...KEYWORD_IMAGE_POOLS["fattening-cattle"]];
+KEYWORD_IMAGE_POOLS["goat"] = [...KEYWORD_IMAGE_POOLS["dairy-goat"], ...KEYWORD_IMAGE_POOLS["meat-goat"]];
+KEYWORD_IMAGE_POOLS["crab"] = [...KEYWORD_IMAGE_POOLS["rice-field-crab"]];
+KEYWORD_IMAGE_POOLS["palm-oil"] = [...KEYWORD_IMAGE_POOLS["oil-palm"]];
+// เพิ่ม 2026-09-01 รอบ 2 (ขยาย scope ตาม owner "เช็คบทความอื่นๆด้วย") — ปิด gap หมวด animals/fishery/diseases/
+// cost-profit/agri-tech-tools ที่ตกไป CAT_IMAGE_POOLS ทั่วไป (29 รูปปนสัตว์ทุกชนิด ไม่แยกสปีชีส์ — เคยเจอบทความหมู
+// ได้รูปไก่, บทความผึ้งได้รูปหมู) แก้เฉพาะกรณีมี pool จริงให้ alias กลับได้ ไม่ใช้ URL ใหม่ที่ไม่ผ่านการตรวจสอบ
+KEYWORD_IMAGE_POOLS["pig"] = [...KEYWORD_IMAGE_POOLS["fattening-pig"], ...KEYWORD_IMAGE_POOLS["deep-litter-pig"]];
+KEYWORD_IMAGE_POOLS["mushroom"] = [...KEYWORD_IMAGE_POOLS["oyster-mushroom"], ...KEYWORD_IMAGE_POOLS["straw-mushroom"]];
+KEYWORD_IMAGE_POOLS["snail"] = [...KEYWORD_IMAGE_POOLS["golden-apple-snail"], ...KEYWORD_IMAGE_POOLS["freshwater-snail"]];
+KEYWORD_IMAGE_POOLS["fish"] = [...KEYWORD_IMAGE_POOLS["canvas-pond-fish"], ...KEYWORD_IMAGE_POOLS["fish-pond-mixed-farm"]];
+// bee: ไม่มี pool ผึ้งอยู่แล้วในระบบเลย (ไม่มีรูปให้ alias) — ยังไม่แก้ ทิ้งไว้เป็น backlog ต้องหารูปใหม่ผ่านการตรวจสอบก่อน
+
+// เพิ่ม 2026-09-01 รอบ 3 (alias เพิ่มเติมจากรอบหารูปใหม่ครบ — ทุก target เป็น key ที่มี pool จริงอยู่แล้ว)
+KEYWORD_IMAGE_POOLS["coccidiosis-layer-hen"] = [...KEYWORD_IMAGE_POOLS["layer-chicken-diseases"]];
+KEYWORD_IMAGE_POOLS["dairy"] = [...KEYWORD_IMAGE_POOLS["dairy-cow"]];
+KEYWORD_IMAGE_POOLS["dairy-thai-friesian"] = [...KEYWORD_IMAGE_POOLS["dairy-cow"]];
+KEYWORD_IMAGE_POOLS["eggchicken"] = [...KEYWORD_IMAGE_POOLS["layer-chicken"]];
+KEYWORD_IMAGE_POOLS["giant-freshwater-prawn"] = [...KEYWORD_IMAGE_POOLS["giant-river-prawn"]];
+KEYWORD_IMAGE_POOLS["layer-hen"] = [...KEYWORD_IMAGE_POOLS["layer-chicken-diseases"]];
+KEYWORD_IMAGE_POOLS["layer-highline-leghorn"] = [...KEYWORD_IMAGE_POOLS["layer-chicken"]];
+KEYWORD_IMAGE_POOLS["layer-ib"] = [...KEYWORD_IMAGE_POOLS["layer-chicken-diseases"]];
+KEYWORD_IMAGE_POOLS["monosex-vs-mixed-prawn"] = [...KEYWORD_IMAGE_POOLS["giant-river-prawn"]];
+KEYWORD_IMAGE_POOLS["oilpalm"] = [...KEYWORD_IMAGE_POOLS["oil-palm"]];
+KEYWORD_IMAGE_POOLS["palm-trees"] = [...KEYWORD_IMAGE_POOLS["oil-palm"]];
+KEYWORD_IMAGE_POOLS["thai-friesian"] = [...KEYWORD_IMAGE_POOLS["dairy-cow"]];
+KEYWORD_IMAGE_POOLS["vannamei-biofloc"] = [...KEYWORD_IMAGE_POOLS["white-shrimp"]];
+KEYWORD_IMAGE_POOLS["vegetable-blight"] = [...KEYWORD_IMAGE_POOLS["leaf-blight"]];
+KEYWORD_IMAGE_POOLS["water-spinach"] = [...KEYWORD_IMAGE_POOLS["morning-glory"]];
+
+export function matchKeywordPool(slug: string): string[] | undefined {
+  // Match on hyphen-delimited slug segments, not raw substring — a raw .includes() let short
+  // generic keys like "rice" false-match inside unrelated words ("...selling-price-calculator"),
+  // same class of bug as "fish" matching inside "fisheries". Slugs are always kebab-case, so
+  // requiring the key's own words to appear as a contiguous run of whole segments is safe and
+  // doesn't change matches for the existing multi-word narrow keys (they're already whole words).
+  const parts = slug.split("-");
   let bestKey: string | undefined;
   for (const key of Object.keys(KEYWORD_IMAGE_POOLS)) {
-    if (slug.includes(key) && (!bestKey || key.length > bestKey.length)) bestKey = key;
+    const keyParts = key.split("-");
+    let found = false;
+    for (let i = 0; i + keyParts.length <= parts.length; i++) {
+      if (keyParts.every((kp, j) => parts[i + j] === kp)) { found = true; break; }
+    }
+    if (found && (!bestKey || key.length > bestKey.length)) bestKey = key;
   }
   return bestKey ? KEYWORD_IMAGE_POOLS[bestKey] : undefined;
 }
@@ -1784,7 +2368,7 @@ function matchKeywordPool(slug: string): string[] | undefined {
 // cost-profit slugs are matrix-generated (cost-profit-cost-845) and carry no crop/animal name —
 // only the title does (e.g. "ต้นทุนเลี้ยงปลานิล"). Matched separately from KEYWORD_IMAGE_POOLS,
 // gated to catSlug === "cost-profit" only, to avoid title-substring collisions bleeding into other categories.
-const COST_PROFIT_TITLE_POOLS: Record<string, string[]> = {
+export const COST_PROFIT_TITLE_POOLS: Record<string, string[]> = {
   "ข้าวโพด": ["https://images.pexels.com/photos/6680152/pexels-photo-6680152.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/5454206/pexels-photo-5454206.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/6680154/pexels-photo-6680154.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/10221674/pexels-photo-10221674.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   "ข้าว": ["https://images.pexels.com/photos/5214465/pexels-photo-5214465.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/36663339/pexels-photo-36663339.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/32200256/pexels-photo-32200256.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/35707025/pexels-photo-35707025.jpeg?auto=compress&cs=tinysrgb&w=1400"],
   "เกษตรผสมผสาน": ["https://images.pexels.com/photos/11798036/pexels-photo-11798036.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/12464355/pexels-photo-12464355.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/19851433/pexels-photo-19851433.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/37384648/pexels-photo-37384648.jpeg?auto=compress&cs=tinysrgb&w=1400"],
@@ -1807,7 +2391,7 @@ const COST_PROFIT_TITLE_POOLS: Record<string, string[]> = {
   "สวนผลไม้": ["https://images.pexels.com/photos/3040712/pexels-photo-3040712.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/9891168/pexels-photo-9891168.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/31885070/pexels-photo-31885070.jpeg?auto=compress&cs=tinysrgb&w=1400", "https://images.pexels.com/photos/32343728/pexels-photo-32343728.jpeg?auto=compress&cs=tinysrgb&w=1400"],
 };
 
-function matchTitlePool(title: string): string[] | undefined {
+export function matchTitlePool(title: string): string[] | undefined {
   let bestKey: string | undefined;
   for (const key of Object.keys(COST_PROFIT_TITLE_POOLS)) {
     if (title.includes(key) && (!bestKey || key.length > bestKey.length)) bestKey = key;
@@ -1825,15 +2409,7 @@ export async function coverFor(
 ): Promise<string> {
   const narrowPool = matchKeywordPool(slug) || (catSlug === "cost-profit" ? matchTitlePool(title) : undefined);
   const catPool = catSlug ? CAT_IMAGE_POOLS[catSlug] : undefined;
-  // Narrow per-topic pools (matched by keyword/title) are often only ~4 images — a single
-  // 5-variant article cluster exhausts them immediately. Always allow falling back to the
-  // much larger category-wide pool as supplemental candidates rather than cycling the same
-  // few narrow-pool entries (which forces duplicate/reused images every time a cluster's
-  // pool is smaller than its own variant count). Narrow-pool images stay first in priority
-  // order since they're most topically relevant; category images only get picked once the
-  // narrow pool's unique images run out.
-  const pool = narrowPool ? [...narrowPool, ...(catPool || [])] : catPool;
-  if (!pool || pool.length === 0) return "";
+  if ((!narrowPool || narrowPool.length === 0) && (!catPool || catPool.length === 0)) return "";
 
   const usedRows = await db.execute({
     sql: `SELECT a.coverImage FROM Article a LEFT JOIN ArticleCategory c ON a.categoryId=c.id
@@ -1846,28 +2422,41 @@ export async function coverFor(
     if (u) usedUrls.add(u);
   }
 
-  const available = pool.filter((entry) => {
-    const url = toCoverUrl(entry);
-    return !usedUrls.has(url) && !usedThisRun.has(url);
-  });
-  const notUsedThisRun = pool.filter((entry) => !usedThisRun.has(toCoverUrl(entry)));
-  // Never fall back to an image already picked earlier in this same run — that guarantees an
-  // in-batch duplicate. Only as a last resort (pool smaller than this run's demand) do we allow
-  // reusing an older site-wide image, and we warn loudly so undersized pools get noticed.
-  const candidates = available.length > 0 ? available : notUsedThisRun.length > 0 ? notUsedThisRun : pool;
-  if (available.length === 0) {
+  // Narrow per-topic pools (matched by keyword/title) are the topically-correct choice and must
+  // be tried FIRST, on their own — not merged into one combined array with the much larger
+  // category pool and picked by a single hash%length, which used to dilute a 4-image narrow pool
+  // down to an ~8% chance of ever being picked against a ~40-entry category pool (this is the
+  // root cause of covers like a citrus photo landing on a durian article, reported 2026-08-30).
+  // Only once the narrow pool's own candidates are truly exhausted do we fall through to the
+  // category-wide pool as a supplemental source.
+  function pickFrom(pool: string[] | undefined): { url: string; exhausted: boolean } | undefined {
+    if (!pool || pool.length === 0) return undefined;
+    const available = pool.filter((entry) => {
+      const url = toCoverUrl(entry);
+      return !usedUrls.has(url) && !usedThisRun.has(url);
+    });
+    const notUsedThisRun = pool.filter((entry) => !usedThisRun.has(toCoverUrl(entry)));
+    const candidates = available.length > 0 ? available : notUsedThisRun.length > 0 ? notUsedThisRun : pool;
+    let hash = 0;
+    for (const ch of slug) hash = (hash * 31 + ch.charCodeAt(0)) >>> 0;
+    const entry = candidates[hash % candidates.length];
+    return { url: toCoverUrl(entry), exhausted: available.length === 0 };
+  }
+
+  // When a narrow pool exists, stay inside it even once exhausted (reusing a topically-correct
+  // image — a DUPLICATE risk, but still on-topic) rather than falling through to the category
+  // pool, which would be topically correct-looking but wrong-topic and blocked by the topical-pool
+  // gate below anyway. Only articles with NO narrow pool at all use the category pool for covers.
+  const narrowPick = pickFrom(narrowPool);
+  const pick = narrowPick || pickFrom(catPool);
+  if (!pick) return "";
+  if (narrowPick?.exhausted) {
     console.warn(
-      `[coverFor] pool exhausted for slug="${slug}" cat="${catSlug}" (poolSize=${pool.length}) — ${
-        notUsedThisRun.length > 0 ? "reusing a site-wide-used image, no in-run dup" : "pool too small even for this run, DUPLICATE risk"
-      }`,
+      `[coverFor] narrow pool exhausted for slug="${slug}" cat="${catSlug}" — reusing narrow-pool image, DUPLICATE risk`,
     );
   }
-  let hash = 0;
-  for (const ch of slug) hash = (hash * 31 + ch.charCodeAt(0)) >>> 0;
-  const entry = candidates[hash % candidates.length];
-  const url = toCoverUrl(entry);
-  usedThisRun.add(url);
-  return url;
+  usedThisRun.add(pick.url);
+  return pick.url;
 }
 
 /**
@@ -1885,25 +2474,48 @@ export function contentImagesFor(
 ): string[] {
   const narrowPool = matchKeywordPool(slug) || (catSlug === "cost-profit" ? matchTitlePool(title) : undefined);
   const catPool = catSlug ? CAT_IMAGE_POOLS[catSlug] : undefined;
-  const pool = narrowPool ? [...narrowPool, ...(catPool || [])] : catPool;
-  if (!pool || pool.length === 0 || count <= 0) return [];
+  if ((!narrowPool || narrowPool.length === 0) && (!catPool || catPool.length === 0)) return [];
+  if (count <= 0) return [];
 
-  const seen = new Set<string>();
-  const uniqueUrls: string[] = [];
-  for (const entry of pool) {
-    const url = toCoverUrl(entry);
-    if (url === coverUrl || seen.has(url)) continue;
-    seen.add(url);
-    uniqueUrls.push(url);
+  // Same "narrow pool must come first, not diluted into the combined array" fix as coverFor():
+  // dedupe narrow and category pools separately, then take narrow entries before any category
+  // entries, so a topical pool (e.g. "durian") is never crowded out by the much larger generic
+  // category pool when picking in-body illustration images.
+  function dedupe(pool: string[] | undefined, exclude: Set<string>): string[] {
+    if (!pool) return [];
+    const seen = new Set<string>();
+    const out: string[] = [];
+    for (const entry of pool) {
+      const url = toCoverUrl(entry);
+      if (url === coverUrl || exclude.has(url) || seen.has(url)) continue;
+      seen.add(url);
+      out.push(url);
+    }
+    return out;
   }
-  if (uniqueUrls.length === 0) return [];
+  function rotate(arr: string[], hash: number): string[] {
+    if (arr.length === 0) return arr;
+    const start = hash % arr.length;
+    return arr.map((_, i) => arr[(start + i) % arr.length]);
+  }
 
-  const start = hashSlug(slug) % uniqueUrls.length;
-  const picked: string[] = [];
-  for (let i = 0; i < uniqueUrls.length && picked.length < count; i++) {
-    picked.push(uniqueUrls[(start + i) % uniqueUrls.length]);
-  }
-  return picked;
+  const hash = hashSlug(slug);
+  const uniqueNarrow = dedupe(narrowPool, new Set());
+  // Narrow pools (e.g. "farmer-registration", "rice-growing") often hold only 2-4 curated images —
+  // fewer than the 3-6 content-image slots a single article requests, and a 1-image pool can be
+  // fully excluded here when coverFor() already used its only entry as the cover. Never top up the
+  // shortfall from the category pool in either case: that would silently mix in an off-topic photo,
+  // which the topical-pool gate above then correctly blocks the whole publish for. Key this off
+  // whether a narrow pool applies at all (not whether any candidates survived dedup) — cap to what's
+  // left, down to 0 — same "insert fewer than requested" degradation as insertContentImages().
+  if (narrowPool && narrowPool.length > 0) return rotate(uniqueNarrow, hash).slice(0, count);
+  // No topical pool matched this slug/title at all — category pool images are generic (same
+  // handful reused across every article in the category), not actually on-topic. Owner instruction
+  // 2026-09-01: don't pepper the article with 3-6 unrelated stock photos in that case, show at
+  // most 1 (still lets the article have some illustration rather than none).
+  const uniqueCat = dedupe(catPool, new Set());
+  const ordered = rotate(uniqueCat, hash);
+  return ordered.slice(0, Math.min(1, count));
 }
 
 function escapeHtmlAttr(s: string): string {
@@ -1984,6 +2596,19 @@ async function main() {
       const contentImageCount = 3 + (hashSlug(slug) % 4);
       const contentImages = contentImagesFor(row.catSlug as string | undefined, slug, title, coverImage, contentImageCount);
       const html = insertContentImages(rawHtml, contentImages);
+
+      // Hard gate: cover/content images must come from the topical pool when one is defined for this
+      // slug/title — never a generic category photo (root cause of e.g. a citrus cover on a durian
+      // article, found+fixed sitewide 2026-08-30). Fail the publish rather than write a mismatch.
+      const narrowPool = matchKeywordPool(slug) || (row.catSlug === "cost-profit" ? matchTitlePool(title) : undefined);
+      if (narrowPool && narrowPool.length > 0) {
+        const narrowUrls = new Set(narrowPool.map(toCoverUrl));
+        const imgMismatches: string[] = [];
+        if (coverImage && !narrowUrls.has(coverImage)) imgMismatches.push(`cover image not from topical pool: ${coverImage}`);
+        for (const u of contentImages) if (u && !narrowUrls.has(u)) imgMismatches.push(`content image not from topical pool: ${u}`);
+        if (imgMismatches.length > 0) { failed.push({ slug, errors: imgMismatches }); continue; }
+      }
+
       const faqs = (a.faqs || []).filter((f: any) => f?.q?.trim() && f?.a?.trim());
       const analysisBlocks = htmlToAnalysisBlocks(html);
 
