@@ -785,6 +785,28 @@ export const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/15375862/pexels-photo-15375862.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/34350999/pexels-photo-34350999.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
+  // เพิ่ม pool 2026-09-12 (batch 50 บทความใหม่ — "crab" alias เดิมชี้ไป rice-field-crab ซึ่งเป็นปูนาตัวเล็ก
+  // ผิดชนิดกับปูทะเล/ปูนิ่มโดยสิ้นเชิง — เพิ่ม key เฉพาะให้ตรงสปีชีส์แทนที่จะปล่อยให้ fallback ผิด
+  // ทุก ID ตรวจ caption จริงบน Pexels แล้ว, cross-check ไม่ซ้ำกับรูปที่ใช้ทั้งไฟล์)
+  "soft-shell-crab": [
+    "https://images.pexels.com/photos/39035476/pexels-photo-39035476.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/39035478/pexels-photo-39035478.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/14568339/pexels-photo-14568339.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "blue-swimming-crab": [
+    "https://images.pexels.com/photos/32987810/pexels-photo-32987810.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32987808/pexels-photo-32987808.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/32987812/pexels-photo-32987812.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/36076850/pexels-photo-36076850.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  // หมายเหตุ: Pexels ไม่มีรูป caption ยืนยันชัดว่าเป็นปูทะเล/Scylla โดยเฉพาะ (มีแต่ปูก้ามดาบ/fiddler crab
+  // ซึ่งหน้าตาต่างกันมาก — ก้ามข้างเดียวใหญ่ผิดปกติ) จึงเลือกรูปปูทั่วไปที่อยู่ในโคลน/ชายฝั่งแทน
+  // ยังไม่ใช่การยืนยันสปีชีส์ Scylla 100% แต่ดีกว่าปล่อยให้ fallback ไปปูนา (rice-field-crab) ที่ผิดชนิดชัดเจนกว่า
+  "mud-crab": [
+    "https://images.pexels.com/photos/5102006/pexels-photo-5102006.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/29450761/pexels-photo-29450761.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/27468906/pexels-photo-27468906.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
   "freshwater-snail": [
     "https://images.pexels.com/photos/35674134/pexels-photo-35674134.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/27017090/pexels-photo-27017090.jpeg?auto=compress&cs=tinysrgb&w=1400",
@@ -2304,6 +2326,29 @@ export const KEYWORD_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/32262909/pexels-photo-32262909.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/14673874/pexels-photo-14673874.jpeg?auto=compress&cs=tinysrgb&w=1400",
   ],
+  // เพิ่ม pool 2026-09-12 (batch 50 บทความใหม่ — ไม่เคยมี pool ให้ 3 keyword นี้มาก่อนเลย ทุก ID ตรวจ
+  // caption จริงบน Pexels แล้ว, cross-check ไม่ซ้ำกับรูปที่ใช้ทั้งไฟล์)
+  macadamia: [
+    "https://images.pexels.com/photos/8162043/pexels-photo-8162043.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/9059848/pexels-photo-9059848.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/33793908/pexels-photo-33793908.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/24960983/pexels-photo-24960983.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  // หมายเหตุ: Pexels ไม่มีรูป caption ยืนยันสายพันธุ์เหมยซาน (Meishan) โดยเฉพาะ — ใช้รูปหมูดำทั่วไปแทน
+  // (สีดำใกล้เคียงลักษณะเด่นของเหมยซานมากกว่า alias "pig" เดิมที่ชี้ไป fattening-pig/deep-litter-pig
+  // ซึ่งเป็นหมูขาว/ชมพูทั่วไป) ยังไม่ใช่การยืนยันสายพันธุ์ 100%
+  "meishan-pig": [
+    "https://images.pexels.com/photos/6416110/pexels-photo-6416110.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/7811891/pexels-photo-7811891.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/11880858/pexels-photo-11880858.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4602350/pexels-photo-4602350.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
+  "solar-farm": [
+    "https://images.pexels.com/photos/9893731/pexels-photo-9893731.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/15751130/pexels-photo-15751130.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/4320449/pexels-photo-4320449.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "https://images.pexels.com/photos/35425765/pexels-photo-35425765.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  ],
 };
 
 // เพิ่ม 2026-09-01 (แก้ "รูปไม่ตรงเนื้อหา" — agri-news/market articles ที่พูดถึงสัตว์/พืชเดียวกับหมวด
@@ -2345,6 +2390,16 @@ KEYWORD_IMAGE_POOLS["thai-friesian"] = [...KEYWORD_IMAGE_POOLS["dairy-cow"]];
 KEYWORD_IMAGE_POOLS["vannamei-biofloc"] = [...KEYWORD_IMAGE_POOLS["white-shrimp"]];
 KEYWORD_IMAGE_POOLS["vegetable-blight"] = [...KEYWORD_IMAGE_POOLS["leaf-blight"]];
 KEYWORD_IMAGE_POOLS["water-spinach"] = [...KEYWORD_IMAGE_POOLS["morning-glory"]];
+
+// เพิ่ม 2026-09-12 (batch 50 บทความใหม่ — alias ราคาถูก ใช้ pool ที่ curate ไว้แล้วจริงเท่านั้น ไม่ใช้ URL ใหม่)
+KEYWORD_IMAGE_POOLS["black-soldier-fly"] = [...KEYWORD_IMAGE_POOLS["bsf-larvae"]];
+KEYWORD_IMAGE_POOLS["fish-rice"] = [...KEYWORD_IMAGE_POOLS["rice-fish-duck"]];
+KEYWORD_IMAGE_POOLS["soil-testing"] = [...KEYWORD_IMAGE_POOLS["soil-test-ph"]];
+KEYWORD_IMAGE_POOLS["drone"] = [...KEYWORD_IMAGE_POOLS["agri-drone"]];
+KEYWORD_IMAGE_POOLS["poultry"] = [...KEYWORD_IMAGE_POOLS["native-chicken"], ...KEYWORD_IMAGE_POOLS["layer-chicken"]];
+KEYWORD_IMAGE_POOLS["avian-influenza"] = [...KEYWORD_IMAGE_POOLS["layer-chicken-diseases"]];
+// chili-thrips: ข้าม — ตรวจ care-thrips แล้วพบว่าทุกรูปเป็นเพลี้ยอ่อน (aphids) ไม่ใช่เพลี้ยไฟ (thrips) เลย
+// (caption Pexels ยืนยันชัดว่า "aphids" ทุกรูป) ใช้แทนกันไม่ได้ตรงตามเนื้อหาบทความเพลี้ยไฟ จึงไม่เพิ่ม alias นี้
 
 export function matchKeywordPool(slug: string): string[] | undefined {
   // Match on hyphen-delimited slug segments, not raw substring — a raw .includes() let short
