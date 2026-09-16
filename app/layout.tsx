@@ -81,10 +81,46 @@ const jsonLd = {
       "@type": "Organization",
       "@id": `${SITE_URL}/#organization`,
       name: "เกษตรกรไทย",
+      alternateName: ["Kaset Takon Thai", "kasettakonthai"],
       url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        "@id": `${SITE_URL}/#logo`,
+        url: `${SITE_URL}/logo.png`,
+        caption: "เกษตรกรไทย",
+      },
+      image: { "@id": `${SITE_URL}/#logo` },
       slogan: "ปลูกเป็น เลี้ยงเป็น ทำเกษตรให้มีรายได้",
       description:
         "คลังความรู้เกษตรครบวงจร สำหรับคนไทยที่อยากปลูกพืช เลี้ยงสัตว์ ลดต้นทุน และสร้างรายได้จากฟาร์ม",
+      // AEO/GEO: บอก AI ว่าเว็บนี้เชี่ยวชาญเรื่องอะไร และให้บริการใคร
+      knowsAbout: [
+        "การปลูกพืชเศรษฐกิจในประเทศไทย",
+        "การเลี้ยงสัตว์เศรษฐกิจ",
+        "การเพาะเลี้ยงสัตว์น้ำ",
+        "โรคพืชและโรคสัตว์",
+        "ต้นทุนและกำไรการเกษตร",
+        "ดิน น้ำ และปุ๋ย",
+        "เกษตรผสมผสาน",
+        "การแปรรูปและการตลาดสินค้าเกษตร",
+      ],
+      areaServed: {
+        "@type": "Country",
+        name: "ประเทศไทย",
+        alternateName: "Thailand",
+      },
+      publishingPrinciples: `${SITE_URL}/about`,
+      foundingDate: "2025",
+    },
+    {
+      // E-E-A-T: ผู้เขียนจริงเป็นทีมบรรณาธิการ ไม่ใช่ Organization ตรง ๆ
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#editorial-team`,
+      name: "กองบรรณาธิการเกษตรกรไทย",
+      url: `${SITE_URL}/about`,
+      parentOrganization: { "@id": `${SITE_URL}/#organization` },
+      description:
+        "ทีมเรียบเรียงเนื้อหาเกษตรของเกษตรกรไทย อ้างอิงข้อมูลจากกรมวิชาการเกษตร กรมปศุสัตว์ กรมประมง และกรมส่งเสริมการเกษตร",
     },
     {
       "@type": "WebSite",
@@ -104,7 +140,6 @@ const jsonLd = {
     },
   ],
 };
-
 export default function RootLayout({
   children,
 }: {

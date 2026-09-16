@@ -2,8 +2,19 @@ import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import ToolShell from "@/components/ToolShell";
 import PlantingCalendar from "@/components/tools/PlantingCalendar";
+import { buildToolJsonLd } from "@/lib/toolSeo";
 
-export const metadata = pageMeta({ title: "ปฏิทินเพาะปลูก", description: "ปฏิทินเพาะปลูกพืชสำหรับเกษตรกรไทย เลือกเดือนแล้วดูว่าควรเริ่มปลูกพืชอะไร พร้อมตารางช่วงเวลาปลูกทั้งปี", path: "/tools/calendar" });
+const TITLE = "ปฏิทินเพาะปลูก";
+const DESCRIPTION = "ปฏิทินเพาะปลูกพืชสำหรับเกษตรกรไทย เลือกเดือนแล้วดูว่าควรเริ่มปลูกพืชอะไร พร้อมตารางช่วงเวลาปลูกทั้งปี";
+
+export const metadata = pageMeta({ title: TITLE, description: DESCRIPTION, path: "/tools/calendar" });
+
+const jsonLd = buildToolJsonLd({
+  name: TITLE,
+  description: DESCRIPTION,
+  path: "/tools/calendar",
+  breadcrumbLabel: TITLE,
+});
 
 export default function Page({
   searchParams,
@@ -16,6 +27,10 @@ export default function Page({
       title="ปฏิทินเพาะปลูก"
       intro="เลือกเดือนที่จะเริ่มปลูก แล้วดูว่าพืชชนิดใดเหมาะกับช่วงนั้น พร้อมตารางช่วงเวลาปลูกทั้งปีเพื่อวางแผนล่วงหน้า"
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <PlantingCalendar initialCrop={searchParams.c} />
 
       <div className="cc-tip mt-10">

@@ -2,8 +2,19 @@ import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import ToolShell from "@/components/ToolShell";
 import DiseaseChecker from "@/components/tools/DiseaseChecker";
+import { buildToolJsonLd } from "@/lib/toolSeo";
 
-export const metadata = pageMeta({ title: "เช็กโรคเบื้องต้น", description: "เครื่องมือเช็กโรคพืชและโรคสัตว์เบื้องต้นสำหรับเกษตรกรไทย เลือกอาการที่พบ แล้วดูสาเหตุและแนวทางป้องกันดูแล", path: "/tools/disease-check" });
+const TITLE = "เช็กโรคเบื้องต้น";
+const DESCRIPTION = "เครื่องมือเช็กโรคพืชและโรคสัตว์เบื้องต้นสำหรับเกษตรกรไทย เลือกอาการที่พบ แล้วดูสาเหตุและแนวทางป้องกันดูแล";
+
+export const metadata = pageMeta({ title: TITLE, description: DESCRIPTION, path: "/tools/disease-check" });
+
+const jsonLd = buildToolJsonLd({
+  name: TITLE,
+  description: DESCRIPTION,
+  path: "/tools/disease-check",
+  breadcrumbLabel: TITLE,
+});
 
 export default function Page({
   searchParams,
@@ -16,6 +27,10 @@ export default function Page({
       title="เช็กโรคเบื้องต้น"
       intro="เลือกกลุ่มและอาการที่พบในพืชหรือสัตว์ แล้วดูว่าน่าจะเป็นโรคอะไร สาเหตุมาจากไหน และมีแนวทางป้องกันดูแลอย่างไร"
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <DiseaseChecker initialName={searchParams.d} />
 
       <div className="cc-tip mt-10">

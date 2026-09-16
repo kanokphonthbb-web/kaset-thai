@@ -4,6 +4,7 @@ import { SITE_URL } from "@/lib/site";
 import { prisma } from "@/lib/prisma";
 import { getAllStarterKits } from "@/lib/starterKits";
 import { REDIRECTED_ARTICLE_SLUGS } from "@/lib/articleSeoRules.mjs";
+import { isArticleIndexable } from "@/lib/articleNoindex.mjs";
 import { getAllProducts, isProductIndexable } from "@/lib/products";
 import { PRODUCT_CATEGORIES } from "@/lib/productCategories";
 import { PROVINCES } from "@/lib/weather/locations";
@@ -97,7 +98,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // บทความจากระบบหลังบ้าน (CMS) ที่เผยแพร่แล้ว
   const cmsArticleRoutes: MetadataRoute.Sitemap =
     postsResult.status === "fulfilled"
-      ? postsResult.value.map((p) => ({
+      ? postsResult.value
+          // หน้าที่ถูกตั้ง noindex (ตระกูล angle-variant / เนื้อหาสั้น) ไม่ควรอยู่ใน sitemap
+          .filter((p) => isArticleIndexable(p.slug))
+          .map((p) => ({
       url: `${SITE_URL}/articles/${encodeURIComponent(p.slug)}`,
       lastModified: articleContentModifiedAt(p),
       changeFrequency: "monthly" as const,

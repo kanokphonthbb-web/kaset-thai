@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import { ARTICLES, getArticle, imageFor } from "@/lib/data";
 import { getArticleContent } from "@/lib/articleContent";
 import { SITE_URL } from "@/lib/site";
+import { isArticleIndexable } from "@/lib/articleNoindex.mjs";
 import { prisma } from "@/lib/prisma";
 import DbArticleView from "@/components/DbArticleView";
 import ProductCard from "@/components/ProductCard";
@@ -84,17 +85,30 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
         ? dbPost.coverImage
         : `${SITE_URL}${dbPost.coverImage}`
       : undefined;
+    const seoTitle = articleSeoTitle(dbPost.slug, dbPost.seoTitle || dbPost.title);
+    const seoDescription = dbPost.metaDescription || dbPost.excerpt;
+    const canonical = `${SITE_URL}/articles/${encodeURIComponent(dbPost.slug)}`;
+    // บทความในตระกูล angle-variant ที่ไม่ใช่ตัวหลัก และบทความที่สั้นเกินไป
+    // ตั้ง noindex แต่ยัง follow เพื่อให้ลิงก์ภายในยังส่งสัญญาณต่อได้
+    const indexable = isArticleIndexable(dbPost.slug);
     return {
-      title: articleSeoTitle(dbPost.slug, dbPost.seoTitle || dbPost.title),
-      description: dbPost.metaDescription || dbPost.excerpt,
-      alternates: { canonical: `${SITE_URL}/articles/${encodeURIComponent(dbPost.slug)}` },
+      title: seoTitle,
+      description: seoDescription,
+      alternates: { canonical },
       openGraph: {
         title: articleSeoTitle(dbPost.slug, dbPost.title),
         description: dbPost.metaDescription,
         type: "article",
-        url: `${SITE_URL}/articles/${encodeURIComponent(dbPost.slug)}`,
+        url: canonical,
         images: cover ? [cover] : undefined,
       },
+      twitter: {
+        card: "summary_large_image",
+        title: seoTitle,
+        description: seoDescription,
+        images: cover ? [cover] : undefined,
+      },
+      robots: indexable ? undefined : { index: false, follow: true },
     };
   }
   const article = getArticle(slug);

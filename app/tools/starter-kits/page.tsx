@@ -2,11 +2,22 @@ import Link from "next/link";
 import { pageMeta } from "@/lib/seo";
 import ToolShell from "@/components/ToolShell";
 import { getAllStarterKits } from "@/lib/starterKits";
+import { buildToolJsonLd } from "@/lib/toolSeo";
+
+const TITLE = "ชุดเริ่มต้น";
+const DESCRIPTION = "รวมของที่ต้องมี/เสริมสำหรับงานเกษตรแต่ละแบบ ปลูกพืช เลี้ยงสัตว์ ประมง ดินน้ำปุ๋ย และอื่น ๆ เลือกซื้อเป็นชิ้น ๆ ได้เอง";
 
 export const metadata = pageMeta({
-  title: "ชุดเริ่มต้น",
-  description: "รวมของที่ต้องมี/เสริมสำหรับงานเกษตรแต่ละแบบ ปลูกพืช เลี้ยงสัตว์ ประมง ดินน้ำปุ๋ย และอื่น ๆ เลือกซื้อเป็นชิ้น ๆ ได้เอง",
+  title: TITLE,
+  description: DESCRIPTION,
   path: "/tools/starter-kits",
+});
+
+const jsonLd = buildToolJsonLd({
+  name: TITLE,
+  description: DESCRIPTION,
+  path: "/tools/starter-kits",
+  breadcrumbLabel: TITLE,
 });
 
 const CATEGORY_ORDER = [
@@ -33,6 +44,10 @@ export default function StarterKitsPage() {
       title="ชุดเริ่มต้น"
       intro="รวมของที่ต้องมี/เสริมสำหรับงานเกษตรแต่ละแบบ กดเข้าไปดูรายการ แล้วเลือกซื้อของแต่ละชิ้นได้เองตามที่ต้องการ ไม่ใช่การขายเป็นเซ็ตเดียว"
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="space-y-14">
         {groups.map((g) => (
           <section key={g.category}>

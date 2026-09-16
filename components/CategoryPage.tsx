@@ -7,6 +7,7 @@ import { ARTICLES, CATEGORIES, imageFor } from "@/lib/data";
 import { prisma } from "@/lib/prisma";
 import { REDIRECTED_ARTICLE_SLUGS } from "@/lib/articleSeoRules.mjs";
 import { categoryArchiveHref } from "@/lib/articleDiscovery";
+import { SITE_URL } from "@/lib/site";
 
 type Props = {
   slug: string;
@@ -38,8 +39,55 @@ export default async function CategoryPage({ slug, icon, title, intro, topics }:
   const cmsPosts = await getCmsPosts(slug);
   const others = CATEGORIES.filter((c) => c.slug !== slug).slice(0, 4);
 
+  const categoryUrl = `${SITE_URL}/${slug}`;
+  const listItems = [
+    ...related.map((article) => ({ url: `${SITE_URL}/articles/${article.slug}`, name: article.title })),
+    ...cmsPosts.map((p) => ({ url: `${SITE_URL}/articles/${p.slug}`, name: p.title })),
+  ];
+
+  const graph: Record<string, unknown>[] = [
+    {
+      "@type": "CollectionPage",
+      "@id": `${categoryUrl}#collectionpage`,
+      url: categoryUrl,
+      name: title,
+      description: intro,
+      inLanguage: "th-TH",
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      about: { "@type": "Thing", name: title, description: intro },
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${categoryUrl}#breadcrumb`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "หน้าแรก", item: `${SITE_URL}/` },
+        { "@type": "ListItem", position: 2, name: title, item: categoryUrl },
+      ],
+    },
+  ];
+
+  if (listItems.length > 0) {
+    graph.push({
+      "@type": "ItemList",
+      "@id": `${categoryUrl}#itemlist`,
+      itemListElement: listItems.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: item.url,
+        name: item.name,
+      })),
+    });
+  }
+
+  const jsonLd = { "@context": "https://schema.org", "@graph": graph };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
       <main>
         {/* Hero band */}

@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import { CATEGORIES } from "@/lib/data";
 import { prisma } from "@/lib/prisma";
 import { pageMeta } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 import { REDIRECTED_ARTICLE_SLUGS } from "@/lib/articleSeoRules.mjs";
 import {
   CATEGORY_ARCHIVE_PER_PAGE,
@@ -92,8 +93,56 @@ export default async function CategoryArchive({ params, searchParams }: PageProp
   const totalPages = Math.max(1, Math.ceil(total / CATEGORY_ARCHIVE_PER_PAGE));
   if (total > 0 && currentPage > totalPages) notFound();
 
+  const pageUrl = `${SITE_URL}${categoryArchiveHref(category.slug, currentPage)}`;
+  const prevUrl = currentPage > 1 ? `${SITE_URL}${categoryArchiveHref(category.slug, currentPage - 1)}` : null;
+  const nextUrl = currentPage < totalPages ? `${SITE_URL}${categoryArchiveHref(category.slug, currentPage + 1)}` : null;
+
+  const graph: Record<string, unknown>[] = [
+    {
+      "@type": "CollectionPage",
+      "@id": `${pageUrl}#collectionpage`,
+      url: pageUrl,
+      name: `บทความ${category.title}${currentPage > 1 ? ` หน้า ${currentPage}` : ""}`,
+      description: `รวมบทความ${category.title}สำหรับเกษตรกรไทย ${category.description}`,
+      inLanguage: "th-TH",
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      about: { "@type": "Thing", name: category.title, description: category.description },
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${pageUrl}#breadcrumb`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "หน้าแรก", item: `${SITE_URL}/` },
+        { "@type": "ListItem", position: 2, name: category.title, item: `${SITE_URL}${category.href}` },
+        { "@type": "ListItem", position: 3, name: "บทความทั้งหมด", item: pageUrl },
+      ],
+    },
+  ];
+
+  if (posts.length > 0) {
+    graph.push({
+      "@type": "ItemList",
+      "@id": `${pageUrl}#itemlist`,
+      itemListElement: posts.map((post, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: `${SITE_URL}/articles/${post.slug}`,
+        name: post.title,
+      })),
+    });
+  }
+
+  const jsonLd = { "@context": "https://schema.org", "@graph": graph };
+
   return (
     <>
+      {prevUrl && <link rel="prev" href={prevUrl} />}
+      {nextUrl && <link rel="next" href={nextUrl} />}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
       <main>
         <section className="bg-mist">
