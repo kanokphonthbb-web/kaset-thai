@@ -2401,6 +2401,37 @@ KEYWORD_IMAGE_POOLS["avian-influenza"] = [...KEYWORD_IMAGE_POOLS["layer-chicken-
 // chili-thrips: ข้าม — ตรวจ care-thrips แล้วพบว่าทุกรูปเป็นเพลี้ยอ่อน (aphids) ไม่ใช่เพลี้ยไฟ (thrips) เลย
 // (caption Pexels ยืนยันชัดว่า "aphids" ทุกรูป) ใช้แทนกันไม่ได้ตรงตามเนื้อหาบทความเพลี้ยไฟ จึงไม่เพิ่ม alias นี้
 
+// เพิ่ม pool 2026-09-18 (wave19 cover dedup — pool ของ 4 หมวดนี้ถูกใช้จนหมดจริง (0 รูปว่างใน market /
+// agri-news-law-standards / soil-water-fertilizer) ทำให้ 26 บทความ wave19 ได้ cover ซ้ำกับบทความเดิม.
+// ทุก URL: Pexels-verified HTTP 200, ไม่ซ้ำกับ URL อื่นในไฟล์นี้, ตรวจ DB แล้วไม่ซ้ำ coverImage/content ของบทความใดในไซต์,
+// และเปิดดูภาพจริงทีละรูปแล้วว่าตรงเนื้อหาบทความ — key = slug เต็ม จึงผูกรูปกับบทความเดียวไม่ปนหมวดอื่น)
+KEYWORD_IMAGE_POOLS["agri-news-law-standards-district-livestock-office-role"] = ["https://images.pexels.com/photos/30927777/pexels-photo-30927777.jpeg?auto=compress&cs=tinysrgb&w=1400"]; // สัตวแพทย์ตรวจโคนมในโรงเรือน
+KEYWORD_IMAGE_POOLS["agri-news-law-standards-district-vs-subdistrict-agri-office"] = ["https://images.pexels.com/photos/6667676/pexels-photo-6667676.jpeg?auto=compress&cs=tinysrgb&w=1400"]; // เจ้าหน้าที่กรอกแบบฟอร์มบนคลิปบอร์ด
+KEYWORD_IMAGE_POOLS["agri-news-law-standards-el-nino-la-nina-crop-planning"] = ["https://images.pexels.com/photos/11506881/pexels-photo-11506881.jpeg?auto=compress&cs=tinysrgb&w=1400"]; // แปลงนาแห้งแตกระแหงจากภัยแล้ง
+KEYWORD_IMAGE_POOLS["agri-news-law-standards-young-smart-farmer-apply"] = ["https://images.pexels.com/photos/5622492/pexels-photo-5622492.jpeg?auto=compress&cs=tinysrgb&w=1400"]; // เกษตรกรรุ่นใหม่ใช้แท็บเล็ตในแปลง
+KEYWORD_IMAGE_POOLS["agri-news-law-standards-rice-pledging-vs-income-guarantee"] = ["https://images.pexels.com/photos/11196880/pexels-photo-11196880.jpeg?auto=compress&cs=tinysrgb&w=1400"]; // ชาวนาบรรจุข้าวเปลือกใส่กระสอบ
+KEYWORD_IMAGE_POOLS["agri-news-law-standards-paraquat-glyphosate-status"] = ["https://images.pexels.com/photos/11017266/pexels-photo-11017266.jpeg?auto=compress&cs=tinysrgb&w=1400"]; // เกษตรกรสะพายถังพ่นสารในแปลงผัก
+KEYWORD_IMAGE_POOLS["agri-news-law-standards-local-permit-livestock-farm"] = ["https://images.pexels.com/photos/8815843/pexels-photo-8815843.jpeg?auto=compress&cs=tinysrgb&w=1400"]; // เซ็นเอกสารคำขออนุญาตในสำนักงาน
+KEYWORD_IMAGE_POOLS["agri-news-law-standards-farmland-tenancy-law"] = ["https://images.pexels.com/photos/8962683/pexels-photo-8962683.jpeg?auto=compress&cs=tinysrgb&w=1400"]; // อ่านสัญญาเช่าที่ดินบนแฟ้มเอกสาร
+KEYWORD_IMAGE_POOLS["market-cold-chain-fresh-produce-delivery"] = ["https://images.pexels.com/photos/27099094/pexels-photo-27099094.jpeg?auto=compress&cs=tinysrgb&w=1400"]; // แถวรถห้องเย็นจอดรอขนส่ง
+KEYWORD_IMAGE_POOLS["market-check-paddy-price-today"] = ["https://images.pexels.com/photos/25758217/pexels-photo-25758217.jpeg?auto=compress&cs=tinysrgb&w=1400"]; // ชาวนายืนข้างกองกระสอบข้าวเปลือกกลางนา
+KEYWORD_IMAGE_POOLS["market-check-rubber-price-today"] = ["https://images.pexels.com/photos/9450008/pexels-photo-9450008.jpeg?auto=compress&cs=tinysrgb&w=1400"]; // กรีดยางพารามีถ้วยรองน้ำยาง
+KEYWORD_IMAGE_POOLS["market-check-oil-palm-price-today"] = ["https://images.pexels.com/photos/10269226/pexels-photo-10269226.jpeg?auto=compress&cs=tinysrgb&w=1400"]; // ภาพมุมสูงสวนปาล์มน้ำมัน
+KEYWORD_IMAGE_POOLS["market-check-pig-price-today"] = ["https://images.pexels.com/photos/110815/pexels-photo-110815.jpeg?auto=compress&cs=tinysrgb&w=1400"]; // สุกรขุนสองตัวในคอก
+KEYWORD_IMAGE_POOLS["market-check-egg-price-today"] = ["https://images.pexels.com/photos/37718536/pexels-photo-37718536.jpeg?auto=compress&cs=tinysrgb&w=1400"]; // แผงไข่ไก่วางซ้อนในตลาด
+KEYWORD_IMAGE_POOLS["market-check-durian-price-today"] = ["https://images.pexels.com/photos/12695566/pexels-photo-12695566.jpeg?auto=compress&cs=tinysrgb&w=1400"]; // ทุเรียนวางเรียงขายในตลาด
+KEYWORD_IMAGE_POOLS["market-label-requirements-processed-produce"] = ["https://images.pexels.com/photos/30666808/pexels-photo-30666808.jpeg?auto=compress&cs=tinysrgb&w=1400"]; // ขวดแยม/ผักดองติดฉลากสินค้าแปรรูป
+KEYWORD_IMAGE_POOLS["soil-water-fertilizer-check-dam-small-farm"] = ["https://images.pexels.com/photos/17844123/pexels-photo-17844123.jpeg?auto=compress&cs=tinysrgb&w=1400"]; // ฝายน้ำล้นกั้นลำน้ำขนาดเล็ก
+KEYWORD_IMAGE_POOLS["soil-water-fertilizer-fake-fertilizer-check"] = ["https://images.pexels.com/photos/4956961/pexels-photo-4956961.jpeg?auto=compress&cs=tinysrgb&w=1400"]; // แบกกระสอบปุ๋ยขึ้นรถบรรทุกหน้าร้าน
+KEYWORD_IMAGE_POOLS["soil-water-fertilizer-azolla-rice-paddy-urea-saving"] = ["https://images.pexels.com/photos/35702549/pexels-photo-35702549.jpeg?auto=compress&cs=tinysrgb&w=1400"]; // นาข้าวเขียวพร้อมคูส่งน้ำ
+KEYWORD_IMAGE_POOLS["plants-rice-yield-per-rai-kg"] = ["https://images.pexels.com/photos/11788868/pexels-photo-11788868.jpeg?auto=compress&cs=tinysrgb&w=1400"]; // มือชาวนาแตะรวงข้าวสุกในนา
+KEYWORD_IMAGE_POOLS["plants-crops-after-rice-harvest"] = ["https://images.pexels.com/photos/35072278/pexels-photo-35072278.jpeg?auto=compress&cs=tinysrgb&w=1400"]; // มือถือรวงข้าวเหนือแปลงตอซังหลังเกี่ยว
+KEYWORD_IMAGE_POOLS["plants-rice-seed-class-certified"] = ["https://images.pexels.com/photos/12026170/pexels-photo-12026170.jpeg?auto=compress&cs=tinysrgb&w=1400"]; // มือถือรวงข้าวแก่เต็มเมล็ด
+KEYWORD_IMAGE_POOLS["animals-cattle-daily-forage-intake"] = ["https://images.pexels.com/photos/5216141/pexels-photo-5216141.jpeg?auto=compress&cs=tinysrgb&w=1400"]; // โคกินหญ้าแห้งที่ซองอาหารในโรงเรือน
+KEYWORD_IMAGE_POOLS["animals-sow-gestation-breeding-age"] = ["https://images.pexels.com/photos/29738145/pexels-photo-29738145.jpeg?auto=compress&cs=tinysrgb&w=1400"]; // ลูกสุกรดูดนมแม่พันธุ์ในคอกคลอด
+KEYWORD_IMAGE_POOLS["animals-layer-chicken-space-per-bird"] = ["https://images.pexels.com/photos/38669272/pexels-photo-38669272.jpeg?auto=compress&cs=tinysrgb&w=1400"]; // ไก่ไข่ในกรงตับแถวยาวในโรงเรือน
+KEYWORD_IMAGE_POOLS["cost-profit-burnt-cane-price-deduction"] = ["https://images.pexels.com/photos/35778504/pexels-photo-35778504.jpeg?auto=compress&cs=tinysrgb&w=1400"]; // คนงานลำเลียงอ้อยขึ้นรถพ่วง
+
 export function matchKeywordPool(slug: string): string[] | undefined {
   // Match on hyphen-delimited slug segments, not raw substring — a raw .includes() let short
   // generic keys like "rice" false-match inside unrelated words ("...selling-price-calculator"),
