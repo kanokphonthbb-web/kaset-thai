@@ -283,6 +283,13 @@ export const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/38220073/pexels-photo-38220073.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/35782541/pexels-photo-35782541.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/36840397/pexels-photo-36840397.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // wave20 sourced 2026-09-20, visually verified
+    "https://images.pexels.com/photos/12387520/pexels-photo-12387520.jpeg?auto=compress&cs=tinysrgb&w=1400", // ภาพมุมสูงทุ่งนาข้าวสีทองสลับแปลงเขียว มีบ้านหลังคาแดง โรงเรือน บ่อน้ำ และดงมะพร้าวรวมอยู่ในผืนเดียวกัน
+    "https://images.pexels.com/photos/19371512/pexels-photo-19371512.jpeg?auto=compress&cs=tinysrgb&w=1400", // มุมสูงเหนือแปลงนาข้าวเขียวขนาดเล็กหลายแปลงคั่นด้วยคันนาคดเคี้ยว มีกระท่อมปลายนาหลังเล็ก
+    "https://images.pexels.com/photos/31141178/pexels-photo-31141178.jpeg?auto=compress&cs=tinysrgb&w=1400", // แปลงข้าวโพดปลูกแซมพืชใบกว้างบนดินแดงเชิงเขา มีบ้านไม้หลังคากระเบื้องและป่าเป็นฉากหลัง
+    "https://images.pexels.com/photos/7013409/pexels-photo-7013409.jpeg?auto=compress&cs=tinysrgb&w=1400", // มุมสูงพื้นที่เกษตรผสมผสานเขตร้อน มีบ่อเลี้ยงปลาเป็นแถบยาว แปลงผัก ดงกล้วยมะพร้าว และบ้านเรือนแทรกอยู่
+    "https://images.pexels.com/photos/38815309/pexels-photo-38815309.jpeg?auto=compress&cs=tinysrgb&w=1400", // มุมสูงฟาร์มผสมผสาน มีบ้าน โรงเรือน กังหันลม แปลงผักยกร่องคลุมพลาสติกหลายแปลง และทุ่งหญ้าเลี้ยงสัตว์
+    "https://images.pexels.com/photos/4773624/pexels-photo-4773624.jpeg?auto=compress&cs=tinysrgb&w=1400", // บ้านไร่หลังเล็กริมทุ่งหญ้าในแสงเย็น มีม้าและวัวเล็มหญ้าอยู่รอบบ้าน
   ],
   diseases: [
     "1692481060581-98c224124f12",
@@ -471,6 +478,21 @@ export const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/32130697/pexels-photo-32130697.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/33224237/pexels-photo-33224237.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/17161099/pexels-photo-17161099.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // wave20 sourced 2026-09-20, visually verified
+    "https://images.pexels.com/photos/12298301/pexels-photo-12298301.jpeg?auto=compress&cs=tinysrgb&w=1400", // พ่อค้านั่งขายผักสดริมทางเท้า มีถุงแตงกวา ถั่วฝักยาว มะเขือ และผักชีวางเรียงขาย
+    "https://images.pexels.com/photos/12823120/pexels-photo-12823120.jpeg?auto=compress&cs=tinysrgb&w=1400", // พ่อค้าคนกลางกับผู้ซื้อกำลังตรวจผักใบเขียวในกระสอบและลังพลาสติกที่จุดรับซื้อผลผลิต
+    "https://images.pexels.com/photos/13688384/pexels-photo-13688384.jpeg?auto=compress&cs=tinysrgb&w=1400", // แผงผักในตลาดสดเมืองไทย แม่ค้าอยู่หลังตาชั่งจาน ผักสดวางเต็มลังทั้งแผง
+    "https://images.pexels.com/photos/15872919/pexels-photo-15872919.jpeg?auto=compress&cs=tinysrgb&w=1400", // ชาวบ้านนั่งขายผักริมถนน กางผ้าวางกะหล่ำ ดอกกะหล่ำ และผักกาด พร้อมตาชั่งข้างตัว
+    "https://images.pexels.com/photos/17160597/pexels-photo-17160597.jpeg?auto=compress&cs=tinysrgb&w=1400", // พ่อค้าแผงผักใต้ผ้าใบ มีมะเขือเทศ กระเจี๊ยบเขียว มะระ และเครื่องชั่งดิจิทัลบนแผง
+    "https://images.pexels.com/photos/29414851/pexels-photo-29414851.jpeg?auto=compress&cs=tinysrgb&w=1400", // ตรอกตลาดเช้า ชาวบ้านนั่งขายผักบนพื้นสองฝั่งทาง อีกฝั่งเป็นแผงผักผลไม้บนรถเข็น
+    "https://images.pexels.com/photos/32856480/pexels-photo-32856480.jpeg?auto=compress&cs=tinysrgb&w=1400", // แม่ค้านั่งยองชั่งผักด้วยตาชั่งสปริงริมทางเท้า ผักบุ้ง ผักกาด และแครอทใส่ถุงวางขายเรียงแถว
+    "https://images.pexels.com/photos/35699382/pexels-photo-35699382.jpeg?auto=compress&cs=tinysrgb&w=1400", // แผงผักริมถนนยามเช้า ผักสดกองใหญ่ กล้วยแขวน และกะละมังแดงใส่ผัก มีลูกค้ายืนเลือกซื้อ
+    "https://images.pexels.com/photos/37321079/pexels-photo-37321079.jpeg?auto=compress&cs=tinysrgb&w=1400", // ผลผลิตในกระด้งสานที่แผงตลาด มะเขือเทศ ถั่วฝัก พริกหยวก และต้นหอมมัดเป็นกำ
+    "https://images.pexels.com/photos/37636576/pexels-photo-37636576.jpeg?auto=compress&cs=tinysrgb&w=1400", // ผู้ซื้อเดินเลือกมะเขือเทศและผักที่วางขายในลังโฟมริมถนนย่านตลาดยามเช้า
+    "https://images.pexels.com/photos/39206252/pexels-photo-39206252.jpeg?auto=compress&cs=tinysrgb&w=1400", // มะเขือม่วง มะเขือเปราะ และกระเจี๊ยบเขียวใส่ถุงวางขายบนแผงผักในตลาดสด
+    "https://images.pexels.com/photos/39552280/pexels-photo-39552280.jpeg?auto=compress&cs=tinysrgb&w=1400", // แม่ค้าคัดพริกสดในกระด้งสานใบใหญ่ที่โรงคัดผลผลิตหลังตลาด มีหอมแดงอยู่ในกระด้งข้างกัน
+    "https://images.pexels.com/photos/4281601/pexels-photo-4281601.jpeg?auto=compress&cs=tinysrgb&w=1400", // แม่ค้าแผงผักในตลาดสดนั่งหลังตาชั่งแบบตุ้มถ่วง มีแครอท ผักชี และถั่วฝักยาววางขาย
+    "https://images.pexels.com/photos/5807481/pexels-photo-5807481.jpeg?auto=compress&cs=tinysrgb&w=1400", // พ่อค้าจัดหอมแดงและถั่วบนแผงผักในตลาด รายล้อมด้วยกะหล่ำ กระเทียม และฟักเขียว
   ],
   "soil-water-fertilizer": [
     "1611843467160-25afb8df1074",
@@ -532,6 +554,25 @@ export const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/6290217/pexels-photo-6290217.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/31374933/pexels-photo-31374933.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/14242187/pexels-photo-14242187.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // wave20 sourced 2026-09-20, visually verified
+    "https://images.pexels.com/photos/10624282/pexels-photo-10624282.jpeg?auto=compress&cs=tinysrgb&w=1400", // ผืนดินแปลงนาเปียกชื้นมีน้ำขังเป็นหย่อม ๆ สะท้อนแสงยามเย็น
+    "https://images.pexels.com/photos/10954153/pexels-photo-10954153.jpeg?auto=compress&cs=tinysrgb&w=1400", // ดินสีเข้มแตกระแหงระหว่างแปลงผักใบเขียวมองจากด้านบน
+    "https://images.pexels.com/photos/11126106/pexels-photo-11126106.jpeg?auto=compress&cs=tinysrgb&w=1400", // ผิวดินแห้งสีน้ำตาลมีหญ้าแห้งปกคลุม สภาพดินขาดน้ำ
+    "https://images.pexels.com/photos/12103291/pexels-photo-12103291.jpeg?auto=compress&cs=tinysrgb&w=1400", // เม็ดดินร่วนก้อนเล็กก้อนใหญ่หลังไถเตรียมแปลง
+    "https://images.pexels.com/photos/12338170/pexels-photo-12338170.jpeg?auto=compress&cs=tinysrgb&w=1400", // นาข้าวขั้นบันไดที่มีน้ำขังเต็มแปลง ต้นกล้าเรียงเป็นแถว
+    "https://images.pexels.com/photos/13511742/pexels-photo-13511742.jpeg?auto=compress&cs=tinysrgb&w=1400", // กองใบไม้แห้งและฟางสุมไว้มุมกำแพง วัสดุสำหรับทำปุ๋ยหมัก
+    "https://images.pexels.com/photos/18699404/pexels-photo-18699404.jpeg?auto=compress&cs=tinysrgb&w=1400", // สปริงเกลอร์หลายหัวพ่นน้ำรดแปลงพืชไร่เชิงเขา
+    "https://images.pexels.com/photos/20280076/pexels-photo-20280076.jpeg?auto=compress&cs=tinysrgb&w=1400", // รถแทรกเตอร์ติดบูมพ่นสารบำรุงเหนือแปลงผักที่ยกร่องดิน
+    "https://images.pexels.com/photos/27282429/pexels-photo-27282429.jpeg?auto=compress&cs=tinysrgb&w=1400", // กองเปลือกมะพร้าวแห้งสำหรับทำขุยมะพร้าวปรับปรุงดิน
+    "https://images.pexels.com/photos/27695817/pexels-photo-27695817.jpeg?auto=compress&cs=tinysrgb&w=1400", // หน้าตัดดินเหนียวสีน้ำตาลที่ถูกน้ำกัดเซาะเป็นร่อง
+    "https://images.pexels.com/photos/28214197/pexels-photo-28214197.jpeg?auto=compress&cs=tinysrgb&w=1400", // แปลงหอมยกร่องดินเป็นแถวยาวในพื้นที่เกษตรเขตร้อน
+    "https://images.pexels.com/photos/30218920/pexels-photo-30218920.jpeg?auto=compress&cs=tinysrgb&w=1400", // ภาพระยะใกล้ของดินร่วนปนทรายเปียกน้ำ เห็นเม็ดดินและเศษหิน
+    "https://images.pexels.com/photos/31190668/pexels-photo-31190668.jpeg?auto=compress&cs=tinysrgb&w=1400", // กองปุ๋ยคอกผสมฟางกลางแปลงนา มีไอความร้อนลอยขึ้น
+    "https://images.pexels.com/photos/32487573/pexels-photo-32487573.jpeg?auto=compress&cs=tinysrgb&w=1400", // รถแทรกเตอร์ลากเครื่องหว่านปุ๋ยเม็ดกระจายลงแปลงหญ้า
+    "https://images.pexels.com/photos/32938348/pexels-photo-32938348.jpeg?auto=compress&cs=tinysrgb&w=1400", // เกษตรกรหว่านปุ๋ยเม็ดด้วยมือจากกะละมังในแปลงพืชเขียว
+    "https://images.pexels.com/photos/34031021/pexels-photo-34031021.jpeg?auto=compress&cs=tinysrgb&w=1400", // ภาพมุมสูงของแปลงเพาะปลูกวงกลมที่ใช้ระบบน้ำแบบหมุนรอบจุดกลาง
+    "https://images.pexels.com/photos/35366701/pexels-photo-35366701.jpeg?auto=compress&cs=tinysrgb&w=1400", // ภาพเงาเกษตรกรหว่านปุ๋ยในแปลงต้นกล้าเขียวยามแสงเย็น
+    "https://images.pexels.com/photos/35763359/pexels-photo-35763359.jpeg?auto=compress&cs=tinysrgb&w=1400", // เกษตรกรสะพายถังพ่นฉีดพ่นปุ๋ยน้ำในนาข้าวเขียวชอุ่ม
   ],
   "agri-tech-tools": [
     // Pexels — เพิ่ม pool เดือน 2026-07 (ขยายก่อนล็อตเขียนถัดไป)
@@ -606,6 +647,25 @@ export const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/12612073/pexels-photo-12612073.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/25384403/pexels-photo-25384403.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/207574/pexels-photo-207574.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // wave20 sourced 2026-09-20, visually verified
+    "https://images.pexels.com/photos/10269715/pexels-photo-10269715.jpeg?auto=compress&cs=tinysrgb&w=1400", // ฟาร์มแนวตั้งในร่ม ชั้นปลูกผักสลัดใต้หลอดไฟ LED ปลูกพืช
+    "https://images.pexels.com/photos/11530543/pexels-photo-11530543.jpeg?auto=compress&cs=tinysrgb&w=1400", // รถแทรกเตอร์สีเขียวติดบุ้งกี๋หน้าจอดบนทุ่งหญ้าริมน้ำ
+    "https://images.pexels.com/photos/11620153/pexels-photo-11620153.jpeg?auto=compress&cs=tinysrgb&w=1400", // โดรนบินสำรวจเหนือผืนแปลงเกษตรที่แบ่งเป็นช่องสี่เหลี่ยม
+    "https://images.pexels.com/photos/12487585/pexels-photo-12487585.jpeg?auto=compress&cs=tinysrgb&w=1400", // ต้นสตรอว์เบอร์รีปลูกในท่อพีวีซีแนวตั้งแบบประหยัดพื้นที่
+    "https://images.pexels.com/photos/15954902/pexels-photo-15954902.jpeg?auto=compress&cs=tinysrgb&w=1400", // ห้องปลูกไฮโดรโปนิกส์ใต้แสง LED สีชมพู ต้นกล้าผักสลัดในแผ่นโฟม
+    "https://images.pexels.com/photos/20447240/pexels-photo-20447240.jpeg?auto=compress&cs=tinysrgb&w=1400", // ภาพมุมสูง รถแทรกเตอร์สองคันไถพรวนแปลงดินพร้อมกัน
+    "https://images.pexels.com/photos/27539606/pexels-photo-27539606.jpeg?auto=compress&cs=tinysrgb&w=1400", // รถแทรกเตอร์ลากอุปกรณ์ไถ ฝุ่นฟุ้งกระจายทั่วแปลง
+    "https://images.pexels.com/photos/30248663/pexels-photo-30248663.jpeg?auto=compress&cs=tinysrgb&w=1400", // รถแทรกเตอร์ติดเครื่องเก็บเกี่ยวทำงานในแปลงดินเปียก มีนกบินตาม
+    "https://images.pexels.com/photos/32058370/pexels-photo-32058370.jpeg?auto=compress&cs=tinysrgb&w=1400", // รถแทรกเตอร์ลากเครื่องสับหญ้าเป่าลงพ่วงบรรทุกกลางแปลงหญ้าแห้ง
+    "https://images.pexels.com/photos/32146752/pexels-photo-32146752.jpeg?auto=compress&cs=tinysrgb&w=1400", // แปลงผักสลัดไฮโดรโปนิกส์ในโรงเรือน มีพัดลมระบายอากาศด้านบน
+    "https://images.pexels.com/photos/33184443/pexels-photo-33184443.jpeg?auto=compress&cs=tinysrgb&w=1400", // โรงเรือนหลังคาโค้งคลุมพลาสติกสีขาว เปิดไฟส่องสว่างตอนค่ำ
+    "https://images.pexels.com/photos/33265389/pexels-photo-33265389.jpeg?auto=compress&cs=tinysrgb&w=1400", // โรงเรือนปลูกสตรอว์เบอร์รีในกระถางบนรางยกสูง พร้อมสายน้ำหยด
+    "https://images.pexels.com/photos/34182309/pexels-photo-34182309.jpeg?auto=compress&cs=tinysrgb&w=1400", // เกษตรกรสองคนเตรียมโดรนพ่นสารการเกษตรกลางแปลง
+    "https://images.pexels.com/photos/34182316/pexels-photo-34182316.jpeg?auto=compress&cs=tinysrgb&w=1400", // โดรนพ่นสารบินอยู่เหนือแปลงข้าวสาลี โดยมีผู้ควบคุมยืนดูอยู่
+    "https://images.pexels.com/photos/37314899/pexels-photo-37314899.jpeg?auto=compress&cs=tinysrgb&w=1400", // ภาพมุมสูง รถแทรกเตอร์ติดเครื่องตีหญ้าทำงานเป็นแนวยาวในทุ่งหญ้า
+    "https://images.pexels.com/photos/4093908/pexels-photo-4093908.jpeg?auto=compress&cs=tinysrgb&w=1400", // รถแทรกเตอร์ลากเครื่องหยอดเมล็ดขนาดใหญ่ในแปลงตอซัง ฝุ่นตลบ
+    "https://images.pexels.com/photos/7299963/pexels-photo-7299963.jpeg?auto=compress&cs=tinysrgb&w=1400", // เกษตรกรหญิงตัดแต่งไหลสตรอว์เบอร์รีในโรงเรือนปลูกแบบรางน้ำ
+    "https://images.pexels.com/photos/9799044/pexels-photo-9799044.jpeg?auto=compress&cs=tinysrgb&w=1400", // รถแทรกเตอร์สองคันติดเครื่องขุดถั่วลิสงทำงานในแปลง ฝุ่นฟุ้ง
   ],
   "agri-news-law-standards": [
     // Pexels — เพิ่ม pool เดือน 2026-07 (ขยายก่อนล็อตเขียนถัดไป)
@@ -708,6 +768,25 @@ export const CAT_IMAGE_POOLS: Record<string, string[]> = {
     "https://images.pexels.com/photos/32834464/pexels-photo-32834464.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/7821574/pexels-photo-7821574.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "https://images.pexels.com/photos/8540259/pexels-photo-8540259.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    // wave20 sourced 2026-09-20, visually verified
+    "https://images.pexels.com/photos/12655640/pexels-photo-12655640.jpeg?auto=compress&cs=tinysrgb&w=1400", // เกษตรกรจับมือตกลงซื้อขายโคกลางตลาดนัดวัว มีรถบรรทุกสัตว์จอดเรียงด้านหลัง
+    "https://images.pexels.com/photos/12655650/pexels-photo-12655650.jpeg?auto=compress&cs=tinysrgb&w=1400", // กลุ่มเกษตรกรผู้เลี้ยงโคยืนคุยและจับมือกันหน้าคอกวัวในตลาดปศุสัตว์
+    "https://images.pexels.com/photos/20356768/pexels-photo-20356768.jpeg?auto=compress&cs=tinysrgb&w=1400", // กลุ่มเกษตรกรหญิงยืนรวมตัวกันในแปลงปลูกพืชผสมผสาน ถือจอบและบัวรดน้ำ
+    "https://images.pexels.com/photos/20458063/pexels-photo-20458063.jpeg?auto=compress&cs=tinysrgb&w=1400", // เกษตรกรหญิงหกคนนั่งล้อมวงประชุมกลางแปลงไร่ มีอุปกรณ์การเกษตรวางตรงกลาง
+    "https://images.pexels.com/photos/20458079/pexels-photo-20458079.jpeg?auto=compress&cs=tinysrgb&w=1400", // เกษตรกรหญิงสองคนนั่งคุยและส่งต่อเมล็ดพันธุ์กันกลางแปลงดินที่เตรียมไว้
+    "https://images.pexels.com/photos/20527521/pexels-photo-20527521.jpeg?auto=compress&cs=tinysrgb&w=1400", // เกษตรกรหญิงสองคนนั่งคุยกันริมคันนา ข้างแปลงหอมเขียวและท่อสูบน้ำ
+    "https://images.pexels.com/photos/27867130/pexels-photo-27867130.jpeg?auto=compress&cs=tinysrgb&w=1400", // ชายสองคนยืนสนทนากันท่ามกลางฝูงชนในตลาดนัดปศุสัตว์
+    "https://images.pexels.com/photos/27869943/pexels-photo-27869943.jpeg?auto=compress&cs=tinysrgb&w=1400", // เกษตรกรสูงวัยสองคนยืนคู่กันในตลาดนัด คนหนึ่งสวมหมวกสาน
+    "https://images.pexels.com/photos/28491977/pexels-photo-28491977.jpeg?auto=compress&cs=tinysrgb&w=1400", // ภาพมุมสูงแปลงสวนผลไม้แบ่งเป็นล็อกชัดเจน มีตาข่ายพรางแสงและถนนคั่นแปลง
+    "https://images.pexels.com/photos/29000146/pexels-photo-29000146.jpeg?auto=compress&cs=tinysrgb&w=1400", // ตลาดนัดโคกระบือในชนบท ผู้คนยืนล้อมดูวัวที่จูงมาขายหน้าอาคารคอกสัตว์
+    "https://images.pexels.com/photos/34411658/pexels-photo-34411658.jpeg?auto=compress&cs=tinysrgb&w=1400", // ชายสวมหมวกแก๊ปย่อตัวตรวจต้นพืชในแปลงดินทราย ใต้ท้องฟ้าครึ้มฝน
+    "https://images.pexels.com/photos/34632710/pexels-photo-34632710.jpeg?auto=compress&cs=tinysrgb&w=1400", // เจ้าหน้าที่ในชุดเครื่องแบบลายพรางยืนคุยกันกลางทุ่งนาที่เกี่ยวข้าวแล้ว
+    "https://images.pexels.com/photos/36937772/pexels-photo-36937772.jpeg?auto=compress&cs=tinysrgb&w=1400", // ชายยืนตรวจแปลงเมล่อนในโรงเรือนพลาสติกที่ขึงเชือกค้างต้นเป็นแถว
+    "https://images.pexels.com/photos/6508401/pexels-photo-6508401.jpeg?auto=compress&cs=tinysrgb&w=1400", // เจ้าหน้าที่สองคนเดินตรวจแปลงกล้าไม้ในโรงเรือน คนหนึ่งถือแท็บเล็ตบันทึกข้อมูล
+    "https://images.pexels.com/photos/6508542/pexels-photo-6508542.jpeg?auto=compress&cs=tinysrgb&w=1400", // ผู้ตรวจหญิงถือแฟ้มบันทึกเดินตรวจต้นไม้ในโรงเรือนเพาะชำ
+    "https://images.pexels.com/photos/6508543/pexels-photo-6508543.jpeg?auto=compress&cs=tinysrgb&w=1400", // เจ้าหน้าที่สองคนตรวจกระถางต้นกล้าในโรงเรือน คนหนึ่งสวมถุงมือยกต้นไม้ให้ดู
+    "https://images.pexels.com/photos/7457533/pexels-photo-7457533.jpeg?auto=compress&cs=tinysrgb&w=1400", // ภาพมุมสูงแปลงปลูกพืชยกร่องเป็นแถวยาว มีคนงานเดินอยู่กลางแปลง
+    "https://images.pexels.com/photos/8951001/pexels-photo-8951001.jpeg?auto=compress&cs=tinysrgb&w=1400", // กลุ่มเกษตรกรสูงวัยนั่งล้อมวงคุยกันบนผืนผ้าริมแปลงพืชสีเขียว
   ],
 };
 
